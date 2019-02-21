@@ -1,0 +1,73 @@
+{
+    "Parameters" : {
+        "BuildProject": {
+            "Type": "string",
+            "Description": "Path to the Visual Studio project to build.",
+            "Validate": "[validatenotnullorempty($_)]"
+        },
+        "PublishProfile": {
+            "Type": "string",
+            "Description": "Name of the publish profile to run on build.",
+            "DefaultValue": "Local"
+        },
+        "BuildVerbosity": {
+            "Type": "string",
+            "Description": "MSBuild output verbosity.",
+            "DefaultValue": "minimal"
+        },
+        "SitecoreUrl": {
+            "Type": "string",
+            "Description": "URL of the Sitecore instance where Unicorn has been installed.",
+            "DefaultValue": "",
+            "Validate": "[validatenotnullorempty($_)]"
+        },
+        "UnicornSecret": {
+            "Type": "string",
+            "Description": "The Shared Secret used for authenticating with Unicorn.",
+            "DefaultValue": ""
+        },
+        "UnicornSecretConfig": {
+            "Type": "string",
+            "Description": "Path to the config file containing the Unicorn shared secret.",
+            "DefaultValue": ""
+        }
+    },
+    "Variables" : {
+        "Unicorn.SecretConfig": "[if(parameter('UnicornSecretConfig'), parseunicornsecret(parameter('UnicornSecretConfig'))], '')]",
+        "Unicorn.Secret": "[if(parameter('UnicornSecret'), parameter('UnicornSecret'), variable('Unicorn.SecretConfig'))]"
+    },
+    "Modules" : [
+        "..\\..\\..\\..\\install-modules\\helix.examples.psm1",
+        "..\\..\\..\\..\\install-modules\\msbuild\\Invoke-MsBuild.psm1",
+        "..\\..\\..\\..\\install-modules\\unicorn\\Unicorn.psm1"
+    ],
+    "Includes" : {
+
+    },
+    "Register" : {
+        "Tasks" : {
+            "WriteInformation": "Write-Information",
+            "MsBuild": "Invoke-MsBuild",
+            "SyncUnicorn": "Sync-Unicorn"
+        }
+    },
+    "Tasks" : {
+        "Build": {
+            "Description": "Build the Habitat solution",
+            "Type": "MsBuild",
+            "Params": {
+                "Path": "[parameter('BuildProject')]",
+                "MsBuildParameters": "[concat('/restore /m /p:DeployOnBuild=true /p:PublishProfile=', parameter('PublishProfile'), ' /verbosity:', parameter('BuildVerbosity'))]",
+                "ShowBuildOutputInCurrentWindow": true
+            }
+        },
+        "SyncUnicorn": {
+            "Description": "Deploy items via Unicorn",
+            "Type": "SyncUnicorn",
+            "Params": {
+                "ControlPanelUrl": "[concat(parameter('SitecoreUrl'), '/unicorn.aspx')]",
+                "SharedSecret": "[variable('Unicorn.Secret')]"
+            }
+        }
+    }
+}

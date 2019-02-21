@@ -1,7 +1,6 @@
-
-#Ignore thumbnails created by Windows
+# Ignore thumbnails created by Windows
 Thumbs.db
-#Ignore files built by Visual Studio
+# Ignore files built by Visual Studio
 *.obj
 *.exe
 *.pdb
@@ -28,5 +27,17 @@ obj/
 _ReSharper*/
 [Tt]est[Rr]esult*
 .vs/
-#Nuget packages folder
+# Nuget packages folder
 packages/
+## SIF configs expanded into config folder
+**/build/config/createcert.json
+**/build/config/IdentityServer.json
+**/build/config/Prerequisites.json
+**/build/config/sitecore-solr.json
+**/build/config/sitecore-XP0.json
+**/build/config/xconnect-solr.json
+**/build/config/xconnect-xp0.json
+**/build/config/XP0-SingleDeveloper.json
+**/build/config/XP0-SingleDeveloper.ps1
+## User config for build
+**/build/settings.user.ps1

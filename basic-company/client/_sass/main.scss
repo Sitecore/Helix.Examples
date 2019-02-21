@@ -1,0 +1,14 @@
+@charset "utf-8";
+
+// Import the initial variables
+@import "../node_modules/bulma/sass/utilities/initial-variables";
+
+// Overrides
+$family-sans-serif: "ProximaNova", sans-serif;
+$blue: #155786;
+$primary: #155786;
+$primary-invert: #fff;
+
+// Import the rest of Bulma
+
+@import "../node_modules/bulma/bulma";

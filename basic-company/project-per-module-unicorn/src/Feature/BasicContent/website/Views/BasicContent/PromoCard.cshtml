@@ -1,0 +1,13 @@
+﻿@model Sitecore.Mvc.Presentation.RenderingModel
+
+<div class="column">
+	<div class="card">
+		<div class="card-content">
+			<div class="content">
+				<h4>@Html.Sitecore().Field("Headline")</h4>
+				@Html.Sitecore().Field("Text")
+				<p>@Html.Sitecore().Field("Link")</p>
+			</div>
+		</div>
+	</div>
+</div>

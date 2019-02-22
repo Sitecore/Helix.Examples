@@ -21,6 +21,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Serialization", "Serializat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicCompany.Foundation.Serialization", "src\Foundation\Serialization\website\BasicCompany.Foundation.Serialization.csproj", "{8AC1D13A-3CD5-40BE-B392-363EAB8578D2}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BasicContent", "BasicContent", "{9EF7E16A-71A7-48EB-823D-E682867B311E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicCompany.Feature.BasicContent", "src\Feature\BasicContent\website\BasicCompany.Feature.BasicContent.csproj", "{86B7E1BD-DC6D-45DB-B11B-255B18C3CF62}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,10 @@ Global
 		{8AC1D13A-3CD5-40BE-B392-363EAB8578D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8AC1D13A-3CD5-40BE-B392-363EAB8578D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8AC1D13A-3CD5-40BE-B392-363EAB8578D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86B7E1BD-DC6D-45DB-B11B-255B18C3CF62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86B7E1BD-DC6D-45DB-B11B-255B18C3CF62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86B7E1BD-DC6D-45DB-B11B-255B18C3CF62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86B7E1BD-DC6D-45DB-B11B-255B18C3CF62}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -49,6 +57,8 @@ Global
 		{B6FF7408-18B3-41FD-B89C-A51DC35B8E3A} = {284C1E9C-9BD5-43BD-ADE2-8F5EFDC868D4}
 		{3FD32CAB-608B-4B92-A915-021E0EB11EC9} = {D0DD1773-D94E-47FC-9310-952C4ECEF69A}
 		{8AC1D13A-3CD5-40BE-B392-363EAB8578D2} = {3FD32CAB-608B-4B92-A915-021E0EB11EC9}
+		{9EF7E16A-71A7-48EB-823D-E682867B311E} = {EBD32547-E4EC-47C5-AD12-0188C2ECE110}
+		{86B7E1BD-DC6D-45DB-B11B-255B18C3CF62} = {9EF7E16A-71A7-48EB-823D-E682867B311E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7A7C4987-3A11-41A9-8915-5457EF7B5A6F}

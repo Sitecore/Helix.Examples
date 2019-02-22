@@ -7,12 +7,12 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{816F099C-E14B-4468-9E34-87F993C6484D}</ProjectGuid>
+    <ProjectGuid>{86B7E1BD-DC6D-45DB-B11B-255B18C3CF62}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BasicCompany.Project.BasicCompany</RootNamespace>
-    <AssemblyName>BasicCompany.Project.BasicCompany</AssemblyName>
+    <RootNamespace>BasicCompany.Feature.BasicContent</RootNamespace>
+    <AssemblyName>BasicCompany.Feature.BasicContent</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
@@ -51,19 +51,19 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Config\Include\Project\BasicCompany.Project.BasicCompany.config" />
-    <Content Include="App_Config\Include\Project\BasicCompany.Project.BasicCompany.Serialization.config">
-      <SubType>Designer</SubType>
-    </Content>
+    <Content Include="App_Config\Include\Feature\Feature.BasicContent.config" />
+    <Content Include="App_Config\Include\Feature\Feature.BasicContent.Serialization.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Templates.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="css\basic-company.css" />
-    <Content Include="Views\BasicCompany\Layouts\Default.cshtml" />
+    <Content Include="Views\BasicContent\PromoCard.cshtml" />
+    <Content Include="Views\BasicContent\PromoContainer.cshtml" />
     <None Include="Views\web.config" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="web.config" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>

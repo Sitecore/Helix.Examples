@@ -1,0 +1,24 @@
+﻿---
+ID: "4add5536-81fa-4c38-b5aa-7836423fd9f9"
+Parent: "7bc02aef-e662-41f3-b80d-4b1f52ed9d79"
+Template: "b0d7dedc-8908-4fd0-9b1a-a1501d03d485"
+Path: /sitecore/content/Basic Company/Shared Content/Promo Cards/Nullam vel
+DB: master
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "13eb8dca-281d-4e75-b6e1-701ca719bcd1"
+      Hint: Text
+      Value: Vivamus elementum semper nisi. Nulla neque dolor, sagittis eget, iaculis quis, molestie non, velit. Phasellus dolor. Vivamus euismod mauris. Curabitur blandit mollis lacus.
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20190222T193922Z
+    - ID: "4f73c02b-93cc-4c96-b9ff-9d0d8e853ed6"
+      Hint: Headline
+      Value: Nullam vel
+    - ID: "b788e8bc-e944-4a2b-a4be-3424643d322b"
+      Hint: Link
+      Value: |
+        <link linktype="internal" text="Learn more" querystring="" target="" id="{97479C6B-BB30-4A15-AFD1-2C89F207E9D6}" />

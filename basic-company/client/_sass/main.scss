@@ -3,12 +3,20 @@
 // Import the initial variables
 @import "../node_modules/bulma/sass/utilities/initial-variables";
 
-// Overrides
-$family-sans-serif: "ProximaNova", sans-serif;
+// Global Overrides
+$family-sans-serif: 'Montserrat', sans-serif;
 $blue: #155786;
 $primary: #155786;
 $primary-invert: #fff;
 
-// Import the rest of Bulma
+// Navbar Overrides
+$navbar-height: 67px;
+$navbar-item-img-max-height: 45px;
+$navbar-tab-active-border-bottom-color: $red;
+$navbar-tab-hover-border-bottom-color: $black;
 
+// Import the rest of Bulma
 @import "../node_modules/bulma/bulma";
+
+@import "navbar.scss";
+@import "hero.scss";

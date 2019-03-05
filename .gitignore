@@ -41,3 +41,5 @@ packages/
 **/build/config/XP0-SingleDeveloper.ps1
 ## User config for build
 **/build/settings.user.ps1
+/basic-company/client/_javascript/main.js
+/basic-company/client/css/main.css

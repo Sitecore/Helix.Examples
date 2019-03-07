@@ -1,23 +1,20 @@
 ﻿---
-ID: "63cd29ba-0e08-44d5-ab10-e05298a9818d"
-Parent: "69acb668-b447-4aff-8b94-e9844f095054"
+ID: "c231fbb4-dcdb-4708-99bc-94760f222cc5"
+Parent: "8c38d083-9e99-4153-99ca-a3bdbdda922e"
 Template: "ab86861a-6030-46c5-b394-e8f99e8b87db"
-Path: /sitecore/templates/Project/BasicCompany/Page Types/Home Page
+Path: /sitecore/templates/Feature/Navigation/_NavigationItem
 DB: master
 SharedFields:
 - ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
   Hint: __Icon
-  Value: /~/icon/office/32x32/home.png
+  Value: Applications/32x32/form_blue.png
 - ID: "12c33f3f-86c5-43a5-aeb4-5598cec45116"
   Hint: __Base template
   Type: tree list
-  Value: |
-    {1930BBEB-7805-471A-A3BE-4858AC7CF696}
-    {C231FBB4-DCDB-4708-99BC-94760F222CC5}
-    {D7F870BC-89D8-4F17-95EC-59ACFD7DA05C}
+  Value: "{1930BBEB-7805-471A-A3BE-4858AC7CF696}"
 - ID: "f7d48a55-2158-4f02-9356-756654404f73"
   Hint: __Standard values
-  Value: "{74DDD1FF-6A17-4C25-AD3F-BB99331FAE1F}"
+  Value: "{9A697D65-723A-47ED-9066-56263DEE57ED}"
 Languages:
 - Language: en
   Versions:
@@ -25,7 +22,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20190222T151345Z
+      Value: 20190306T184844Z
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |

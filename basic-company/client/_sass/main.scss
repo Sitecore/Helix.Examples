@@ -15,8 +15,12 @@ $navbar-item-img-max-height: 45px;
 $navbar-tab-active-border-bottom-color: $red;
 $navbar-tab-hover-border-bottom-color: $black;
 
+// Footer Overrides
+$footer-background-color: $black;
+
 // Import the rest of Bulma
 @import "../node_modules/bulma/bulma";
 
 @import "navbar.scss";
 @import "hero.scss";
+@import "footer.scss";

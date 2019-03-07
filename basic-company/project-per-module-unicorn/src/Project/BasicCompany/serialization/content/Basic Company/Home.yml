@@ -54,3 +54,10 @@ Languages:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
       Value: 20190222T152449Z
+    - ID: "32cff90d-4fdf-4402-a364-21199e88753d"
+      Hint: Navigation Title
+      Value: Home
+    - ID: "fee16e6b-0823-44fb-acd2-f56db2011aa3"
+      Hint: Header Logo
+      Value: |
+        <image mediapath="" alt="Sitecore Helix" width="139" height="44" hspace="" vspace="" showineditor="" usethumbnail="" src="" mediaid="{F6436C9D-2803-40F8-B5EB-4C8D65E62253}" />

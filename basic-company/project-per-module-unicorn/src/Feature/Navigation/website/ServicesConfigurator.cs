@@ -9,6 +9,7 @@ namespace BasicCompany.Feature.Navigation
 		{
 			serviceCollection.AddTransient<Controllers.NavigationController>();
 			serviceCollection.AddTransient<Services.IHeaderBuilder, Services.HeaderBuilder>();
+			serviceCollection.AddTransient<Services.INavigationRootResolver, Services.NavigationRootResolver>();
 		}
 	}
 }

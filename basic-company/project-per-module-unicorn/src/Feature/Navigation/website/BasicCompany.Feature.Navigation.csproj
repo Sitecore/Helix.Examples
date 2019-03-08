@@ -64,10 +64,13 @@
     <Compile Include="ServicesConfigurator.cs" />
     <Compile Include="Services\HeaderBuilder.cs" />
     <Compile Include="Services\IHeaderBuilder.cs" />
+    <Compile Include="Services\INavigationRootResolver.cs" />
+    <Compile Include="Services\NavigationRootResolver.cs" />
     <Compile Include="Templates.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Navigation\Header.cshtml" />
+    <Content Include="Views\Navigation\Footer.cshtml" />
     <None Include="Views\web.config" />
   </ItemGroup>
   <ItemGroup>

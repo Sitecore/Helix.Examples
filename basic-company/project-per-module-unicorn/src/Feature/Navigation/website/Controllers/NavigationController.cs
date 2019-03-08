@@ -7,11 +7,14 @@ namespace BasicCompany.Feature.Navigation.Controllers
 {
 	public class NavigationController : Controller
 	{
+		protected readonly INavigationRootResolver RootResolver;
 		protected readonly IHeaderBuilder HeaderBuilder;
 
-		public NavigationController(IHeaderBuilder headerBuilder)
+		public NavigationController(INavigationRootResolver rootResolver, IHeaderBuilder headerBuilder)
 		{
+			Debug.Assert(rootResolver != null);
 			Debug.Assert(headerBuilder != null);
+			RootResolver = rootResolver;
 			HeaderBuilder = headerBuilder;
 		}
 
@@ -19,6 +22,12 @@ namespace BasicCompany.Feature.Navigation.Controllers
 		{
 			var header = HeaderBuilder.GetHeader(RenderingContext.Current.ContextItem);
 			return View(header);
+		}
+
+		public ActionResult Footer()
+		{
+			var root = RootResolver.GetNavigationRoot(RenderingContext.Current.ContextItem);
+			return View(root);
 		}
 	}
 }

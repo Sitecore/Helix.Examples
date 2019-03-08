@@ -2,7 +2,7 @@
 ID: "fee16e6b-0823-44fb-acd2-f56db2011aa3"
 Parent: "7019282e-7469-4e7a-a272-bcf4d0df0344"
 Template: "455a3e98-a627-4b40-8035-e683a0331ac7"
-Path: /sitecore/templates/Feature/Navigation/_NavigationRoot/Navigation/Header Logo
+Path: /sitecore/templates/Feature/Navigation/_NavigationRoot/Header and Footer/Header Logo
 DB: master
 SharedFields:
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"

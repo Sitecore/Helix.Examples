@@ -9,19 +9,21 @@ namespace BasicCompany.Feature.Navigation.Services
 {
 	public class HeaderBuilder : IHeaderBuilder
 	{
+		protected readonly INavigationRootResolver RootResolver;
 		protected readonly BaseLinkManager LinkManager;
 
-		public HeaderBuilder(BaseLinkManager linkManager)
+		public HeaderBuilder(BaseLinkManager linkManager, INavigationRootResolver rootResolver)
 		{
 			Debug.Assert(linkManager != null);
+			Debug.Assert(rootResolver != null);
 			LinkManager = linkManager;
+			RootResolver = rootResolver;
 		}
 
 		public Header GetHeader(Item contextItem)
 		{
 			Debug.Assert(contextItem != null);
-			var navigationRoot = contextItem.DescendsFrom(Templates.NavigationRoot.Id) ? contextItem :
-				contextItem.Axes.GetAncestors().LastOrDefault(x => x.DescendsFrom(Templates.NavigationRoot.Id));
+			var navigationRoot = RootResolver.GetNavigationRoot(contextItem);
 			if (navigationRoot == null)
 			{
 				return new Header();

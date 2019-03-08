@@ -24,6 +24,7 @@ namespace BasicCompany.Feature.Navigation
 			public static class Fields
 			{
 				public static readonly ID HeaderLogo = new ID("{FEE16E6B-0823-44FB-ACD2-F56DB2011AA3}");
+				public static readonly ID FooterCopyright = new ID("{F6098004-9129-41E4-A3B0-604A7583C26D}");
 			}
 		}
   }

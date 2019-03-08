@@ -19,8 +19,13 @@ Languages:
           <d
             id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
             <r
+              uid="{E10E7525-8542-41BC-939E-3082925B9C52}"
+              p:after="r[@uid='{7D4F689F-208C-4EA3-88BA-0BC6E615771E}']"
+              s:id="{ECD6CEA8-4EF8-4BB6-A588-7A77DF2B299C}"
+              s:ph="main" />
+            <r
               uid="{6B3E9F3E-18EB-4321-9B1B-45E12B29B103}"
-              p:before="*"
+              p:after="r[@uid='{E10E7525-8542-41BC-939E-3082925B9C52}']"
               s:ds="{E74405CA-A09B-468C-AF74-5FFBD6CDBAED}"
               s:id="{C0234B7A-B7F4-4018-B0D8-998D14EFEAC1}"
               s:ph="/main/promos-{E10E7525-8542-41BC-939E-3082925B9C52}-0" />
@@ -37,18 +42,8 @@ Languages:
               s:id="{C0234B7A-B7F4-4018-B0D8-998D14EFEAC1}"
               s:ph="/main/promos-{E10E7525-8542-41BC-939E-3082925B9C52}-0" />
             <r
-              uid="{E10E7525-8542-41BC-939E-3082925B9C52}"
-              p:after="*[1=2]"
-              s:id="{ECD6CEA8-4EF8-4BB6-A588-7A77DF2B299C}"
-              s:ph="main" />
-          </d>
-          <d
-            id="{46D2F427-4CE5-4E1F-BA10-EF3636F43534}">
-            <p:d />
-          </d>
-          <d
-            id="{73966209-F1B6-43CA-853A-F1DB1C9A654B}">
-            <p:d />
+              uid="{66B647E6-3D33-45EF-AF06-EBB2175BC56B}"
+              p:after="*[1=2]" />
           </d>
         </r>
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
@@ -57,6 +52,9 @@ Languages:
     - ID: "32cff90d-4fdf-4402-a364-21199e88753d"
       Hint: Navigation Title
       Value: Home
+    - ID: "f6098004-9129-41e4-a3b0-604a7583c26d"
+      Hint: Footer Copyright
+      Value: Copyright
     - ID: "fee16e6b-0823-44fb-acd2-f56db2011aa3"
       Hint: Header Logo
       Value: |

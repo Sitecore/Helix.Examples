@@ -13,6 +13,7 @@ namespace BasicCompany.Feature.Navigation.Tests
 	public class HeaderBuilderTests : IDisposable
 	{
 		private Db _db;
+		private INavigationRootResolver _rootResolver;
 
 		public HeaderBuilderTests()
 		{
@@ -36,6 +37,10 @@ namespace BasicCompany.Feature.Navigation.Tests
 					new DbItem("Child2", ID.NewID, pageTemplate)
 				}
 			};
+			var rootResolverMock = new Mock<INavigationRootResolver>();
+			rootResolverMock.Setup(x => x.GetNavigationRoot(It.IsAny<Item>()))
+				.Returns(_db.GetItem("/sitecore/content/Home"));
+			_rootResolver = rootResolverMock.Object;
 		}
 
 		public void Dispose()
@@ -44,6 +49,8 @@ namespace BasicCompany.Feature.Navigation.Tests
 			{
 				_db.Dispose();
 			}
+			_db = null;
+			_rootResolver = null;
 		}
 
 		[Fact]
@@ -51,11 +58,11 @@ namespace BasicCompany.Feature.Navigation.Tests
 		{
 			var item = _db.GetItem("/sitecore/content/Home/Child1");
 			var linkManager = new Mock<BaseLinkManager>();
-			var headerBuilder = new HeaderBuilder(linkManager.Object);
+			var headerBuilder = new HeaderBuilder(linkManager.Object, _rootResolver);
 
 			var header = headerBuilder.GetHeader(item);
 
-			var expectedItem = _db.GetItem("/sitecore/content/Home");
+			var expectedItem = _rootResolver.GetNavigationRoot(item);
 			Assert.Equal(expectedItem, header.HomeItem);
 		}
 
@@ -65,8 +72,9 @@ namespace BasicCompany.Feature.Navigation.Tests
 			var url = "/";
 			var item = _db.GetItem("/sitecore/content/Home/Child1");
 			var linkManager = new Mock<BaseLinkManager>();
-			linkManager.Setup(x => x.GetItemUrl(It.Is<Item>(y => y.Name == "Home"))).Returns(url);
-			var headerBuilder = new HeaderBuilder(linkManager.Object);
+			var rootItem = _rootResolver.GetNavigationRoot(item);
+			linkManager.Setup(x => x.GetItemUrl(It.Is<Item>(y => y == rootItem))).Returns(url);
+			var headerBuilder = new HeaderBuilder(linkManager.Object, _rootResolver);
 
 			var header = headerBuilder.GetHeader(item);
 
@@ -78,11 +86,11 @@ namespace BasicCompany.Feature.Navigation.Tests
 		{
 			var item = _db.GetItem("/sitecore/content/Home/Child1");
 			var linkManager = new Mock<BaseLinkManager>();
-			var headerBuilder = new HeaderBuilder(linkManager.Object);
+			var headerBuilder = new HeaderBuilder(linkManager.Object, _rootResolver);
 
 			var header = headerBuilder.GetHeader(item);
 
-			var expectedItem = _db.GetItem("/sitecore/content/Home");
+			var expectedItem = _rootResolver.GetNavigationRoot(item);
 			Assert.Equal(expectedItem, header.NavigationItems?.FirstOrDefault()?.Item);
 		}
 
@@ -91,7 +99,7 @@ namespace BasicCompany.Feature.Navigation.Tests
 		{
 			var item = _db.GetItem("/sitecore/content/Home/Child1");
 			var linkManager = new Mock<BaseLinkManager>();
-			var headerBuilder = new HeaderBuilder(linkManager.Object);
+			var headerBuilder = new HeaderBuilder(linkManager.Object, _rootResolver);
 
 			var header = headerBuilder.GetHeader(item);
 
@@ -110,7 +118,7 @@ namespace BasicCompany.Feature.Navigation.Tests
 		{
 			var item = _db.GetItem(path);
 			var linkManager = new Mock<BaseLinkManager>();
-			var headerBuilder = new HeaderBuilder(linkManager.Object);
+			var headerBuilder = new HeaderBuilder(linkManager.Object, _rootResolver);
 
 			var header = headerBuilder.GetHeader(item);
 
@@ -126,7 +134,7 @@ namespace BasicCompany.Feature.Navigation.Tests
 			var item = _db.GetItem("/sitecore/content/Home");
 			var linkManager = new Mock<BaseLinkManager>();
 			linkManager.Setup(x => x.GetItemUrl(It.IsAny<Item>())).Returns(url);
-			var headerBuilder = new HeaderBuilder(linkManager.Object);
+			var headerBuilder = new HeaderBuilder(linkManager.Object, _rootResolver);
 
 			var header = headerBuilder.GetHeader(item);
 

@@ -2,7 +2,7 @@
 ID: "7019282e-7469-4e7a-a272-bcf4d0df0344"
 Parent: "d7f870bc-89d8-4f17-95ec-59acfd7da05c"
 Template: "e269fbb5-3750-427a-9149-7aa950b49301"
-Path: /sitecore/templates/Feature/Navigation/_NavigationRoot/Navigation
+Path: /sitecore/templates/Feature/Navigation/_NavigationRoot/Header and Footer
 DB: master
 Languages:
 - Language: en

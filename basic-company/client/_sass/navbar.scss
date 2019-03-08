@@ -14,7 +14,7 @@
     margin: auto;
 }
 
-.navbar::after {
+.navbar > .container::after {
     flex: 1;
     content: "";
     margin-left: auto;

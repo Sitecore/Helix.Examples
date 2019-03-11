@@ -4,6 +4,22 @@ Parent: "38309a60-6ca4-4e2a-99e0-2b447d8b02fc"
 Template: "63cd29ba-0e08-44d5-ab10-e05298a9818d"
 Path: /sitecore/content/Basic Company/Home
 DB: master
+SharedFields:
+- ID: "f1a1fe9e-a60c-4ddb-a3a0-bb5b29fe732e"
+  Hint: __Renderings
+  Type: layout
+  Value: |
+    <r xmlns:p="p" xmlns:s="s"
+      p:p="1"
+      s:xsd="http://www.w3.org/2001/XMLSchema">
+      <d
+        id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
+        <p
+          uid="{AB3DDBCD-D054-4223-9EC1-5A9CDDB395A8}"
+          p:before="*"
+          s:md="{97AAE0E8-B193-4903-B191-325C34796FBF}" />
+      </d>
+    </r>
 Languages:
 - Language: en
   Versions:

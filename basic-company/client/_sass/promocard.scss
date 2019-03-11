@@ -1,0 +1,66 @@
+/*
+    For responsive card height based on window size / # of columns.
+    https://ratiobuddy.com/
+*/
+.promo-column {
+    position: relative;
+
+    &:before {
+      display: block;
+      content: "";
+      width: 100%;
+      padding-top: (389 / 473) * 100%;
+    }
+
+    > .card {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
+}
+
+.promo-column {
+    margin: 50px 10px;
+
+    .card {
+        display: flex;
+        flex-flow: column;
+    }
+
+    .card-image {
+        background-color: #F9F9F9;
+        display: flex;
+        flex: 2;
+        padding: 10px;
+
+        figure {
+            margin: 0;
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            width: 100%;
+            height: 100%;
+        }
+    }
+    
+    .card-content {
+        color: #2B2B2B;
+        font-family: Montserrat;
+        font-size: 12px;
+        font-weight: 400;
+        letter-spacing: 2px;
+        line-height: 19px;
+        height: 133px;
+    
+        h4 {
+            color: #2B2B2B;
+            font-family: Montserrat;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 1.4px;
+            line-height: 17px;
+        }
+    }
+}

@@ -9,6 +9,11 @@ $blue: #155786;
 $primary: #155786;
 $primary-invert: #fff;
 
+// Title Overrides
+$title-size: 33px;
+$title-color: #2B2B2B;
+$title-line-height: 40px;
+
 // Navbar Overrides
 $navbar-height: 67px;
 $navbar-item-img-max-height: 45px;
@@ -23,4 +28,6 @@ $footer-background-color: $black;
 
 @import "navbar.scss";
 @import "hero.scss";
+@import "promocard.scss";
 @import "footer.scss";
+@import "title.scss";

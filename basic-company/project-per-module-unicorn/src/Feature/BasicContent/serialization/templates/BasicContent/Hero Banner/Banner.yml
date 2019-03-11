@@ -1,8 +1,8 @@
 ﻿---
-ID: "53404e08-91b7-4694-9abb-1049bc8889e7"
-Parent: "b0d7dedc-8908-4fd0-9b1a-a1501d03d485"
+ID: "a5c01c92-af57-4a88-bf47-b778a7eb7bad"
+Parent: "4a421518-7b4a-4d43-af9b-94e17e00ec9f"
 Template: "e269fbb5-3750-427a-9149-7aa950b49301"
-Path: /sitecore/templates/Feature/BasicContent/PromoCard/Promo Card
+Path: /sitecore/templates/Feature/BasicContent/Hero Banner/Banner
 DB: master
 Languages:
 - Language: en
@@ -11,7 +11,7 @@ Languages:
     Fields:
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20190222T183446Z
+      Value: 20190311T191310Z
     - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
       Hint: __Created by
       Value: |

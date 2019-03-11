@@ -35,6 +35,9 @@ namespace BasicCompany.Feature.Navigation.Tests
 				{
 					new DbItem("Child1", ID.NewID, pageTemplate),
 					new DbItem("Child2", ID.NewID, pageTemplate)
+					{
+						new DbItem("Grandchild", ID.NewID, pageTemplate)
+					}
 				}
 			};
 			var rootResolverMock = new Mock<INavigationRootResolver>();
@@ -45,10 +48,7 @@ namespace BasicCompany.Feature.Navigation.Tests
 
 		public void Dispose()
 		{
-			if (_db != null)
-			{
-				_db.Dispose();
-			}
+			_db?.Dispose();
 			_db = null;
 			_rootResolver = null;
 		}
@@ -125,6 +125,20 @@ namespace BasicCompany.Feature.Navigation.Tests
 			var navItems = header.NavigationItems;
 			Assert.Equal(1, navItems.Count(x => x.IsActive));
 			Assert.Equal(path, navItems.Single(x => x.IsActive).Item.Paths.FullPath);
+		}
+
+		[Fact]
+		public void NavigationMarksChildItemAsActiveForGrandchild()
+		{
+			var item = _db.GetItem("/sitecore/content/Home/Child2/Grandchild");
+			var linkManager = new Mock<BaseLinkManager>();
+			var headerBuilder = new HeaderBuilder(linkManager.Object, _rootResolver);
+
+			var header = headerBuilder.GetHeader(item);
+
+			var navItems = header.NavigationItems;
+			Assert.Equal(1, navItems.Count(x => x.IsActive));
+			Assert.Equal("/sitecore/content/Home/Child2", navItems.Single(x => x.IsActive).Item.Paths.FullPath);
 		}
 
 		[Fact]

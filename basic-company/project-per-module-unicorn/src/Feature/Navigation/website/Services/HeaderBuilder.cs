@@ -48,7 +48,9 @@ namespace BasicCompany.Feature.Navigation.Services
 			{
 				Item = item,
 				Url = LinkManager.GetItemUrl(item),
-				IsActive = item.ID == contextItem.ID
+				IsActive = item.ID == navigationRoot.ID ?
+					item.ID == contextItem.ID // must be exact match to highlight home
+					: contextItem.Paths.LongID.StartsWith(item.Paths.LongID)
 			}).ToList();
 
 			return navigationItems;

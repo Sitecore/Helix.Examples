@@ -35,10 +35,7 @@ namespace BasicCompany.Feature.Navigation.Tests
 
 		public void Dispose()
 		{
-			if (_db != null)
-			{
-				_db.Dispose();
-			}
+			_db?.Dispose();
 			_db = null;
 		}
 

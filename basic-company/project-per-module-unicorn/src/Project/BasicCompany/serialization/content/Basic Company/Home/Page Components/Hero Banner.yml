@@ -1,9 +1,13 @@
 ﻿---
 ID: "9c581356-66d4-4993-bb25-757b710a06e8"
-Parent: "e5217c07-4de9-45f2-97dd-08a162b31d1c"
+Parent: "d4fbef5c-dda0-4d84-9f51-f1982bcce110"
 Template: "4a421518-7b4a-4d43-af9b-94e17e00ec9f"
-Path: /sitecore/content/Basic Company/Shared Content/Hero Banners/Home Page
+Path: /sitecore/content/Basic Company/Home/Page Components/Hero Banner
 DB: master
+SharedFields:
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 200
 Languages:
 - Language: en
   Versions:

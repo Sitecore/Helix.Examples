@@ -1,9 +1,13 @@
 ﻿---
 ID: "086cbc66-2b60-4711-bee5-14c11181fb27"
-Parent: "e4321aab-f951-4d87-ad3b-b5b176b365a3"
+Parent: "d4fbef5c-dda0-4d84-9f51-f1982bcce110"
 Template: "fcb0ba21-9aaa-45f8-b86c-738fb269e06f"
-Path: /sitecore/content/Basic Company/Shared Content/Section Headers/Section Header
+Path: /sitecore/content/Basic Company/Home/Page Components/Section Header
 DB: master
+SharedFields:
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 300
 Languages:
 - Language: en
   Versions:

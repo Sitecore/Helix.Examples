@@ -20,7 +20,7 @@ SharedFields:
   Value: "{D10426FB-4221-420D-ABAA-C862B2888A79}"
 - ID: "b5b27af1-25ef-405c-87ce-369b3a004016"
   Hint: Datasource Location
-  Value: "query:./ancestor-or-self::*[@@templatename='Site']/Shared Content/Hero Banners"
+  Value: "./Page Components|query:./ancestor-or-self::*[@@templatename='Site']/Shared Content/Hero Banners"
 Languages:
 - Language: en
   Versions:

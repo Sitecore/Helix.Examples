@@ -35,6 +35,7 @@ $ConfigPath = ".\config"
 $PrerequisitiesConfiguration = "Prerequisites.json"
 $ExpandAssetsConfiguration = "expand-install-assets.json"
 $SingleDeveloperConfiguration = "install-and-deploy.json"
+$BuildAndSyncConfiguration = "build-and-deploy.json"
 
 # Sitecore Parameters
 $SitecorePackage = "$AssetsRoot\Sitecore $SitecoreVersion (OnPrem)_single.scwdp.zip"

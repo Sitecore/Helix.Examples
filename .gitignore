@@ -39,7 +39,10 @@ packages/
 **/build/config/xconnect-xp0.json
 **/build/config/XP0-SingleDeveloper.json
 **/build/config/XP0-SingleDeveloper.ps1
+## Install/build logs
+log.*.txt
 ## User config for build
 **/build/settings.user.ps1
+## Basic Company compiled assets
 /basic-company/client/_javascript/main.js
 /basic-company/client/css/main.css

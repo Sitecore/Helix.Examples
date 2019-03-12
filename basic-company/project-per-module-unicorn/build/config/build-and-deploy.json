@@ -61,6 +61,14 @@
                 "ShowBuildOutputInCurrentWindow": true
             }
         },
+        "Warmup": {
+            "Description": "Warmup the instance after recycle",
+            "Type": "SitecoreWarmup",
+            "Params": {
+                "TimeoutSec": "600",
+                "SitecoreUrl": "[parameter('SitecoreUrl')]"
+            }
+        },
         "SyncUnicorn": {
             "Description": "Deploy items via Unicorn",
             "Type": "SyncUnicorn",

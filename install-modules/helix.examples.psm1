@@ -21,4 +21,16 @@ Function Invoke-ParseUnicornSecretFunction {
     return $secret
 }
 
+Function Invoke-SitecoreWarmup {
+    Param(
+		[string]$SitecoreUrl,
+        [Int32]$TimeoutSec = 600
+    )
+
+    Write-Information "Warming up Sitecore instance at $SitecoreUrl"
+    $result = Invoke-WebRequest -Uri "$SitecoreUrl/sitecore/service/keepalive.aspx" -TimeoutSec $TimeoutSec
+    Write-Information "$($result.StatusCode) $($result.StatusDescription)"
+}
+
 Register-SitecoreInstallExtension -Command Invoke-ParseUnicornSecretFunction -As ParseUnicornSecret -Type ConfigFunction
+Register-SitecoreInstallExtension -Command Invoke-SitecoreWarmup -As SitecoreWarmup -Type Task

@@ -31,6 +31,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicCompany.Feature.Naviga
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicCompany.Feature.Navigation.Tests", "src\Feature\Navigation\tests\BasicCompany.Feature.Navigation.Tests.csproj", "{03A718E0-CA65-4D68-A248-9E01253D97DA}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Multisite", "Multisite", "{E51BE869-3AEE-43E2-9614-176DE116D1FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicCompany.Foundation.Multisite", "src\Foundation\Multisite\website\BasicCompany.Foundation.Multisite.csproj", "{32C3E6DD-6531-450C-908C-2C71F392A571}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +65,10 @@ Global
 		{03A718E0-CA65-4D68-A248-9E01253D97DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{03A718E0-CA65-4D68-A248-9E01253D97DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{03A718E0-CA65-4D68-A248-9E01253D97DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32C3E6DD-6531-450C-908C-2C71F392A571}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32C3E6DD-6531-450C-908C-2C71F392A571}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32C3E6DD-6531-450C-908C-2C71F392A571}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32C3E6DD-6531-450C-908C-2C71F392A571}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -76,6 +84,8 @@ Global
 		{3ED9BCB0-E918-456C-991A-9B033C17D92B} = {EBD32547-E4EC-47C5-AD12-0188C2ECE110}
 		{6005F3A9-BB98-4F06-A84B-3CC6A07BE92E} = {3ED9BCB0-E918-456C-991A-9B033C17D92B}
 		{03A718E0-CA65-4D68-A248-9E01253D97DA} = {3ED9BCB0-E918-456C-991A-9B033C17D92B}
+		{E51BE869-3AEE-43E2-9614-176DE116D1FC} = {D0DD1773-D94E-47FC-9310-952C4ECEF69A}
+		{32C3E6DD-6531-450C-908C-2C71F392A571} = {E51BE869-3AEE-43E2-9614-176DE116D1FC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7A7C4987-3A11-41A9-8915-5457EF7B5A6F}

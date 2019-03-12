@@ -30,18 +30,46 @@ Languages:
       Type: Layout
       Value: |
         <r xmlns:p="p" xmlns:s="s"
-          p:p="1"
-          s:xsd="http://www.w3.org/2001/XMLSchema">
+          p:p="1">
           <d
             id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
+            <r
+              uid="{BB562955-2CF5-4A57-B6C7-DDF2278EC0E0}"
+              p:after="p[@uid='{AB3DDBCD-D054-4223-9EC1-5A9CDDB395A8}']"
+              s:ds="{9C581356-66D4-4993-BB25-757B710A06E8}"
+              s:id="{F8CAE35C-3DD6-42CD-A4DA-4223027A6A61}"
+              s:ph="main" />
+            <r
+              uid="{E17E3391-1630-4F24-AB79-092F90CFF97B}"
+              p:after="r[@uid='{BB562955-2CF5-4A57-B6C7-DDF2278EC0E0}']"
+              s:ds="{E74405CA-A09B-468C-AF74-5FFBD6CDBAED}"
+              s:id="{C0234B7A-B7F4-4018-B0D8-998D14EFEAC1}"
+              s:ph="/main/promos-{0B6B5E57-EB1C-42A6-86F3-DA06DFD1F319}-0" />
+            <r
+              uid="{16F3EB2A-9CD4-44ED-BC52-B4F15B16BCCF}"
+              p:after="r[@uid='{E17E3391-1630-4F24-AB79-092F90CFF97B}']"
+              s:ds="{3A379769-80C2-496C-8B00-31154B530739}"
+              s:id="{C0234B7A-B7F4-4018-B0D8-998D14EFEAC1}"
+              s:ph="/main/promos-{0B6B5E57-EB1C-42A6-86F3-DA06DFD1F319}-0" />
             <r
               uid="{E10E7525-8542-41BC-939E-3082925B9C52}"
               p:after="r[@uid='{7D4F689F-208C-4EA3-88BA-0BC6E615771E}']"
               s:id="{ECD6CEA8-4EF8-4BB6-A588-7A77DF2B299C}"
               s:ph="main" />
             <r
-              uid="{6B3E9F3E-18EB-4321-9B1B-45E12B29B103}"
+              uid="{D65C5C87-61B0-4E2D-9842-6D6B1FAED3CF}"
               p:after="r[@uid='{E10E7525-8542-41BC-939E-3082925B9C52}']"
+              s:ds="{086CBC66-2B60-4711-BEE5-14C11181FB27}"
+              s:id="{9A917CC7-D85C-418B-B44C-38D70C1CB432}"
+              s:ph="main" />
+            <r
+              uid="{0B6B5E57-EB1C-42A6-86F3-DA06DFD1F319}"
+              p:after="r[@uid='{D65C5C87-61B0-4E2D-9842-6D6B1FAED3CF}']"
+              s:id="{ECD6CEA8-4EF8-4BB6-A588-7A77DF2B299C}"
+              s:ph="main" />
+            <r
+              uid="{6B3E9F3E-18EB-4321-9B1B-45E12B29B103}"
+              p:after="r[@uid='{0B6B5E57-EB1C-42A6-86F3-DA06DFD1F319}']"
               s:ds="{E74405CA-A09B-468C-AF74-5FFBD6CDBAED}"
               s:id="{C0234B7A-B7F4-4018-B0D8-998D14EFEAC1}"
               s:ph="/main/promos-{E10E7525-8542-41BC-939E-3082925B9C52}-0" />

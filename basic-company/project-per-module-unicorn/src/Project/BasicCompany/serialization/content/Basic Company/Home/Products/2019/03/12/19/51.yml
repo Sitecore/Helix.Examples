@@ -1,0 +1,18 @@
+﻿---
+ID: "3069e84a-224b-403c-bc12-c24c622db744"
+Parent: "9c480a8c-0052-4d8f-94aa-8415016d13a2"
+Template: "adb6ca4f-03ef-4f47-b9ac-9ce2ba53ff97"
+Path: /sitecore/content/Basic Company/Home/Products/2019/03/12/19/51
+DB: master
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20190312T195434Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\Anonymous

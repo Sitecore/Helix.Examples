@@ -27,7 +27,9 @@ $footer-background-color: $black;
 @import "../node_modules/bulma/bulma";
 
 @import "navbar.scss";
-@import "hero.scss";
-@import "promocard.scss";
 @import "footer.scss";
 @import "title.scss";
+@import "hero.scss";
+@import "card.scss";
+@import "promocard.scss";
+@import "productlist.scss";

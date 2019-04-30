@@ -1,0 +1,28 @@
+﻿---
+ID: "be5f9ffa-bfe6-439f-9b07-69fb0bf7c14e"
+Parent: "3069e84a-224b-403c-bc12-c24c622db744"
+Template: "fa3971f5-5a1b-4477-b64e-ca99949e8894"
+Path: /sitecore/content/Basic Company/Home/Products/2019/03/12/19/51/Lorem ipsum dolor
+DB: master
+SharedFields:
+- ID: "9dafca1d-d618-4616-86b8-a8acd6b28a63"
+  Hint: __Bucket Parent Reference
+  Value: "{AF068B22-D7AE-4A91-839B-DD15A9E76554}"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "23f42f5e-645c-4a72-9c61-79db1a331e64"
+      Hint: Image
+      Value: |
+        <image mediaid="{D8B7E336-3EF6-4938-9E1A-8FE8BFEDB0FB}" />
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20190312T195134Z
+    - ID: "be500a38-36a0-417b-86c5-e63ba71d0939"
+      Hint: Title
+      Value: Lorem ipsum dolor
+    - ID: "be7e2d00-e405-4498-85f9-4f89d8ea2cfc"
+      Hint: Short Description
+      Value: Nullam aliquam viverra class ornare

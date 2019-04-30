@@ -6529,6 +6529,23 @@ label.panel-block {
   min-height: 15px;
   line-height: 14px; }
 
+.footer-extended {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 14px;
+  height: 84px;
+  padding: 1rem;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  margin-top: 50px; }
+
+.title {
+  letter-spacing: 3.4px;
+  text-transform: uppercase;
+  text-align: center; }
+
 .hero {
   background-position: center;
   background-size: cover;
@@ -6548,22 +6565,38 @@ label.panel-block {
     letter-spacing: 6.3px;
     line-height: 19px; }
 
-.footer-extended {
-  color: rgba(255, 255, 255, 0.75);
+.card {
+  display: flex;
+  flex-flow: column; }
+
+.card-image {
+  background-color: #F9F9F9;
+  display: flex;
+  flex: 2;
+  padding: 10px; }
+  .card-image figure {
+    margin: 0;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%; }
+
+.card-content {
+  color: #2B2B2B;
+  font-family: Montserrat;
   font-size: 12px;
   font-weight: 400;
-  line-height: 14px;
-  height: 84px;
-  padding: 1rem;
-  text-transform: uppercase;
-  display: flex;
-  align-items: center;
-  margin-top: 50px; }
-
-.title {
-  letter-spacing: 3.4px;
-  text-transform: uppercase;
-  text-align: center; }
+  letter-spacing: 2px;
+  line-height: 19px;
+  height: 133px; }
+  .card-content h4 {
+    color: #2B2B2B;
+    font-family: Montserrat;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1.4px;
+    line-height: 17px; }
 
 /*
     For responsive card height based on window size / # of columns.
@@ -6585,33 +6618,20 @@ label.panel-block {
 
 .promo-column {
   margin: 50px 10px; }
-  .promo-column .card {
-    display: flex;
-    flex-flow: column; }
-  .promo-column .card-image {
-    background-color: #F9F9F9;
-    display: flex;
-    flex: 2;
-    padding: 10px; }
-    .promo-column .card-image figure {
-      margin: 0;
-      background-position: center;
-      background-size: contain;
-      background-repeat: no-repeat;
-      width: 100%;
-      height: 100%; }
-  .promo-column .card-content {
-    color: #2B2B2B;
-    font-family: Montserrat;
-    font-size: 12px;
-    font-weight: 400;
-    letter-spacing: 2px;
-    line-height: 19px;
-    height: 133px; }
-    .promo-column .card-content h4 {
-      color: #2B2B2B;
-      font-family: Montserrat;
-      font-size: 14px;
-      font-weight: 600;
-      letter-spacing: 1.4px;
-      line-height: 17px; }
+
+.product-list-columns {
+  margin: 40px 0; }
+
+.product-list-column {
+  margin: 10px;
+  padding: 0; }
+  .product-list-column .card {
+    height: 302px; }
+
+@media screen and (min-width: 769px), print {
+  .product-list-column.is-6-tablet {
+    width: calc(50% - 20px); } }
+
+@media screen and (min-width: 1024px) {
+  .product-list-column.is-4-desktop {
+    width: calc(25% - 20px); } }

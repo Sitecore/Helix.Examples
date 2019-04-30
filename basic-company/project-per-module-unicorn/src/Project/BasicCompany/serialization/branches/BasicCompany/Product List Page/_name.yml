@@ -1,0 +1,23 @@
+﻿---
+ID: "78398e86-d86a-411a-9b20-f25400d5d6bd"
+Parent: "b4649591-93b9-4151-8ebd-8aea5bb2d5b1"
+Template: "9f57204e-5ce2-4fe8-98f7-9823ec53e8cc"
+Path: /sitecore/templates/Branches/Project/BasicCompany/Product List Page/$name
+DB: master
+SharedFields:
+- ID: "a0cb3965-8884-4c7a-8815-b6b2e5ced162"
+  Hint: __Editors
+  Type: TreelistEx
+  Value: "{59F53BBB-D1F5-4E38-8EBA-0D73109BB59B}"
+- ID: "d312103c-b36c-4ca5-864a-c85f9abda503"
+  Hint: __Is Bucket
+  Type: Checkbox
+  Value: 1
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20190430T171048Z

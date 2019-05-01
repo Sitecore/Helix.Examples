@@ -1,18 +1,18 @@
 .card {
     display: flex;
     flex-flow: column;
+    box-shadow: none;
 }
 
 .card-image {
     background-color: #F9F9F9;
     display: flex;
     flex: 2;
-    padding: 10px;
 
     figure {
         margin: 0;
         background-position: center;
-        background-size: contain;
+        background-size: cover;
         background-repeat: no-repeat;
         width: 100%;
         height: 100%;

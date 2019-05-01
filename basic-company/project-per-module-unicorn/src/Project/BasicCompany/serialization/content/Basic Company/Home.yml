@@ -30,27 +30,28 @@ Languages:
       Type: Layout
       Value: |
         <r xmlns:p="p" xmlns:s="s"
-          p:p="1">
+          p:p="1"
+          s:xsd="http://www.w3.org/2001/XMLSchema">
           <d
             id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
             <r
-              uid="{BB562955-2CF5-4A57-B6C7-DDF2278EC0E0}"
+              uid="{89E51B5A-164E-4D35-A8A8-DE8A90E0EF8A}"
               p:after="p[@uid='{AB3DDBCD-D054-4223-9EC1-5A9CDDB395A8}']"
+              s:ds="{1014CEEE-6871-425F-9CA7-C1B91FA1FE47}"
+              s:id="{C0234B7A-B7F4-4018-B0D8-998D14EFEAC1}"
+              s:ph="/main/promos-{0B6B5E57-EB1C-42A6-86F3-DA06DFD1F319}-0" />
+            <r
+              uid="{37626E09-3015-4350-B168-E3497BD52186}"
+              p:after="r[@uid='{89E51B5A-164E-4D35-A8A8-DE8A90E0EF8A}']"
+              s:ds="{A994DEE7-8CEA-4213-B546-7E10CEDA74C2}"
+              s:id="{C0234B7A-B7F4-4018-B0D8-998D14EFEAC1}"
+              s:ph="/main/promos-{0B6B5E57-EB1C-42A6-86F3-DA06DFD1F319}-0" />
+            <r
+              uid="{BB562955-2CF5-4A57-B6C7-DDF2278EC0E0}"
+              p:after="r[@uid='{37626E09-3015-4350-B168-E3497BD52186}']"
               s:ds="{9C581356-66D4-4993-BB25-757B710A06E8}"
               s:id="{F8CAE35C-3DD6-42CD-A4DA-4223027A6A61}"
               s:ph="main" />
-            <r
-              uid="{E17E3391-1630-4F24-AB79-092F90CFF97B}"
-              p:after="r[@uid='{BB562955-2CF5-4A57-B6C7-DDF2278EC0E0}']"
-              s:ds="{E74405CA-A09B-468C-AF74-5FFBD6CDBAED}"
-              s:id="{C0234B7A-B7F4-4018-B0D8-998D14EFEAC1}"
-              s:ph="/main/promos-{0B6B5E57-EB1C-42A6-86F3-DA06DFD1F319}-0" />
-            <r
-              uid="{16F3EB2A-9CD4-44ED-BC52-B4F15B16BCCF}"
-              p:after="r[@uid='{E17E3391-1630-4F24-AB79-092F90CFF97B}']"
-              s:ds="{3A379769-80C2-496C-8B00-31154B530739}"
-              s:id="{C0234B7A-B7F4-4018-B0D8-998D14EFEAC1}"
-              s:ph="/main/promos-{0B6B5E57-EB1C-42A6-86F3-DA06DFD1F319}-0" />
             <r
               uid="{E10E7525-8542-41BC-939E-3082925B9C52}"
               p:after="r[@uid='{7D4F689F-208C-4EA3-88BA-0BC6E615771E}']"

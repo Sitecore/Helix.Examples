@@ -6550,6 +6550,11 @@ label.panel-block {
   background-position: center;
   background-size: cover;
   font-family: 'IBMPlexMono', monospace; }
+  .hero.is-medium {
+    height: 335px; }
+    @media screen and (min-width: 769px) {
+      .hero.is-medium {
+        height: 510px; } }
 
 .hero-body {
   text-align: center;
@@ -6567,17 +6572,17 @@ label.panel-block {
 
 .card {
   display: flex;
-  flex-flow: column; }
+  flex-flow: column;
+  box-shadow: none; }
 
 .card-image {
   background-color: #F9F9F9;
   display: flex;
-  flex: 2;
-  padding: 10px; }
+  flex: 2; }
   .card-image figure {
     margin: 0;
     background-position: center;
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
     width: 100%;
     height: 100%; }
@@ -6617,16 +6622,23 @@ label.panel-block {
     left: 0; }
 
 .promo-column {
-  margin: 50px 10px; }
+  margin: 50px 10px;
+  box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.2); }
 
 .product-list-columns {
   margin: 40px 0; }
 
 .product-list-column {
   margin: 10px;
-  padding: 0; }
+  padding: 0;
+  box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.2); }
   .product-list-column .card {
     height: 302px; }
+  .product-list-column .card-image {
+    padding: 0;
+    background-position: bottom; }
+  .product-list-column .card-content {
+    text-align: center; }
 
 @media screen and (min-width: 769px), print {
   .product-list-column.is-6-tablet {

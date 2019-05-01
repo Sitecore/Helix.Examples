@@ -3,6 +3,13 @@
     background-position: center;
     background-size: cover;
     font-family: 'IBMPlexMono', monospace;
+
+    &.is-medium {
+        height: 335px;
+        @include from($tablet) {
+            height: 510px;
+        }
+    }
 }
 
 .hero-body {

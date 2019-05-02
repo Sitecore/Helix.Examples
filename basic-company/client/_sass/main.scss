@@ -5,6 +5,7 @@
 
 // Global Overrides
 $family-sans-serif: 'Montserrat', sans-serif;
+$red: #FF4036;
 $blue: #155786;
 $primary: #155786;
 $primary-invert: #fff;
@@ -15,7 +16,6 @@ $title-color: #2B2B2B;
 $title-line-height: 40px;
 
 // Navbar Overrides
-$navbar-height: 67px;
 $navbar-item-img-max-height: 45px;
 $navbar-tab-active-border-bottom-color: $red;
 $navbar-tab-hover-border-bottom-color: $black;
@@ -33,3 +33,4 @@ $footer-background-color: $black;
 @import "card.scss";
 @import "promocard.scss";
 @import "productlist.scss";
+@import "productdetail.scss";

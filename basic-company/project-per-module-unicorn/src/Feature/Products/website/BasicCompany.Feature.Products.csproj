@@ -69,6 +69,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Products\List.cshtml" />
+    <Content Include="Views\Products\Detail.cshtml" />
+    <Content Include="Views\Products\Detail Header.cshtml" />
+    <Content Include="Views\Products\Related Products.cshtml" />
+    <Content Include="Views\Products\_ListProduct.cshtml" />
     <None Include="Views\web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -80,9 +84,7 @@
       <DependentUpon>web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

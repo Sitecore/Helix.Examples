@@ -22,7 +22,7 @@
 .product-detail {
     background-color: $red;
     margin: 10px 0;
-    padding: 10px 0;
+    padding: 10px 0 0 0;
 
     // need more specific selector
     &:not(:last-child) {
@@ -30,6 +30,13 @@
     }
 
     .product-details {
+        @include from($tablet) {
+            padding-right: 50px;
+        }
+        @include mobile {
+            margin: 50px 0;
+        }
+
         h5 {
             color: #9D1F18;
             font-size: 12px;
@@ -57,6 +64,15 @@
             line-height: 14px;
             text-transform: uppercase;
             margin-top: 15px;
+        }
+    }
+
+    .product-image {
+        padding-bottom: 0;
+        margin-top: auto;
+
+        img {
+            display: block;
         }
     }
 

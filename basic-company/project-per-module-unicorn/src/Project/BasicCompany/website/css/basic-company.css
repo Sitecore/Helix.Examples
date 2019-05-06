@@ -7091,9 +7091,15 @@ label.panel-block {
 .product-detail {
   background-color: #FF4036;
   margin: 10px 0;
-  padding: 10px 0; }
+  padding: 10px 0 0 0; }
   .product-detail:not(:last-child) {
     margin-bottom: 30px; }
+  @media screen and (min-width: 769px) {
+    .product-detail .product-details {
+      padding-right: 50px; } }
+  @media screen and (max-width: 768px) {
+    .product-detail .product-details {
+      margin: 50px 0; } }
   .product-detail .product-details h5 {
     color: #9D1F18;
     font-size: 12px;
@@ -7117,3 +7123,8 @@ label.panel-block {
     line-height: 14px;
     text-transform: uppercase;
     margin-top: 15px; }
+  .product-detail .product-image {
+    padding-bottom: 0;
+    margin-top: auto; }
+    .product-detail .product-image img {
+      display: block; }

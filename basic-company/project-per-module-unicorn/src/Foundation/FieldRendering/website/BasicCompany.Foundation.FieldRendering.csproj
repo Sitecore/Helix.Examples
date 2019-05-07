@@ -7,12 +7,12 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{087D93EB-261B-4C05-A72F-5E72C4D7F043}</ProjectGuid>
+    <ProjectGuid>{508C9659-2186-4655-B24A-F2DE3744BAB5}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BasicCompany.Feature.Services</RootNamespace>
-    <AssemblyName>BasicCompany.Feature.Services</AssemblyName>
+    <RootNamespace>BasicCompany.Foundation.FieldRendering</RootNamespace>
+    <AssemblyName>BasicCompany.Foundation.FieldRendering</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
@@ -51,16 +51,8 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Config\Include\Feature\Feature.Services.Serialization.config" />
-  </ItemGroup>
-  <ItemGroup>
+    <Compile Include="SitecoreHelperExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Templates.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Services\TestimonialContainer.cshtml" />
-    <Content Include="Views\Services\Testimonial.cshtml" />
-    <None Include="Views\web.config" />
   </ItemGroup>
   <ItemGroup>
     <None Include="web.config" />
@@ -70,12 +62,6 @@
     <None Include="web.Release.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\Foundation\FieldRendering\website\BasicCompany.Foundation.FieldRendering.csproj">
-      <Project>{508c9659-2186-4655-b24a-f2de3744bab5}</Project>
-      <Name>BasicCompany.Foundation.FieldRendering</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

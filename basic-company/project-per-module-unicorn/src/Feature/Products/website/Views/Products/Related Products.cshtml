@@ -4,16 +4,16 @@
 @using Sitecore.Data.Fields;
 
 @{
-	MultilistField relatedProducts = Model.Item.Fields[Templates.Product.Fields.RelatedProducts];
+    MultilistField relatedProducts = Model.Item.Fields[Templates.Product.Fields.RelatedProducts];
 }
 
 <div class="container">
-	<h3 class="title">@Sitecore.Globalization.Translate.Text("Products-RelatedProducts-Title")</h3>
+    <h3 class="title">@Sitecore.Globalization.Translate.Text("Products-RelatedProducts-Title")</h3>
 
-	<div class="product-list-columns columns is-multiline">
-		@foreach (var product in relatedProducts.GetItems())
-		{
-			@Html.Partial("../Products/_ListProduct", product)
-		}
-	</div>
+    <div class="product-list-columns columns is-multiline">
+        @foreach (var product in relatedProducts.GetItems())
+        {
+            @Html.Partial("../Products/_ListProduct", product)
+        }
+    </div>
 </div>

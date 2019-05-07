@@ -2,7 +2,7 @@ $ErrorActionPreference = 'Stop'
 
 Function Invoke-ParseUnicornSecretFunction {
     Param(
-		[string]$ConfigPath
+        [string]$ConfigPath
     )
 
     if (-not $ConfigPath) {
@@ -23,7 +23,7 @@ Function Invoke-ParseUnicornSecretFunction {
 
 Function Invoke-SitecoreWarmup {
     Param(
-		[string]$SitecoreUrl,
+        [string]$SitecoreUrl,
         [Int32]$TimeoutSec = 600
     )
 

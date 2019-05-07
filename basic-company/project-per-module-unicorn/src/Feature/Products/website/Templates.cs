@@ -8,9 +8,9 @@ namespace BasicCompany.Feature.Products
 {
   public static class Templates
   {
-		public static class Product
-		{
-			public static readonly ID Id = new ID("{ABCECB30-2777-48C7-8860-813E5268816C}");
+        public static class Product
+        {
+            public static readonly ID Id = new ID("{ABCECB30-2777-48C7-8860-813E5268816C}");
 
             public static class Fields
             {
@@ -21,6 +21,6 @@ namespace BasicCompany.Feature.Products
                 public static readonly ID Price = new ID("{9977FBE7-A0FF-475C-9A7C-ECB81C7F51CF}");
                 public static readonly ID RelatedProducts = new ID("{FC7C99D4-7301-44EB-908C-BF4FFCA5A131}");
             }
-		}
+        }
   }
 }

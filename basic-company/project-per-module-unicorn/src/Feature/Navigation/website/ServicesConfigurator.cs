@@ -3,13 +3,13 @@ using Sitecore.DependencyInjection;
 
 namespace BasicCompany.Feature.Navigation
 {
-	public class ServicesConfigurator : IServicesConfigurator
-	{
-		public void Configure(IServiceCollection serviceCollection)
-		{
-			serviceCollection.AddTransient<Controllers.NavigationController>();
-			serviceCollection.AddTransient<Services.IHeaderBuilder, Services.HeaderBuilder>();
-			serviceCollection.AddTransient<Services.INavigationRootResolver, Services.NavigationRootResolver>();
-		}
-	}
+    public class ServicesConfigurator : IServicesConfigurator
+    {
+        public void Configure(IServiceCollection serviceCollection)
+        {
+            serviceCollection.AddTransient<Controllers.NavigationController>();
+            serviceCollection.AddTransient<Services.IHeaderBuilder, Services.HeaderBuilder>();
+            serviceCollection.AddTransient<Services.INavigationRootResolver, Services.NavigationRootResolver>();
+        }
+    }
 }

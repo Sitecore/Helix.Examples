@@ -3,8 +3,8 @@ using Sitecore.Data.Items;
 
 namespace BasicCompany.Feature.Navigation.Services
 {
-	public interface IHeaderBuilder
-	{
-		Header GetHeader(Item contextItem);
-	}
+    public interface IHeaderBuilder
+    {
+        Header GetHeader(Item contextItem);
+    }
 }

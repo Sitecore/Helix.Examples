@@ -3,15 +3,15 @@
 @using BasicCompany.Feature.Products.Extensions;
 
 <a href="@Html.Sitecore().ItemUrl(Model)" class="column product-list-column is-4-desktop is-6-tablet">
-	<div class="card">
-		<div class="card-image">
-			<figure style="background-image: url(@Html.Sitecore().MediaUrl(Templates.Product.Fields.Image, Model))"></figure>
-		</div>
-		<div class="card-content">
-			<div class="content">
-				<h4>@Html.Sitecore().Field(Templates.Product.Fields.Title.ToString(), Model)</h4>
-				<p>@Html.Sitecore().Field(Templates.Product.Fields.ShortDescription.ToString(), Model)</p>
-			</div>
-		</div>
-	</div>
+    <div class="card">
+        <div class="card-image">
+            <figure style="background-image: url(@Html.Sitecore().MediaUrl(Templates.Product.Fields.Image, Model))"></figure>
+        </div>
+        <div class="card-content">
+            <div class="content">
+                <h4>@Html.Sitecore().Field(Templates.Product.Fields.Title.ToString(), Model)</h4>
+                <p>@Html.Sitecore().Field(Templates.Product.Fields.ShortDescription.ToString(), Model)</p>
+            </div>
+        </div>
+    </div>
 </a>

@@ -5,8 +5,8 @@ using Sitecore.Mvc.Presentation;
 
 namespace BasicCompany.Feature.Products.Controllers
 {
-	public class ProductsController : Controller
-	{
+    public class ProductsController : Controller
+    {
         protected readonly IProductRepository ProductRepository;
 
         public ProductsController(IProductRepository productRepository)
@@ -15,11 +15,11 @@ namespace BasicCompany.Feature.Products.Controllers
             ProductRepository = productRepository;
         }
 
-		public ActionResult List()
-		{
-			var productRoot = RenderingContext.Current.ContextItem;
-			var products = ProductRepository.GetProducts(productRoot);
+        public ActionResult List()
+        {
+            var productRoot = RenderingContext.Current.ContextItem;
+            var products = ProductRepository.GetProducts(productRoot);
             return View(products);
-		}
-	}
+        }
+    }
 }

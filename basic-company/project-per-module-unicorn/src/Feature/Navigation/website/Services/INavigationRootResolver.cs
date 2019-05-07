@@ -2,8 +2,8 @@
 
 namespace BasicCompany.Feature.Navigation.Services
 {
-	public interface INavigationRootResolver
-	{
-		Item GetNavigationRoot(Item contextItem);
-	}
+    public interface INavigationRootResolver
+    {
+        Item GetNavigationRoot(Item contextItem);
+    }
 }

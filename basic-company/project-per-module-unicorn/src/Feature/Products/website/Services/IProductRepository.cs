@@ -4,8 +4,8 @@ using Sitecore.Data.Items;
 
 namespace BasicCompany.Feature.Products.Services
 {
-	public interface IProductRepository
-	{
-		IEnumerable<Item> GetProducts(Item parent);
-	}
+    public interface IProductRepository
+    {
+        IEnumerable<Item> GetProducts(Item parent);
+    }
 }

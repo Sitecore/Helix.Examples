@@ -19,3 +19,45 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+
+/**
+ * ACCORDIONS
+ */
+document.addEventListener('DOMContentLoaded', () => {
+  const isActive = 'is-active';
+  const $accordions = Array.prototype.slice.call(document.querySelectorAll('.accordion'), 0);
+  if ($accordions.length === 0) {
+    return;
+  }
+
+  // iterate each accordion and track its active drawer
+  $accordions.forEach(accordion => {
+    let $activeAccordion;
+    const $headers = Array.prototype.slice.call(accordion.querySelectorAll('.accordion-header'), 0);
+    if ($headers.length === 0) {
+      return;
+    }
+
+    // find the active accordion, if any, and attach click handlers to them all
+    $headers.forEach( el => {
+      if (el.classList.contains(isActive)) {
+        $activeAccordion = el;
+      }
+
+      el.addEventListener('click', () => {
+        if (el === $activeAccordion) {
+          // clicking the active accordion, close it
+          el.classList.remove(isActive);
+          $activeAccordion = null;
+        } else {
+          // change the active accordion
+          el.classList.add(isActive);
+          if ($activeAccordion) {
+            $activeAccordion.classList.remove(isActive);
+          }
+          $activeAccordion = el;
+        }
+      });
+    });
+  });
+});

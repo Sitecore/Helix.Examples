@@ -1,0 +1,32 @@
+
+.accordion-body {
+    max-height: 0;
+    overflow-y: hidden;
+    transition: all 0.5s ease-in-out;
+}
+
+.accordion-header {
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+
+    button {
+        background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDMyIDMyIj48cGF0aCBkPSJNMTYuMDAzIDE4LjYyNmw3LjA4MS03LjA4MUwyNSAxMy40NmwtOC45OTcgOC45OTgtOS4wMDMtOSAxLjkxNy0xLjkxNnoiLz48L3N2Zz4=');
+        background-color: transparent;
+        border: none;
+        background-size: cover;
+        width: 15px;
+        height: 15px;
+        cursor: pointer;
+    }
+
+    &.is-active {
+        button {
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDMyIDMyIj48cGF0aCBkPSJNMTUuOTk3IDEzLjM3NGwtNy4wODEgNy4wODFMNyAxOC41NGw4Ljk5Ny04Ljk5OCA5LjAwMyA5LTEuOTE2IDEuOTE2eiIvPjwvc3ZnPg==');
+        }
+        + .accordion-body {
+            max-height: 100rem;
+        }
+    }
+}
+

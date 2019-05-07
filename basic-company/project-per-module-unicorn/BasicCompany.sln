@@ -49,6 +49,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{11
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicCompany.Feature.Services", "src\Feature\Services\website\BasicCompany.Feature.Services.csproj", "{087D93EB-261B-4C05-A72F-5E72C4D7F043}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FieldRendering", "FieldRendering", "{F4D57DAD-E44A-49D3-BCF9-7F37B615ABBE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicCompany.Foundation.FieldRendering", "src\Foundation\FieldRendering\website\BasicCompany.Foundation.FieldRendering.csproj", "{508C9659-2186-4655-B24A-F2DE3744BAB5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -99,6 +103,10 @@ Global
 		{087D93EB-261B-4C05-A72F-5E72C4D7F043}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{087D93EB-261B-4C05-A72F-5E72C4D7F043}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{087D93EB-261B-4C05-A72F-5E72C4D7F043}.Release|Any CPU.Build.0 = Release|Any CPU
+		{508C9659-2186-4655-B24A-F2DE3744BAB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{508C9659-2186-4655-B24A-F2DE3744BAB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{508C9659-2186-4655-B24A-F2DE3744BAB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{508C9659-2186-4655-B24A-F2DE3744BAB5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -123,6 +131,8 @@ Global
 		{05C712E6-E8C5-4744-B8E0-3C9D07571B0A} = {CDB84AC1-5A02-4C07-954B-45AD9542104B}
 		{1114AD54-BF0A-41FC-82F6-E2F5E215885C} = {EBD32547-E4EC-47C5-AD12-0188C2ECE110}
 		{087D93EB-261B-4C05-A72F-5E72C4D7F043} = {1114AD54-BF0A-41FC-82F6-E2F5E215885C}
+		{F4D57DAD-E44A-49D3-BCF9-7F37B615ABBE} = {D0DD1773-D94E-47FC-9310-952C4ECEF69A}
+		{508C9659-2186-4655-B24A-F2DE3744BAB5} = {F4D57DAD-E44A-49D3-BCF9-7F37B615ABBE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7A7C4987-3A11-41A9-8915-5457EF7B5A6F}

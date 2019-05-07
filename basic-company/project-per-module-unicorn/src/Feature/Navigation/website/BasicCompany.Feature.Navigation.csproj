@@ -82,7 +82,12 @@
       <DependentUpon>web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Foundation\FieldRendering\website\BasicCompany.Foundation.FieldRendering.csproj">
+      <Project>{508c9659-2186-4655-b24a-f2de3744bab5}</Project>
+      <Name>BasicCompany.Foundation.FieldRendering</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

@@ -51,7 +51,6 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Config\Include\Feature\Feature.Services.config" />
     <Content Include="App_Config\Include\Feature\Feature.Services.Serialization.config" />
   </ItemGroup>
   <ItemGroup>

@@ -7047,6 +7047,49 @@ label.panel-block {
   margin: 50px 10px;
   box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.2); }
 
+.accordion {
+  margin-top: 50px; }
+
+.accordion-body {
+  max-height: 0;
+  overflow-y: hidden;
+  transition: all 0.5s ease-in-out; }
+  .accordion-body h3 {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    line-height: 17px;
+    margin-bottom: 10px; }
+  .accordion-body p {
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    line-height: 20px;
+    margin-bottom: 5px; }
+  .accordion-body img.is-block {
+    margin: 0 auto; }
+
+.accordion-header {
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer; }
+  .accordion-header button {
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDMyIDMyIj48cGF0aCBkPSJNMTYuMDAzIDE4LjYyNmw3LjA4MS03LjA4MUwyNSAxMy40NmwtOC45OTcgOC45OTgtOS4wMDMtOSAxLjkxNy0xLjkxNnoiLz48L3N2Zz4=");
+    background-color: transparent;
+    border: none;
+    background-size: cover;
+    width: 15px;
+    height: 15px;
+    cursor: pointer; }
+
+.accordion-item {
+  padding: 25px 0;
+  border-bottom: 1px solid #cdcdcd; }
+  .accordion-item.is-active .accordion-header button {
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMiIgaGVpZ2h0PSIzMiIgdmlld0JveD0iMCAwIDMyIDMyIj48cGF0aCBkPSJNMTUuOTk3IDEzLjM3NGwtNy4wODEgNy4wODFMNyAxOC41NGw4Ljk5Ny04Ljk5OCA5LjAwMyA5LTEuOTE2IDEuOTE2eiIvPjwvc3ZnPg=="); }
+  .accordion-item.is-active .accordion-body {
+    max-height: 100rem; }
+
 .product-list-columns {
   margin: 40px 0; }
 
@@ -7128,3 +7171,50 @@ label.panel-block {
     margin-top: auto; }
     .product-detail .product-image img {
       display: block; }
+
+/*
+    For responsive card height based on window size
+    https://ratiobuddy.com/
+*/
+.testimonial {
+  position: relative; }
+  .testimonial:before {
+    display: block;
+    content: "";
+    width: 100%;
+    padding-top: 53.50501%; }
+  .testimonial > .testimonial-inner {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0; }
+
+.testimonial-inner {
+  background-size: cover;
+  margin: 10px;
+  padding: 10px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start; }
+  .testimonial-inner * {
+    background-color: white;
+    padding: 3px; }
+  .testimonial-inner h3 {
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 1.4px;
+    line-height: 22px; }
+  .testimonial-inner p {
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    line-height: 19px; }
+
+.testimonials {
+  margin-top: 50px;
+  margin-bottom: 50px; }
+
+.navbar + .container {
+  margin-top: 50px; }

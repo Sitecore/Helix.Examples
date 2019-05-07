@@ -1,0 +1,14 @@
+﻿---
+ID: "dc5d4c66-510d-4214-8c3c-90afa59207cb"
+Parent: "0667b089-4a7d-4d1e-9b06-27a1bf8b9e8f"
+Template: "092a159d-93df-4c49-9226-9abe5bcbc7aa"
+Path: /sitecore/content/Basic Company/Shared Content/Testimonials
+DB: master
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20190507T141638Z

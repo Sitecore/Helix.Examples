@@ -1,0 +1,10 @@
+﻿@model RenderingModel
+@using BasicCompany.Feature.Services;
+@using BasicCompany.Feature.Services.Extensions;
+
+<div class="column testimonial is-6">
+	<div class="testimonial-inner" style="background-image: url(@Html.Sitecore().MediaUrl(Templates.Testimonial.Fields.Image))">
+		<h3>@Html.Sitecore().Field(Templates.Testimonial.Fields.Title.ToString())</h3>
+		@Html.Sitecore().Field(Templates.Testimonial.Fields.Quote.ToString())
+	</div>
+</div>

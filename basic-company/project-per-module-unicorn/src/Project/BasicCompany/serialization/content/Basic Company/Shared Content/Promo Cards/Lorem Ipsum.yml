@@ -4,6 +4,10 @@ Parent: "7bc02aef-e662-41f3-b80d-4b1f52ed9d79"
 Template: "b0d7dedc-8908-4fd0-9b1a-a1501d03d485"
 Path: /sitecore/content/Basic Company/Shared Content/Promo Cards/Lorem Ipsum
 DB: master
+SharedFields:
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 50
 Languages:
 - Language: en
   Versions:
@@ -15,10 +19,10 @@ Languages:
     - ID: "21249f44-5f0f-4cfa-9474-8d72930d6575"
       Hint: Image
       Value: |
-        <image mediapath="" alt="Paperclip" width="" height="" hspace="" vspace="" showineditor="" usethumbnail="" src="" mediaid="{D8B7E336-3EF6-4938-9E1A-8FE8BFEDB0FB}" />
+        <image mediapath="" alt="Paperclip" width="" height="" hspace="" vspace="" showineditor="" usethumbnail="" src="" mediaid="{9A3A5570-D8D4-455C-A146-22309193DBFE}" />
     - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
       Hint: __Created
-      Value: 20190222T184257Z
+      Value: "20190501T175842:636923303229835278Z"
     - ID: "4f73c02b-93cc-4c96-b9ff-9d0d8e853ed6"
       Hint: Headline
       Value: Lorem Ipsum

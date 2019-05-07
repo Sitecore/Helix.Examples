@@ -1,0 +1,27 @@
+﻿---
+ID: "30a19167-a179-4a8e-9b52-5408671c4f58"
+Parent: "85445e31-0c0a-4e0b-ab7d-ec5a0dbc79c6"
+Template: "99f8905d-4a87-4eb8-9f8b-a9bebfb3add6"
+Path: /sitecore/layout/Renderings/Feature/BasicContent/Accordion Item
+DB: master
+SharedFields:
+- ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
+  Hint: __Icon
+  Value: Office/16x16/navigate_down.png
+- ID: "1a7c85e5-dc0b-490d-9187-bb1dbcb4c72f"
+  Hint: Datasource Template
+  Value: /sitecore/templates/Feature/BasicContent/Accordion Item
+- ID: "51b435bc-f7b9-478a-9c51-52916af96ff5"
+  Hint: Path
+  Value: /Views/BasicContent/AccordionItem.cshtml
+- ID: "b5b27af1-25ef-405c-87ce-369b3a004016"
+  Hint: Datasource Location
+  Value: "./Page Components|query:./ancestor-or-self::*[@@templatename='Site']/Shared Content/Accordion Items"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20190507T160539Z

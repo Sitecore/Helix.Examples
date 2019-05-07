@@ -19,6 +19,11 @@
 	@Html.Sitecore().Placeholder("header")
 	@Html.Sitecore().Placeholder("main")
 	@Html.Sitecore().Placeholder("footer")
-	<script src="lib/basic-company.js"></script>
+
+	@* Generally, disabling JavaScript interactivity in an MVC site when editing is a good idea. *@
+	@if (!Sitecore.Context.PageMode.IsExperienceEditor)
+	{
+		<script src="~/js/basic-company.js"></script>
+	}
 </body>
 </html>

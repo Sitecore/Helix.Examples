@@ -32,5 +32,12 @@ $footer-background-color: $black;
 @import "hero.scss";
 @import "card.scss";
 @import "promocard.scss";
+@import "accordion.scss";
 @import "productlist.scss";
 @import "productdetail.scss";
+@import "services.scss";
+
+// for pages without a hero on top
+.navbar+.container {
+    margin-top: 50px;
+}

@@ -64,6 +64,8 @@
     <Content Include="Views\BasicContent\PromoContainer.cshtml" />
     <Content Include="Views\BasicContent\SectionHeader.cshtml" />
     <Content Include="Views\BasicContent\HeroBanner.cshtml" />
+    <Content Include="Views\BasicContent\Accordion.cshtml" />
+    <Content Include="Views\BasicContent\AccordionItem.cshtml" />
     <None Include="Views\web.config" />
   </ItemGroup>
   <ItemGroup>

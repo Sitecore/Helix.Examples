@@ -1,13 +1,8 @@
 .accordion {
   margin-top: 50px;
-}
-
-.accordion-body {
-  max-height: 0;
-  overflow-y: hidden;
-  transition: all 0.5s ease-in-out;
 
   h3 {
+    color: #2B2B2B;
     font-size: 14px;
     font-weight: 600;
     letter-spacing: 0.5px;
@@ -26,6 +21,12 @@
   img.is-block {
     margin: 0 auto;
   }
+}
+
+.accordion-body {
+  max-height: 0;
+  overflow-y: hidden;
+  transition: all 0.5s ease-in-out;
 }
 
 .accordion-header {

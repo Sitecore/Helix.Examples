@@ -1,0 +1,17 @@
+﻿---
+ID: "01525385-9571-44c8-a7b5-2af160c2ec17"
+Parent: "7972f31a-628d-40dd-bc51-1f1fbc93adfb"
+Template: "fcb0ba21-9aaa-45f8-b86c-738fb269e06f"
+Path: /sitecore/content/Basic Company/Home/Services/Page Components/Frequently Asked Questions
+DB: master
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20190507T161902Z
+    - ID: "59d24d0a-f955-4988-b26f-92039b4df8bd"
+      Hint: Text
+      Value: Frequently Asked Questions

@@ -1,0 +1,14 @@
+﻿---
+ID: "a37d711c-a50f-4c25-8ba8-f0e0eb6f7900"
+Parent: "0667b089-4a7d-4d1e-9b06-27a1bf8b9e8f"
+Template: "8fb2c42c-b950-4be3-b1c6-8ba7f11b2ed8"
+Path: /sitecore/content/Basic Company/Shared Content/Accordion Items
+DB: master
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20190507T160932Z

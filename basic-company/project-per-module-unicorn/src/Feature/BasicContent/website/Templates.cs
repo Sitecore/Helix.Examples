@@ -32,5 +32,14 @@ namespace BasicCompany.Feature.BasicContent
 				public static readonly ID Image = new ID("{B5F61442-FF0F-46A5-90A8-D6D387DE24A0}");
 			}
 		}
+
+        public static class AccordionItem
+        {
+            public static class Fields
+            {
+                public static readonly ID Title = new ID("{5718E787-142B-41D9-B5A1-0B18F45B8236}");
+                public static readonly ID Content = new ID("{45EFE66E-5AD2-4F1D-BAD5-FDF281688681}");
+            }
+        }
 	}
 }

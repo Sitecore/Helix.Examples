@@ -1,0 +1,33 @@
+{
+    "Parameters" : {
+        "SitecoreSiteName": {
+            "Type": "string",
+            "DefaultValue": "Sitecore",
+            "Description": "The name of the Sitecore instance to run post-install steps on."
+        }
+    },
+    "Modules" : [
+        "..\\..\\..\\..\\install-modules\\helix.examples.psm1"
+    ],
+    "Tasks" : {
+        "AddAppPoolToPerfmon" : {
+            "Description": "Adds the instance app pool user to performance log and monitor groups.",
+            "Type": "AddAppPoolToPerfmon",
+            "Params": {
+                "SitecoreSiteName" : "[parameter('SitecoreSiteName')]"
+            }
+        }
+    },
+    "UninstallTasks": {
+        "RemoveAppPoolFromPerfmon": {
+            "Description": "Removes the instance app pool user from the performance log and monitor groups.",
+            "Type": "RemoveAppPoolFromPerfmon",
+            "Params": {
+                "SitecoreSiteName" : "[parameter('SitecoreSiteName')]"
+            }
+        }
+    },
+    "Settings" : {
+        "AutoRegisterExtensions": true
+    }
+}

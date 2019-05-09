@@ -1,6 +1,183 @@
 $ErrorActionPreference = 'Stop'
 
-Function Invoke-ParseUnicornSecretFunction {
+Function Import-SitecoreInstallFramework {
+    Param(
+        [string]$InstallerVersion
+    )
+
+    $module = Get-Module SitecoreInstallFramework
+    if ($module -and $module.Version.ToString() -eq $InstallerVersion) {
+        Write-Host "Sitecore Install Framework $InstallerVersion already loaded"
+        return
+    }
+    if ($module) {
+        # Remove SIF if already loaded to ensure correct version
+        Remove-Module SitecoreInstallFramework
+    }
+
+    # Ensure correct version is installed
+    $installedModule = Get-InstalledModule -Name SitecoreInstallFramework -RequiredVersion $InstallerVersion -ErrorAction SilentlyContinue
+    if (-not $installedModule) {
+        Write-Error ("You need to install SitecoreInstallFramework $InstallerVersion from the Sitecore PowerShell Gallery.`n" +
+                     "For more information: https://doc.sitecore.com/developers/91/sitecore-experience-management/en/sitecore-powershell-public-nuget-feed-faq.html")
+    }
+
+    Write-Host "Loading the Sitecore Install Framework, version $InstallerVersion"
+    Import-Module SitecoreInstallFramework -Force -RequiredVersion $InstallerVersion
+}
+
+
+Function Test-SqlConnection {
+    Param(
+        [string]$SqlServer,
+        [string]$SqlBuildVersion,
+        [string]$SqlFriendlyVersion
+    )
+
+    Write-Information "Verifying SQL Server connection at $SqlServer"
+    [reflection.assembly]::LoadWithPartialName("Microsoft.SqlServer.Smo") | out-null
+    $srv = New-Object "Microsoft.SqlServer.Management.Smo.Server" $SqlServer
+    if (-not $srv -or -not $srv.Version) {
+        throw "Could not find SQL Server '$SqlServer'"
+    }
+    $minVersion = New-Object System.Version($SqlBuildVersion)
+    if ($srv.Version.CompareTo($minVersion) -lt 0) {
+        throw "Invalid SQL version $($srv.Version). Expected SQL Server $SqlFriendlyVersion ($SqlBuildVersion) or over."
+    }
+    Write-Information "Found SQL Server $($srv.Version)"
+    Write-Information "OK"
+}
+
+Function Enable-SqlContainedDatabases {
+    Param(
+        [string]$SqlServer,
+        [string]$SqlAdminUser,
+        [string]$SqlAdminPassword
+    )
+
+    $command = @"
+sp_configure 'contained database authentication', 1;  
+GO  
+RECONFIGURE;  
+GO
+"@
+    Write-Information "Enabling contained databases on $SqlServer"
+    try
+    {
+        Invoke-Sqlcmd -ServerInstance $SqlServer `
+                      -Username $SqlAdminUser `
+                      -Password $SqlAdminPassword `
+                      -Query $command
+        Write-Information "OK"
+    }
+    catch
+    {
+        write-host "Enabling contained databases failed on $SqlServer"
+        throw
+    }
+
+}
+
+Function Test-SolrUrl {
+    Param(
+        [string]$SolrUrl
+    )
+
+    Write-Information "Verifying Solr connection at $SolrUrl"
+    if (-not $SolrUrl.ToLower().StartsWith("https")) {
+        throw "Solr URL ($SolrUrl) must be secured with https"
+    }
+    $SolrRequest = [System.Net.WebRequest]::Create($SolrUrl)
+    $SolrResponse = $SolrRequest.GetResponse()
+    try {
+        If ($SolrResponse.StatusCode -ne 200) {
+            throw "Could not contact Solr on '$SolrUrl'. Response status was '$SolrResponse.StatusCode'"
+        }
+        Write-Information "OK"
+    }
+    finally {
+        $SolrResponse.Close()
+    }
+}
+
+Function Test-SolrDirectory {
+    Param(
+        [string]$SolrRoot
+    )
+
+    Write-Information "Verifying Solr directory $SolrRoot"
+    if(-not (Test-Path "$SolrRoot\server")) {
+        throw "The Solr root path '$SolrRoot' appears invalid. A 'server' folder should be present in this path to be a valid Solr distributive."
+    }
+    Write-Information "OK"
+}
+
+Function Test-SolrService {
+    Param(
+        [string]$SolrService
+    )
+
+    Write-Host "Verifying Solr service $SolrService exists"
+    try {
+        $null = Get-Service $SolrService
+        Write-Information "OK"
+    } catch {
+        throw "The Solr service '$SolrService' does not exist. Perhaps it's incorrect in settings.ps1?"
+    }
+}
+
+Function Add-AppPoolToPerfmon {
+    Param(
+        [string]$SitecoreSiteName
+    )
+
+    #Add ApplicationPoolIdentity to performance log users to avoid Sitecore log errors (https://kb.sitecore.net/articles/404548)    
+    try 
+    {
+        Add-LocalGroupMember "Performance Log Users" "IIS AppPool\$SitecoreSiteName"
+        Write-Information "Added IIS AppPool\$SitecoreSiteName to Performance Log Users"
+    }
+    catch 
+    {
+        Write-Warning "Warning: Couldn't add IIS AppPool\$SitecoreSiteName to Performance Log Users -- user may already exist"
+    }
+    try 
+    {
+        Add-LocalGroupMember "Performance Monitor Users" "IIS AppPool\$SitecoreSiteName"
+        Write-Information "Added IIS AppPool\$SitecoreSiteName to Performance Monitor Users"
+    }
+    catch 
+    {
+        Write-Warning "Warning: Couldn't add IIS AppPool\$SitecoreSiteName to Performance Monitor Users -- user may already exist"
+    }
+}
+
+Function Remove-AppPoolFromPerfmon {
+    Param(
+        [string]$SitecoreSiteName
+    )
+
+    try 
+    {
+        Remove-LocalGroupMember "Performance Log Users" "IIS AppPool\$SitecoreSiteName"
+        Write-Information "Removed IIS AppPool\$SitecoreSiteName from Performance Log Users"
+    }
+    catch 
+    {
+        Write-Warning "Could not find IIS AppPool\$SitecoreSiteName in Performance Log Users"
+    }
+    try 
+    {
+        Remove-LocalGroupMember "Performance Monitor Users" "IIS AppPool\$SitecoreSiteName"
+        Write-Information "Removed IIS AppPool\$SitecoreSiteName from Performance Monitor Users"
+    }
+    catch 
+    {
+        Write-Warning "Could not find IIS AppPool\$SitecoreSiteName to Performance Monitor Users"
+    }
+}
+
+Function Get-UnicornSecret {
     Param(
         [string]$ConfigPath
     )
@@ -32,5 +209,4 @@ Function Invoke-SitecoreWarmup {
     Write-Information "$($result.StatusCode) $($result.StatusDescription)"
 }
 
-Register-SitecoreInstallExtension -Command Invoke-ParseUnicornSecretFunction -As ParseUnicornSecret -Type ConfigFunction
-Register-SitecoreInstallExtension -Command Invoke-SitecoreWarmup -As SitecoreWarmup -Type Task
+Export-ModuleMember *-*

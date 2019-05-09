@@ -1,9 +1,6 @@
 $ErrorActionPreference = 'Stop'
 
 . $PSScriptRoot\settings.ps1
-if (Test-Path $PSScriptRoot\settings.user.ps1) {
-    . $PSScriptRoot\settings.user.ps1
-}
 
 Write-Host "*******************************************************" -ForegroundColor Green
 Write-Host " Build and Unicorn Sync $SitecoreSiteName" -ForegroundColor Green
@@ -21,7 +18,7 @@ try {
 }
 catch
 {
-    write-host "Build and sync failed" -ForegroundColor Red
+    Write-Host "Build and sync failed" -ForegroundColor Red
     throw
 }
 finally {

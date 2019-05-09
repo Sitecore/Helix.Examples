@@ -33,7 +33,7 @@
         }
     },
     "Variables" : {
-        "Unicorn.SecretConfig": "[if(parameter('UnicornSecretConfig'), parseunicornsecret(parameter('UnicornSecretConfig'))], '')]",
+        "Unicorn.SecretConfig": "[if(parameter('UnicornSecretConfig'), GetUnicornSecret(parameter('UnicornSecretConfig'))], '')]",
         "Unicorn.Secret": "[if(parameter('UnicornSecret'), parameter('UnicornSecret'), variable('Unicorn.SecretConfig'))]"
     },
     "Modules" : [
@@ -41,9 +41,6 @@
         "..\\..\\..\\..\\install-modules\\msbuild\\Invoke-MsBuild.psm1",
         "..\\..\\..\\..\\install-modules\\unicorn\\Unicorn.psm1"
     ],
-    "Includes" : {
-
-    },
     "Register" : {
         "Tasks" : {
             "WriteInformation": "Write-Information",
@@ -63,7 +60,7 @@
         },
         "Warmup": {
             "Description": "Warmup the instance after recycle",
-            "Type": "SitecoreWarmup",
+            "Type": "InvokeSitecoreWarmup",
             "Params": {
                 "TimeoutSec": "600",
                 "SitecoreUrl": "[parameter('SitecoreUrl')]"
@@ -77,5 +74,8 @@
                 "SharedSecret": "[variable('Unicorn.Secret')]"
             }
         }
+    },
+    "Settings" : {
+        "AutoRegisterExtensions": true
     }
 }

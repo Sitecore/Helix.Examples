@@ -15,7 +15,7 @@ $SqlFriendlyVersion = "2016 SP2"
 
 # Build config
 $ConfigPath = ".\config"
-$PrerequisitiesConfiguration = "Prerequisites.json"
+$PrepareConfiguration = "prepare.json"
 $ExpandAssetsConfiguration = "expand-install-assets.json"
 $InstallConfiguration = "install.json"
 $BuildAndSyncConfiguration = "build-and-sync.json"

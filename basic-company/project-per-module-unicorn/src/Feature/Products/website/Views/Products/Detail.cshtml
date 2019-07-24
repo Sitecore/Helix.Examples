@@ -8,6 +8,6 @@
         @Html.Sitecore().Field(Templates.Product.Fields.Features)
     </div>
     <div class="product-image column is-3">
-        @Html.Sitecore().Field(Templates.Product.Fields.Image)
+        @Html.Sitecore().Field(Templates.Product.Fields.Image, new { mw = 480, @as = 0 })
     </div>
 </section>

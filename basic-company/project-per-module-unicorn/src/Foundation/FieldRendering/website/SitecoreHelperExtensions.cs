@@ -15,6 +15,11 @@ namespace BasicCompany.Foundation.FieldRendering
             return helper.Field(fieldID.ToString());
         }
 
+        public static HtmlString Field(this SitecoreHelper helper, ID fieldID, object parameters)
+        {
+            return helper.Field(fieldID.ToString(), parameters);
+        }
+
         public static HtmlString Field(this SitecoreHelper helper, ID fieldID, Item item)
         {
             return helper.Field(fieldID.ToString(), item);

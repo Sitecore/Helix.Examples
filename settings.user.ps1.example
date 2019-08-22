@@ -1,7 +1,3 @@
-# Solution parameters
-#$SolutionPrefix = ""
-#$SitePostFix = ""
-
 # SQL Parameters
 #$SqlServer = ""
 #$SqlAdminUser = ""

@@ -42,7 +42,7 @@ packages/
 ## Install/build logs
 log.*.txt
 ## User config for build
-**/build/settings.user.ps1
+settings.user.ps1
 ## Basic Company compiled assets
 /basic-company/client/_javascript/main.js
 /basic-company/client/css/main.css

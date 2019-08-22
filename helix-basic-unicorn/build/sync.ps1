@@ -10,6 +10,7 @@ Push-Location $ConfigPath
 $buildAndSyncParams = @{
     Path = $BuildAndSyncConfiguration
     BuildProject = $BuildProject
+    PublishPath = $SitecoreSiteRoot
     SitecoreUrl = $SitecoreSiteUrl
     UnicornSecretConfig = $UnicornSecretConfig
 }

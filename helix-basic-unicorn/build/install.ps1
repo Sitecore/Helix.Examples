@@ -1,6 +1,6 @@
 $ErrorActionPreference = 'Stop'
 
-Import-Module "..\\..\\..\\install-modules\\helix.examples.psm1"
+Import-Module "$PSScriptRoot\..\\..\\install-modules\\helix.examples.psm1"
 . $PSScriptRoot\settings.ps1
 
 Write-Host "*******************************************************" -ForegroundColor Green
@@ -56,6 +56,7 @@ Function Install-XP0SingleDeveloper {
         SqlFriendlyVersion = $SqlFriendlyVersion
         SitecoreSiteName = $SitecoreSiteName
         Deploy_BuildProject = $BuildProject
+        Deploy_PublishPath = $SitecoreSiteRoot
         Deploy_SitecoreUrl = $SitecoreSiteUrl
         Deploy_UnicornSecretConfig = $UnicornSecretConfig
         Install_Prefix = $SolutionPrefix

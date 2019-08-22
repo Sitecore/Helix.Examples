@@ -1,5 +1,5 @@
 # Solution parameters
-$SolutionPrefix = "basic-company-ppmu"
+$SolutionPrefix = "helix-basic-unicorn"
 $SitePostFix = "dev.local"
 $webroot = "C:\inetpub\wwwroot"
 
@@ -21,8 +21,7 @@ $InstallConfiguration = "install.json"
 $BuildAndSyncConfiguration = "build-and-sync.json"
 
 # Assets and prerequisites
-# root is relative to config path
-$AssetsRoot = "..\..\..\..\install-assets"
+$AssetsRoot = "$PSScriptRoot\..\..\install-assets"
 $AssetsPSRepository = "https://sitecore.myget.org/F/sc-powershell/api/v2/"
 $AssetsPSRepositoryName = "SitecoreGallery"
 

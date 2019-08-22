@@ -23,7 +23,7 @@ Function Import-SitecoreInstallFramework {
     }
 
     Write-Host "Loading the Sitecore Install Framework, version $InstallerVersion"
-    Import-Module SitecoreInstallFramework -Force -RequiredVersion $InstallerVersion
+    Import-Module SitecoreInstallFramework -Force -RequiredVersion $InstallerVersion -Scope Global
 }
 
 
@@ -173,7 +173,7 @@ Function Remove-AppPoolFromPerfmon {
     }
     catch 
     {
-        Write-Warning "Could not find IIS AppPool\$SitecoreSiteName to Performance Monitor Users"
+        Write-Warning "Could not find IIS AppPool\$SitecoreSiteName in Performance Monitor Users"
     }
 }
 

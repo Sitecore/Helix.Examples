@@ -42,7 +42,7 @@
         }
     },
     "Modules" : [
-        "..\\..\\..\\..\\install-modules\\helix.examples.psm1"
+        "..\\..\\..\\install-modules\\helix.examples.psm1"
     ],
     "Tasks" : {
         "TestSqlConnection": {

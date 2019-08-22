@@ -39,46 +39,6 @@ for ($i = 0; $i -lt $logoLines.Length; $i++) {
     Write-HostHelix $logoLines[$i] -ForegroundColor Red
 }
 
-
-
-$instances = @(
-    [pscustomobject]@{
-        Id = 1
-        Name = "Basic Company - TDS"
-        Description = "This Helix Example shows lorem ipsum dolor"
-        WebRoot = "C:\inetpub\wwwroot\helix-basic-tds.dev.local"
-        Installed = $False
-    },
-    [pscustomobject]@{
-        Id = 2
-        Name = "Basic Company - TDS Consolidated"
-        Description = "This Helix Example shows lorem ipsum dolor"
-        WebRoot = "C:\inetpub\wwwroot\helix-basic-tds-consolidated.dev.local"
-        Installed = $False
-    },
-    [pscustomobject]@{
-        Id = 3
-        Name = "Basic Company - Unicorn"
-        Description = "This Helix Example shows lorem ipsum dolor"
-        WebRoot = "C:\inetpub\wwwroot\helix-basic-unicorn.dev.local"
-        Installed = $True
-    },
-    [pscustomobject]@{
-        Id = 4
-        Name = "Franchise"
-        Description = "This Helix Example shows lorem ipsum dolor"
-        WebRoot = "C:\inetpub\wwwroot\helix-franchise.dev.local"
-        Installed = $False
-    },
-    [pscustomobject]@{
-        Id = 5
-        Name = "Corporate"
-        Description = "This Helix Example shows lorem ipsum dolor"
-        WebRoot = "C:\inetpub\wwwroot\helix-corporate.dev.local"
-        Installed = $False
-    }
-)
-
 Function Write-InstanceMenu($instance) {
     $commands = @()
     if ($instance.Installed) {
@@ -86,28 +46,80 @@ Function Write-InstanceMenu($instance) {
             Command = "u"
             Title = "Uninstall"
             Script = {
-                Write-HostHelix "Let's uninstall!"
+                param($instance)
+                Write-HostHelix "Invoking $($instance.UninstallScript)"
+                & $instance.UninstallScript
+                if ($?) {
+                    Write-HostHelix
+                    Write-HostHelix "Uninstall complete!"
+                    Write-HostHelix
+
+                    # back out a couple steps and re-write instance list
+                    # (with updated install status)
+                    Pop-Menu
+                    Pop-Menu
+                    Write-InstanceListMenu
+                }
             }
+            ScriptArgs = @($instance)
         }
     } else {
         $commands += [pscustomobject]@{
             Command = "i"
             Title = "Install"
             Script = {
-                Write-HostHelix -title "Let's install!"
+                param($instance)
+                Write-HostHelix "Invoking $($instance.InstallScript)"
+                & $instance.InstallScript
+                if ($?) {
+                    Write-HostHelix
+                    Write-HostHelix "Install complete!"
+                    Write-HostHelix
+
+                    # back out a couple steps and re-write instance list
+                    # (with updated install status)
+                    Pop-Menu
+                    Pop-Menu
+                    Write-InstanceListMenu
+                }
             }
+            ScriptArgs = @($instance)
         }
     }
 
     $menu = [pscustomobject]@{
         Title = "Helix Example - $($instance.Name)"
-        DescriptionLines = @($instance.Description,$instance.WebRoot)
+        DescriptionLines = @(
+            $instance.Description,
+            "",
+            "Source Path: $($instance.SourcePath)",
+            "Install Path: $($instance.WebRoot)"
+        )
         Commands = $commands
     }
     Push-Menu -Menu $menu
 }
 
 Function Write-InstanceListMenu($instances) {
+    $instanceId = 0
+    $instances = Get-ChildItem -r -Path *\build\settings.ps1 | % {
+        $instanceId++
+        $script = {
+            . $_.FullName
+            return [pscustomobject]@{
+                Id = $instanceId
+                Name = $ExampleName
+                Description = $ExampleDescription
+                WebRoot = $SitecoreSiteRoot
+                SourcePath = $ExampleSrcPath
+                Installed = (Test-Path $SitecoreSiteRoot)
+                InstallScript = $InstallScript
+                UninstallScript = $UninstallScript
+            }
+        }
+        Invoke-Command $script
+    }
+
     $commands = $instances | % {
         $title = $_.Name
         if ($_.Installed) {
@@ -117,15 +129,10 @@ Function Write-InstanceListMenu($instances) {
             Command = $_.Id
             Title = $title
             Script = {
-                $instanceId = [int]$args[0]
-                $instance = $instances | ? { $_.Id -eq $instanceId } | select -first 1
-                if (-not $instance) {
-                    Write-HostHelix "Unknown instance $($args[0])"
-                    Write-HostHelix
-                } else {
-                    Write-InstanceMenu -instance $instance
-                }
+                param($instance)
+                Write-InstanceMenu -instance $instance
             }
+            ScriptArgs = @($_)
         }
     }
 
@@ -165,6 +172,7 @@ function Write-MainMenu {
             }
         )
     }
+    Initialize-Menu
     Push-Menu -Menu $menu
     Write-Menu
 }

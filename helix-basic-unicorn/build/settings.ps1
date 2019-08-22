@@ -1,3 +1,10 @@
+# Metadata for menuing
+$ExampleName = "Helix Basic - Unicorn"
+$ExampleDescription = "This example demonstrates basic Helix solution architecture using Unicorn for serialization and Helix Publishing Pipeline for builds."
+$ExampleSrcPath = (Get-Item "$PSScriptRoot\..\src").FullName
+$InstallScript = (Get-Item "$PSScriptRoot\install.ps1").FullName
+$UninstallScript = (Get-Item "$PSScriptRoot\uninstall.ps1").FullName
+
 # Solution parameters
 $SolutionPrefix = "helix-basic-unicorn"
 $SitePostFix = "dev.local"
@@ -14,7 +21,7 @@ $SqlBuildVersion = "13.0.5026"
 $SqlFriendlyVersion = "2016 SP2"
 
 # Build config
-$ConfigPath = ".\config"
+$ConfigPath = "$PSScriptRoot\config"
 $PrepareConfiguration = "prepare.json"
 $ExpandAssetsConfiguration = "expand-install-assets.json"
 $InstallConfiguration = "install.json"

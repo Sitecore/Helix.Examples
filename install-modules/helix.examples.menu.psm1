@@ -40,7 +40,10 @@ Function Press-AnyKey {
     Write-HostHelix
 }
 
-$script:MenuStack = New-Object System.Collections.Stack
+Function Initialize-Menu {
+    $script:MenuStack = New-Object System.Collections.Stack
+}
+
 Function Print-Menu([pscustomobject]$Menu) {
     $border = "==========================================================="
     $title = $Menu.Title
@@ -69,13 +72,17 @@ Function Print-Menu([pscustomobject]$Menu) {
     Read-Host
 }
 
+Function Pop-Menu {
+    $null = $script:MenuStack.Pop()
+}
+
 Function Push-Menu([pscustomobject]$Menu) {
     if ($script:MenuStack.Count -gt 0) {
         $Menu.Commands += [pscustomobject]@{
             Command = "b"
             Title = "Go back"
             Script = {
-                $null = $script:MenuStack.Pop()
+                Pop-Menu
             }
         }
     }
@@ -106,12 +113,14 @@ Function Write-Menu {
         }
         Write-HostHelix
         Write-HostHelix
-        Invoke-Command $command.Script -ArgumentList $result
+        Invoke-Command $command.Script -ArgumentList $command.ScriptArgs
     } while ($script:MenuStack.Count -gt 0)
 }
 
 
 Export-ModuleMember Write-HostHelix
 Export-ModuleMember Press-AnyKey
+Export-ModuleMember Initialize-Menu
+Export-ModuleMember Pop-Menu
 Export-ModuleMember Push-Menu
 Export-ModuleMember Write-Menu

@@ -151,8 +151,8 @@ Function Write-InstanceMenu($instance) {
                 & $instance.UninstallScript
                 if ($?) {
                     Write-HostHelix
-                    Write-HostHelix "Uninstall complete!"
-                    Write-HostHelix
+                    Write-HostHelix "Uninstall complete!" -ForegroundColor yellow
+                    Press-AnyKey
 
                     # back out a couple steps and re-write instance list
                     # (with updated install status)
@@ -173,8 +173,14 @@ Function Write-InstanceMenu($instance) {
                 & $instance.InstallScript
                 if ($?) {
                     Write-HostHelix
-                    Write-HostHelix "Install complete!"
-                    Write-HostHelix
+                    Write-HostHelix "Install complete!" -ForegroundColor yellow
+
+                    $loginUrl = "$($instance.SitecoreUrl)/sitecore/"
+                    Write-HostHelix "Opening $loginUrl..."
+                    Start-Process $loginUrl
+                    Write-HostHelix "Opening $($instance.SitecoreUrl)..."
+                    Start-Process $instance.SitecoreUrl
+                    Press-AnyKey
 
                     # back out a couple steps and re-write instance list
                     # (with updated install status)
@@ -193,7 +199,8 @@ Function Write-InstanceMenu($instance) {
             $instance.Description,
             "",
             "Source Path: $($instance.SourcePath)",
-            "Install Path: $($instance.WebRoot)"
+            "Install Path: $($instance.WebRoot)",
+            "Install URL: $($instance.SitecoreUrl)"
         )
         Commands = $commands
     }
@@ -210,6 +217,7 @@ Function Write-InstanceListMenu($instances) {
                 Id = $instanceId
                 Name = $ExampleName
                 Description = $ExampleDescription
+                SitecoreUrl = $SitecoreSiteUrl
                 WebRoot = $SitecoreSiteRoot
                 SourcePath = $ExampleSrcPath
                 Installed = (Test-Path $SitecoreSiteRoot)

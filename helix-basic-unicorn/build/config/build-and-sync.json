@@ -42,9 +42,9 @@
         "Unicorn.Secret": "[if(parameter('UnicornSecret'), parameter('UnicornSecret'), variable('Unicorn.SecretConfig'))]"
     },
     "Modules" : [
-        "..\\..\\..\\install-modules\\helix.examples.psm1",
-        "..\\..\\..\\install-modules\\msbuild\\Invoke-MsBuild.psm1",
-        "..\\..\\..\\install-modules\\unicorn\\Unicorn.psm1"
+        "..\\install-modules\\helix.examples.psm1",
+        "..\\install-modules\\msbuild\\Invoke-MsBuild.psm1",
+        "..\\install-modules\\unicorn\\Unicorn.psm1"
     ],
     "Register" : {
         "Tasks" : {

@@ -11,33 +11,32 @@ $SqlFriendlyVersion = "2016 SP2"
 $SitePostFix = "dev.local"
 $webroot = "C:\inetpub\wwwroot"
 
+# Other user-configurable install params
+$SitecoreAdminPassword = "b"
+$IdentityClientSecret = "SPDHZpF6g8EXq5F7C5EhPQdsC1UbvTU3"
+
 if ($ExampleBuildDirectory) {
     $ExampleSrcPath = (Get-Item "$ExampleBuildDirectory\..\src").FullName
+    $ExampleConfigs = (Get-Item "$ExampleBuildDirectory\config").FullName
     $InstallScript = (Get-Item "$ExampleBuildDirectory\install.ps1").FullName
     $UninstallScript = (Get-Item "$ExampleBuildDirectory\uninstall.ps1").FullName
 }
 
-# Build config
-$ConfigPath = "$ExampleBuildDirectory\config"
+$InstallTemp = "$PSScriptRoot\.installtemp"
+$ConfigPath = "$PSScriptRoot\sif-configs"
+$PrepareAssetsConfiguration = "prepare-install-assets.json"
 $PrepareConfiguration = "prepare.json"
-$ExpandAssetsConfiguration = "expand-install-assets.json"
 $InstallConfiguration = "install.json"
 $BuildAndSyncConfiguration = "build-and-sync.json"
 $AssetsRoot = "$PSScriptRoot\install-assets"
-
-# Other user-configurable install params
-$SitecoreAdminPassword = "b"
-$IdentityClientSecret = "SPDHZpF6g8EXq5F7C5EhPQdsC1UbvTU3"
 
 # User overrides before we calculate values
 if (Test-Path $PSScriptRoot\settings.user.ps1) {
     . $PSScriptRoot\settings.user.ps1
 }
 
-
 #
 # CALCULATED SETTINGS
-# TODO: Can't override outside this file?
 #
 
 #License File

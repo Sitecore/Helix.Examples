@@ -1,5 +1,10 @@
 {
     "Parameters" : {
+        "InstallTemp": {
+            "Type": "String",
+            "Description": "Path where SIF configs will be staged.",
+            "DefaultValue": ""
+        },
         "DownloadZip": {
             "Type": "String",
             "Description": "Path to the zip package of WDPs and configs for XP0.",
@@ -14,6 +19,11 @@
             "Type": "String",
             "Description": "Name of the XP0 config files zip contained in the main download zip.",
             "DefaultValue": ""
+        },
+        "AdditionalConfigs": {
+            "Type": "String[]",
+            "Description": "Additional SIF configurations to include in the staging folder.",
+            "DefaultValue": ""
         }
     },
     "Variables" : {
@@ -21,10 +31,23 @@
     },
     "Register" : {
         "Tasks" : {
+            "RemoveItem": "Remove-Item",
+            "CopyItem": "Copy-Item",
             "ExpandArchive": "Expand-Archive"
         }
     },
     "Tasks" : {
+        "ClearInstallTemp": {
+            "Description": "Clean existing files in staging directory.",
+            "Type": "RemoveItem",
+            "Params": {
+                "Path": "[parameter('InstallTemp')]",
+                "Recurse": true,
+                "Force": true,
+                "ErrorAction": "SilentlyContinue",
+                "Verbose": true
+            }
+        },
         "ExpandDownloadZip": {
             "Description": "Unzip the download assets.",
             "Type": "ExpandArchive",
@@ -35,12 +58,21 @@
             }
         },
         "ExpandConfigurations": {
-            "Description": "Unzip the SIF configurations.",
+            "Description": "Unzip the SIF configurations to the staging directory.",
             "Type": "ExpandArchive",
             "Params": {
                 "Path": "[variable('ConfigFilesZipPath')]",
-                "DestinationPath": ".",
+                "DestinationPath": "[parameter('InstallTemp')]",
                 "Force": true
+            }
+        },
+        "CopyConfigurations": {
+            "Description": "Copy additional SIF configurations to the staging directory.",
+            "Type": "CopyItem",
+            "Params": {
+                "Path": "[parameter('AdditionalConfigs')]",
+                "Destination": "[parameter('InstallTemp')]",
+                "Verbose": true
             }
         }
     }

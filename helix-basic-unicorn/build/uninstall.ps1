@@ -10,7 +10,7 @@ Write-Host " xConnect: $XConnectSiteName" -ForegroundColor Green
 Write-Host "*******************************************************" -ForegroundColor Green
 
 Function Uninstall-XP0SingleDeveloper {
-    Push-Location $ConfigPath
+    Push-Location $InstallTemp
     $uninstallParams = @{
         Path = $InstallConfiguration
         SolrUrl = $SolrUrl
@@ -57,4 +57,11 @@ Function Uninstall-XP0SingleDeveloper {
 }
 
 Import-SitecoreInstallFramework -InstallerVersion $InstallerVersion
+Initialize-InstallAssets -PrepareAssetsConfiguration $PrepareAssetsConfiguration `
+    -InstallTemp $InstallTemp `
+    -ConfigPath $ConfigPath `
+    -DownloadZip $DownloadZip `
+    -AssetsRoot $AssetsRoot `
+    -ConfigurationsZip $ConfigurationsZip `
+    -ExampleConfigPath $ExampleConfigs
 Uninstall-XP0SingleDeveloper

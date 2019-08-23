@@ -10,40 +10,8 @@ Write-Host " xConnect: $XConnectSiteName" -ForegroundColor Green
 Write-Host " Identity: $IdentityServerSiteName" -ForegroundColor Green
 Write-Host "*******************************************************" -ForegroundColor Green
 
-Function Install-Prerequisites {
-    #Run Prerequisites Config
-    Push-Location $ConfigPath
-    try {
-        Install-SitecoreConfiguration -Path $PrerequisitiesConfiguration *>&1 | Tee-Object "$PSScriptRoot\log.prerequisites.txt"
-    }
-    finally {
-        Pop-Location
-    }
-}
-
-Function Expand-Install-Assets {
-    Push-Location $ConfigPath
-    $expandAssetsParams = @{
-        Path = $ExpandAssetsConfiguration
-        DownloadZip = $DownloadZip
-        AssetsPath = $AssetsRoot
-        ConfigurationsZip = $ConfigurationsZip
-    }
-    try {
-        Install-SitecoreConfiguration @expandAssetsParams
-    }
-    catch
-    {
-        Write-Host "Expanding install assets failed" -ForegroundColor Red
-        throw
-    }
-    finally {
-        Pop-Location
-    }
-}
-
 Function Install-XP0SingleDeveloper {
-    Push-Location $ConfigPath
+    Push-Location $InstallTemp
     $singleDeveloperParams = @{
         Path = $InstallConfiguration
         SolrUrl = $SolrUrl
@@ -89,5 +57,11 @@ Function Install-XP0SingleDeveloper {
 }
 
 Import-SitecoreInstallFramework -InstallerVersion $InstallerVersion
-Expand-Install-Assets
+Initialize-InstallAssets -PrepareAssetsConfiguration $PrepareAssetsConfiguration `
+    -InstallTemp $InstallTemp `
+    -ConfigPath $ConfigPath `
+    -DownloadZip $DownloadZip `
+    -AssetsRoot $AssetsRoot `
+    -ConfigurationsZip $ConfigurationsZip `
+    -ExampleConfigPath $ExampleConfigs
 Install-XP0SingleDeveloper

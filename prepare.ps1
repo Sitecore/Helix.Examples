@@ -1,36 +1,15 @@
 $ErrorActionPreference = 'Stop'
 
-Import-Module "..\\..\\..\\install-modules\\helix.examples.psm1"
-. $PSScriptRoot\settings.ps1
+Import-Module "$PSScriptRoot\install-modules\helix.examples.psm1"
+. $PSScriptRoot\settings.global.ps1
 
 Write-Host "*******************************************************" -ForegroundColor Green
 Write-Host " Validing settings and installing prerequisites for $SitecoreVersion" -ForegroundColor Green
 Write-Host "*******************************************************" -ForegroundColor Green
 
-Function Expand-Install-Assets {
-    Push-Location $ConfigPath
-    $expandAssetsParams = @{
-        Path = $ExpandAssetsConfiguration
-        DownloadZip = $DownloadZip
-        AssetsPath = $AssetsRoot
-        ConfigurationsZip = $ConfigurationsZip
-    }
-    try {
-        Install-SitecoreConfiguration @expandAssetsParams
-    }
-    catch
-    {
-        Write-Host "Expanding install assets failed" -ForegroundColor Red
-        throw
-    }
-    finally {
-        Pop-Location
-    }
-}
-
 Function Install-Prerequisites {
     #Run Prepare Config
-    Push-Location $ConfigPath
+    Push-Location $InstallTemp
     $prepareParams = @{
         Path = $PrepareConfiguration
         PreInstall_SolrUrl = $SolrUrl
@@ -56,9 +35,14 @@ Function Install-Prerequisites {
 }
 
 Import-SitecoreInstallFramework -InstallerVersion $InstallerVersion
-Expand-Install-Assets
+Initialize-InstallAssets -PrepareAssetsConfiguration $PrepareAssetsConfiguration `
+    -InstallTemp $InstallTemp `
+    -ConfigPath $ConfigPath `
+    -DownloadZip $DownloadZip `
+    -AssetsRoot $AssetsRoot `
+    -ConfigurationsZip $ConfigurationsZip
 
 # Workaround for SIF issue -- can't include Prerequisites.json otherwise
-((Get-Content $ConfigPath\Prerequisites.json -Raw) -replace '\+\+','PlusPlus') | Set-Content $ConfigPath\Prerequisites.json
+((Get-Content $InstallTemp\Prerequisites.json -Raw) -replace '\+\+','PlusPlus') | Set-Content $InstallTemp\Prerequisites.json
 
 Install-Prerequisites

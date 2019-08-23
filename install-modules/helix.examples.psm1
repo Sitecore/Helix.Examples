@@ -26,6 +26,42 @@ Function Import-SitecoreInstallFramework {
     Import-Module SitecoreInstallFramework -Force -RequiredVersion $InstallerVersion -Scope Global
 }
 
+Function Initialize-InstallAssets {
+    param(
+        $ConfigPath,
+        $PrepareAssetsConfiguration,
+        $InstallTemp,
+        $DownloadZip,
+        $AssetsRoot,
+        $ConfigurationsZip,
+        $ExampleConfigPath
+    ) 
+    $additionalConfigs = @("$ConfigPath\*.json")
+    if ($ExampleConfigPath) {
+        $additionalConfigs += "$ExampleConfigPath\*.json"
+    }
+
+    Push-Location $ConfigPath
+    $expandAssetsParams = @{
+        Path = $PrepareAssetsConfiguration
+        InstallTemp = $InstallTemp
+        DownloadZip = $DownloadZip
+        AssetsPath = $AssetsRoot
+        ConfigurationsZip = $ConfigurationsZip
+        AdditionalConfigs = $additionalConfigs
+    }
+    try {
+        Install-SitecoreConfiguration @expandAssetsParams
+    }
+    catch
+    {
+        Write-Host "Preparing install assets failed" -ForegroundColor Red
+        throw
+    }
+    finally {
+        Pop-Location
+    }
+}
 
 Function Test-SqlConnection {
     Param(

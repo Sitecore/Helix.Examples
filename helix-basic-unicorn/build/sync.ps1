@@ -1,12 +1,21 @@
 $ErrorActionPreference = 'Stop'
 
+Import-Module "$PSScriptRoot\..\\..\\install-modules\\helix.examples.psm1"
 . $PSScriptRoot\settings.ps1
 
 Write-Host "*******************************************************" -ForegroundColor Green
 Write-Host " Build and Unicorn Sync $SitecoreSiteName" -ForegroundColor Green
 Write-Host "*******************************************************" -ForegroundColor Green
 
-Push-Location $ConfigPath
+Initialize-InstallAssets -PrepareAssetsConfiguration $PrepareAssetsConfiguration `
+    -InstallTemp $InstallTemp `
+    -ConfigPath $ConfigPath `
+    -DownloadZip $DownloadZip `
+    -AssetsRoot $AssetsRoot `
+    -ConfigurationsZip $ConfigurationsZip `
+    -ExampleConfigPath $ExampleConfigs
+
+Push-Location $InstallTemp
 $buildAndSyncParams = @{
     Path = $BuildAndSyncConfiguration
     BuildProject = $BuildProject

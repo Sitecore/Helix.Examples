@@ -263,6 +263,15 @@ function Write-MainMenu {
                 }
             },
             [pscustomobject]@{
+                Command = "v"
+                Title = "Validate your configuration and install prerequisites"
+                Script = {
+                    & $PSScriptRoot\prepare.ps1
+                    Write-HostHelix
+                    Press-AnyKey
+                }
+            },
+            [pscustomobject]@{
                 Command = "l"
                 Title = "List/(Un)Install Examples"
                 Script = {

@@ -29,20 +29,12 @@ _ReSharper*/
 .vs/
 # Nuget packages folder
 packages/
-## SIF configs expanded into config folder
-**/build/config/createcert.json
-**/build/config/IdentityServer.json
-**/build/config/Prerequisites.json
-**/build/config/sitecore-solr.json
-**/build/config/sitecore-XP0.json
-**/build/config/xconnect-solr.json
-**/build/config/xconnect-xp0.json
-**/build/config/XP0-SingleDeveloper.json
-**/build/config/XP0-SingleDeveloper.ps1
 ## Install/build logs
 log.*.txt
 ## User config for build
 settings.user.ps1
+## Install Temp
+.installtemp/
 ## Basic Company compiled assets
 /basic-company/client/_javascript/main.js
 /basic-company/client/css/main.css

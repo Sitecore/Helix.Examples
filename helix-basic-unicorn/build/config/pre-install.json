@@ -51,7 +51,9 @@
             "Params": {
                 "SqlServer": "[parameter('SqlServer')]",
                 "SqlBuildVersion": "[parameter('SqlBuildVersion')]",
-                "SqlFriendlyVersion": "[parameter('SqlFriendlyVersion')]"
+                "SqlFriendlyVersion": "[parameter('SqlFriendlyVersion')]",
+                "SqlAdminUser": "[parameter('SqlAdminUser')]",
+                "SqlAdminPassword": "[parameter('SqlAdminPassword')]"
             }
         },
         "EnableSqlContainedDatabases": {

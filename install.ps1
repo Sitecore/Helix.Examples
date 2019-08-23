@@ -1,7 +1,7 @@
 
 Import-Module .\install-modules\helix.examples.menu.psm1
+Import-Module .\install-modules\helix.examples.psm1
 
-$logoLines =
 @'
 
  .d8888b.  d8b 888                                                  888    888          888 d8b          
@@ -33,10 +33,110 @@ They are not supported by Sitecore and should be used at your own risk.
 
 -----------------------------------------------------------------------------------
 
-'@ -split "`n"
+'@ -split "`n" | % { Write-HostHelix $_ -ForegroundColor Red }
 
-for ($i = 0; $i -lt $logoLines.Length; $i++) {
-    Write-HostHelix $logoLines[$i] -ForegroundColor Red
+Function Request-UserConfiguration {
+    # Read in user and global veriables so we can get existing values and test input
+    . $PSScriptRoot\settings.global.ps1
+
+    $UserSettings = [ordered]@{
+        SqlServer = [pscustomobject]@{
+            Prompt = "The host and instance name of your SQL Server (e.g. (local) or .\SQLEXPRESS)."
+            NewValue = $null
+        }
+        SqlAdminUser = [pscustomobject]@{
+            Prompt = "The username of the SQL user which will be used to install Sitecore. Should be 'sa' or have sysadmin role."
+            NewValue = $null
+        }
+        SqlAdminPassword = [pscustomobject]@{
+            Prompt = "The user's password. NOTE: This will be stored in plain text."
+            NewValue = $null
+        }
+        SolrUrl = [pscustomobject]@{
+            Prompt = "The URL of your Solr instance (e.g. https://localhost:8983/solr)"
+            NewValue = $null
+        }
+        SolrRoot = [pscustomobject]@{
+            Prompt = "The filesystem path of your Solr instance (e.g. C:\\solr\\solr-X.Y.Z)"
+            NewValue = $null
+        }
+        SolrService = [pscustomobject]@{
+            Prompt = "The name of your Solr Windows service (e.g. Solr-X.Y.Z)"
+            NewValue = $null
+        }
+    }
+
+    Write-HostHelix "Please fill in the following values to enable local install of the Helix Examples. The values will be tested and written to settings.user.ps1." -ForegroundColor yellow    
+    $UserSettings.GetEnumerator() | % {
+        $variable = "`$$($_.Name)"
+        # Default to previously entered values
+        $currentValue = $_.Value.NewValue
+        if (-not $currentValue) {
+            # Otherwise try value from existing config
+            $currentValue = Invoke-Expression $variable
+        }
+        Write-HostHelix
+        Write-HostHelix "$($variable): $($_.Value.Prompt)"
+        if ($currentValue) {
+            Write-HostHelix "[Press enter to keep value $currentValue]"
+        }
+        Write-HostHelix "> " -ForegroundColor yellow -NoNewline
+        $_.Value.NewValue = Read-Host
+        if (-not $_.Value.NewValue) {
+            # Use previously entered or existing value
+            $_.Value.NewValue = $currentValue
+        }
+    }
+
+    try {
+        Write-HostHelix
+        Write-HostHelix "Testing SQL values..." -ForegroundColor yellow
+        Write-HostHelix
+
+        $result = Test-SqlConnection `
+            -SqlServer $UserSettings["SqlServer"].NewValue `
+            -SqlBuildVersion $SqlBuildVersion `
+            -SqlFriendlyVersion $SqlFriendlyVersion `
+            -SqlAdminUser $UserSettings["SqlAdminUser"].NewValue `
+            -SqlAdminPassword  $UserSettings["SqlAdminPassword"].NewValue `
+            3>&1 6>&1
+        $result -split "`n" | % { Write-HostHelix $_ }
+
+        Write-HostHelix
+        Write-HostHelix "Testing Solr values..." -ForegroundColor yellow
+        Write-HostHelix
+
+        $result = Test-SolrUrl -SolrUrl $UserSettings['SolrUrl'].NewValue 3>&1 6>&1
+        $result -split "`n" | % { Write-HostHelix $_ }
+        $result = Test-SolrDirectory -SolrRoot $UserSettings['SolrRoot'].NewValue 3>&1 6>&1
+        $result -split "`n" | % { Write-HostHelix $_ }
+        $result = Test-SolrService -SolrService $UserSettings['SolrService'].NewValue 3>&1 6>&1
+        $result -split "`n" | % { Write-HostHelix $_ }
+    } catch {
+        ($_ | Out-String) -split "`n" | % { Write-HostHelix $_ -ForegroundColor red }
+        Write-HostHelix
+        Write-HostHelix "Invalid values, please try again." -ForegroundColor yellow
+        Press-AnyKey
+        Request-UserConfiguration
+        return
+    }
+    Write-HostHelix
+    Write-HostHelix "Writing settings.user.ps1..." -ForegroundColor yellow
+    $settingsFile =
+@"
+# SQL Parameters
+`$SqlServer = "$($UserSettings["SqlServer"].NewValue)"
+`$SqlAdminUser = "$($UserSettings["SqlAdminUser"].NewValue)"
+`$SqlAdminPassword = "$($UserSettings["SqlAdminPassword"].NewValue)"
+
+# Solr Parameters
+`$SolrUrl = "$($UserSettings["SolrUrl"].NewValue)"
+`$SolrRoot = "$($UserSettings["SolrRoot"].NewValue)"
+`$SolrService = "$($UserSettings["SolrService"].NewValue)"
+"@
+    $settingsFile -split "`n" | % { Write-HostHelix $_ -ForegroundColor DarkGray }
+    $settingsFile | Set-Content settings.user.ps1
+    Write-HostHelix
 }
 
 Function Write-InstanceMenu($instance) {
@@ -151,7 +251,7 @@ function Write-MainMenu {
                 Command = "c"
                 Title = "Configure Install Settings"
                 Script = {
-                    Write-HostHelix -title "Let's configure!"
+                    Request-UserConfiguration
                 }
             },
             [pscustomobject]@{
@@ -175,6 +275,11 @@ function Write-MainMenu {
     Initialize-Menu
     Push-Menu -Menu $menu
     Write-Menu
+}
+
+
+if (-not (Test-Path $PSScriptRoot\settings.user.ps1)) {
+    Request-UserConfiguration
 }
 
 Write-MainMenu

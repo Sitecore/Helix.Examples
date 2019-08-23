@@ -11,9 +11,11 @@ $SqlFriendlyVersion = "2016 SP2"
 $SitePostFix = "dev.local"
 $webroot = "C:\inetpub\wwwroot"
 
-$ExampleSrcPath = (Get-Item "$ExampleBuildDirectory\..\src").FullName
-$InstallScript = (Get-Item "$ExampleBuildDirectory\install.ps1").FullName
-$UninstallScript = (Get-Item "$ExampleBuildDirectory\uninstall.ps1").FullName
+if ($ExampleBuildDirectory) {
+    $ExampleSrcPath = (Get-Item "$ExampleBuildDirectory\..\src").FullName
+    $InstallScript = (Get-Item "$ExampleBuildDirectory\install.ps1").FullName
+    $UninstallScript = (Get-Item "$ExampleBuildDirectory\uninstall.ps1").FullName
+}
 
 # Build config
 $ConfigPath = "$ExampleBuildDirectory\config"
@@ -22,16 +24,6 @@ $ExpandAssetsConfiguration = "expand-install-assets.json"
 $InstallConfiguration = "install.json"
 $BuildAndSyncConfiguration = "build-and-sync.json"
 $AssetsRoot = "$PSScriptRoot\install-assets"
-
-# SQL Parameters
-$SqlServer = "."
-$SqlAdminUser = "sa"
-$SqlAdminPassword = "12345"
-
-# Solr Parameters
-$SolrUrl = "https://localhost:8983/solr"
-$SolrRoot = "c:\\solr"
-$SolrService = "Solr"
 
 # Other user-configurable install params
 $SitecoreAdminPassword = "b"

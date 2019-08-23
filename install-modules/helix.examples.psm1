@@ -31,7 +31,9 @@ Function Test-SqlConnection {
     Param(
         [string]$SqlServer,
         [string]$SqlBuildVersion,
-        [string]$SqlFriendlyVersion
+        [string]$SqlFriendlyVersion,
+        [string]$SqlAdminUser,
+        [string]$SqlAdminPassword
     )
 
     Write-Information "Verifying SQL Server connection at $SqlServer"
@@ -45,6 +47,30 @@ Function Test-SqlConnection {
         throw "Invalid SQL version $($srv.Version). Expected SQL Server $SqlFriendlyVersion ($SqlBuildVersion) or over."
     }
     Write-Information "Found SQL Server $($srv.Version)"
+
+    $roleCommand = @"
+SELECT spU.name, MAX(CASE WHEN srm.role_principal_id = 3 THEN 1 END) AS sysadmin
+FROM sys.server_principals AS spR
+JOIN sys.server_role_members AS srm ON spR.principal_id = srm.role_principal_id
+JOIN sys.server_principals AS spU ON srm.member_principal_id = spU.principal_id
+WHERE spR.[type] = 'R' AND spU.name = 'sitecore'
+GROUP BY spU.name
+"@
+    try {
+        $roleInfo = Invoke-Sqlcmd -ServerInstance $SqlServer `
+            -Username $SqlAdminUser `
+            -Password $SqlAdminPassword `
+            -Query $roleCommand
+        if ($roleInfo.sysadmin -ne 1) {
+            throw "SQL user $SqlAdminUser does not have the 'sysadmin' role."
+        } else {
+            Write-Information "Found sysadmin user $SqlAdminUser"
+        }
+    }
+    catch {
+        Write-Warning "Login or role check failed for SQL user $SqlAdminUser on $SqlServer."
+        throw
+    }
     Write-Information "OK"
 }
 
@@ -72,7 +98,7 @@ GO
     }
     catch
     {
-        write-host "Enabling contained databases failed on $SqlServer"
+        Write-Warning "Enabling contained databases failed on $SqlServer"
         throw
     }
 
@@ -87,16 +113,22 @@ Function Test-SolrUrl {
     if (-not $SolrUrl.ToLower().StartsWith("https")) {
         throw "Solr URL ($SolrUrl) must be secured with https"
     }
-    $SolrRequest = [System.Net.WebRequest]::Create($SolrUrl)
-    $SolrResponse = $SolrRequest.GetResponse()
     try {
+        $SolrRequest = [System.Net.WebRequest]::Create($SolrUrl)
+        $SolrResponse = $SolrRequest.GetResponse()
         If ($SolrResponse.StatusCode -ne 200) {
             throw "Could not contact Solr on '$SolrUrl'. Response status was '$SolrResponse.StatusCode'"
         }
         Write-Information "OK"
     }
+    catch {
+        Write-Warning "Testing Solr connection failed at $SolrUrl"
+        throw
+    }
     finally {
-        $SolrResponse.Close()
+        if ($SolrResponse) {
+            $SolrResponse.Close()
+        }
     }
 }
 
@@ -122,7 +154,7 @@ Function Test-SolrService {
         $null = Get-Service $SolrService
         Write-Information "OK"
     } catch {
-        throw "The Solr service '$SolrService' does not exist. Perhaps it's incorrect in settings.ps1?"
+        throw "The Solr service '$SolrService' does not exist."
     }
 }
 

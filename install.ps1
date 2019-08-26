@@ -57,7 +57,7 @@ Function Request-UserConfiguration {
             NewValue = $null
         }
         SolrRoot = [pscustomobject]@{
-            Prompt = "The filesystem path of your Solr instance (e.g. C:\\solr\\solr-X.Y.Z)"
+            Prompt = "The filesystem path of your Solr instance (e.g. C:\solr\solr-X.Y.Z)"
             NewValue = $null
         }
         SolrService = [pscustomobject]@{
@@ -66,7 +66,8 @@ Function Request-UserConfiguration {
         }
     }
 
-    Write-HostHelix "Please fill in the following values to enable local install of the Helix Examples. The values will be tested and written to settings.user.ps1." -ForegroundColor yellow    
+    Write-HostHelix "Please fill in the following values to enable local install of the Helix Examples." -ForegroundColor yellow
+    Write-HostHelix "The values will be tested and written to settings.user.ps1." -ForegroundColor yellow
     $UserSettings.GetEnumerator() | % {
         $variable = "`$$($_.Name)"
         # Default to previously entered values
@@ -197,6 +198,7 @@ Function Write-InstanceMenu($instance) {
         Title = "Helix Example - $($instance.Name)"
         DescriptionLines = @(
             $instance.Description,
+            "Find out more: $($instance.ExampleUrl)",
             "",
             "Source Path: $($instance.SourcePath)",
             "Install Path: $($instance.WebRoot)",
@@ -217,6 +219,7 @@ Function Write-InstanceListMenu($instances) {
                 Id = $instanceId
                 Name = $ExampleName
                 Description = $ExampleDescription
+                ExampleUrl = $ExampleUrl
                 SitecoreUrl = $SitecoreSiteUrl
                 WebRoot = $SitecoreSiteRoot
                 SourcePath = $ExampleSrcPath
@@ -282,7 +285,28 @@ function Write-MainMenu {
                 Command = "a"
                 Title = "About Helix Examples"
                 Script = {
-                    Write-HostHelix "~~~~~Not a starter kit~~~~~~"
+                    Write-HostHelix "--------------------------------------------     Sitecore Helix      ------------------------------------------------------" -ForegroundColor yellow
+                    Write-HostHelix "Sitecore Helix defines recommended practices and conventions to help improve the maintainability of Sitecore solutions."
+                    Write-HostHelix "It's based on the Principles of Packages Design by Robert C Martin."
+                    Write-HostHelix
+                    Write-HostHelix "More info on Sitecore Helix can be found at: https://helix.sitecore.net"
+                    Write-HostHelix
+                    Write-HostHelix "-------------------------------------------- Sitecore Helix Examples ------------------------------------------------------" -ForegroundColor yellow
+                    Write-HostHelix "The Helix Examples are demonstrations of Sitecore Helix practices across various tooling and business scenarios."
+                    Write-HostHelix "They are intended to demonstrate a wider variety of implementation types / requirements than existing examples."
+                    Write-HostHelix
+                    Write-HostHelix "The Helix Examples are not:"
+                    Write-HostHelix "  > Sales/Marketing demo sites (see Habitat Home)"
+                    Write-HostHelix "  > A 'getting started' guide for Sitecore (see https://doc.sitecore.com/developers) "
+                    Write-HostHelix "  > A 'starter kit' for Helix-based sites (there are several of these in the community)"
+                    Write-HostHelix
+                    Write-HostHelix "You can certainly reference and reuse code found here. However you should take care when doing so, like you could copying code from"
+                    Write-HostHelix "Stackexchange or other sources and adjust to your needs. As much as possible, these examples strive to follow good Sitecore practices beyond Helix."
+                    Write-HostHelix
+                    Write-HostHelix "The install/menu/configuration system however is optimized to ease and bring joy to the installation of the multiple example instances,"
+                    Write-HostHelix "and likely is not a good fit for production projects. However we do hope you enjoy using it."
+                    Write-HostHelix
+                    Write-HostHelix "For more info on Helix Examples, visit https://github.com/Sitecore/Helix.Examples"
                     Write-HostHelix
                     Press-AnyKey
                 }

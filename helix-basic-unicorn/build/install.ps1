@@ -14,6 +14,7 @@ Function Install-XP0SingleDeveloper {
     Push-Location $InstallTemp
     $singleDeveloperParams = @{
         Path = $InstallConfiguration
+        LicenseFile = $LicenseFile
         SolrUrl = $SolrUrl
         SolrRoot = $SolrRoot
         SolrService = $SolrService
@@ -31,7 +32,6 @@ Function Install-XP0SingleDeveloper {
         Install_XConnectCertificateName = $XConnectSiteName
         Install_IdentityServerCertificateName = $IdentityServerSiteName
         Install_IdentityServerSiteName = $IdentityServerSiteName
-        Install_LicenseFile = $LicenseFile
         Install_XConnectPackage = $XConnectPackage
         Install_SitecorePackage = $SitecorePackage
         Install_IdentityServerPackage = $IdentityServerPackage

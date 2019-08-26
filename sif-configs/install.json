@@ -1,5 +1,19 @@
 {
     "Parameters" : {
+        "LicenseFile": {
+            "Type": "string",
+            "Description": "Full path to your license.xml to be used when installing."
+        },
+        "Install:LicenseFile": {
+            "Type": "string",
+            "Reference": "LicenseFile",
+            "Description": "Pass on LicenseFile to the referenced scriptt."
+        },
+        "PreInstall:LicenseFile": {
+            "Type": "string",
+            "Reference": "LicenseFile",
+            "Description": "Pass on LicenseFile to the referenced scriptt."
+        },
         "SqlServer": {
             "Type": "string",
             "Description": "Host/instance of SQL Server to validate and use for the install."

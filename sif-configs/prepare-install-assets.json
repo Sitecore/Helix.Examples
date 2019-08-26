@@ -26,17 +26,28 @@
             "DefaultValue": ""
         }
     },
+    "Modules" : [
+        "..\\install-modules\\helix.examples.psm1"
+    ],
     "Variables" : {
         "ConfigFilesZipPath": "[joinpath(parameter('AssetsPath'), parameter('ConfigurationsZip'))]"
     },
     "Register" : {
         "Tasks" : {
+            "TestInstallZip": "Test-InstallZip",
             "RemoveItem": "Remove-Item",
             "CopyItem": "Copy-Item",
             "ExpandArchive": "Expand-Archive"
         }
     },
     "Tasks" : {
+        "TestInstallZip": {
+            "Description": "Ensure presence of downloaded install zip.",
+            "Type": "TestInstallZip",
+            "Params": {
+                "DownloadZipPath": "[parameter('DownloadZip')]"
+            }
+        },
         "ClearInstallTemp": {
             "Description": "Clean existing files in staging directory.",
             "Type": "RemoveItem",

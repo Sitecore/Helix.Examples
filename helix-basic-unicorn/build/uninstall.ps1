@@ -13,6 +13,7 @@ Function Uninstall-XP0SingleDeveloper {
     Push-Location $InstallTemp
     $uninstallParams = @{
         Path = $InstallConfiguration
+        LicenseFile = $LicenseFile
         SolrUrl = $SolrUrl
         SolrRoot = $SolrRoot
         SolrService = $SolrService
@@ -30,7 +31,6 @@ Function Uninstall-XP0SingleDeveloper {
         Install_XConnectCertificateName = $XConnectSiteName
         Install_IdentityServerCertificateName = $IdentityServerSiteName
         Install_IdentityServerSiteName = $IdentityServerSiteName
-        Install_LicenseFile = $LicenseFile
         Install_XConnectPackage = $XConnectPackage
         Install_SitecorePackage = $SitecorePackage
         Install_IdentityServerPackage = $IdentityServerPackage

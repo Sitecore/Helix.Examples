@@ -12,6 +12,7 @@ Function Install-Prerequisites {
     Push-Location $InstallTemp
     $prepareParams = @{
         Path = $PrepareConfiguration
+        PreInstall_LicenseFile = $LicenseFile
         PreInstall_SolrUrl = $SolrUrl
         PreInstall_SolrRoot = $SolrRoot
         PreInstall_SolrService = $SolrService

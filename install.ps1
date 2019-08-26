@@ -138,6 +138,9 @@ Function Request-UserConfiguration {
     $settingsFile -split "`n" | % { Write-HostHelix $_ -ForegroundColor DarkGray }
     $settingsFile | Set-Content settings.user.ps1
     Write-HostHelix
+    Write-HostHelix "Configuration complete. If you haven't installed Sitecore before, use <v>alidate to verify prerequisites."
+    Write-HostHelix
+    Press-AnyKey
 }
 
 Function Write-InstanceMenu($instance) {
@@ -149,17 +152,24 @@ Function Write-InstanceMenu($instance) {
             Script = {
                 param($instance)
                 Write-HostHelix "Invoking $($instance.UninstallScript)"
-                & $instance.UninstallScript
-                if ($?) {
+                try {
+                    & $instance.UninstallScript
+                    if ($?) {
+                        Write-HostHelix
+                        Write-HostHelix "Uninstall complete!" -ForegroundColor yellow
+                        Press-AnyKey
+    
+                        # back out a couple steps and re-write instance list
+                        # (with updated install status)
+                        Pop-Menu
+                        Pop-Menu
+                        Write-InstanceListMenu
+                    }
+                }
+                catch {
                     Write-HostHelix
-                    Write-HostHelix "Uninstall complete!" -ForegroundColor yellow
+                    Write-HostHelix "Uninstall error, see details above." -ForegroundColor red
                     Press-AnyKey
-
-                    # back out a couple steps and re-write instance list
-                    # (with updated install status)
-                    Pop-Menu
-                    Pop-Menu
-                    Write-InstanceListMenu
                 }
             }
             ScriptArgs = @($instance)
@@ -171,23 +181,30 @@ Function Write-InstanceMenu($instance) {
             Script = {
                 param($instance)
                 Write-HostHelix "Invoking $($instance.InstallScript)"
-                & $instance.InstallScript
-                if ($?) {
+                try {
+                    & $instance.InstallScript
+                    if ($?) {
+                        Write-HostHelix
+                        Write-HostHelix "Install complete!" -ForegroundColor yellow
+    
+                        $loginUrl = "$($instance.SitecoreUrl)/sitecore/"
+                        Write-HostHelix "Opening $loginUrl..."
+                        Start-Process $loginUrl
+                        Write-HostHelix "Opening $($instance.SitecoreUrl)..."
+                        Start-Process $instance.SitecoreUrl
+                        Press-AnyKey
+    
+                        # back out a couple steps and re-write instance list
+                        # (with updated install status)
+                        Pop-Menu
+                        Pop-Menu
+                        Write-InstanceListMenu
+                    }
+                }
+                catch {
                     Write-HostHelix
-                    Write-HostHelix "Install complete!" -ForegroundColor yellow
-
-                    $loginUrl = "$($instance.SitecoreUrl)/sitecore/"
-                    Write-HostHelix "Opening $loginUrl..."
-                    Start-Process $loginUrl
-                    Write-HostHelix "Opening $($instance.SitecoreUrl)..."
-                    Start-Process $instance.SitecoreUrl
+                    Write-HostHelix "Install error, see details above." -ForegroundColor red
                     Press-AnyKey
-
-                    # back out a couple steps and re-write instance list
-                    # (with updated install status)
-                    Pop-Menu
-                    Pop-Menu
-                    Write-InstanceListMenu
                 }
             }
             ScriptArgs = @($instance)
@@ -269,7 +286,13 @@ function Write-MainMenu {
                 Command = "v"
                 Title = "Validate your configuration and install prerequisites"
                 Script = {
-                    & $PSScriptRoot\prepare.ps1
+                    try {
+                        & $PSScriptRoot\prepare.ps1
+                    } catch {
+                        Write-HostHelix
+                        Write-HostHelix "Validation/prerequisites error, see details above." -ForegroundColor red
+                    }
+                    
                     Write-HostHelix
                     Press-AnyKey
                 }

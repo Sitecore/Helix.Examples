@@ -63,6 +63,24 @@ Function Initialize-InstallAssets {
     }
 }
 
+Function Test-InstallZip {
+    Param(
+        [string]$DownloadZipPath
+    )
+    if (-not (Test-Path $DownloadZipPath)) {
+        throw "Did not find $DownloadZipPath, please download from http://dev.sitecore.net and copy to 'install-assets'."
+    }
+}
+
+Function Test-LicenseXml {
+    Param(
+        [string]$LicenseXmlPath
+    )
+    if (-not (Test-Path $LicenseXmlPath)) {
+        throw "Did not find $LicenseXmlPath, please copy your license.xml to 'install-assets'."
+    }
+}
+
 Function Test-SqlConnection {
     Param(
         [string]$SqlServer,

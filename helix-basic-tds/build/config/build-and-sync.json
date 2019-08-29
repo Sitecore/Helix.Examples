@@ -1,0 +1,35 @@
+{
+    "Parameters" : {
+        "SitecoreUrl": {
+            "Type": "string",
+            "Description": "URL of the Sitecore instance where Unicorn has been installed.",
+            "DefaultValue": "",
+            "Validate": "[validatenotnullorempty($_)]"
+        }
+    },
+    "Variables" : {
+
+    },
+    "Modules" : [
+        "..\\install-modules\\helix.examples.psm1",
+        "..\\install-modules\\msbuild\\Invoke-MsBuild.psm1"
+    ],
+    "Register" : {
+        "Tasks" : {
+            "MsBuild": "Invoke-MsBuild"
+        }
+    },
+    "Tasks" : {
+        "Warmup": {
+            "Description": "Warmup the instance after recycle",
+            "Type": "InvokeSitecoreWarmup",
+            "Params": {
+                "TimeoutSec": "600",
+                "SitecoreUrl": "[parameter('SitecoreUrl')]"
+            }
+        }
+    },
+    "Settings" : {
+        "AutoRegisterExtensions": true
+    }
+}

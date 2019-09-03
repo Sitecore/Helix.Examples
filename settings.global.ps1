@@ -1,9 +1,9 @@
 # Always execute relative to calling settings
 param($ExampleBuildDirectory)
 
-$SitecoreVersion = "9.1.0 rev. 001564"
-$IdentityServerVersion = "2.0.0 rev. 00157"
-$InstallerVersion = "2.0.0"
+$SitecoreVersion = "9.2.0 rev. 002893"
+$IdentityServerVersion = "3.0.0 rev. 00211"
+$InstallerVersion = "2.1.0"
 
 $SqlBuildVersion = "13.0.5026"
 $SqlFriendlyVersion = "2016 SP2"

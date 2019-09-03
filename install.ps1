@@ -288,7 +288,8 @@ function Write-MainMenu {
                 Script = {
                     try {
                         & $PSScriptRoot\prepare.ps1
-                    } catch {
+                    }
+                    catch {
                         Write-HostHelix
                         Write-HostHelix "Validation/prerequisites error, see details above." -ForegroundColor red
                     }

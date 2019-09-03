@@ -20,7 +20,7 @@
 
     <ItemGroup>
         <!-- Sitecore builtin assemblies -->
-        <SitecoreAssemblyListsToExclude Include="Sitecore.Platform.Assemblies 9.1.0 rev. 001564.csv" />
+        <SitecoreAssemblyListsToExclude Include="Sitecore.Platform.Assemblies 9.2.0 rev. 002893.csv" />
 
         <!-- Deployment project -->
         <SitecoreAssembliesToExclude Include="Website.dll" />

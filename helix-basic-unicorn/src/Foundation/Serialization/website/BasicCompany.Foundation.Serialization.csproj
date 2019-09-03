@@ -13,7 +13,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>BasicCompany.Foundation.Serialization</RootNamespace>
     <AssemblyName>BasicCompany.Foundation.Serialization</AssemblyName>
-    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
@@ -43,16 +43,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Sitecore.Kernel" Version="9.1.0" />
-    <PackageReference Include="Sitecore.Mvc" Version="9.1.0" />
+    <PackageReference Include="Sitecore.Kernel" Version="9.2.0" />
+    <PackageReference Include="Sitecore.Mvc" Version="9.2.0" />
     <PackageReference Include="Unicorn">
-      <Version>4.0.7</Version>
+      <Version>4.1.1</Version>
     </PackageReference>
     <PackageReference Include="Unicorn.Roles">
-      <Version>4.0.7</Version>
+      <Version>4.1.1</Version>
     </PackageReference>
     <PackageReference Include="Unicorn.Users">
-      <Version>4.0.7</Version>
+      <Version>4.1.1</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
@@ -103,7 +103,7 @@
     <Content Include="App_Config\Include\Unicorn\Unicorn.zSharedSecret.config.example" />
     <Content Include="App_Config\Include\Foundation\BasicCompany.Foundation.Serialization.Dev.config" />
     <Content Include="App_Config\Include\Unicorn\Unicorn.UI.DeployedContentEditorWarnings.config.disabled" />
-    <Content Include="App_Config\Include\Unicorn\Unicorn.UI.IdentityServer.config.disabled" />
+    <Content Include="App_Config\Include\Unicorn\Unicorn.UI.IdentityServer.config" />
     <None Include="Views\web.config" />
   </ItemGroup>
   <ItemGroup>

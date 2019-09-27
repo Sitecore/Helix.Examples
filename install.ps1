@@ -158,12 +158,6 @@ Function Write-InstanceMenu($instance) {
                         Write-HostHelix
                         Write-HostHelix "Uninstall complete!" -ForegroundColor yellow
                         Press-AnyKey
-    
-                        # back out a couple steps and re-write instance list
-                        # (with updated install status)
-                        Pop-Menu
-                        Pop-Menu
-                        Write-InstanceListMenu
                     }
                 }
                 catch {
@@ -171,6 +165,12 @@ Function Write-InstanceMenu($instance) {
                     Write-HostHelix "Uninstall error, see details above." -ForegroundColor red
                     Press-AnyKey
                 }
+
+                # back out a couple steps and re-write instance list
+                # (with updated install status)
+                Pop-Menu
+                Pop-Menu
+                Write-InstanceListMenu
             }
             ScriptArgs = @($instance)
         }
@@ -193,12 +193,6 @@ Function Write-InstanceMenu($instance) {
                         Write-HostHelix "Opening $($instance.SitecoreUrl)..."
                         Start-Process $instance.SitecoreUrl
                         Press-AnyKey
-    
-                        # back out a couple steps and re-write instance list
-                        # (with updated install status)
-                        Pop-Menu
-                        Pop-Menu
-                        Write-InstanceListMenu
                     }
                 }
                 catch {
@@ -206,6 +200,12 @@ Function Write-InstanceMenu($instance) {
                     Write-HostHelix "Install error, see details above." -ForegroundColor red
                     Press-AnyKey
                 }
+
+                # back out a couple steps and re-write instance list
+                # (with updated install status, even if install failed)
+                Pop-Menu
+                Pop-Menu
+                Write-InstanceListMenu
             }
             ScriptArgs = @($instance)
         }
@@ -266,6 +266,9 @@ Function Write-InstanceListMenu() {
 
     $menu = [pscustomobject]@{
         Title = "Available Examples"
+        DescriptionLines = @(
+            "An `"(installed)`" flag indicates the web root for the instance appears to exist."
+        )
         Commands = $commands
     }
     Push-Menu -Menu $menu

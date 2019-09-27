@@ -43,13 +43,12 @@
     },
     "Modules" : [
         "..\\install-modules\\helix.examples.psm1",
-        "..\\install-modules\\msbuild\\Invoke-MsBuild.psm1",
         "..\\install-modules\\unicorn\\Unicorn.psm1"
     ],
     "Register" : {
         "Tasks" : {
             "WriteInformation": "Write-Information",
-            "MsBuild": "Invoke-MsBuild",
+            "MsBuild": "Invoke-MsBuildWithFailureCheck",
             "SyncUnicorn": "Sync-Unicorn"
         }
     },

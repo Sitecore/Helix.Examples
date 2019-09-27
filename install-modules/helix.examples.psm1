@@ -263,6 +263,25 @@ Function Remove-AppPoolFromPerfmon {
     }
 }
 
+Import-Module "$PSScriptRoot\msbuild\Invoke-MsBuild.psm1"
+Function Invoke-MsBuildWithFailureCheck {
+    Param(
+        [string]$Path,
+        [string]$MsBuildParameters,
+        [switch]$ShowBuildOutputInCurrentWindow
+    )
+    $buildArgs = @{
+        Path = $Path
+        MsBuildParameters = $MsBuildParameters
+        ShowBuildOutputInCurrentWindow = $ShowBuildOutputInCurrentWindow
+    }
+    $result = Invoke-MsBuild @buildArgs
+    $result
+    if ($result.BuildSucceeded -ne $true) {
+        Write-Error "Build FAILED"
+    }
+}
+
 Function Get-UnicornSecret {
     Param(
         [string]$ConfigPath

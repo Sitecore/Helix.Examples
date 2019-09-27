@@ -1,7 +1,7 @@
 # Metadata for menuing
 $ExampleName = "Helix Basic - Unicorn"
 $ExampleDescription = "This example demonstrates basic Helix solution architecture using Unicorn for serialization and Helix Publishing Pipeline for builds."
-$ExampleUrl = "https://github.com/Sitecore/Helix.Examples/helix-basic-unicorn"
+$ExampleUrl = "https://github.com/Sitecore/Helix.Examples/examples/helix-basic-unicorn"
 
 # URL / Install Prefix
 $SolutionPrefix = "helix-basic-unicorn"
@@ -10,4 +10,4 @@ $SolutionPrefix = "helix-basic-unicorn"
 $BuildProject = "$PSScriptRoot\..\src\Deployment\Website\Website.csproj"
 $UnicornSecretConfig = "$PSScriptRoot\..\src\Foundation\Serialization\website\App_Config\Include\Unicorn.SharedSecret.config"
 
-. $PSScriptRoot\..\..\settings.global.ps1 -ExampleBuildDirectory $PSScriptRoot
+. $PSScriptRoot\..\..\..\settings.global.ps1 -ExampleBuildDirectory $PSScriptRoot

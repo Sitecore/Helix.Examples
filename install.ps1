@@ -226,9 +226,9 @@ Function Write-InstanceMenu($instance) {
     Push-Menu -Menu $menu
 }
 
-Function Write-InstanceListMenu($instances) {
+Function Write-InstanceListMenu() {
     $instanceId = 0
-    $instances = Get-ChildItem -r -Path *\build\settings.ps1 | % {
+    $instances = Get-ChildItem -r -Path examples\*\build\settings.ps1 | % {
         $instanceId++
         $script = {
             . $_.FullName
@@ -302,7 +302,7 @@ function Write-MainMenu {
                 Command = "l"
                 Title = "List/(Un)Install Examples"
                 Script = {
-                    Write-InstanceListMenu -instances $instances
+                    Write-InstanceListMenu
                 }
             },
             [pscustomobject]@{

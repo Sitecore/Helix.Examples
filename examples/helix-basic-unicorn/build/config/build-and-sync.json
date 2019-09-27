@@ -55,7 +55,7 @@
     },
     "Tasks" : {
         "Build": {
-            "Description": "Build the Habitat solution",
+            "Description": "Build the Visual Studio solution",
             "Type": "MsBuild",
             "Params": {
                 "Path": "[parameter('BuildProject')]",

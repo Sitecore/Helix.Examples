@@ -1,17 +1,18 @@
-$ErrorActionPreference = "Stop"
+$ErrorActionPreference = 'Stop'
 
-Import-Module $PSScriptRoot\\..\\..\\install-modules\\helix.examples.psm1
+Import-Module "$PSScriptRoot\..\..\..\install-modules\helix.examples.psm1"
 . $PSScriptRoot\settings.ps1
 
 Write-Host "*******************************************************" -ForegroundColor Green
-Write-Host " Uninstalling Sitecore $SitecoreVersion" -ForegroundColor Green
+Write-Host " Installing Sitecore $SitecoreVersion" -ForegroundColor Green
 Write-Host " Sitecore: $SitecoreSiteName" -ForegroundColor Green
 Write-Host " xConnect: $XConnectSiteName" -ForegroundColor Green
+Write-Host " Identity: $IdentityServerSiteName" -ForegroundColor Green
 Write-Host "*******************************************************" -ForegroundColor Green
 
-Function Uninstall-XP0SingleDeveloper {
+Function Install-XP0SingleDeveloper {
     Push-Location $InstallTemp
-    $uninstallParams = @{
+    $singleDeveloperParams = @{
         Path = $InstallConfiguration
         LicenseFile = $LicenseFile
         SolrUrl = $SolrUrl
@@ -35,7 +36,6 @@ Function Uninstall-XP0SingleDeveloper {
         Install_SitecorePackage = $SitecorePackage
         Install_IdentityServerPackage = $IdentityServerPackage
         Install_XConnectSiteName = $XConnectSiteName
-        Install_SitecoreSitename = $SitecoreSiteName
         Install_PasswordRecoveryUrl = $SitecoreSiteUrl
         Install_SitecoreIdentityAuthority = $IdentityServerUrl
         Install_XConnectCollectionService = $XConnectSiteUrl
@@ -44,11 +44,11 @@ Function Uninstall-XP0SingleDeveloper {
         Install_SitecoreAdminPassword = $SitecoreAdminPassword
     }
     try {
-        Uninstall-SitecoreConfiguration @uninstallParams *>&1 | Tee-Object "$PSScriptRoot\log.uninstall.txt"
+        Install-SitecoreConfiguration @singleDeveloperParams *>&1 | Tee-Object "$PSScriptRoot\log.install.txt"
     }
     catch
     {
-        Write-Host "Uninstall failed" -ForegroundColor Red
+        Write-Host "Install and deploy failed" -ForegroundColor Red
         throw
     }
     finally {
@@ -64,4 +64,4 @@ Initialize-InstallAssets -PrepareAssetsConfiguration $PrepareAssetsConfiguration
     -AssetsRoot $AssetsRoot `
     -ConfigurationsZip $ConfigurationsZip `
     -ExampleConfigPath $ExampleConfigs
-Uninstall-XP0SingleDeveloper
+Install-XP0SingleDeveloper

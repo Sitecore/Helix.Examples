@@ -1,6 +1,6 @@
 $ErrorActionPreference = "Stop"
 
-Import-Module $PSScriptRoot\\..\\..\\install-modules\\helix.examples.psm1
+Import-Module $PSScriptRoot\..\..\..\install-modules\helix.examples.psm1
 . $PSScriptRoot\settings.ps1
 
 Write-Host "*******************************************************" -ForegroundColor Green

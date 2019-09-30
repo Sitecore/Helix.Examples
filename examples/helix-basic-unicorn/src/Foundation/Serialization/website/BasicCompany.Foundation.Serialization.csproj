@@ -74,10 +74,6 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Config\Include\Foundation\BasicCompany.Foundation.Serialization.config" />
-    <Content Include="App_Config\Include\Foundation\BasicCompany.Foundation.Serialization.Serialization.config" />
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -101,9 +97,10 @@
     <Content Include="App_Config\Include\Unicorn\Unicorn.Users.config" />
     <Content Include="App_Config\Include\Unicorn\Unicorn.Users.DataProvider.config" />
     <Content Include="App_Config\Include\Unicorn\Unicorn.zSharedSecret.config.example" />
-    <Content Include="App_Config\Include\Foundation\BasicCompany.Foundation.Serialization.Dev.config" />
     <Content Include="App_Config\Include\Unicorn\Unicorn.UI.DeployedContentEditorWarnings.config.disabled" />
     <Content Include="App_Config\Include\Unicorn\Unicorn.UI.IdentityServer.config" />
+    <Content Include="App_Config\Include\Foundation\Foundation.Serialization.Base.config" />
+    <Content Include="App_Config\Include\Foundation\Foundation.Serialization.config" />
     <None Include="Views\web.config" />
   </ItemGroup>
   <ItemGroup>

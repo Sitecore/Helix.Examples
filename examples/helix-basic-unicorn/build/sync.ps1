@@ -18,6 +18,7 @@ Initialize-InstallAssets -PrepareAssetsConfiguration $PrepareAssetsConfiguration
 Push-Location $InstallTemp
 $buildAndSyncParams = @{
     Path = $BuildAndSyncConfiguration
+    SourceFolder = $SourceFolder
     BuildProject = $BuildProject
     PublishPath = $SitecoreSiteRoot
     SitecoreUrl = $SitecoreSiteUrl

@@ -7,7 +7,8 @@ $ExampleUrl = "https://github.com/Sitecore/Helix.Examples/examples/helix-basic-u
 $SolutionPrefix = "helix-basic-unicorn"
 
 # Solution build parameters
-$BuildProject = "$PSScriptRoot\..\src\Deployment\Website\Website.csproj"
-$UnicornSecretConfig = "$PSScriptRoot\..\src\Foundation\Serialization\website\App_Config\Include\Unicorn.SharedSecret.config"
+$SourceFolder = Resolve-Path "$PSScriptRoot\..\src"
+$BuildProject = "$SourceFolder\Deployment\Website\Website.csproj"
+$UnicornSecretConfig = "$SourceFolder\Foundation\Serialization\website\App_Config\Include\Unicorn.SharedSecret.config"
 
 . $PSScriptRoot\..\..\..\settings.global.ps1 -ExampleBuildDirectory $PSScriptRoot

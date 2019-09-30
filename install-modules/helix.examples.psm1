@@ -303,6 +303,24 @@ Function Get-UnicornSecret {
     return $secret
 }
 
+Function Write-SourceFolderConfigPatch {
+    Param(
+        [string]$SourceFolder,
+        [string]$DestinationPath
+    )
+    $xml = @"
+<?xml version="1.0"?>
+<configuration xmlns:set="http://www.sitecore.net/xmlconfig/set/">
+    <sitecore>
+        <sc.variable name="sourceFolder" set:value="$SourceFolder" />
+    </sitecore>
+</configuration>
+"@
+    Write-Information "Config patch: $xml"
+    $xml > $DestinationPath
+    Write-Information "Wrote to $DestinationPath"
+}
+
 Function Invoke-SitecoreWarmup {
     Param(
         [string]$SitecoreUrl,

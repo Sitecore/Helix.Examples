@@ -1,5 +1,10 @@
 {
     "Parameters" : {
+        "SourceFolder": {
+            "Type": "string",
+            "Description": "Path to the src folder of your solution. Used for Unicorn sync.",
+            "Validate": "[validatenotnullorempty($_)]"
+        },
         "BuildProject": {
             "Type": "string",
             "Description": "Path to the Visual Studio project to build.",
@@ -60,6 +65,14 @@
                 "Path": "[parameter('BuildProject')]",
                 "MsBuildParameters": "[concat('/restore /m /p:DeployOnBuild=true /p:PublishProfile=', parameter('PublishProfile'), ' /p:publishUrl=', parameter('PublishPath'), ' /verbosity:', parameter('BuildVerbosity'))]",
                 "ShowBuildOutputInCurrentWindow": true
+            }
+        },
+        "WriteSourceFolderConfigPatch": {
+            "Description": "Write environment configuration patch for source folder",
+            "Type": "WriteSourceFolderConfigPatch",
+            "Params": {
+                "SourceFolder": "[parameter('SourceFolder')]",
+                "DestinationPath": "[concat(parameter('PublishPath'), '\\App_Config\\Environment\\SourceFolder.Dev.config')]"
             }
         },
         "Warmup": {

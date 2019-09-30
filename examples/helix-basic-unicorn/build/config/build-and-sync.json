@@ -58,12 +58,20 @@
         }
     },
     "Tasks" : {
+        "WritePublishUserPath": {
+            "Description": "Configure Publish path for MSBuild",
+            "Type": "WritePublishUserPath",
+            "Params": {
+                "PublishPath": "[parameter('PublishPath')]",
+                "DestinationPath": "[concat(parameter('SourceFolder'), '\\Deployment\\Website\\Properties\\PublishProfiles\\Local.pubxml.user.props')]"
+            }
+        },
         "Build": {
-            "Description": "Build the Visual Studio solution",
+            "Description": "Build and Publish the Visual Studio solution",
             "Type": "MsBuild",
             "Params": {
                 "Path": "[parameter('BuildProject')]",
-                "MsBuildParameters": "[concat('/restore /m /p:DeployOnBuild=true /p:PublishProfile=', parameter('PublishProfile'), ' /p:publishUrl=', parameter('PublishPath'), ' /verbosity:', parameter('BuildVerbosity'))]",
+                "MsBuildParameters": "[concat('/restore /m /p:DeployOnBuild=true /p:PublishProfile=', parameter('PublishProfile'), ' /verbosity:', parameter('BuildVerbosity'))]",
                 "ShowBuildOutputInCurrentWindow": true
             }
         },

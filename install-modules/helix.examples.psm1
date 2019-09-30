@@ -321,6 +321,24 @@ Function Write-SourceFolderConfigPatch {
     Write-Information "Wrote to $DestinationPath"
 }
 
+Function Write-PublishUserPath {
+    Param(
+        [string]$PublishPath,
+        [string]$DestinationPath
+    )
+    $xml = @"
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <publishUrl>$PublishPath</publishUrl>
+    </PropertyGroup>
+</Project>
+"@
+    Write-Information "MSBuild publish configuration: $xml"
+    $xml > $DestinationPath
+    Write-Information "Wrote to $DestinationPath"
+}
+
 Function Invoke-SitecoreWarmup {
     Param(
         [string]$SitecoreUrl,

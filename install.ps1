@@ -328,7 +328,7 @@ function Write-MainMenu {
                     Write-HostHelix "  > A 'starter kit' for Helix-based sites (there are several of these in the community)"
                     Write-HostHelix
                     Write-HostHelix "You can certainly reference and reuse code found here. However you should take care when doing so, like you could copying code from"
-                    Write-HostHelix "Stackexchange or other sources and adjust to your needs. As much as possible, these examples strive to follow good Sitecore practices beyond Helix."
+                    Write-HostHelix "Stackexchange or other sources, and adjust to your needs. As much as possible, these examples strive to follow good Sitecore practices beyond Helix."
                     Write-HostHelix
                     Write-HostHelix "The install/menu/configuration system however is optimized to ease and bring joy to the installation of the multiple example instances,"
                     Write-HostHelix "and likely is not a good fit for production projects. However we do hope you enjoy using it."

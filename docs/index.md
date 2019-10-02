@@ -12,7 +12,7 @@ of implementation types / requirements than existing examples.
 
 ## What is Sitecore Helix?
 
-*Sitecore Helix* is a collection of **recommended practices** and
+[*Sitecore Helix*](https://helix.sitecore.net) is a collection of **recommended practices** and
 **conventions** for the **solution architecture** of Sitecore product
 implementations.
 
@@ -26,15 +26,14 @@ Interested in exploring these examples? You can...
 
 ## Intended Usage
 
-The Helix Examples are not:
-* Sales/Marketing demo sites (see Habitat Home)
-* A 'getting started' guide for Sitecore (see https://doc.sitecore.com/developers) 
+The Sitecore Helix Examples are not:
+* Sales/Marketing demo sites (see [Habitat Home](https://github.com/Sitecore/Sitecore.HabitatHome.Platform))
+* A 'getting started' guide for Sitecore (see [Sitecore Developer Documentation](https://doc.sitecore.com/developers))
 * A 'starter kit' for Helix-based sites (there are several of these in the community)
 
 You can certainly reference and reuse code found here. However you should take care
 when doing so, like you could copying code from Stackexchange or other sources,
-and adjust to your needs. As much as possible, these examples strive to follow good
-Sitecore practices beyond Helix.
+and adjust to your needs. As much as possible, these examples strive to follow good Sitecore practices beyond Helix.
 
 The SIF-based install/menu/configuration system however is optimized to ease and bring joy to
 the installation of the multiple example instances, and likely is not a good fit for

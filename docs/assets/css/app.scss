@@ -11,3 +11,8 @@ $primary: #333333;
         background-color: red;
     }
 }
+
+a.navbar-item.is-active {
+    background-color: unset;
+    text-decoration: underline;
+}

@@ -2,11 +2,13 @@
 layout: page
 hide_hero: true
 ---
-# Welcome to the Sitecore Helix Examples Repository
+# Welcome to the Sitecore Helix Examples
 
 The Sitecore Helix Examples are demonstrations of Sitecore Helix practices across various
 tooling and business scenarios. They are intended to demonstrate a wider variety
 of implementation types / requirements than existing examples.
+
+[![Download on GitHub](https://img.shields.io/badge/DOWNLOAD-ON%20GITHUB-red?style=for-the-badge&logo=github)](https://github.com/Sitecore/Helix.Examples)
 
 ## What is Sitecore Helix?
 

@@ -12,7 +12,11 @@ $primary: #333333;
     }
 }
 
+a.navbar-item:hover {
+    background-color: unset !important;
+}
+
 a.navbar-item.is-active {
-    background-color: unset;
+    background-color: unset !important;
     text-decoration: underline;
 }

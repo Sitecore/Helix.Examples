@@ -4,7 +4,7 @@ The Sitecore Helix Examples are demonstrations of Sitecore Helix practices acros
 tooling and business scenarios. They are intended to demonstrate a wider variety
 of implementation types / requirements than existing examples. Information on the available examples and installation can be found in the [documentation](https://sitecore.github.io/Helix.Examples/).
 
-## [>>>Read the Docs](https://sitecore.github.io/Helix.Examples/)
+[![Read the Docs](https://img.shields.io/badge/READ-THE%20DOCS-red?style=for-the-badge)](https://sitecore.github.io/Helix.Examples/)
 
 ## What is Sitecore Helix?
 

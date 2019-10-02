@@ -101,7 +101,6 @@
     <Content Include="App_Config\Include\Unicorn\Unicorn.UI.IdentityServer.config" />
     <Content Include="App_Config\Include\Foundation\Foundation.Serialization.Base.config" />
     <Content Include="App_Config\Include\Foundation\Foundation.Serialization.config" />
-    <None Include="Views\web.config" />
   </ItemGroup>
   <ItemGroup>
     <None Include="web.config" />
@@ -112,9 +111,7 @@
       <DependentUpon>web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Serialization\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

@@ -72,6 +72,7 @@
     <Content Include="Views\Products\Detail Header.cshtml" />
     <Content Include="Views\Products\Related Products.cshtml" />
     <Content Include="Views\Products\_ListProduct.cshtml" />
+    <Content Include="App_Config\Include\Feature\Feature.Products.ContentSearch.config" />
     <None Include="Views\web.config" />
   </ItemGroup>
   <ItemGroup>

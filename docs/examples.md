@@ -12,7 +12,7 @@ basics of modular architecture without being overwhemling. This also allows it
 to be implemented with multiple toolsets / patterns without creating significant
 maintenance overhead.
 
-### Helix Basic Company - TDS (Forthcoming)
+### Helix Basic Company - TDS
 
 The [Sitecore TDS](https://www.teamdevelopmentforsitecore.com/TDS-Classic)-based
 implementation of Helix Basic Company. It utilizes Sitecore TDS both for

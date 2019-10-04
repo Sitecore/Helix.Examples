@@ -63,7 +63,7 @@
             "Type": "WritePublishUserPath",
             "Params": {
                 "PublishPath": "[parameter('PublishPath')]",
-                "DestinationPath": "[concat(parameter('SourceFolder'), '\\Deployment\\Website\\Properties\\PublishProfiles\\Local.pubxml.user.props')]"
+                "DestinationPath": "[concat(parameter('SourceFolder'), '\\Environment\\Website\\Properties\\PublishProfiles\\Local.pubxml.user.props')]"
             }
         },
         "Build": {

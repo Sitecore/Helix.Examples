@@ -1,0 +1,34 @@
+---
+ID: "ff0bc016-2d01-4f55-a020-ef6fc2fe7559"
+Parent: "949dfd54-3a60-41d1-a05b-826783fd501f"
+Template: "8ea2cf67-4250-47a2-aeca-4f70fd200dc7"
+Path: /sitecore/system/Settings/Rules/Insert Options/Rules
+DB: master
+Created: 20190510T091725Z
+SharedFields:
+- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
+  Hint: __Masters
+  Type: TreelistEx
+  Value: "{664E5035-EB8C-4BA1-9731-A098FCC9127A}"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20080925T121208
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\Admin
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "69879a71-5ce6-4b59-a4d3-c8ace7367dec"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\Admin
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: "20120906T114409:634825286494672868"

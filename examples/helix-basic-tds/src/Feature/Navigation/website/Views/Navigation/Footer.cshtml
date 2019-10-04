@@ -1,0 +1,9 @@
+﻿@model Sitecore.Data.Items.Item
+@using BasicCompany.Feature.Navigation
+@using BasicCompany.Foundation.FieldRendering
+
+<footer class="footer footer-extended">
+    <div class="content container">
+        <p>@Html.Sitecore().Field(Templates.NavigationRoot.Fields.FooterCopyright, Model) &copy; 2018-@DateTime.Now.Year</p>
+    </div>
+</footer>

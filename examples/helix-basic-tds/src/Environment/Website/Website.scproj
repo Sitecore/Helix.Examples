@@ -1,0 +1,524 @@
+﻿<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>35100792-25ca-4279-9e3f-f57993c05fcb</ProjectGuid>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <CompactSitecoreItemsInProjectFile>True</CompactSitecoreItemsInProjectFile>
+    <AssemblyName>Website</AssemblyName>
+    <Name>Website</Name>
+    <RootNamespace>Website</RootNamespace>
+    <ManageRoles>False</ManageRoles>
+    <SitecoreDatabase>master</SitecoreDatabase>
+    <AssemblyStatus>Exclude</AssemblyStatus>
+    <InstallSitecoreConnector>False</InstallSitecoreConnector>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>.\bin\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <RecursiveDeployAction>Ignore</RecursiveDeployAction>
+  </PropertyGroup>
+  <ItemGroup>
+    <AssemblyAttributes Include="AssemblyFileVersion">
+      <Value>$(AssemblyFileVersion)</Value>
+    </AssemblyAttributes>
+    <AssemblyAttributes Include="AssemblyVersion">
+      <Value>$(AssemblyVersion)</Value>
+    </AssemblyAttributes>
+  </ItemGroup>
+  <ItemGroup>
+    <SourceWebProjects Include="{087d93eb-261b-4c05-a72f-5e72c4d7f043}|src\Feature\Services\website\BasicCompany.Feature.Services.csproj">
+      <SourceWebPhysicalPath>..\..\Feature\Services\website</SourceWebPhysicalPath>
+      <SourceWebVirtualPath>/BasicCompany.Feature.Services.csproj</SourceWebVirtualPath>
+      <SourceWebProjectId>087d93eb-261b-4c05-a72f-5e72c4d7f043</SourceWebProjectId>
+    </SourceWebProjects>
+    <SourceWebProjects Include="{32c3e6dd-6531-450c-908c-2c71f392a571}|src\Foundation\Multisite\website\BasicCompany.Foundation.Multisite.csproj">
+      <SourceWebPhysicalPath>..\..\Foundation\Multisite\website</SourceWebPhysicalPath>
+      <SourceWebVirtualPath>/BasicCompany.Foundation.Multisite.csproj</SourceWebVirtualPath>
+      <SourceWebProjectId>32c3e6dd-6531-450c-908c-2c71f392a571</SourceWebProjectId>
+    </SourceWebProjects>
+    <SourceWebProjects Include="{508c9659-2186-4655-b24a-f2de3744bab5}|src\Foundation\FieldRendering\website\BasicCompany.Foundation.FieldRendering.csproj">
+      <SourceWebPhysicalPath>..\..\Foundation\FieldRendering\website</SourceWebPhysicalPath>
+      <SourceWebVirtualPath>/BasicCompany.Foundation.FieldRendering.csproj</SourceWebVirtualPath>
+      <SourceWebProjectId>508c9659-2186-4655-b24a-f2de3744bab5</SourceWebProjectId>
+    </SourceWebProjects>
+    <SourceWebProjects Include="{6005f3a9-bb98-4f06-a84b-3cc6a07be92e}|src\Feature\Navigation\website\BasicCompany.Feature.Navigation.csproj">
+      <SourceWebPhysicalPath>..\..\Feature\Navigation\website</SourceWebPhysicalPath>
+      <SourceWebVirtualPath>/BasicCompany.Feature.Navigation.csproj</SourceWebVirtualPath>
+      <SourceWebProjectId>6005f3a9-bb98-4f06-a84b-3cc6a07be92e</SourceWebProjectId>
+    </SourceWebProjects>
+    <SourceWebProjects Include="{63cc52d8-aba2-47a9-9490-44e71d4c2574}|src\Feature\Products\website\BasicCompany.Feature.Products.csproj">
+      <SourceWebPhysicalPath>..\..\Feature\Products\website</SourceWebPhysicalPath>
+      <SourceWebVirtualPath>/BasicCompany.Feature.Products.csproj</SourceWebVirtualPath>
+      <SourceWebProjectId>63cc52d8-aba2-47a9-9490-44e71d4c2574</SourceWebProjectId>
+    </SourceWebProjects>
+    <SourceWebProjects Include="{816f099c-e14b-4468-9e34-87f993c6484d}|src\Project\BasicCompany\website\BasicCompany.Project.BasicCompany.csproj">
+      <SourceWebPhysicalPath>..\..\Project\BasicCompany\website</SourceWebPhysicalPath>
+      <SourceWebVirtualPath>/BasicCompany.Project.BasicCompany.csproj</SourceWebVirtualPath>
+      <SourceWebProjectId>816f099c-e14b-4468-9e34-87f993c6484d</SourceWebProjectId>
+    </SourceWebProjects>
+    <SourceWebProjects Include="{86b7e1bd-dc6d-45db-b11b-255b18c3cf62}|src\Feature\BasicContent\website\BasicCompany.Feature.BasicContent.csproj">
+      <SourceWebPhysicalPath>..\..\Feature\BasicContent\website</SourceWebPhysicalPath>
+      <SourceWebVirtualPath>/BasicCompany.Feature.BasicContent.csproj</SourceWebVirtualPath>
+      <SourceWebProjectId>86b7e1bd-dc6d-45db-b11b-255b18c3cf62</SourceWebProjectId>
+    </SourceWebProjects>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Feature\BasicContent\website\BasicCompany.Feature.BasicContent.csproj">
+      <Project>{86b7e1bd-dc6d-45db-b11b-255b18c3cf62}</Project>
+      <Name>BasicCompany.Feature.BasicContent</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Feature\Navigation\website\BasicCompany.Feature.Navigation.csproj">
+      <Project>{6005f3a9-bb98-4f06-a84b-3cc6a07be92e}</Project>
+      <Name>BasicCompany.Feature.Navigation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Feature\Products\website\BasicCompany.Feature.Products.csproj">
+      <Project>{63cc52d8-aba2-47a9-9490-44e71d4c2574}</Project>
+      <Name>BasicCompany.Feature.Products</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Feature\Services\website\BasicCompany.Feature.Services.csproj">
+      <Project>{087d93eb-261b-4c05-a72f-5e72c4d7f043}</Project>
+      <Name>BasicCompany.Feature.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Foundation\FieldRendering\website\BasicCompany.Foundation.FieldRendering.csproj">
+      <Project>{508c9659-2186-4655-b24a-f2de3744bab5}</Project>
+      <Name>BasicCompany.Foundation.FieldRendering</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Foundation\Multisite\website\BasicCompany.Foundation.Multisite.csproj">
+      <Project>{32c3e6dd-6531-450c-908c-2c71f392a571}</Project>
+      <Name>BasicCompany.Foundation.Multisite</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Project\BasicCompany\website\BasicCompany.Project.BasicCompany.csproj">
+      <Project>{816f099c-e14b-4468-9e34-87f993c6484d}</Project>
+      <Name>BasicCompany.Project.BasicCompany</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ExcludedAssemblies Include="Antlr3.Runtime.dll" />
+    <ExcludedAssemblies Include="ChilkatDotNet47.dll" />
+    <ExcludedAssemblies Include="CommonServiceLocator.dll" />
+    <ExcludedAssemblies Include="CommonServiceLocator.SolrNet.dll" />
+    <ExcludedAssemblies Include="ComponentArt.Web.UI.dll" />
+    <ExcludedAssemblies Include="DnsClient.dll" />
+    <ExcludedAssemblies Include="DocumentFormat.OpenXml.dll" />
+    <ExcludedAssemblies Include="EcmaScript.NET.dll" />
+    <ExcludedAssemblies Include="FiftyOne.Foundation.dll" />
+    <ExcludedAssemblies Include="HtmlAgilityPack.dll" />
+    <ExcludedAssemblies Include="ICSharpCode.SharpZipLib.dll" />
+    <ExcludedAssemblies Include="IdentityModel.dll" />
+    <ExcludedAssemblies Include="Lucene.Net.Contrib.Analyzers.dll" />
+    <ExcludedAssemblies Include="Lucene.Net.Contrib.Core.dll" />
+    <ExcludedAssemblies Include="Lucene.Net.Contrib.FastVectorHighlighter.dll" />
+    <ExcludedAssemblies Include="Lucene.Net.Contrib.Highlighter.dll" />
+    <ExcludedAssemblies Include="Lucene.Net.Contrib.Memory.dll" />
+    <ExcludedAssemblies Include="Lucene.Net.Contrib.Queries.dll" />
+    <ExcludedAssemblies Include="Lucene.Net.Contrib.Regex.dll" />
+    <ExcludedAssemblies Include="Lucene.Net.Contrib.SimpleFacetedSearch.dll" />
+    <ExcludedAssemblies Include="Lucene.Net.Contrib.Snowball.dll" />
+    <ExcludedAssemblies Include="Lucene.Net.Contrib.SpellChecker.dll" />
+    <ExcludedAssemblies Include="Lucene.Net.dll" />
+    <ExcludedAssemblies Include="MarkdownSharp.dll" />
+    <ExcludedAssemblies Include="Microsoft.AspNet.Identity.Core.dll" />
+    <ExcludedAssemblies Include="Microsoft.AspNet.Identity.Owin.dll" />
+    <ExcludedAssemblies Include="Microsoft.AspNet.OData.dll" />
+    <ExcludedAssemblies Include="Microsoft.AspNet.WebApi.Extensions.Compression.Server.dll" />
+    <ExcludedAssemblies Include="Microsoft.AspNetCore.Hosting.Abstractions.dll" />
+    <ExcludedAssemblies Include="Microsoft.AspNetCore.Hosting.Server.Abstractions.dll" />
+    <ExcludedAssemblies Include="Microsoft.AspNetCore.Http.Abstractions.dll" />
+    <ExcludedAssemblies Include="Microsoft.AspNetCore.Http.Features.dll" />
+    <ExcludedAssemblies Include="Microsoft.Azure.Amqp.dll" />
+    <ExcludedAssemblies Include="Microsoft.Azure.ServiceBus.dll" />
+    <ExcludedAssemblies Include="Microsoft.Azure.Services.AppAuthentication.dll" />
+    <ExcludedAssemblies Include="Microsoft.DotNet.PlatformAbstractions.dll" />
+    <ExcludedAssemblies Include="Microsoft.Extensions.Caching.Abstractions.dll" />
+    <ExcludedAssemblies Include="Microsoft.Extensions.Caching.Memory.dll" />
+    <ExcludedAssemblies Include="Microsoft.Extensions.CommandLineUtils.dll" />
+    <ExcludedAssemblies Include="Microsoft.Extensions.Configuration.Abstractions.dll" />
+    <ExcludedAssemblies Include="Microsoft.Extensions.Configuration.Binder.dll" />
+    <ExcludedAssemblies Include="Microsoft.Extensions.Configuration.CommandLine.dll" />
+    <ExcludedAssemblies Include="Microsoft.Extensions.Configuration.dll" />
+    <ExcludedAssemblies Include="Microsoft.Extensions.Configuration.EnvironmentVariables.dll" />
+    <ExcludedAssemblies Include="Microsoft.Extensions.Configuration.FileExtensions.dll" />
+    <ExcludedAssemblies Include="Microsoft.Extensions.Configuration.Ini.dll" />
+    <ExcludedAssemblies Include="Microsoft.Extensions.Configuration.Json.dll" />
+    <ExcludedAssemblies Include="Microsoft.Extensions.Configuration.Xml.dll" />
+    <ExcludedAssemblies Include="Microsoft.Extensions.DependencyInjection.Abstractions.dll" />
+    <ExcludedAssemblies Include="Microsoft.Extensions.DependencyInjection.dll" />
+    <ExcludedAssemblies Include="Microsoft.Extensions.DependencyModel.dll" />
+    <ExcludedAssemblies Include="Microsoft.Extensions.FileProviders.Abstractions.dll" />
+    <ExcludedAssemblies Include="Microsoft.Extensions.FileProviders.Physical.dll" />
+    <ExcludedAssemblies Include="Microsoft.Extensions.FileSystemGlobbing.dll" />
+    <ExcludedAssemblies Include="Microsoft.Extensions.Hosting.Abstractions.dll" />
+    <ExcludedAssemblies Include="Microsoft.Extensions.Logging.Abstractions.dll" />
+    <ExcludedAssemblies Include="Microsoft.Extensions.Logging.dll" />
+    <ExcludedAssemblies Include="Microsoft.Extensions.Options.dll" />
+    <ExcludedAssemblies Include="Microsoft.Extensions.Primitives.dll" />
+    <ExcludedAssemblies Include="Microsoft.IdentityModel.Clients.ActiveDirectory.dll" />
+    <ExcludedAssemblies Include="Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll" />
+    <ExcludedAssemblies Include="Microsoft.IdentityModel.Logging.dll" />
+    <ExcludedAssemblies Include="Microsoft.IdentityModel.Protocols.dll" />
+    <ExcludedAssemblies Include="Microsoft.IdentityModel.Protocols.OpenIdConnect.dll" />
+    <ExcludedAssemblies Include="Microsoft.IdentityModel.Protocols.WsFederation.dll" />
+    <ExcludedAssemblies Include="Microsoft.IdentityModel.Tokens.dll" />
+    <ExcludedAssemblies Include="Microsoft.IdentityModel.Tokens.Saml.dll" />
+    <ExcludedAssemblies Include="Microsoft.IdentityModel.Xml.dll" />
+    <ExcludedAssemblies Include="Microsoft.OData.Core.dll" />
+    <ExcludedAssemblies Include="Microsoft.OData.Edm.dll" />
+    <ExcludedAssemblies Include="Microsoft.Owin.dll" />
+    <ExcludedAssemblies Include="Microsoft.Owin.Host.SystemWeb.dll" />
+    <ExcludedAssemblies Include="Microsoft.Owin.Security.ActiveDirectory.dll" />
+    <ExcludedAssemblies Include="Microsoft.Owin.Security.Cookies.dll" />
+    <ExcludedAssemblies Include="Microsoft.Owin.Security.dll" />
+    <ExcludedAssemblies Include="Microsoft.Owin.Security.Jwt.dll" />
+    <ExcludedAssemblies Include="Microsoft.Owin.Security.OAuth.dll" />
+    <ExcludedAssemblies Include="Microsoft.Owin.Security.OpenIdConnect.dll" />
+    <ExcludedAssemblies Include="Microsoft.Practices.EnterpriseLibrary.Common.dll" />
+    <ExcludedAssemblies Include="Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling.Caching.dll" />
+    <ExcludedAssemblies Include="Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling.Configuration.dll" />
+    <ExcludedAssemblies Include="Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling.Data.dll" />
+    <ExcludedAssemblies Include="Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling.dll" />
+    <ExcludedAssemblies Include="Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling.ServiceBus.dll" />
+    <ExcludedAssemblies Include="Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling.WindowsAzure.Storage.dll" />
+    <ExcludedAssemblies Include="Microsoft.Spatial.dll" />
+    <ExcludedAssemblies Include="Microsoft.Web.Delegation.dll" />
+    <ExcludedAssemblies Include="Microsoft.Web.Deployment.dll" />
+    <ExcludedAssemblies Include="Microsoft.Web.Deployment.Tracing.dll" />
+    <ExcludedAssemblies Include="Microsoft.Web.Infrastructure.dll" />
+    <ExcludedAssemblies Include="MongoDB.Bson.dll" />
+    <ExcludedAssemblies Include="MongoDB.Driver.Core.dll" />
+    <ExcludedAssemblies Include="MongoDB.Driver.dll" />
+    <ExcludedAssemblies Include="MongoDB.Driver.Legacy.dll" />
+    <ExcludedAssemblies Include="Mvp.Xml.dll" />
+    <ExcludedAssemblies Include="Newtonsoft.Json.dll" />
+    <ExcludedAssemblies Include="Owin.dll" />
+    <ExcludedAssemblies Include="PdfSharp.Charting.dll" />
+    <ExcludedAssemblies Include="PdfSharp.Charting.resources.dll" />
+    <ExcludedAssemblies Include="PdfSharp.dll" />
+    <ExcludedAssemblies Include="PdfSharp.resources.dll" />
+    <ExcludedAssemblies Include="Pipelines.Sockets.Unofficial.dll" />
+    <ExcludedAssemblies Include="protobuf-net.dll" />
+    <ExcludedAssemblies Include="RazorGenerator.Mvc.dll" />
+    <ExcludedAssemblies Include="Rebus.AzureServiceBus.dll" />
+    <ExcludedAssemblies Include="Rebus.dll" />
+    <ExcludedAssemblies Include="Rebus.SqlServer.dll" />
+    <ExcludedAssemblies Include="Remotion.Linq.dll" />
+    <ExcludedAssemblies Include="Sitecore.Abstractions.dll" />
+    <ExcludedAssemblies Include="Sitecore.Analytics.Aggregation.dll" />
+    <ExcludedAssemblies Include="Sitecore.Analytics.Core.dll" />
+    <ExcludedAssemblies Include="Sitecore.Analytics.DataAccess.dll" />
+    <ExcludedAssemblies Include="Sitecore.Analytics.dll" />
+    <ExcludedAssemblies Include="Sitecore.Analytics.Model.dll" />
+    <ExcludedAssemblies Include="Sitecore.Analytics.OmniChannel.dll" />
+    <ExcludedAssemblies Include="Sitecore.Analytics.Processing.dll" />
+    <ExcludedAssemblies Include="Sitecore.Analytics.RobotDetection.dll" />
+    <ExcludedAssemblies Include="Sitecore.Analytics.Sql.dll" />
+    <ExcludedAssemblies Include="Sitecore.Analytics.XConnect.dll" />
+    <ExcludedAssemblies Include="Sitecore.Annotations.dll" />
+    <ExcludedAssemblies Include="Sitecore.Apps.Loader.dll" />
+    <ExcludedAssemblies Include="Sitecore.Buckets.Client.dll" />
+    <ExcludedAssemblies Include="Sitecore.Buckets.dll" />
+    <ExcludedAssemblies Include="Sitecore.CES.DeviceDetection.dll" />
+    <ExcludedAssemblies Include="Sitecore.CES.DeviceDetection.Rules.dll" />
+    <ExcludedAssemblies Include="Sitecore.CES.dll" />
+    <ExcludedAssemblies Include="Sitecore.CES.GeoIp.Core.dll" />
+    <ExcludedAssemblies Include="Sitecore.CES.GeoIp.dll" />
+    <ExcludedAssemblies Include="Sitecore.CES.GeoIp.IpFiltering.dll" />
+    <ExcludedAssemblies Include="Sitecore.Cintel.Client.dll" />
+    <ExcludedAssemblies Include="Sitecore.Cintel.dll" />
+    <ExcludedAssemblies Include="Sitecore.Client.dll" />
+    <ExcludedAssemblies Include="Sitecore.Client.LicenseOptions.dll" />
+    <ExcludedAssemblies Include="Sitecore.Cloud.Nexus.dll" />
+    <ExcludedAssemblies Include="Sitecore.Content.Services.dll" />
+    <ExcludedAssemblies Include="Sitecore.ContentSearch.Azure.dll" />
+    <ExcludedAssemblies Include="Sitecore.ContentSearch.Client.dll" />
+    <ExcludedAssemblies Include="Sitecore.ContentSearch.ContentExtraction.dll" />
+    <ExcludedAssemblies Include="Sitecore.ContentSearch.Data.dll" />
+    <ExcludedAssemblies Include="Sitecore.ContentSearch.dll" />
+    <ExcludedAssemblies Include="Sitecore.ContentSearch.Linq.dll" />
+    <ExcludedAssemblies Include="Sitecore.ContentSearch.Linq.Lucene.dll" />
+    <ExcludedAssemblies Include="Sitecore.ContentSearch.Linq.Solr.dll" />
+    <ExcludedAssemblies Include="Sitecore.ContentSearch.LuceneProvider.dll" />
+    <ExcludedAssemblies Include="Sitecore.ContentSearch.SolrNetExtension.dll" />
+    <ExcludedAssemblies Include="Sitecore.ContentSearch.SolrProvider.dll" />
+    <ExcludedAssemblies Include="Sitecore.ContentTagging.Core.dll" />
+    <ExcludedAssemblies Include="Sitecore.ContentTagging.dll" />
+    <ExcludedAssemblies Include="Sitecore.ContentTagging.OpenCalais.dll" />
+    <ExcludedAssemblies Include="Sitecore.ContentTesting.dll" />
+    <ExcludedAssemblies Include="Sitecore.ContentTesting.Intelligence.dll" />
+    <ExcludedAssemblies Include="Sitecore.ContentTesting.Model.dll" />
+    <ExcludedAssemblies Include="Sitecore.ContentTesting.Model.xConnect.dll" />
+    <ExcludedAssemblies Include="Sitecore.ContentTesting.Mvc.dll" />
+    <ExcludedAssemblies Include="Sitecore.ContentTesting.Reporting.Model.dll" />
+    <ExcludedAssemblies Include="Sitecore.ControlPanel.dll" />
+    <ExcludedAssemblies Include="Sitecore.EDS.Client.dll" />
+    <ExcludedAssemblies Include="Sitecore.EDS.Core.dll" />
+    <ExcludedAssemblies Include="Sitecore.EDS.Providers.CustomSMTP.dll" />
+    <ExcludedAssemblies Include="Sitecore.EDS.Providers.SparkPost.dll" />
+    <ExcludedAssemblies Include="Sitecore.EDS.SparkPost.ClientServices.dll" />
+    <ExcludedAssemblies Include="Sitecore.EmailCampaign.Activities.dll" />
+    <ExcludedAssemblies Include="Sitecore.EmailCampaign.Application.dll" />
+    <ExcludedAssemblies Include="Sitecore.EmailCampaign.Cd.dll" />
+    <ExcludedAssemblies Include="Sitecore.EmailCampaign.Cm.dll" />
+    <ExcludedAssemblies Include="Sitecore.EmailCampaign.Cm.UI.dll" />
+    <ExcludedAssemblies Include="Sitecore.EmailCampaign.Core.dll" />
+    <ExcludedAssemblies Include="Sitecore.EmailCampaign.dll" />
+    <ExcludedAssemblies Include="Sitecore.EmailCampaign.ExperienceAnalytics.dll" />
+    <ExcludedAssemblies Include="Sitecore.EmailCampaign.Model.dll" />
+    <ExcludedAssemblies Include="Sitecore.EmailCampaign.Model.Web.dll" />
+    <ExcludedAssemblies Include="Sitecore.EmailCampaign.SampleNewsletter.dll" />
+    <ExcludedAssemblies Include="Sitecore.EmailCampaign.Server.dll" />
+    <ExcludedAssemblies Include="Sitecore.EmailCampaign.XConnect.dll" />
+    <ExcludedAssemblies Include="Sitecore.EmailCampaign.XConnect.Web.dll" />
+    <ExcludedAssemblies Include="Sitecore.ExM.Framework.dll" />
+    <ExcludedAssemblies Include="Sitecore.ExperienceAnalytics.Aggregation.dll" />
+    <ExcludedAssemblies Include="Sitecore.ExperienceAnalytics.Api.dll" />
+    <ExcludedAssemblies Include="Sitecore.ExperienceAnalytics.Client.dll" />
+    <ExcludedAssemblies Include="Sitecore.ExperienceAnalytics.Core.dll" />
+    <ExcludedAssemblies Include="Sitecore.ExperienceAnalytics.ReAggregation.dll" />
+    <ExcludedAssemblies Include="Sitecore.ExperienceAnalytics.Reduce.dll" />
+    <ExcludedAssemblies Include="Sitecore.ExperienceContentManagement.Administration.dll" />
+    <ExcludedAssemblies Include="Sitecore.ExperienceEditor.dll" />
+    <ExcludedAssemblies Include="Sitecore.ExperienceEditor.Speak.dll" />
+    <ExcludedAssemblies Include="Sitecore.ExperienceEditor.Speak.Ribbon.dll" />
+    <ExcludedAssemblies Include="Sitecore.ExperienceExplorer.Analytics.dll" />
+    <ExcludedAssemblies Include="Sitecore.ExperienceExplorer.Core.dll" />
+    <ExcludedAssemblies Include="Sitecore.ExperienceExplorer.dll" />
+    <ExcludedAssemblies Include="Sitecore.ExperienceExplorer.Web.dll" />
+    <ExcludedAssemblies Include="Sitecore.ExperienceForms.Analytics.dll" />
+    <ExcludedAssemblies Include="Sitecore.ExperienceForms.Client.dll" />
+    <ExcludedAssemblies Include="Sitecore.ExperienceForms.Data.SqlServer.dll" />
+    <ExcludedAssemblies Include="Sitecore.ExperienceForms.dll" />
+    <ExcludedAssemblies Include="Sitecore.ExperienceForms.Mvc.dll" />
+    <ExcludedAssemblies Include="Sitecore.ExperienceForms.SubmitActions.dll" />
+    <ExcludedAssemblies Include="Sitecore.Framework.Common.Abstractions.dll" />
+    <ExcludedAssemblies Include="Sitecore.Framework.Common.dll" />
+    <ExcludedAssemblies Include="Sitecore.Framework.Common.Extensions.dll" />
+    <ExcludedAssemblies Include="Sitecore.Framework.Common.WildcardMatch.dll" />
+    <ExcludedAssemblies Include="Sitecore.Framework.Conditions.dll" />
+    <ExcludedAssemblies Include="Sitecore.Framework.Configuration.Abstractions.dll" />
+    <ExcludedAssemblies Include="Sitecore.Framework.Configuration.Common.dll" />
+    <ExcludedAssemblies Include="Sitecore.Framework.Configuration.dll" />
+    <ExcludedAssemblies Include="Sitecore.Framework.Configuration.Extensions.dll" />
+    <ExcludedAssemblies Include="Sitecore.Framework.Configuration.Xml.dll" />
+    <ExcludedAssemblies Include="Sitecore.Framework.Messaging.Abstractions.dll" />
+    <ExcludedAssemblies Include="Sitecore.Framework.Messaging.Configuration.dll" />
+    <ExcludedAssemblies Include="Sitecore.Framework.Messaging.Rebus.Azure.dll" />
+    <ExcludedAssemblies Include="Sitecore.Framework.Messaging.Rebus.Configuration.dll" />
+    <ExcludedAssemblies Include="Sitecore.Framework.Messaging.Rebus.dll" />
+    <ExcludedAssemblies Include="Sitecore.Framework.Messaging.Rebus.SqlServer.dll" />
+    <ExcludedAssemblies Include="Sitecore.Framework.Rules.Abstractions.dll" />
+    <ExcludedAssemblies Include="Sitecore.Framework.Rules.Api.dll" />
+    <ExcludedAssemblies Include="Sitecore.Framework.Rules.Core.dll" />
+    <ExcludedAssemblies Include="Sitecore.Framework.Rules.dll" />
+    <ExcludedAssemblies Include="Sitecore.Framework.Rules.Model.dll" />
+    <ExcludedAssemblies Include="Sitecore.Framework.Rules.Registry.dll" />
+    <ExcludedAssemblies Include="Sitecore.Framework.Rules.Serialization.dll" />
+    <ExcludedAssemblies Include="Sitecore.Framework.TransientFaultHandling.Abstractions.dll" />
+    <ExcludedAssemblies Include="Sitecore.Framework.TransientFaultHandling.dll" />
+    <ExcludedAssemblies Include="Sitecore.Framework.TransientFaultHandling.EntLib.dll" />
+    <ExcludedAssemblies Include="Sitecore.Framework.TransientFaultHandling.Sql.dll" />
+    <ExcludedAssemblies Include="Sitecore.FXM.Client.dll" />
+    <ExcludedAssemblies Include="Sitecore.FXM.dll" />
+    <ExcludedAssemblies Include="Sitecore.FXM.Service.dll" />
+    <ExcludedAssemblies Include="Sitecore.FXM.Speak.dll" />
+    <ExcludedAssemblies Include="Sitecore.ItemWebApi.dll" />
+    <ExcludedAssemblies Include="Sitecore.Kernel.dll" />
+    <ExcludedAssemblies Include="Sitecore.LaunchPad.dll" />
+    <ExcludedAssemblies Include="Sitecore.ListManagement.Client.dll" />
+    <ExcludedAssemblies Include="Sitecore.ListManagement.dll" />
+    <ExcludedAssemblies Include="Sitecore.ListManagement.Services.dll" />
+    <ExcludedAssemblies Include="Sitecore.ListManagement.XConnect.dll" />
+    <ExcludedAssemblies Include="Sitecore.ListManagement.XConnect.Web.dll" />
+    <ExcludedAssemblies Include="Sitecore.Logging.Client.dll" />
+    <ExcludedAssemblies Include="Sitecore.Logging.dll" />
+    <ExcludedAssemblies Include="Sitecore.Marketing.Automation.Activity.dll" />
+    <ExcludedAssemblies Include="Sitecore.Marketing.Automation.ActivityDescriptors.Client.dll" />
+    <ExcludedAssemblies Include="Sitecore.Marketing.Automation.ActivityDescriptors.dll" />
+    <ExcludedAssemblies Include="Sitecore.Marketing.Automation.Client.dll" />
+    <ExcludedAssemblies Include="Sitecore.Marketing.Automation.dll" />
+    <ExcludedAssemblies Include="Sitecore.Marketing.Automation.Models.dll" />
+    <ExcludedAssemblies Include="Sitecore.Marketing.Campaigns.Client.dll" />
+    <ExcludedAssemblies Include="Sitecore.Marketing.Campaigns.Services.dll" />
+    <ExcludedAssemblies Include="Sitecore.Marketing.Client.dll" />
+    <ExcludedAssemblies Include="Sitecore.Marketing.Core.dll" />
+    <ExcludedAssemblies Include="Sitecore.Marketing.Definitions.MarketingAssets.Repositories.dll" />
+    <ExcludedAssemblies Include="Sitecore.Marketing.dll" />
+    <ExcludedAssemblies Include="Sitecore.Marketing.Operations.Xdb.ReferenceData.dll" />
+    <ExcludedAssemblies Include="Sitecore.Marketing.Operations.Xdb.ReferenceData.Model.dll" />
+    <ExcludedAssemblies Include="Sitecore.Marketing.Operations.Xdb.ReferenceData.Service.dll" />
+    <ExcludedAssemblies Include="Sitecore.Marketing.Search.dll" />
+    <ExcludedAssemblies Include="Sitecore.Marketing.Segmentation.xMgmt.dll" />
+    <ExcludedAssemblies Include="Sitecore.Marketing.Taxonomy.dll" />
+    <ExcludedAssemblies Include="Sitecore.Marketing.Taxonomy.xMgmt.dll" />
+    <ExcludedAssemblies Include="Sitecore.Marketing.xMgmt.dll" />
+    <ExcludedAssemblies Include="Sitecore.Marketing.xMgmt.ReferenceData.dll" />
+    <ExcludedAssemblies Include="Sitecore.Messaging.Azure.dll" />
+    <ExcludedAssemblies Include="Sitecore.Messaging.dll" />
+    <ExcludedAssemblies Include="Sitecore.Messaging.SqlServer.dll" />
+    <ExcludedAssemblies Include="Sitecore.Mvc.Analytics.dll" />
+    <ExcludedAssemblies Include="Sitecore.Mvc.DeviceSimulator.dll" />
+    <ExcludedAssemblies Include="Sitecore.Mvc.dll" />
+    <ExcludedAssemblies Include="Sitecore.Mvc.ExperienceEditor.dll" />
+    <ExcludedAssemblies Include="Sitecore.Nexus.Consumption.dll" />
+    <ExcludedAssemblies Include="Sitecore.Nexus.dll" />
+    <ExcludedAssemblies Include="Sitecore.Nexus.Licensing.dll" />
+    <ExcludedAssemblies Include="Sitecore.NVelocity.dll" />
+    <ExcludedAssemblies Include="Sitecore.Owin.Authentication.dll" />
+    <ExcludedAssemblies Include="Sitecore.Owin.Authentication.IdentityServer.dll" />
+    <ExcludedAssemblies Include="Sitecore.Owin.dll" />
+    <ExcludedAssemblies Include="Sitecore.PathAnalyzer.Client.dll" />
+    <ExcludedAssemblies Include="Sitecore.PathAnalyzer.dll" />
+    <ExcludedAssemblies Include="Sitecore.PathAnalyzer.Services.dll" />
+    <ExcludedAssemblies Include="Sitecore.Processing.Common.dll" />
+    <ExcludedAssemblies Include="Sitecore.Processing.Cursors.Abstractions.dll" />
+    <ExcludedAssemblies Include="Sitecore.Processing.Engine.Abstractions.dll" />
+    <ExcludedAssemblies Include="Sitecore.Processing.Tasks.Abstractions.dll" />
+    <ExcludedAssemblies Include="Sitecore.Processing.Tasks.Messaging.dll" />
+    <ExcludedAssemblies Include="Sitecore.Processing.Tasks.Messaging.Xmgmt.dll" />
+    <ExcludedAssemblies Include="Sitecore.Processing.Tasks.Options.dll" />
+    <ExcludedAssemblies Include="Sitecore.Publishing.WebDeploy.dll" />
+    <ExcludedAssemblies Include="Sitecore.Reporting.Client.dll" />
+    <ExcludedAssemblies Include="Sitecore.Reporting.Core.dll" />
+    <ExcludedAssemblies Include="Sitecore.Reporting.Service.Abstractions.dll" />
+    <ExcludedAssemblies Include="Sitecore.Reporting.Service.Http.Abstractions.dll" />
+    <ExcludedAssemblies Include="Sitecore.Reporting.Service.Http.XConnectClient.dll" />
+    <ExcludedAssemblies Include="Sitecore.Security.AntiCsrf.dll" />
+    <ExcludedAssemblies Include="Sitecore.SequenceAnalyzer.dll" />
+    <ExcludedAssemblies Include="Sitecore.Services.Client.dll" />
+    <ExcludedAssemblies Include="Sitecore.Services.Core.dll" />
+    <ExcludedAssemblies Include="Sitecore.Services.Infrastructure.dll" />
+    <ExcludedAssemblies Include="Sitecore.Services.Infrastructure.Sitecore.dll" />
+    <ExcludedAssemblies Include="Sitecore.SessionProvider.dll" />
+    <ExcludedAssemblies Include="Sitecore.SessionProvider.Memory.dll" />
+    <ExcludedAssemblies Include="Sitecore.SessionProvider.MongoDB.dll" />
+    <ExcludedAssemblies Include="Sitecore.SessionProvider.Redis.dll" />
+    <ExcludedAssemblies Include="Sitecore.SessionProvider.Sql.dll" />
+    <ExcludedAssemblies Include="Sitecore.Speak.Applications.dll" />
+    <ExcludedAssemblies Include="Sitecore.Speak.Client.dll" />
+    <ExcludedAssemblies Include="Sitecore.Speak.Components.dll" />
+    <ExcludedAssemblies Include="Sitecore.Speak.Components.Guidance.dll" />
+    <ExcludedAssemblies Include="Sitecore.Speak.Components.Web.dll" />
+    <ExcludedAssemblies Include="Sitecore.Speak.Integration.Services.dll" />
+    <ExcludedAssemblies Include="Sitecore.Speak.Integration.Spa.dll" />
+    <ExcludedAssemblies Include="Sitecore.Speak.ItemWebApi.dll" />
+    <ExcludedAssemblies Include="Sitecore.Speak.Web.dll" />
+    <ExcludedAssemblies Include="Sitecore.TransientFaultHandling.dll" />
+    <ExcludedAssemblies Include="Sitecore.Update.dll" />
+    <ExcludedAssemblies Include="Sitecore.UpdateCenter.Core.dll" />
+    <ExcludedAssemblies Include="Sitecore.UpdateCenter.dll" />
+    <ExcludedAssemblies Include="Sitecore.UpdateCenter.ServiceClient.dll" />
+    <ExcludedAssemblies Include="Sitecore.Web.dll" />
+    <ExcludedAssemblies Include="Sitecore.XConnect.Client.Configuration.dll" />
+    <ExcludedAssemblies Include="Sitecore.XConnect.Client.dll" />
+    <ExcludedAssemblies Include="Sitecore.XConnect.Collection.Model.dll" />
+    <ExcludedAssemblies Include="Sitecore.XConnect.Diagnostics.dll" />
+    <ExcludedAssemblies Include="Sitecore.XConnect.dll" />
+    <ExcludedAssemblies Include="Sitecore.XConnect.Search.dll" />
+    <ExcludedAssemblies Include="Sitecore.XConnect.Segmentation.Conditions.dll" />
+    <ExcludedAssemblies Include="Sitecore.XConnect.Segmentation.Engine.dll" />
+    <ExcludedAssemblies Include="Sitecore.XConnect.Segmentation.ExpressionBuilder.Model.dll" />
+    <ExcludedAssemblies Include="Sitecore.XConnect.Segmentation.Predicates.dll" />
+    <ExcludedAssemblies Include="Sitecore.XConnect.Segmentation.Predicates.Model.dll" />
+    <ExcludedAssemblies Include="Sitecore.XConnect.Service.dll" />
+    <ExcludedAssemblies Include="Sitecore.XConnect.Service.Plugins.dll" />
+    <ExcludedAssemblies Include="Sitecore.Xdb.Client.dll" />
+    <ExcludedAssemblies Include="Sitecore.Xdb.Collection.dll" />
+    <ExcludedAssemblies Include="Sitecore.Xdb.Common.Web.dll" />
+    <ExcludedAssemblies Include="Sitecore.Xdb.Configuration.dll" />
+    <ExcludedAssemblies Include="Sitecore.Xdb.MarketingAutomation.Core.dll" />
+    <ExcludedAssemblies Include="Sitecore.Xdb.MarketingAutomation.Locators.dll" />
+    <ExcludedAssemblies Include="Sitecore.Xdb.MarketingAutomation.Locators.Xmgmt.dll" />
+    <ExcludedAssemblies Include="Sitecore.Xdb.MarketingAutomation.OperationsClient.Configuration.dll" />
+    <ExcludedAssemblies Include="Sitecore.Xdb.MarketingAutomation.OperationsClient.dll" />
+    <ExcludedAssemblies Include="Sitecore.Xdb.MarketingAutomation.ReportingClient.Configuration.dll" />
+    <ExcludedAssemblies Include="Sitecore.Xdb.MarketingAutomation.ReportingClient.dll" />
+    <ExcludedAssemblies Include="Sitecore.Xdb.MarketingAutomation.SqlServer.dll" />
+    <ExcludedAssemblies Include="Sitecore.Xdb.MarketingAutomation.Tracking.dll" />
+    <ExcludedAssemblies Include="Sitecore.Xdb.Processing.ContactMerge.dll" />
+    <ExcludedAssemblies Include="Sitecore.Xdb.Processing.ContactMerge.UI.dll" />
+    <ExcludedAssemblies Include="Sitecore.Xdb.Processing.Queue.dll" />
+    <ExcludedAssemblies Include="Sitecore.Xdb.Processing.Queue.SqlServer.dll" />
+    <ExcludedAssemblies Include="Sitecore.Xdb.ReferenceData.Client.dll" />
+    <ExcludedAssemblies Include="Sitecore.Xdb.ReferenceData.Client.Xmgmt.dll" />
+    <ExcludedAssemblies Include="Sitecore.Xdb.ReferenceData.Core.dll" />
+    <ExcludedAssemblies Include="Sitecore.Xdb.ReferenceData.Service.dll" />
+    <ExcludedAssemblies Include="Sitecore.Xdb.ReferenceData.Service.Xmgmt.dll" />
+    <ExcludedAssemblies Include="Sitecore.Xdb.ReferenceData.SqlServer.dll" />
+    <ExcludedAssemblies Include="Sitecore.Xdb.ReferenceData.SqlServer.Xmgmt.dll" />
+    <ExcludedAssemblies Include="Sitecore.Xdb.Reporting.dll" />
+    <ExcludedAssemblies Include="Sitecore.Xdb.Sql.Common.dll" />
+    <ExcludedAssemblies Include="Sitecore.Xdb.Sql.Common.Xmgmt.dll" />
+    <ExcludedAssemblies Include="Sitecore.Xdb.Tracking.Client.dll" />
+    <ExcludedAssemblies Include="Sitecore.Zip.dll" />
+    <ExcludedAssemblies Include="SolrNet.dll" />
+    <ExcludedAssemblies Include="StackExchange.Redis.dll" />
+    <ExcludedAssemblies Include="System.Buffers.dll" />
+    <ExcludedAssemblies Include="System.Configuration.ConfigurationManager.dll" />
+    <ExcludedAssemblies Include="System.Data.Common.dll" />
+    <ExcludedAssemblies Include="System.Data.SqlClient.dll" />
+    <ExcludedAssemblies Include="System.Diagnostics.DiagnosticSource.dll" />
+    <ExcludedAssemblies Include="System.Diagnostics.PerformanceCounter.dll" />
+    <ExcludedAssemblies Include="System.Diagnostics.StackTrace.dll" />
+    <ExcludedAssemblies Include="System.Diagnostics.Tracing.dll" />
+    <ExcludedAssemblies Include="System.Globalization.Extensions.dll" />
+    <ExcludedAssemblies Include="System.IdentityModel.Tokens.Jwt.dll" />
+    <ExcludedAssemblies Include="System.Interactive.Async.dll" />
+    <ExcludedAssemblies Include="System.Interactive.Async.Providers.dll" />
+    <ExcludedAssemblies Include="System.IO.Compression.dll" />
+    <ExcludedAssemblies Include="System.IO.dll" />
+    <ExcludedAssemblies Include="System.IO.FileSystem.Primitives.dll" />
+    <ExcludedAssemblies Include="System.IO.Packaging.dll" />
+    <ExcludedAssemblies Include="System.IO.Pipelines.dll" />
+    <ExcludedAssemblies Include="System.Memory.dll" />
+    <ExcludedAssemblies Include="System.Net.Http.Extensions.Compression.Core.dll" />
+    <ExcludedAssemblies Include="System.Net.Http.Formatting.dll" />
+    <ExcludedAssemblies Include="System.Net.Sockets.dll" />
+    <ExcludedAssemblies Include="System.Net.WebSockets.Client.dll" />
+    <ExcludedAssemblies Include="System.Net.WebSockets.dll" />
+    <ExcludedAssemblies Include="System.Numerics.Vectors.dll" />
+    <ExcludedAssemblies Include="System.Runtime.CompilerServices.Unsafe.dll" />
+    <ExcludedAssemblies Include="System.Runtime.dll" />
+    <ExcludedAssemblies Include="System.Runtime.InteropServices.RuntimeInformation.dll" />
+    <ExcludedAssemblies Include="System.Runtime.Serialization.Primitives.dll" />
+    <ExcludedAssemblies Include="System.Security.AccessControl.dll" />
+    <ExcludedAssemblies Include="System.Security.Cryptography.Algorithms.dll" />
+    <ExcludedAssemblies Include="System.Security.Cryptography.Encoding.dll" />
+    <ExcludedAssemblies Include="System.Security.Cryptography.Primitives.dll" />
+    <ExcludedAssemblies Include="System.Security.Cryptography.X509Certificates.dll" />
+    <ExcludedAssemblies Include="System.Security.Cryptography.Xml.dll" />
+    <ExcludedAssemblies Include="System.Security.Permissions.dll" />
+    <ExcludedAssemblies Include="System.Security.Principal.Windows.dll" />
+    <ExcludedAssemblies Include="System.Security.SecureString.dll" />
+    <ExcludedAssemblies Include="System.Text.Encodings.Web.dll" />
+    <ExcludedAssemblies Include="System.Threading.Channels.dll" />
+    <ExcludedAssemblies Include="System.Threading.Overlapped.dll" />
+    <ExcludedAssemblies Include="System.Threading.Tasks.Extensions.dll" />
+    <ExcludedAssemblies Include="System.ValueTuple.dll" />
+    <ExcludedAssemblies Include="System.Web.Cors.dll" />
+    <ExcludedAssemblies Include="System.Web.Helpers.dll" />
+    <ExcludedAssemblies Include="System.Web.Http.Cors.dll" />
+    <ExcludedAssemblies Include="System.Web.Http.dll" />
+    <ExcludedAssemblies Include="System.Web.Http.WebHost.dll" />
+    <ExcludedAssemblies Include="System.Web.Mvc.dll" />
+    <ExcludedAssemblies Include="System.Web.Optimization.dll" />
+    <ExcludedAssemblies Include="System.Web.Razor.dll" />
+    <ExcludedAssemblies Include="System.Web.WebPages.Deployment.dll" />
+    <ExcludedAssemblies Include="System.Web.WebPages.dll" />
+    <ExcludedAssemblies Include="System.Web.WebPages.Razor.dll" />
+    <ExcludedAssemblies Include="System.Xml.XPath.XDocument.dll" />
+    <ExcludedAssemblies Include="Telerik.Web.Design.dll" />
+    <ExcludedAssemblies Include="Telerik.Web.Device.Detection.dll" />
+    <ExcludedAssemblies Include="Telerik.Web.UI.dll" />
+    <ExcludedAssemblies Include="Telerik.Web.UI.Skins.dll" />
+    <ExcludedAssemblies Include="WebActivatorEx.dll" />
+    <ExcludedAssemblies Include="WebGrease.dll" />
+    <ExcludedAssemblies Include="Yahoo.Yui.Compressor.dll" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\HedgehogDevelopment\SitecoreProject\v9.0\HedgehogDevelopment.SitecoreProject.targets" Condition="Exists('$(MSBuildExtensionsPath)\HedgehogDevelopment\SitecoreProject\v9.0\HedgehogDevelopment.SitecoreProject.targets')" />
+</Project>

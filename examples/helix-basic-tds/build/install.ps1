@@ -24,6 +24,9 @@ Function Install-XP0SingleDeveloper {
         SqlBuildVersion = $SqlBuildVersion
         SqlFriendlyVersion = $SqlFriendlyVersion
         SitecoreSiteName = $SitecoreSiteName
+        Deploy_SourceFolder = $SourceFolder
+        Deploy_BuildProject = $BuildProject
+        Deploy_PublishPath = $SitecoreSiteRoot
         Deploy_SitecoreUrl = $SitecoreSiteUrl
         Install_Prefix = $SolutionPrefix
         Install_XConnectCertificateName = $XConnectSiteName

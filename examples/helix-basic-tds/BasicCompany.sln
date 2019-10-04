@@ -67,10 +67,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Environment", "Environment"
 EndProject
 Project("{CAA73BB0-EF22-4D79-A57E-DF67B3BA9C80}") = "Website", "src\Environment\Website\Website.scproj", "{35100792-25CA-4279-9E3F-F57993C05FCB}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Serialization", "Serialization", "{44685C8D-64CC-4A7D-8F4D-E4448D12CAFD}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicCompany.Foundation.Serialization", "src\Foundation\Serialization\website\BasicCompany.Foundation.Serialization.csproj", "{56075182-568D-4641-8C3C-3EAFACCEB450}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -167,10 +163,6 @@ Global
 		{35100792-25CA-4279-9E3F-F57993C05FCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{35100792-25CA-4279-9E3F-F57993C05FCB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{35100792-25CA-4279-9E3F-F57993C05FCB}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{56075182-568D-4641-8C3C-3EAFACCEB450}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{56075182-568D-4641-8C3C-3EAFACCEB450}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{56075182-568D-4641-8C3C-3EAFACCEB450}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{56075182-568D-4641-8C3C-3EAFACCEB450}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -201,8 +193,6 @@ Global
 		{57750489-B0EC-475C-9A60-52C31FA5D23D} = {1114AD54-BF0A-41FC-82F6-E2F5E215885C}
 		{BA1B5CD5-CA4C-422C-9BF1-7CEEC5A2B9FB} = {2EB8DFF2-D05E-42B8-80B5-720E0BCE01BB}
 		{35100792-25CA-4279-9E3F-F57993C05FCB} = {1EAAC5DE-019B-4D92-875D-6363F3BDEC88}
-		{44685C8D-64CC-4A7D-8F4D-E4448D12CAFD} = {D0DD1773-D94E-47FC-9310-952C4ECEF69A}
-		{56075182-568D-4641-8C3C-3EAFACCEB450} = {44685C8D-64CC-4A7D-8F4D-E4448D12CAFD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7A7C4987-3A11-41A9-8915-5457EF7B5A6F}

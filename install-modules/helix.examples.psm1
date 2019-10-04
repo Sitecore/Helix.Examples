@@ -1,4 +1,5 @@
 $ErrorActionPreference = 'Stop'
+$PSDefaultParameterValues['*:Encoding'] = 'utf8'
 
 Function Import-SitecoreInstallFramework {
     Param(
@@ -268,12 +269,14 @@ Function Invoke-MsBuildWithFailureCheck {
     Param(
         [string]$Path,
         [string]$MsBuildParameters,
-        [switch]$ShowBuildOutputInCurrentWindow
+        [switch]$ShowBuildOutputInCurrentWindow,
+        [switch]$KeepBuildLogOnSuccessfulBuilds
     )
     $buildArgs = @{
         Path = $Path
         MsBuildParameters = $MsBuildParameters
         ShowBuildOutputInCurrentWindow = $ShowBuildOutputInCurrentWindow
+        KeepBuildLogOnSuccessfulBuilds = $true
     }
     $result = Invoke-MsBuild @buildArgs
     $result
@@ -336,9 +339,46 @@ Function Write-PublishUserPath {
 "@
     Write-Information "MSBuild publish configuration: $xml"
     $xml > $DestinationPath
+}
+
+Function Write-EnableYamlConfigPatch {
+    Param(
+        [string]$DestinationPath
+    )
+    $xml = @"
+<?xml version="1.0"?>
+<configuration xmlns:patch="http://www.sitecore.net/xmlconfig/" xmlns:set="http://www.sitecore.net/xmlconfig/set/">
+  <sitecore>
+    <settings>
+      <setting name="Serialization.SerializationType" set:value="YAML" />
+    </settings>
+  </sitecore>
+</configuration>
+"@
+    Write-Information "Config patch: $xml"
+    $xml > $DestinationPath
     Write-Information "Wrote to $DestinationPath"
 }
 
+Function Write-TdsGlobalUserConfig {
+    Param(
+        [string]$SitecoreWebUrl,
+        [string]$SitecoreDeployFolder,
+        [string]$DestinationPath
+    )
+    $xml = @"
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition=" '`$(Configuration)' == 'Debug' ">
+    <SitecoreWebUrl>$SitecoreWebUrl</SitecoreWebUrl>
+    <SitecoreDeployFolder>$SitecoreDeployFolder</SitecoreDeployFolder>
+  </PropertyGroup>
+</Project>
+"@
+    Write-Information "TdsGlobal.config.user configuration: $xml"
+    $xml > $DestinationPath
+    Write-Information "Wrote to $DestinationPath"
+}
 Function Invoke-SitecoreWarmup {
     Param(
         [string]$SitecoreUrl,

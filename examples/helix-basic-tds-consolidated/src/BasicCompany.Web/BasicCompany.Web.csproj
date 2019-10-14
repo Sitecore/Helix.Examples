@@ -1,0 +1,177 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{023339CE-EEA7-4E9B-9A7F-960202AD3135}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BasicCompany</RootNamespace>
+    <AssemblyName>BasicCompany.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>..\..\HelixRules.ruleset</CodeAnalysisRuleSet>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="HedgehogDevelopment.FxCop.Helix">
+      <Version>1.0.0.7</Version>
+    </PackageReference>
+    <PackageReference Include="Sitecore.Kernel" Version="9.2.0" />
+    <PackageReference Include="Sitecore.Mvc" Version="9.2.0" />
+    <PackageReference Include="Sitecore.ContentSearch" Version="9.2.0" />
+    <PackageReference Include="Sitecore.ContentSearch.Linq" Version="9.2.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Feature\BasicContent\Templates.cs" />
+    <Compile Include="Feature\Navigation\Controllers\NavigationController.cs" />
+    <Compile Include="Feature\Navigation\Models\Header.cs" />
+    <Compile Include="Feature\Navigation\Models\NavigationItem.cs" />
+    <Compile Include="Feature\Navigation\ServicesConfigurator.cs" />
+    <Compile Include="Feature\Navigation\Services\HeaderBuilder.cs" />
+    <Compile Include="Feature\Navigation\Services\IHeaderBuilder.cs" />
+    <Compile Include="Feature\Navigation\Services\INavigationRootResolver.cs" />
+    <Compile Include="Feature\Navigation\Services\NavigationRootResolver.cs" />
+    <Compile Include="Feature\Navigation\Templates.cs" />
+    <Compile Include="Feature\Products\Controllers\ProductsController.cs" />
+    <Compile Include="Feature\Products\ServicesConfigurator.cs" />
+    <Compile Include="Feature\Products\Services\IProductRepository.cs" />
+    <Compile Include="Feature\Products\Services\ProductRepository.cs" />
+    <Compile Include="Feature\Products\Services\ProductSearchQuery.cs" />
+    <Compile Include="Feature\Products\Templates.cs" />
+    <Compile Include="Feature\Services\Templates.cs" />
+    <Compile Include="Foundation\FieldRendering\SitecoreHelperExtensions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Config\Include\Project\Project.BasicCompany.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Project\BasicCompany\css\basic-company.css" />
+    <Content Include="Project\BasicCompany\js\basic-company.js" />
+    <Content Include="Views\BasicContent\Accordion.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\BasicContent\AccordionItem.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\BasicContent\HeroBanner.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\BasicContent\PromoCard.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\BasicContent\PromoContainer.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\BasicContent\SectionHeader.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Config\Include\Feature\Feature.Navigation.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Navigation\Footer.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Navigation\Header.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Products\_ListProduct.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Products\Detail Header.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Products\Detail.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Products\List.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Products\Related Products.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Config\Include\Feature\Feature.Products.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Config\Include\Feature\Feature.Products.ContentSearch.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Services\Testimonial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Services\TestimonialContainer.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\BasicCompany\Layouts\Default.cshtml" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>56765</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:56765/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

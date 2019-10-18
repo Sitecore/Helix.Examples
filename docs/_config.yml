@@ -1,2 +1,13 @@
 title: Sitecore Helix Examples
 remote_theme: chrisrhymes/bulma-clean-theme
+
+#
+# Local Testing / Preview
+#
+# Install - https://rubyinstaller.org/downloads/
+# Run - gem install github-pages
+# Run - gem install bulma-clean-theme
+# Uncomment below
+# theme: bulma-clean-theme
+# Run - jekyll build
+# Run - jekyll serve

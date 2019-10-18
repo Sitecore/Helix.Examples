@@ -1,4 +1,10 @@
-- name: About the Examples
-  link: /examples.html
 - name: Installation
   link: /install.html
+- name: About the Examples
+  dropdown:
+    - name: Helix Basic Company
+      link: /examples/helix-basic-company.html
+    - name: Helix Franchise Company
+      link: /examples/helix-franchise-company.html
+    - name: Helix Corporation
+      link: /examples/helix-corporation.html

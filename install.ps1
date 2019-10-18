@@ -186,7 +186,11 @@ Function Write-InstanceMenu($instance) {
                     if ($?) {
                         Write-HostHelix
                         Write-HostHelix "Install complete!" -ForegroundColor yellow
-    
+                        Write-HostHelix
+                        Write-HostHelix "Let's make sure the content publish is complete..."
+                        10..0 | % { Write-HostHelix $_; Start-Sleep 1 }
+                        Write-HostHelix
+
                         $loginUrl = "$($instance.SitecoreUrl)/sitecore/"
                         Write-HostHelix "Opening $loginUrl..."
                         Start-Process $loginUrl

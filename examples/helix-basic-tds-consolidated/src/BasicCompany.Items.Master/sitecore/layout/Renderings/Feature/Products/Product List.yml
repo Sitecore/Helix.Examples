@@ -14,7 +14,7 @@ SharedFields:
   Value: List
 - ID: "e64ad073-dfcc-4d20-8c0b-fe5aa6226cd7"
   Hint: Controller
-  Value: BasicCompany.Feature.Products.Controllers.ProductsController, BasicCompany.Feature.Products
+  Value: BasicCompany.Feature.Products.Controllers.ProductsController, BasicCompany.Web
 Languages:
 - Language: en
   Versions:
@@ -25,11 +25,11 @@ Languages:
       Value: 20190312T191922Z
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "77dec615-563f-41fc-9162-f20bec936d3f"
+      Value: "e90b8720-e16b-43f1-8fc9-ffae127e5788"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\unicorn
+        sitecore\admin
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20190930T183109Z
+      Value: 20191017T192256Z

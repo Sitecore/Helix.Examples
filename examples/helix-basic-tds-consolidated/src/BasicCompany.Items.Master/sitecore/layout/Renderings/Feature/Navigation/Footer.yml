@@ -11,7 +11,7 @@ SharedFields:
   Value: Footer
 - ID: "e64ad073-dfcc-4d20-8c0b-fe5aa6226cd7"
   Hint: Controller
-  Value: BasicCompany.Feature.Navigation.Controllers.NavigationController, BasicCompany.Feature.Navigation
+  Value: BasicCompany.Feature.Navigation.Controllers.NavigationController, BasicCompany.Web
 Languages:
 - Language: en
   Versions:
@@ -22,11 +22,11 @@ Languages:
       Value: 20190308T215152Z
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "7f406b58-f4bb-4620-8d63-e62b80cd851d"
+      Value: "cbf0ffb6-2ac2-424b-9e27-1888bc7cc3c6"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-        sitecore\unicorn
+        sitecore\admin
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20190930T183110Z
+      Value: 20191017T192244Z

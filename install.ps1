@@ -196,6 +196,9 @@ Function Write-InstanceMenu($instance) {
                         Start-Process $loginUrl
                         Write-HostHelix "Opening $($instance.SitecoreUrl)..."
                         Start-Process $instance.SitecoreUrl
+                        Write-HostHelix "sitecore\admin password is '$($instance.AdminPassword)'" -ForegroundColor yellow
+                        Write-HostHelix
+
                         Press-AnyKey
                     }
                 }
@@ -244,6 +247,7 @@ Function Write-InstanceListMenu() {
                 SitecoreUrl = $SitecoreSiteUrl
                 WebRoot = $SitecoreSiteRoot
                 SourcePath = $ExampleSrcPath
+                AdminPassword = $SitecoreAdminPassword
                 Installed = (Test-Path $SitecoreSiteRoot)
                 InstallScript = $InstallScript
                 UninstallScript = $UninstallScript
@@ -323,7 +327,7 @@ function Write-MainMenu {
                     Write-HostHelix "More info on Sitecore Helix can be found at: https://helix.sitecore.net"
                     Write-HostHelix
                     Write-HostHelix "-------------------------------------------- Sitecore Helix Examples ------------------------------------------------------" -ForegroundColor yellow
-                    Write-HostHelix "The Helix Examples are demonstrations of Sitecore Helix practices across various tooling and business scenarios."
+                    Write-HostHelix "The Sitecore Helix Examples are demonstrations of Sitecore Helix practices across various tooling and business scenarios."
                     Write-HostHelix "They are intended to demonstrate a wider variety of implementation types / requirements than existing examples."
                     Write-HostHelix
                     Write-HostHelix "The Helix Examples are not:"
@@ -337,7 +341,7 @@ function Write-MainMenu {
                     Write-HostHelix "The install/menu/configuration system however is optimized to ease and bring joy to the installation of the multiple example instances,"
                     Write-HostHelix "and likely is not a good fit for production projects. However we do hope you enjoy using it."
                     Write-HostHelix
-                    Write-HostHelix "For more info on Helix Examples, visit https://github.com/Sitecore/Helix.Examples"
+                    Write-HostHelix "For more info on Helix Examples, visit https://sitecore.github.io/Helix.Examples/"
                     Write-HostHelix
                     Press-AnyKey
                 }

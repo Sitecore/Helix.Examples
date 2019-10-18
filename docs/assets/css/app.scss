@@ -20,3 +20,8 @@ a.navbar-item.is-active {
     background-color: unset !important;
     text-decoration: underline;
 }
+
+.navbar-dropdown a.navbar-item.is-active {
+    color: #000 !important;
+    text-decoration: underline;
+}

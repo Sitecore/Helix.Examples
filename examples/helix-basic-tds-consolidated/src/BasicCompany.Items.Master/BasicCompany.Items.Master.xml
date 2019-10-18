@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TDSAnalysis>
+  <Rules>
+    <Rule validator="HedgehogDevelopment.SitecoreProject.Analysis.Helix.HelixFeatureDoesNotReferenceFeature, HedgehogDevelopment.SitecoreProject.Analysis, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" severity="Error">
+      <ValidatorSettings>
+        <Properties />
+        <Settings>
+          <add name="Helix Namespace Depth">1</add>
+        </Settings>
+      </ValidatorSettings>
+    </Rule>
+    <Rule validator="HedgehogDevelopment.SitecoreProject.Analysis.Helix.HelixFoundationDoesNotReferenceFeature, HedgehogDevelopment.SitecoreProject.Analysis, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" severity="Error">
+      <ValidatorSettings>
+        <Properties />
+        <Settings>
+          <add name="Foundation Namespace Depth">1</add>
+          <add name="Feature Namespace Depth">1</add>
+        </Settings>
+      </ValidatorSettings>
+    </Rule>
+    <Rule validator="HedgehogDevelopment.SitecoreProject.Analysis.Helix.HelixFeatureDoesNotReferenceProject, HedgehogDevelopment.SitecoreProject.Analysis, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" severity="Error">
+      <ValidatorSettings>
+        <Properties />
+        <Settings>
+          <add name="Feature Namespace Depth">1</add>
+          <add name="Project Namespace Depth">1</add>
+        </Settings>
+      </ValidatorSettings>
+    </Rule>
+    <Rule validator="HedgehogDevelopment.SitecoreProject.Analysis.Helix.HelixFoundationDoesNotReferenceProject, HedgehogDevelopment.SitecoreProject.Analysis, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" severity="Error">
+      <ValidatorSettings>
+        <Properties />
+        <Settings>
+          <add name="Foundation Namespace Depth">1</add>
+          <add name="Project Namespace Depth">1</add>
+        </Settings>
+      </ValidatorSettings>
+    </Rule>
+    <Rule validator="HedgehogDevelopment.SitecoreProject.Analysis.Helix.HelixProjectDoesNotReferenceProject, HedgehogDevelopment.SitecoreProject.Analysis, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" severity="Warn">
+      <ValidatorSettings>
+        <Properties />
+        <Settings>
+          <add name="Helix Namespace Depth">1</add>
+        </Settings>
+      </ValidatorSettings>
+    </Rule>
+  </Rules>
+</TDSAnalysis>

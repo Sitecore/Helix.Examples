@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RuleSet Name="Sitecore Helix Ruleset" ToolsVersion="16.0">
+  <Rules AnalyzerId="Microsoft.Analyzers.ManagedCodeAnalysis" RuleNamespace="Microsoft.Rules.Managed">
+    <Rule Id="ScHlx001" Action="Warning" />
+    <Rule Id="ScHlx002" Action="Error" />
+    <Rule Id="ScHlx003" Action="Warning" />
+    <Rule Id="ScHlx004" Action="Error" />
+    <Rule Id="ScHlx005" Action="Error" />
+    <Rule Id="ScHlx006" Action="Error" />
+  </Rules>
+</RuleSet>

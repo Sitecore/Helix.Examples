@@ -1,7 +1,7 @@
 # Metadata for menuing
 $ExampleName = "Helix Basic - Unicorn"
 $ExampleDescription = "This example demonstrates basic Helix solution architecture using Unicorn for serialization and Helix Publishing Pipeline for builds."
-$ExampleUrl = "https://sitecore.github.io/Helix.Examples/examples.html"
+$ExampleUrl = "https://sitecore.github.io/Helix.Examples/examples/helix-basic-company.html"
 
 # URL / Install Prefix
 $SolutionPrefix = "helix-basic-unicorn"

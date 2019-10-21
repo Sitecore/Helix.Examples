@@ -20,7 +20,7 @@ implementations.
 
 Interested in exploring these examples? You can...
 
-* [Read more about the examples](examples.md) included in this repository.
+* Read more about the examples included in this repository by selecting from *About the Examples* above.
 * [Install one or more examples](install.md) locally to explore them.
 * ... or just [explore the code](https://github.com/Sitecore/Helix.Examples/tree/master/examples)!
 

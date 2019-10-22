@@ -108,14 +108,17 @@ SELECT spU.name, MAX(CASE WHEN srm.role_principal_id = 3 THEN 1 END) AS sysadmin
 FROM sys.server_principals AS spR
 JOIN sys.server_role_members AS srm ON spR.principal_id = srm.role_principal_id
 JOIN sys.server_principals AS spU ON srm.member_principal_id = spU.principal_id
-WHERE spR.[type] = 'R' AND spU.name = 'sitecore'
+WHERE spR.[type] = 'R' AND spU.name = `$(username)
 GROUP BY spU.name
 "@
     try {
         $roleInfo = Invoke-Sqlcmd -ServerInstance $SqlServer `
             -Username $SqlAdminUser `
             -Password $SqlAdminPassword `
-            -Query $roleCommand
+            -Query $roleCommand `
+            -Variable @(
+                "username = '$SqlAdminUser'"
+            )
         if ($roleInfo.sysadmin -ne 1) {
             throw "SQL user $SqlAdminUser does not have the 'sysadmin' role."
         } else {

@@ -15,6 +15,12 @@ namespace BasicCompany.Feature.Navigation.Tests
             return mock;
         }
 
+        public static Mock<Item> WithAncestors(this Mock<Item> mock, Item[] ancestors)
+        {
+            mock.Setup(x => x.Axes.GetAncestors()).Returns(ancestors);
+            return mock;
+        }
+
         public static Mock<Item> WithChildren(this Mock<Item> mock, IEnumerable<Item> children)
         {
             var childList = new ChildList(mock.Object, children.ToList());

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Linq;
 using Sitecore.Data.Items;
 
 namespace BasicCompany.Feature.Navigation.Services
@@ -14,6 +11,7 @@ namespace BasicCompany.Feature.Navigation.Services
             {
                 return null;
             }
+
             return contextItem.DescendsFrom(Templates.NavigationRoot.Id)
                 ? contextItem
                 : contextItem.Axes.GetAncestors().LastOrDefault(x => x.DescendsFrom(Templates.NavigationRoot.Id));

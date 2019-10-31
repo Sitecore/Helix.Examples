@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using Moq;
@@ -13,8 +14,14 @@ namespace BasicCompany.Feature.Navigation.Tests
         public static Mock<Item> New()
         {
             var mock = new Mock<Item>(ID.NewID, ItemData.Empty, Mock.Of<Database>());
+
+            var axes = new Mock<ItemAxes>(mock.Object);
+            axes.Setup(x => x.GetAncestors()).Returns(Array.Empty<Item>());
+            mock.Setup(x => x.Axes).Returns(axes.Object);
+
             var childList = new Mock<ChildList>(mock.Object, Enumerable.Empty<Item>());
             mock.Setup(x => x.Children).Returns(childList.Object);
+
             return mock;
         }
 

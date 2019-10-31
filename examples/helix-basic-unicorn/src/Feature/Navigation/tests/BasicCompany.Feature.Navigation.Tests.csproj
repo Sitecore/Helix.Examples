@@ -43,6 +43,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HeaderBuilderTest.cs" />
     <Compile Include="ItemMock.cs" />
     <Compile Include="Data\NavigationRootTest.cs" />
     <Compile Include="HeaderBuilderTests.cs" />

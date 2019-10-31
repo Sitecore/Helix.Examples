@@ -11,7 +11,7 @@ namespace BasicCompany.Feature.Navigation.Data
         {
         }
 
-        public IEnumerable<Item> GetNavigationItems()
+        public virtual IEnumerable<Item> GetNavigationItems()
         {
             return InnerItem.Children.Where(i =>
                 i.DescendsFrom(Templates.NavigationItem.Id));

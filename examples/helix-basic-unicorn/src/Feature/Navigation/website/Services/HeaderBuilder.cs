@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using BasicCompany.Feature.Navigation.Data;
 using BasicCompany.Feature.Navigation.Models;
 using Sitecore.Data.Items;
 using Sitecore.Abstractions;
@@ -32,16 +33,16 @@ namespace BasicCompany.Feature.Navigation.Services
             return new Header
             {
                 HomeItem = navigationRoot,
-                HomeUrl = LinkManager.GetItemUrl(navigationRoot),
+                HomeUrl = LinkManager.GetItemUrl(navigationRoot.InnerItem),
                 NavigationItems = GetNavigationItems(navigationRoot, contextItem)
             };
         }
 
-        private IList<NavigationItem> GetNavigationItems(Item navigationRoot, Item contextItem)
+        private IList<NavigationItem> GetNavigationItems(NavigationRoot navigationRoot, Item contextItem)
         {
             // Collect home/root item and its children which are navigable
-            var items = new List<Item> { navigationRoot };
-            items.AddRange(navigationRoot.Children.Where(item => item.DescendsFrom(Templates.NavigationItem.Id)));
+            var items = new List<Item> { navigationRoot.InnerItem };
+            items.AddRange(navigationRoot.GetNavigationItems());
 
             // Initialize with home/root page
             var navigationItems = items.Select(item => new NavigationItem

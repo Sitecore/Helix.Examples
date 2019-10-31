@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using BasicCompany.Feature.Navigation.Data;
+using Sitecore.Data.Items;
 using Xunit;
 
 namespace BasicCompany.Feature.Navigation.Tests.Data
@@ -37,6 +38,22 @@ namespace BasicCompany.Feature.Navigation.Tests.Data
             var sut = new NavigationRoot(inner.Object);
             var actual = sut.GetNavigationItems();
             Assert.Same(expected, actual.Single());
+        }
+
+        [Fact]
+        public void CastToItemForNullReturnsNull()
+        {
+            Item actual = (NavigationRoot)null;
+            Assert.Null(actual);
+        }
+
+        [Fact]
+        public void CastToItemForNullReturnsInnerItem()
+        {
+            var expected = ItemMock.NewObject();
+            var sut = new NavigationRoot(expected);
+            Item actual = sut;
+            Assert.Same(expected, actual);
         }
     }
 }

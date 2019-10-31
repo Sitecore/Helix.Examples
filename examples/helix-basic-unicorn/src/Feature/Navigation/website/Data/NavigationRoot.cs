@@ -16,5 +16,10 @@ namespace BasicCompany.Feature.Navigation.Data
             return InnerItem.Children.Where(i =>
                 i.DescendsFrom(Templates.NavigationItem.Id));
         }
+
+        public static implicit operator Item(NavigationRoot navigationRoot)
+        {
+            return navigationRoot?.InnerItem;
+        }
     }
 }

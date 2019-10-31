@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using BasicCompany.Feature.Navigation.Data;
 using BasicCompany.Feature.Navigation.Services;
 using Moq;
 using Sitecore.Abstractions;
@@ -42,7 +43,8 @@ namespace BasicCompany.Feature.Navigation.Tests
             };
             var rootResolverMock = new Mock<INavigationRootResolver>();
             rootResolverMock.Setup(x => x.GetNavigationRoot(It.IsAny<Item>()))
-                .Returns(_db.GetItem("/sitecore/content/Home"));
+                .Returns(new NavigationRoot(
+                    _db.GetItem("/sitecore/content/Home")));
             _rootResolver = rootResolverMock.Object;
         }
 
@@ -72,7 +74,7 @@ namespace BasicCompany.Feature.Navigation.Tests
             var url = "/";
             var item = _db.GetItem("/sitecore/content/Home/Child1");
             var linkManager = new Mock<BaseLinkManager>();
-            var rootItem = _rootResolver.GetNavigationRoot(item);
+            var rootItem = _rootResolver.GetNavigationRoot(item).InnerItem;
             linkManager.Setup(x => x.GetItemUrl(It.Is<Item>(y => y == rootItem))).Returns(url);
             var headerBuilder = new HeaderBuilder(linkManager.Object, _rootResolver);
 

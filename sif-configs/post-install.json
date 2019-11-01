@@ -4,6 +4,15 @@
             "Type": "string",
             "DefaultValue": "Sitecore",
             "Description": "The name of the Sitecore instance to run post-install steps on."
+        },
+        "SitecoreHostNames": {
+            "Type": "hashtable",
+            "Description": "A mapping of Sitecore site names to host names for a configuration patch."
+        },
+        "SitecoreSiteRoot": {
+            "Type": "string",
+            "Description": "The path where the main Sitecore instance is being installed.",
+            "Validate": "[validatenotnullorempty($_)]"
         }
     },
     "Modules" : [
@@ -15,6 +24,14 @@
             "Type": "AddAppPoolToPerfmon",
             "Params": {
                 "SitecoreSiteName" : "[parameter('SitecoreSiteName')]"
+            }
+        },
+        "WriteSiteHostNameConfigPatch": {
+            "Description": "Writes a configuration patch to map host names to Sitecore site definitions.",
+            "Type": "WriteSiteHostNameConfigPatch",
+            "Params": {
+                "HostNames": "[parameter('SitecoreHostNames')]",
+                "DestinationPath": "[concat(parameter('SitecoreSiteRoot'), '\\App_Config\\Environment\\SiteHostNames.Dev.config')]"
             }
         }
     },

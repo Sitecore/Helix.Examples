@@ -42,6 +42,8 @@ Function Install-XP0SingleDeveloper {
         Install_ClientSecret = $IdentityClientSecret
         Install_AllowedCorsOrigins = $IdentityAllowedCorsOrigins
         Install_SitecoreAdminPassword = $SitecoreAdminPassword
+        PostInstall_SitecoreSiteRoot = $SitecoreSiteRoot
+        PostInstall_SitecoreHostNames = $HostNames
     }
     try {
         Install-SitecoreConfiguration @singleDeveloperParams *>&1 | Tee-Object "$PSScriptRoot\log.install.txt"

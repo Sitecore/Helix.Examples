@@ -267,6 +267,26 @@ Function Remove-AppPoolFromPerfmon {
     }
 }
 
+Function Write-SiteHostNameConfigPatch {
+    Param(
+        [hashtable]$HostNames,
+        [string]$DestinationPath
+    )
+    $xml = @"
+<?xml version="1.0"?>
+<configuration xmlns:set="http://www.sitecore.net/xmlconfig/set/">
+    <sitecore>
+        <sites>
+            $($HostNames.Keys | % { "<site name=`"$_`" set:hostName=`"$($HostNames[$_])`" />`r`n" })
+        </sites>
+    </sitecore>
+</configuration>
+"@
+    Write-Information "Config patch: $xml"
+    $xml > $DestinationPath
+    Write-Information "Wrote to $DestinationPath"
+}
+
 Import-Module "$PSScriptRoot\msbuild\Invoke-MsBuild.psm1"
 Function Invoke-MsBuildWithFailureCheck {
     Param(

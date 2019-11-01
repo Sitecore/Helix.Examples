@@ -8,3 +8,8 @@ $SourceFolder = Resolve-Path "$PSScriptRoot\..\src"
 $BuildProject = "$SourceFolder\..\BasicCompany.sln"
 
 . $PSScriptRoot\..\..\..\settings.global.ps1 -ExampleBuildDirectory $PSScriptRoot
+
+# Used to configure site host name patch
+$HostNames = @{
+    'basic-company' = $SitecoreSiteName
+}

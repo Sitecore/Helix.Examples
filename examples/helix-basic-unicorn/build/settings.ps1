@@ -12,3 +12,8 @@ $BuildProject = "$SourceFolder\Environment\Website\Website.csproj"
 $UnicornSecretConfig = "$SourceFolder\Foundation\Serialization\website\App_Config\Include\Unicorn.SharedSecret.config"
 
 . $PSScriptRoot\..\..\..\settings.global.ps1 -ExampleBuildDirectory $PSScriptRoot
+
+# Used to configure site host name patch
+$HostNames = @{
+    'basic-company' = $SitecoreSiteName
+}

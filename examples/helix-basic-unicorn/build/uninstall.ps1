@@ -43,6 +43,8 @@ Function Uninstall-XP0SingleDeveloper {
         Install_ClientSecret = $IdentityClientSecret
         Install_AllowedCorsOrigins = $IdentityAllowedCorsOrigins
         Install_SitecoreAdminPassword = $SitecoreAdminPassword
+        PostInstall_SitecoreSiteRoot = $SitecoreSiteRoot
+        PostInstall_SitecoreHostNames = $HostNames
     }
     try {
         Uninstall-SitecoreConfiguration @uninstallParams *>&1 | Tee-Object "$PSScriptRoot\log.uninstall.txt"

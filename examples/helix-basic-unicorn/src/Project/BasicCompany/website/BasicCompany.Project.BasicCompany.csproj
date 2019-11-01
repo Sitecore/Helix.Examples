@@ -51,18 +51,14 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Config\Include\Project\BasicCompany.Project.BasicCompany.config" />
-    <Content Include="App_Config\Include\Project\BasicCompany.Project.BasicCompany.Serialization.config">
-      <SubType>Designer</SubType>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="css\basic-company.css" />
     <Content Include="js\basic-company.js" />
     <Content Include="Views\BasicCompany\Layouts\Default.cshtml" />
+    <Content Include="App_Config\Include\Project\Project.BasicCompany.config" />
+    <Content Include="App_Config\Include\Project\Project.BasicCompany.Serialization.config" />
     <None Include="Views\web.config" />
     <None Include="web.config" />
     <None Include="web.Debug.config">

@@ -12,6 +12,8 @@ instance.
     * SQL Server 2016 SP2 or 2017
     * Apache Solr 7.5.0 with SSL enabled
     * .NET Framework 4.7.2
+1. To install TDS-based examples, you'll need to [install Sitecore TDS v6.0.0.8](https://www.teamdevelopmentforsitecore.com/Download/TDS-Classic) or higher.
+    * If you do not have a license for Sitecore TDS, you can [obtain a trial license](https://www.teamdevelopmentforsitecore.com/TDS-Classic/Free-Trial).
 1. [Clone the full repository](https://github.com/Sitecore/Helix.Examples) or [download it](https://github.com/Sitecore/Helix.Examples/archive/master.zip) and unzip into a local directory.
 1. Download the on-premises XP Single (XP0) packages from
 [dev.sitecore.net](https://dev.sitecore.net/Downloads/Sitecore_Experience_Platform/92/Sitecore_Experience_Platform_92_Initial_Release.aspx) and, without unzipping, place the package into the `install-assets` folder of the repository.

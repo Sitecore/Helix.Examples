@@ -52,7 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Moq">
-      <Version>4.10.1</Version>
+      <Version>4.13.1</Version>
     </PackageReference>
     <PackageReference Include="Sitecore.FakeDb">
       <Version>1.7.4</Version>

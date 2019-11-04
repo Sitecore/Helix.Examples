@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using BasicCompany.Feature.Navigation.Data;
 using BasicCompany.Feature.Navigation.Models;
 using Sitecore.Data.Items;
 using Sitecore.Abstractions;
-using Sitecore.Diagnostics;
-using Debug = System.Diagnostics.Debug;
 
 namespace BasicCompany.Feature.Navigation.Services
 {
@@ -24,7 +23,7 @@ namespace BasicCompany.Feature.Navigation.Services
 
         public Header GetHeader(Item contextItem)
         {
-            Assert.ArgumentNotNull(contextItem, nameof(contextItem));
+            Debug.Assert(contextItem != null);
             var navigationRoot = RootResolver.GetNavigationRoot(contextItem);
             if (navigationRoot == null)
             {

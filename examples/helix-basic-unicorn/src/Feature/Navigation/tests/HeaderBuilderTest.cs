@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using BasicCompany.Feature.Navigation.Data;
 using BasicCompany.Feature.Navigation.Services;
@@ -12,16 +11,6 @@ namespace BasicCompany.Feature.Navigation.Tests
 {
     public class HeaderBuilderTest
     {
-        [Fact]
-        public void GetHeaderWithNullThrows()
-        {
-            var linkManager = Mock.Of<BaseLinkManager>();
-            var rootResolver = Mock.Of<INavigationRootResolver>();
-            var sut = new HeaderBuilder(linkManager, rootResolver);
-            Assert.Throws<ArgumentNullException>(() =>
-                sut.GetHeader(null));
-        }
-
         [Fact]
         public void GetHeaderWithNullRootReturnsEmptyProps()
         {

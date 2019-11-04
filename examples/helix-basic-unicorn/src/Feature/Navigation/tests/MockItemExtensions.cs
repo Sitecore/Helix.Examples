@@ -28,6 +28,13 @@ namespace BasicCompany.Feature.Navigation.Tests
             return mock;
         }
 
+        public static Mock<Item> WithParent(this Mock<Item> mock, Item parent)
+        {
+            mock.SetupGet(x => x.Parent).Returns(parent);
+            mock.SetupGet(x => x.ParentID).Returns(parent.ID);
+            return mock;
+        }
+
         public static Mock<Item> WithTemplate(this Mock<Item> mock, ID templateId)
         {
             mock.Setup(x => x.TemplateID).Returns(templateId);

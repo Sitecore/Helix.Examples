@@ -1,4 +1,5 @@
 ﻿using BasicCompany.Feature.Navigation.Services;
+using Sitecore.Data.Items;
 using Xunit;
 
 namespace BasicCompany.Feature.Navigation.Tests
@@ -28,7 +29,7 @@ namespace BasicCompany.Feature.Navigation.Tests
             var expected = ItemMock.New().DescendsFrom(Templates.NavigationRoot.Id).Object;
             var sut = new NavigationRootResolver();
             var actual = sut.GetNavigationRoot(expected);
-            Assert.Same(expected, actual);
+            Assert.Same(expected, (Item)actual);
         }
 
         [Fact]
@@ -38,7 +39,7 @@ namespace BasicCompany.Feature.Navigation.Tests
             var child = ItemMock.New().WithAncestors(new[] { expected }).Object;
             var sut = new NavigationRootResolver();
             var actual = sut.GetNavigationRoot(child);
-            Assert.Same(expected, actual);
+            Assert.Same(expected, (Item)actual);
         }
 
         [Fact]
@@ -49,7 +50,7 @@ namespace BasicCompany.Feature.Navigation.Tests
             var child = ItemMock.New().WithAncestors(new[] { someRoot, expected }).Object;
             var sut = new NavigationRootResolver();
             var actual = sut.GetNavigationRoot(child);
-            Assert.Same(expected, actual);
+            Assert.Same(expected, (Item)actual);
         }
     }
 }

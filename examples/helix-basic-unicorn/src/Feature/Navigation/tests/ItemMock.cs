@@ -41,6 +41,11 @@ namespace BasicCompany.Feature.Navigation.Tests
             return New().Object;
         }
 
+        public static Item NewObject(string name)
+        {
+            return New(name).Object;
+        }
+
         public static IReadOnlyCollection<Item> NewListOf(int count)
         {
             var list = new Collection<Item>();

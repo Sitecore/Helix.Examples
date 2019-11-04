@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using System.Web.Mvc;
 using BasicCompany.Feature.Navigation.Services;
+using Sitecore.Data.Items;
 using Sitecore.Mvc.Presentation;
 
 namespace BasicCompany.Feature.Navigation.Controllers
@@ -27,7 +28,7 @@ namespace BasicCompany.Feature.Navigation.Controllers
         public ActionResult Footer()
         {
             var root = RootResolver.GetNavigationRoot(RenderingContext.Current.ContextItem);
-            return View(root);
+            return View((Item)root);
         }
     }
 }

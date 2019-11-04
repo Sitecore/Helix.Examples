@@ -46,10 +46,8 @@
     <Compile Include="HeaderBuilderTest.cs" />
     <Compile Include="ItemMock.cs" />
     <Compile Include="Data\NavigationRootTest.cs" />
-    <Compile Include="HeaderBuilderTests.cs" />
     <Compile Include="MockItemExtensions.cs" />
     <Compile Include="NavigationRootResolverTest.cs" />
-    <Compile Include="NavigationRootResolverTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

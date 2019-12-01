@@ -1,0 +1,69 @@
+<!--
+***********************************************************************************************
+Website.Properties.props
+  
+  Common build properties for all .NET Framework 
+  
+  This file is just here to reduce the noise in individual .csproj files
+  
+  
+  *** [IMPORTANT] ***
+    These props are only intended for classic .NET  (net4xx) framework projects. 
+    The import of this file is conditional on targetframework starting with net4 and 
+    will/should not be loaded on other target frameworks (.netstandard etc.)
+
+    If solution has multiple publish targets (website, xconnect, commerce, etc.) 
+    you should add a project level property to conditionally load props and targets.
+
+    Ex. 
+        add 
+          <PropertyGroup>
+            <ProjectPublishTarget>website</ProjectPublishTarget> 
+          </PropertyGroup>
+        in .csproj files targeting website instances,
+        
+        then add 
+          Condition="'$(ProjectPublishTarget)' == 'website'" 
+        on PropertyGroup and/or in .\Directory.Build.targets|props 
+
+
+   TODO: Rename to Website.Properties.props if relevant in solution - if only used by modules targeting website instances.
+   
+  
+                                                                      [Anders Laub // Laub+Co]
+***********************************************************************************************
+-->
+
+<Project>
+  <PropertyGroup Label="Build">
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <OutputType>Library</OutputType>
+    <Deterministic>false</Deterministic>
+
+    <!-- OutputPath, OutDir, UseCommonOutputDirectory:
+          Shared sln output path to reduce build I/O.
+          WARNING: Can cause race conditions in rare cases, if so just comment out or remove. 
+          Also note, this is for website builds only - ensure props are different dependent on target instance  
+          -->
+    
+    <!--<OutDir>$(OutputPath)</OutDir>
+    <UseCommonOutputDirectory>True</UseCommonOutputDirectory>-->
+
+    <!-- Set solution-wide config file for binding redirects -->
+    
+    <!-- TransformWebConfigEnabled
+          Disables the default msbuild webconfig transformation target, 
+          not related to Helix style transforms. Disabled for slight performance improvement.
+          -->
+    <TransformWebConfigEnabled>False</TransformWebConfigEnabled>
+    <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
+    <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
+    <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
+    <IgnoreTargetFrameworkAttributeVersionMismatch>true</IgnoreTargetFrameworkAttributeVersionMismatch>
+    <PackageAsSingleFile>false</PackageAsSingleFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+</Project>

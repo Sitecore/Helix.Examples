@@ -1,0 +1,45 @@
+﻿@charset "utf-8";
+
+// Import the initial variables
+@import "../../../Foundation/CssVendors/website/Css/Vendors/Bulma/utilities/_initial-variables";
+
+// Global Overrides
+$family-sans-serif: 'Montserrat', sans-serif;
+$red: #FF4036;
+$blue: #155786;
+$primary: #155786;
+$primary-invert: #fff;
+
+// Title Overrides
+$title-size: 33px;
+$title-color: #2B2B2B;
+$title-line-height: 40px;
+
+// Navbar Overrides
+$navbar-item-img-max-height: 45px;
+$navbar-tab-active-border-bottom-color: $red;
+$navbar-tab-hover-border-bottom-color: $black;
+
+// Footer Overrides
+$footer-background-color: $black;
+
+// Import the rest of Bulma
+@import "../../../Foundation/CssVendors/website/Css/Vendors/Bulma/bulma";
+
+@import "../../../Feature/BasicContent/website/css/title.scss";
+@import "../../../Feature/BasicContent/website/css/hero.scss";
+@import "../../../Feature/BasicContent/website/css/card.scss";
+@import "../../../Feature/BasicContent/website/css/promocard.scss";
+@import "../../../Feature/BasicContent/website/css/accordion.scss";
+@import "../../../Feature/Navigation/website/css/footer.scss";
+@import "../../../Feature/Navigation/website/css/navbar.scss";
+@import "../../../Feature/Products/website/css/productlist.scss";
+@import "../../../Feature/Products/website/css/productdetail.scss";
+@import "../../../Feature/Services/website/css/services.scss";
+
+
+
+// for pages without a hero on top
+.navbar + .container {
+  margin-top: 50px;
+}

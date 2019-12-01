@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+  </PropertyGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="BuildBundlerMinifier" Version="3.2.435" />
+    <PackageReference Include="BuildWebCompiler" Version="1.12.405" />
+    <PackageReference Include="Sitecore.Kernel" Version="$(SitecoreVersion)" />
+    <PackageReference Include="Sitecore.Mvc" Version="$(SitecoreVersion)" />
+    <PackageReference Include="Sitecore.Mvc.Analytics" Version="$(SitecoreVersion)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+
+</Project>

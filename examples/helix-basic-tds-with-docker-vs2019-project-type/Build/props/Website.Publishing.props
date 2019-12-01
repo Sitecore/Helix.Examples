@@ -1,0 +1,67 @@
+<!--
+***********************************************************************************************
+Website.Publishing.props
+  
+  Properties related to publishing projects and solution.
+
+  These properties can be overridden locally by adding a file named Publish.Properties.props.user
+  F. ex. to control the PublishRootDirectory location on your dev machine if it differ from the 
+
+  *** [IMPORTANT] ***
+  
+    These props are only intended for projects targeting classic .NET  (net4xx) framework projects. 
+    The import of this file is conditional on targetframework net4xx and 
+    will/should not be loaded when building projects with other target frameworks (netstandard etc.)
+  
+   TODO: Rename to Website.PublishProperties.props if relevant in solution - if only used by modules targeting website instances.
+
+  
+                                                                      [Anders Laub // Laub+Co]
+***********************************************************************************************
+-->
+
+<Project>
+
+  <PropertyGroup>
+    <!-- PublishRootDirectory 
+            Your Sitecore website root directory, used for publishing and xml transformations 
+              Note: Override this property in .csproj or local Directory.Build.props file for specific publish targets 
+              IMPORTANT: Remember trailing slash!-->
+    <PublishRootDirectory>$(SolutionDir)\docker\data\cm\wwwroot</PublishRootDirectory>
+
+    <!-- AutoPublishOnBuild
+          Toogles automatic-publishing on builds, including from VS 
+          see ./build/targets/Website.AutoPublish.targets for details -->
+    <AutoPublishOnBuild>true</AutoPublishOnBuild>
+
+    <!-- RunXmlTransformsOnPublish
+          Toggles transforming xml files post publishing, 
+          see ./build/targets/Website.TransformXml.targets for details -->
+    <RunXmlTransformsOnPublish>true</RunXmlTransformsOnPublish>
+
+    <!-- XmlTransformFilePostfix
+          File postfix for transformation files (default: xdt)
+          Name files [whatever].[{Configuration}|Any].xdt 
+          Ex. web.config.debug.xdt or web.config.any.xdt -->
+    <XmlTransformFilePostfix>xdt</XmlTransformFilePostfix>
+
+    <!-- LegacyRemovePrivatePackageReference
+          Prevent packagereference assemblies to be copied when privateassets=all|runtime
+          even though the package structure does not follow the current conventions.  
+          see ./build/targets/RemovePrivatePackageReference.targets for details -->
+    <LegacyRemoveStandardReferenceAssemblies>true</LegacyRemoveStandardReferenceAssemblies>
+
+    <!-- BuildingInsideVisualStudio
+          Important! do not remove. Otherwise webpublish cannot run automatically on VS triggered builds -->
+    <BuildingInsideVisualStudio>False</BuildingInsideVisualStudio>
+    <WebPublishMethod>FileSystem</WebPublishMethod>
+    <LastUsedBuildConfiguration>$(Configuration)</LastUsedBuildConfiguration>
+    <LastUsedPlatform>Any CPU</LastUsedPlatform>
+    <ExcludeApp_Data>False</ExcludeApp_Data>
+    <DeleteExistingFiles>False</DeleteExistingFiles>
+    <DeployOnBuild>False</DeployOnBuild>
+    <publishUrl>$(PublishRootDirectory)</publishUrl>
+    <ExcludeFilesFromDeployment></ExcludeFilesFromDeployment>
+    <ExcludeFoldersFromDeployment>Docker</ExcludeFoldersFromDeployment>
+  </PropertyGroup>
+</Project>

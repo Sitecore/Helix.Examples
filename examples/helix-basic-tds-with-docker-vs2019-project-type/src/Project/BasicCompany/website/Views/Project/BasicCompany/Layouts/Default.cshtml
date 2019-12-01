@@ -1,0 +1,32 @@
+﻿@using Sitecore.Mvc
+@using Sitecore.Mvc.Analytics.Extensions
+@inherits System.Web.Mvc.WebViewPage
+@{
+  Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Basic Company</title>
+  <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono|Montserrat" rel="stylesheet">
+  <link rel="stylesheet" href="~/css/basic-company.css">
+  @Html.Sitecore().VisitorIdentification()
+</head>
+
+<body>
+  @Html.Sitecore().Placeholder("header")
+  @Html.Sitecore().Placeholder("main")
+  @Html.Sitecore().Placeholder("footer")
+
+  @* Generally, disabling JavaScript interactivity in an MVC site when editing is a good idea. *@
+  @if (!Sitecore.Context.PageMode.IsExperienceEditor)
+  {
+    <script src="~/js/basic-company.js"></script>
+  }
+</body>
+</html>

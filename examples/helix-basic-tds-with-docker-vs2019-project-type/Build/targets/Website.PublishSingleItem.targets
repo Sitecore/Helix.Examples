@@ -1,0 +1,46 @@
+<!--
+***********************************************************************************************
+Website.PublishSingleItem.targets
+        
+        Publishes (copies) a single item to $(PublishRootDirectory). 
+        
+        Beware that file type is not checked before copying. This target just copies the selected file..
+        
+        Usage:
+        
+        Configure external  tool in Visual Studio
+        
+          Tools > External Tools >> Add
+          
+            Title: Publish Single Item
+            Command: $(MSBuildBinPath)MSBuild.exe
+            Arguments: -t:PublishSingleItem -p:ItemPath=$(ItemPath)
+            Initial directory: $(ProjectDir)
+            Check: Use output window
+       
+       _notice the index position of the added external tool in the list_
+       
+       Add to Solution Explorer in Visual Studio
+       
+          Tools > Customize >> Commands
+          
+          Context Menu >> Project and Solution Context | Item
+          
+          Add Command >> Tools >> External tool $index_of_external_tool$
+          
+          Modify Selection >> Change name and save..
+          
+                                                                      [Anders Laub // Laub+Co]
+                                                                      
+***********************************************************************************************
+-->
+
+<Project>
+  <Target Name="PublishSingleItem">
+    <PropertyGroup>
+      <PublishRootDirectory Condition="!HasTrailingSlash('$(PublishRootDirectory)')">$(PublishRootDirectory)\</PublishRootDirectory>
+      <ItemDestinationPath>$(PublishRootDirectory)$([MSBuild]::MakeRelative($(ProjectDir), $(ItemPath)))</ItemDestinationPath>
+    </PropertyGroup>
+    <Copy SourceFiles="$(ItemPath)" DestinationFiles="$(ItemDestinationPath)" SkipUnchangedFiles="False"  />
+  </Target>
+</Project>

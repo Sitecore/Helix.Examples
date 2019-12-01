@@ -1,0 +1,32 @@
+
+
+/* Center the nav */
+.navbar-brand {
+    flex: 1;
+    margin-right: auto;
+}
+
+.navbar-menu {
+    flex: 1;
+}
+
+.navbar-start {
+    margin: auto;
+}
+
+.navbar > .container::after {
+    flex: 1;
+    content: "";
+    margin-left: auto;
+    visibility: hidden;
+}
+
+/* Format the nav */
+.navbar-item {
+    font-size: 12px;
+}
+
+.navbar-item.is-tab {
+    min-height: 15px;
+    line-height: 14px;
+}

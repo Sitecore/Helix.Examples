@@ -1,0 +1,24 @@
+﻿@model Sitecore.Mvc.Presentation.RenderingModel
+@using BasicCompany.Feature.BasicContent
+@using BasicCompany.Foundation.FieldRendering
+@{ 
+	var promoImageOptions = new Sitecore.Resources.Media.MediaUrlOptions
+	{
+		MaxWidth = 960,
+		AllowStretch = false,
+	};
+}
+@* Disable editing to improve component selection in editor. Can be edited via field editor button. *@
+@Html.Sitecore().BeginField(Templates.PromoCard.Fields.Link.ToString(), new { @class = "column promo-column", DisableWebEdit = true })
+<div class="card">
+    <div class="card-image">
+        <figure style="background-image: url(@Html.Sitecore().MediaUrl(Templates.PromoCard.Fields.Image, promoImageOptions))"></figure>
+    </div>
+    <div class="card-content">
+        <div class="content">
+            <h4>@Html.Sitecore().Field(Templates.PromoCard.Fields.Headline)</h4>
+            @Html.Sitecore().Field(Templates.PromoCard.Fields.Text)
+        </div>
+    </div>
+</div>
+@Html.Sitecore().EndField()

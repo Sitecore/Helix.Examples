@@ -1,0 +1,80 @@
+
+.product-detail-hero {
+    h1 {
+        font-size: 50px;
+        font-weight: 400;
+        letter-spacing: 4.1px;
+        line-height: 60px;
+    }
+    h2 {
+        font-size: 16px;
+        font-weight: 400;
+        letter-spacing: 4.1px;
+        line-height: 29px;
+        margin: 0 auto;
+
+        @include from($tablet) {
+            width: 33%;
+        }
+    }
+}
+
+.product-detail {
+    background-color: $red;
+    margin: 10px 0;
+    padding: 10px 0 0 0;
+
+    // need more specific selector
+    &:not(:last-child) {
+        margin-bottom: 30px;
+    }
+
+    .product-details {
+        @include from($tablet) {
+            padding-right: 50px;
+        }
+        @include mobile {
+            margin: 50px 0;
+        }
+
+        h5 {
+            color: #9D1F18;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 3.78px;
+            line-height: 14px;
+            text-transform: uppercase;
+        }
+
+        .price {
+            color: $white;
+            font-family: 'IBMPlexMono', monospace;
+            font-size: 39px;
+            font-weight: 600;
+            letter-spacing: 3.2px;
+            line-height: 47px;
+            text-transform: uppercase;
+        }
+
+        li {
+            color: $white;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 2.74px;
+            line-height: 14px;
+            text-transform: uppercase;
+            margin-top: 15px;
+        }
+    }
+
+    .product-image {
+        padding-bottom: 0;
+        margin-top: auto;
+
+        img {
+            display: block;
+        }
+    }
+
+}
+

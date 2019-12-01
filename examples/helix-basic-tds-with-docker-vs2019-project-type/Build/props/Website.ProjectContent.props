@@ -1,0 +1,50 @@
+<!--
+***********************************************************************************************
+Website.ProjectContent.props
+  
+  This file is used to control which files are published from a project.
+  
+  Modify the globs below to match common files in your solution.
+  
+  - or edit file Properties in solution explorer > "Build action" > Content/None/..  on individual files.
+
+
+                                                                      [Anders Laub // Laub+Co]
+***********************************************************************************************
+-->
+
+<Project>
+  <ItemGroup>
+    <Content Include="App_Config\**\*.config" >
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+    </Content>
+    <Content Include="Views\**\*.cshtml">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+     </Content>
+    <Content Include="**\*.aspx;**\*.ascx" Exclude="$(BaseIntermediateOutputPath)**\*.*">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+    </Content>
+    <!-- [STATIC RESOURCE FILES] - add more as needed (fonts etc.) -->
+    <Content Include="**\*.js;**\*.css;**\*.xml;**\*.txt" Exclude="$(BaseIntermediateOutputPath)**\*.*">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+    </Content>
+    <Content Include="**\*.png;**\*.jpg;**\*.gif;**\*.ico;**\*.svg;**\*.tiff" Exclude="$(BaseIntermediateOutputPath)**\*.*">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+    </Content>
+    
+    <None Include="**\Web.config" Exclude="$(BaseIntermediateOutputPath)**\*.*">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Web.*.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.*.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+</Project>

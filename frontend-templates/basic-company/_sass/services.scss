@@ -1,0 +1,55 @@
+/*
+    For responsive card height based on window size
+    https://ratiobuddy.com/
+*/
+
+.testimonial {
+  position: relative;
+  &:before {
+    display: block;
+    content: "";
+    width: 100%;
+    padding-top: (374 / 699) * 100%;
+  }
+  > .testimonial-inner {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+}
+
+.testimonial-inner {
+  background-size: cover;
+  margin: 10px;
+  padding: 10px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+
+  * {
+    background-color: $white;
+    padding: 3px;
+  }
+
+  h3 {
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 1.4px;
+    line-height: 22px;
+  }
+
+  p {
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    line-height: 19px;
+  }
+}
+
+.testimonials {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}

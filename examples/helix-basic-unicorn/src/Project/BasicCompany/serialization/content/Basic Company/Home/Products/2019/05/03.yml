@@ -1,0 +1,14 @@
+﻿---
+ID: "798d00fd-3e8e-4c19-b9ed-82078861073b"
+Parent: "ce6df187-c709-487d-b3cc-95787a423529"
+Template: "adb6ca4f-03ef-4f47-b9ac-9ce2ba53ff97"
+Path: /sitecore/content/Basic Company/Home/Products/2019/05/03
+DB: master
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20190503T164056Z

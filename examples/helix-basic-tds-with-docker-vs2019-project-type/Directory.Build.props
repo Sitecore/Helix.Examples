@@ -1,0 +1,21 @@
+<!--
+***********************************************************************************************
+Publish.Properties.props
+  
+  Solution-wide build properties. See imported files for details.
+  
+  Add following condition to imports if mixed targetframeworks are used in solution
+  
+                                                                      [Anders Laub // Laub+Co]
+***********************************************************************************************
+-->
+
+<Project>
+  <Import Project="Build/props/Website.AssemblyVersionsProperties.props"  />
+  <Import Project="Build/props/Website.Publishing.props"  />
+  <Import Project="Build/props/Website.Publishing.props.user" Condition="exists('$(SolutionDir)/Build/props/Website.Publishing.props.user')" />
+  <Import Project="Build/props/Website.BuildProperties.props" />
+  <Import Project="Build/props/Website.References.props"  />
+  
+  <Import Project="Build/props/Website.ProjectContent.props" />
+</Project>

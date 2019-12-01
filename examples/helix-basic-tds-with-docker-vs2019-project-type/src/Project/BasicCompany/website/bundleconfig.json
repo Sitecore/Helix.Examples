@@ -1,0 +1,9 @@
+﻿[
+  {
+    "outputFileName": "js/basic-company.js",
+    "inputFiles": [
+      "../../../Feature/Navigation/website/js/navigation.js",
+      "../../../Feature/BasicContent/website/js/accordion.js"
+    ]
+  }
+]

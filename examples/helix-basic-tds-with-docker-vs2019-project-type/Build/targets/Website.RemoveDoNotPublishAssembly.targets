@@ -1,0 +1,18 @@
+<!--
+***********************************************************************************************
+RemoveDoNotPublishAssembly.targets
+  
+  
+                                                                      [Anders Laub // Laub+Co]
+***********************************************************************************************
+-->
+
+<Project>
+  <Import Project="$(SolutionDir)/Build/props/Website.DoNotPublishAssembly.props"  />
+
+  <Target Name="RemoveDoNotPublishAssembly" AfterTargets="ResolveReferences" Condition="$(LegacyRemoveStandardReferenceAssemblies) == 'true'">
+    <ItemGroup>
+      <ReferenceCopyLocalPaths Remove="@(ReferenceCopyLocalPaths)" Condition="'%(Filename)' != '' and '@(DoNotPublishAssembly)' != ''" />
+    </ItemGroup>
+  </Target>
+</Project>

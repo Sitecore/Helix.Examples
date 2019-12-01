@@ -1,0 +1,25 @@
+﻿@model Sitecore.Data.Items.Item
+@using BasicCompany.Feature.Products
+@using BasicCompany.Foundation.FieldRendering
+
+@{
+    var productImageOptions = new Sitecore.Resources.Media.MediaUrlOptions
+    {
+        MaxWidth = 480,
+        AllowStretch = false,
+    };
+}
+
+<a href="@Html.Sitecore().ItemUrl(Model)" class="column product-list-column is-4-desktop is-6-tablet">
+    <div class="card">
+        <div class="card-image">
+            <figure style="background-image: url(@Html.Sitecore().MediaUrl(Templates.Product.Fields.Image, Model, productImageOptions))"></figure>
+        </div>
+        <div class="card-content">
+            <div class="content">
+                <h4>@Html.Sitecore().Field(Templates.Product.Fields.Title, Model)</h4>
+                <p>@Html.Sitecore().Field(Templates.Product.Fields.ShortDescription, Model)</p>
+            </div>
+        </div>
+    </div>
+</a>

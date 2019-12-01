@@ -1,0 +1,14 @@
+﻿---
+ID: "e5217c07-4de9-45f2-97dd-08a162b31d1c"
+Parent: "0667b089-4a7d-4d1e-9b06-27a1bf8b9e8f"
+Template: "456f5066-3169-4cda-b827-ed0917a75776"
+Path: /sitecore/content/Basic Company/Shared Content/Hero Banners
+DB: master
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20190311T191833Z

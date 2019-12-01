@@ -1,0 +1,27 @@
+/*
+    For responsive card height based on window size / # of columns.
+    https://ratiobuddy.com/
+*/
+.promo-column {
+    position: relative;
+
+    &:before {
+      display: block;
+      content: "";
+      width: 100%;
+      padding-top: (389 / 473) * 100%;
+    }
+
+    > .card {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
+}
+
+.promo-column {
+    margin: 50px 10px;
+    box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.2);
+}

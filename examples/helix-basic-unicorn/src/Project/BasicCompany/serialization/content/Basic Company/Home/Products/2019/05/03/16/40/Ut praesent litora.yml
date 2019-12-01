@@ -1,0 +1,43 @@
+﻿---
+ID: "2a4e0749-001a-4827-960b-197e43bba414"
+Parent: "44b6c92f-2160-416e-914c-bfc160624596"
+Template: "fa3971f5-5a1b-4477-b64e-ca99949e8894"
+Path: /sitecore/content/Basic Company/Home/Products/2019/05/03/16/40/Ut praesent litora
+DB: master
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "23f42f5e-645c-4a72-9c61-79db1a331e64"
+      Hint: Image
+      Value: |
+        <image mediaid="{D8B7E336-3EF6-4938-9E1A-8FE8BFEDB0FB}" />
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20190503T164059Z
+    - ID: "2c2c386c-17c7-44c3-8796-3e720ba08079"
+      Hint: Features
+      Value: |
+        <ul>
+        <li>Etiam pharetra curabitur sapien</li>
+        <li>Porttitor feugiat aenean nullam</li>
+        <li>Feugiat purus curae</li>
+        </ul>
+    - ID: "9977fbe7-a0ff-475c-9a7c-ecb81c7f51cf"
+      Hint: Price
+      Value: 12.99
+    - ID: "be500a38-36a0-417b-86c5-e63ba71d0939"
+      Hint: Title
+      Value: Ut praesent litora
+    - ID: "be7e2d00-e405-4498-85f9-4f89d8ea2cfc"
+      Hint: Short Description
+      Value: Convallis mi euismod iaculis eros diam at feugiat
+    - ID: "fc7c99d4-7301-44eb-908c-bf4ffca5a131"
+      Hint: Related Products
+      Type: Multilist with Search
+      Value: |
+        {5A180B63-6735-4896-9279-1794DA2B48AD}
+        {57EEE913-0CC2-4015-8CCF-79E847AAE53A}
+        {BEED227F-E27F-4179-BAD4-4FE04CA44A62}
+        {64C67D17-D9FA-4CC3-958E-CED6A9EF1312}

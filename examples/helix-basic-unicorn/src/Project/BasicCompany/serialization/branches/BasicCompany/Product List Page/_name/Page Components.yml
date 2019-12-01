@@ -1,0 +1,14 @@
+﻿---
+ID: "623f74e1-c614-4774-932f-98d2a7727346"
+Parent: "78398e86-d86a-411a-9b20-f25400d5d6bd"
+Template: "7ba26fb3-7ab2-4e09-bb5a-e9d6cd048bba"
+Path: /sitecore/templates/Branches/Project/BasicCompany/Product List Page/$name/Page Components
+DB: master
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20190312T172701Z

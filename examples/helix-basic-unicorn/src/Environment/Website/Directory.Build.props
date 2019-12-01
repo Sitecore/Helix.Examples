@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!--
+      Referencing in Directory.build.props will prevent Visual Studio from expanding the globs when you rename a project.
+  -->
+  <ItemGroup>
+    <ProjectReference Include="..\..\Foundation\*\website\*.csproj" />
+    <ProjectReference Include="..\..\Feature\*\website\*.csproj" />
+    <ProjectReference Include="..\..\Project\*\website\*.csproj" />
+  </ItemGroup>
+</Project>

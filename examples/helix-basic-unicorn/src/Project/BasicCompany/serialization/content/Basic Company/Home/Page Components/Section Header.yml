@@ -1,0 +1,21 @@
+﻿---
+ID: "086cbc66-2b60-4711-bee5-14c11181fb27"
+Parent: "d4fbef5c-dda0-4d84-9f51-f1982bcce110"
+Template: "fcb0ba21-9aaa-45f8-b86c-738fb269e06f"
+Path: /sitecore/content/Basic Company/Home/Page Components/Section Header
+DB: master
+SharedFields:
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 300
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20190311T185757Z
+    - ID: "59d24d0a-f955-4988-b26f-92039b4df8bd"
+      Hint: Text
+      Value: Section Header

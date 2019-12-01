@@ -1,0 +1,15 @@
+﻿@using BasicCompany.Feature.BasicContent
+@using BasicCompany.Foundation.FieldRendering
+
+<section class="hero is-medium is-black" style="background-image: url(@Html.Sitecore().MediaUrl(Templates.HeroBanner.Fields.Image))">
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="title">
+                @Html.Sitecore().Field(Templates.HeroBanner.Fields.Title)
+            </h1>
+            <h2 class="subtitle">
+                @Html.Sitecore().Field(Templates.HeroBanner.Fields.Subtitle)
+            </h2>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,24 @@
+<templateManifest typeOfTemplate="Module">
+  <name>Test for a Feature Module</name>
+  <description>Add tests to an existing Feature module.</description>
+  <version>1.0.0</version>
+  <author>Nick Wesselman</author>
+  <sourceFolder>/src</sourceFolder>
+  <saveOnCreate>true</saveOnCreate>
+  <templateEngine type="LaubPlusCo.Foundation.HelixTemplating.TemplateEngine.DefaultHelixTemplateEngine, LaubPlusCo.Foundation.HelixTemplating" />
+  <replacementTokens>
+    <token key="$moduleName$" displayName="Module name" default="$safeprojectname$" input="Text" required="true"
+           validationType="LaubPlusCo.Foundation.HelixTemplating.Tokens.ValidateModuleNameToken, LaubPlusCo.Foundation.HelixTemplating" />
+    <token key="$moduleNamespace$" displayName="Module namespace" required="true" default="Feature.$moduleName$" input="Text"
+           suggestType="LaubPlusCo.Foundation.HelixTemplating.Tokens.SuggestNamespaceToken, LaubPlusCo.Foundation.HelixTemplating"
+           validationType="LaubPlusCo.Foundation.HelixTemplating.Tokens.ValidateNamespaceToken, LaubPlusCo.Foundation.HelixTemplating" />
+    <token key="$sitecoreVersion$" displayName="Sitecore version (for Sitecore nuget packages)" default="9.2.0" required="true" input="Text"
+           validationType="LaubPlusCo.Foundation.HelixTemplating.Tokens.ValidateVersionNumberToken, LaubPlusCo.Foundation.HelixTemplating" />
+  </replacementTokens>
+  <projectsToAttach>
+    <projectFile path="/src/Feature/$modulename$/tests/$moduleNamespace$.Tests.csproj" />
+  </projectsToAttach>
+  <ignoreFiles>
+    <file path="/template.manifest.xml" />
+  </ignoreFiles>
+</templateManifest>

@@ -1,0 +1,17 @@
+﻿@using BasicCompany.Feature.Services;
+@using BasicCompany.Foundation.FieldRendering
+
+@{
+    var testimonialImageOptions = new Sitecore.Resources.Media.MediaUrlOptions
+    {
+        MaxWidth = 960,
+        AllowStretch = false,
+    };
+}
+
+<div class="column testimonial is-6">
+    <div class="testimonial-inner" style="background-image: url(@Html.Sitecore().MediaUrl(Templates.Testimonial.Fields.Image, testimonialImageOptions))">
+        <h3>@Html.Sitecore().Field(Templates.Testimonial.Fields.Title)</h3>
+        @Html.Sitecore().Field(Templates.Testimonial.Fields.Quote)
+    </div>
+</div>

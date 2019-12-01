@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <!--
+        Only explicitly publish our assemblies. HPP can exclude from an assembly list, but nuget references
+        can result in publishing other undesired System assemblies.
+        Note: Changes to this file may require a Visual Studio restart and/or deletion of .vs directory.
+    
+    <PropertyGroup>
+        <SafelistAssemblies>
+            bin\BasicCompany*.dll;
+            bin\BasicCompany*.pdb;
+            bin\Unicorn*.dll;
+            bin\Rainbow*.dll;
+        </SafelistAssemblies>
+    </PropertyGroup>
+    <ItemGroup>
+        <ExcludeFromPackageFiles Include="bin\*.*" Exclude="$(SafelistAssemblies)" />
+    </ItemGroup>
+    -->
+
+    <ItemGroup>
+        <!-- Sitecore builtin assemblies -->
+        <SitecoreAssemblyListsToExclude Include="Sitecore.Platform.Assemblies 9.2.0 rev. 002893.csv" />
+
+        <!-- Deployment project -->
+        <SitecoreAssembliesToExclude Include="Website.dll" />
+
+        <!-- Included by MSBuild when referencing a .NET Standard library -->
+        <SitecoreAssembliesToExclude Include="System.Data.Common.dll" />
+        <SitecoreAssembliesToExclude Include="System.Diagnostics.StackTrace.dll" />
+        <SitecoreAssembliesToExclude Include="System.Diagnostics.Tracing.dll" />
+        <SitecoreAssembliesToExclude Include="System.Globalization.Extensions.dll" />
+        <SitecoreAssembliesToExclude Include="System.IO.Compression.dll" />
+        <SitecoreAssembliesToExclude Include="System.Net.Http.dll" />
+        <SitecoreAssembliesToExclude Include="System.Net.Sockets.dll" />
+        <SitecoreAssembliesToExclude Include="System.Runtime.Serialization.Primitives.dll" />
+        <SitecoreAssembliesToExclude Include="System.Security.Cryptography.Algorithms.dll" />
+        <SitecoreAssembliesToExclude Include="System.Security.SecureString.dll" />
+        <SitecoreAssembliesToExclude Include="System.Threading.Overlapped.dll" />
+        <SitecoreAssembliesToExclude Include="System.Xml.XPath.XDocument.dll" />
+    </ItemGroup>
+
+</Project>

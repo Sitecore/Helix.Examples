@@ -1,0 +1,13 @@
+﻿@using BasicCompany.Feature.Products
+@using BasicCompany.Foundation.FieldRendering
+
+<section class="product-detail columns is-centered is-vcentered">
+    <div class="product-details column is-narrow has-text-centered-mobile">
+        <h5>@Sitecore.Globalization.Translate.Text("Products-Detail-Price")</h5>
+        <p class="price">$@Html.Sitecore().Field(Templates.Product.Fields.Price)</p>
+        @Html.Sitecore().Field(Templates.Product.Fields.Features)
+    </div>
+    <div class="product-image column is-3">
+        @Html.Sitecore().Field(Templates.Product.Fields.Image, new { mw = 480, @as = 0 })
+    </div>
+</section>

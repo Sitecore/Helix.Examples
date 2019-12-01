@@ -1,0 +1,31 @@
+---
+---
+$primary: #333333;
+// Import Main CSS file from theme
+@import "main";
+
+.navbar-brand {
+    margin-right: 15px;
+
+    .navbar-item {
+        background-color: red;
+    }
+}
+
+a.navbar-item:hover {
+    background-color: unset !important;
+}
+
+a.navbar-item.is-active {
+    background-color: unset !important;
+    text-decoration: underline;
+}
+
+.navbar-dropdown a.navbar-item.is-active {
+    color: #000 !important;
+    text-decoration: underline;
+}
+
+.content ul {
+    margin-top: unset;
+}

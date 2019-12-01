@@ -1,0 +1,19 @@
+<!--
+***********************************************************************************************
+Website.AssemblyVersionsProperties
+  For managing versions of assemblies/nuget packages
+ 
+ 
+ 
+   TODO: Rename to Website.Properties.props if relevant in solution - if only used by modules targeting website instances.
+   
+                                                                      
+***********************************************************************************************
+-->
+
+<Project>
+  <PropertyGroup>
+    <SitecoreVersion>9.3.0</SitecoreVersion>
+  </PropertyGroup>
+  
+</Project>

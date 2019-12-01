@@ -1,0 +1,32 @@
+
+.hero {
+    background-position: center;
+    background-size: cover;
+    font-family: 'IBMPlexMono', monospace;
+
+    &.is-medium {
+        height: 335px;
+        @include from($tablet) {
+            height: 510px;
+        }
+    }
+}
+
+.hero-body {
+    text-align: center;
+    text-transform: uppercase;
+
+    h1 {
+        font-size: 90px;
+        font-weight: 500;
+        letter-spacing: 7.38px;
+        line-height: 108px;
+    }
+
+    h2 {
+        font-size: 16px;
+        font-weight: 500;
+        letter-spacing: 6.3px;
+        line-height: 19px;
+    }
+}

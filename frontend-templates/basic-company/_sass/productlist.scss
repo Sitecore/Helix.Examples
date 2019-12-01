@@ -1,0 +1,39 @@
+
+.product-list-columns {
+    margin: 40px 0;
+}
+
+.product-list-column {
+    margin: 10px;
+    padding: 0;
+    box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.2);
+
+    .card {
+        height: 302px;
+    }
+
+    .card-image {
+        padding: 20px 20px 0 20px;
+        
+        figure {
+            background-position: bottom;
+            background-size: contain;
+        }
+    }
+
+    .card-content {
+        text-align: center;
+    }
+}
+
+.product-list-column.is-6-tablet {
+    @include tablet {
+        width: calc(50% - 20px);
+    }
+}
+
+.product-list-column.is-4-desktop {
+    @include from($desktop) {
+        width: calc(25% - 20px);
+    }
+}

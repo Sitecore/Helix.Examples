@@ -406,6 +406,24 @@ Last but very important. You need to set "basic-company" to your favourite insta
 172.29.139.155	cm de191be75c99 docker_cm_1 basic-company
 ``` 
 
+#### 4. Attach the remote debugger
+Get the ip address of the instance you want to debug, here it's the CM instance:
+```
+docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' docker_cm_1
+```
+
+In VisualStudio open up your debugger:
+1. Select Remote(no authentication)'
+2. Set the ip-address and dont forget to set port number 4024:
+```
+172.21.131.199:4024
+``` 
+
+3. Select w3wp.exe
+
+
+Now you can debug your stuff :-)
+
 
 ### Install and run Sitecore 9.2
 

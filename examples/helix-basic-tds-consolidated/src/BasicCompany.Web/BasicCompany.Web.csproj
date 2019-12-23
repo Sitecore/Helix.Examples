@@ -47,10 +47,10 @@
     <PackageReference Include="HedgehogDevelopment.FxCop.Helix">
       <Version>1.0.0.7</Version>
     </PackageReference>
-    <PackageReference Include="Sitecore.Kernel" Version="9.2.0" />
-    <PackageReference Include="Sitecore.Mvc" Version="9.2.0" />
-    <PackageReference Include="Sitecore.ContentSearch" Version="9.2.0" />
-    <PackageReference Include="Sitecore.ContentSearch.Linq" Version="9.2.0" />
+    <PackageReference Include="Sitecore.Kernel" Version="9.3.0" />
+    <PackageReference Include="Sitecore.Mvc" Version="9.3.0" />
+    <PackageReference Include="Sitecore.ContentSearch" Version="9.3.0" />
+    <PackageReference Include="Sitecore.ContentSearch.Linq" Version="9.3.0" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
@@ -101,7 +101,7 @@
     <Content Include="Views\BasicContent\SectionHeader.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\web.config" />
+    <None Include="Views\web.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Config\Include\Feature\Feature.Navigation.config" />

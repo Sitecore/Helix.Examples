@@ -1,9 +1,9 @@
 # Always execute relative to calling settings
 param($ExampleBuildDirectory)
 
-$SitecoreVersion = "9.2.0 rev. 002893"
-$IdentityServerVersion = "3.0.0 rev. 00211"
-$InstallerVersion = "2.1.0"
+$SitecoreVersion = "9.3.0 rev. 003498"
+$IdentityServerVersion = "4.0.0 rev. 00257"
+$InstallerVersion = "2.2.0"
 
 $SqlBuildVersion = "13.0.5026"
 $SqlFriendlyVersion = "2016 SP2"
@@ -52,7 +52,7 @@ $ConfigurationsZip = "XP0 Configuration files $SitecoreVersion.zip"
 # Sitecore Parameters
 $SitecorePackage = "$AssetsRoot\Sitecore $SitecoreVersion (OnPrem)_single.scwdp.zip"
 $SitecoreSiteName = "$SolutionPrefix.$SitePostFix"
-$SitecoreSiteUrl = "http://$SitecoreSiteName"
+$SitecoreSiteUrl = "https://$SitecoreSiteName"
 $SitecoreSiteRoot = Join-Path $webroot -ChildPath $SitecoreSiteName
 
 # XConnect Parameters

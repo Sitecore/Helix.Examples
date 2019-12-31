@@ -43,7 +43,7 @@
         }
     },
     "Variables" : {
-        "Unicorn.SecretConfig": "[if(parameter('UnicornSecretConfig'), GetUnicornSecret(parameter('UnicornSecretConfig'))], '')]",
+        "Unicorn.SecretConfig": "[if(parameter('UnicornSecretConfig'), GetUnicornSecret(parameter('UnicornSecretConfig')), '')]",
         "Unicorn.Secret": "[if(parameter('UnicornSecret'), parameter('UnicornSecret'), variable('Unicorn.SecretConfig'))]"
     },
     "Modules" : [

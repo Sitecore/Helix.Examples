@@ -191,7 +191,7 @@ Function Write-InstanceMenu($instance) {
                         10..0 | % { Write-HostHelix $_; Start-Sleep 1 }
                         Write-HostHelix
 
-                        $loginUrl = "$($instance.SitecoreUrl)/sitecore/"
+                        $loginUrl = "$($instance.SitecoreUrl)/sitecore/login/"
                         Write-HostHelix "Opening $loginUrl..."
                         Start-Process $loginUrl
                         Write-HostHelix "Opening $($instance.SitecoreUrl)..."

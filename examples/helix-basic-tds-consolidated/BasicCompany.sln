@@ -18,6 +18,16 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicCompany.Web.Tests", "src\BasicCompany.Web.Tests\BasicCompany.Web.Tests.csproj", "{F519C1AB-3EF2-4F56-8BAA-53BD1F1DDBB4}"
 EndProject
 Project("{CAA73BB0-EF22-4D79-A57E-DF67B3BA9C80}") = "BasicCompany.Items.Content", "src\BasicCompany.Items.Content\BasicCompany.Items.Content.scproj", "{A2590AB7-F0FA-4099-BA75-F79D60BBBAFD}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E05A9D06-5E80-4135-BAE2-DF19DA6B7E65} = {E05A9D06-5E80-4135-BAE2-DF19DA6B7E65}
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".docker", ".docker", "{0C9D1945-638B-43CC-A9F1-C0FF2978BBBF}"
+	ProjectSection(SolutionItems) = preProject
+		docker\.env = docker\.env
+		docker\docker-compose.override.yml = docker\docker-compose.override.yml
+		docker\docker-compose.yml = docker\docker-compose.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

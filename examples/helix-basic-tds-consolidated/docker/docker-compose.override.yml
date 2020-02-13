@@ -1,0 +1,57 @@
+version: "2.4"
+
+services:
+
+  tooling:
+    image: ${COMPOSE_PROJECT_NAME}-tooling
+    build:
+      context: ./build/tooling
+      args:
+        TOOLING_BUILD_IMAGE: ${TOOLING_BUILD_IMAGE}
+        TOOLING_BASE_IMAGE: ${TOOLING_BASE_IMAGE}
+
+  mssql:
+    mem_limit: 2GB
+  
+  solr:
+    mem_limit: 1GB
+
+  cm:
+    image: ${COMPOSE_PROJECT_NAME}-cm
+    build:
+      context: ./build/cm
+      args:
+        TOOLING_IMAGE: ${COMPOSE_PROJECT_NAME}-tooling
+        BASE_IMAGE: ${SITECORE_DOCKER_REGISTRY}sitecore-xp1-cm:${SITECORE_VERSION}
+    depends_on:
+      - tooling
+    volumes:
+      - .\deploy:C:\src
+      - .\data\cm:C:\inetpub\wwwroot\App_Data\logs
+      - ${REMOTEDEBUGGER_PATH}:C:\remote_debugger:ro
+    entrypoint: powershell.exe -NoLogo -NoProfile -File C:\\tools\\scripts\\Development.ps1
+
+  cd:
+    image: ${COMPOSE_PROJECT_NAME}-cd
+    build:
+      context: ./build/cd
+      args:
+        TOOLING_IMAGE: ${COMPOSE_PROJECT_NAME}-tooling
+        BASE_IMAGE: ${SITECORE_DOCKER_REGISTRY}sitecore-xp1-cd:${SITECORE_VERSION}
+    depends_on:
+      - tooling
+    volumes:
+      - .\deploy:C:\src
+      - .\data\cd:C:\inetpub\wwwroot\App_Data\logs
+      - ${REMOTEDEBUGGER_PATH}:C:\remote_debugger:ro
+    entrypoint: powershell.exe -NoLogo -NoProfile -File C:\\tools\\scripts\\Development.ps1
+
+# Tone down the restart on workers
+  xdbsearchworker:
+    restart: "no"
+
+  xdbautomationworker:
+    restart: "no"
+
+  cortexprocessingworker:
+    restart: "no"

@@ -172,6 +172,12 @@
     <SitecoreItem Include="sitecore\templates\Project\BasicCompany\Page Types\Services Page.yml"><ChildItemSynchronization>KeepAllChildrenSynchronized</ChildItemSynchronization><ItemDeployment>DeployOnce</ItemDeployment></SitecoreItem>
     <SitecoreItem Include="sitecore\templates\Project\BasicCompany\Page Types\Services Page\__Standard Values.yml"><ChildItemSynchronization>KeepAllChildrenSynchronized</ChildItemSynchronization><ItemDeployment>DeployOnce</ItemDeployment></SitecoreItem>
   </ItemGroup>
+  <ItemGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <PostDeployAction Include="HedgehogDevelopment.SitecoreProject.PackageInstallPostProcessor.BuiltIn.PublishDeployedItems, HedgehogDevelopment.SitecoreProject.PackageInstallPostProcessor">
+      <Parameter>Internet</Parameter>
+      <Order>0</Order>
+    </PostDeployAction>
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BasicCompany.Web\BasicCompany.Web.csproj">
       <Project>{023339ce-eea7-4e9b-9a7f-960202ad3135}</Project>
@@ -230,6 +236,7 @@
     <ExcludedAssemblies Include="Microsoft.Extensions.DependencyInjection.Abstractions.dll" />
     <ExcludedAssemblies Include="Microsoft.Extensions.DependencyInjection.dll" />
     <ExcludedAssemblies Include="Microsoft.Extensions.DependencyModel.dll" />
+    <ExcludedAssemblies Include="Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.dll" />
     <ExcludedAssemblies Include="Microsoft.Extensions.FileProviders.Abstractions.dll" />
     <ExcludedAssemblies Include="Microsoft.Extensions.FileProviders.Physical.dll" />
     <ExcludedAssemblies Include="Microsoft.Extensions.FileSystemGlobbing.dll" />
@@ -385,6 +392,8 @@
     <ExcludedAssemblies Include="Sitecore.Framework.Configuration.dll" />
     <ExcludedAssemblies Include="Sitecore.Framework.Configuration.Extensions.dll" />
     <ExcludedAssemblies Include="Sitecore.Framework.Configuration.Xml.dll" />
+    <ExcludedAssemblies Include="Sitecore.Framework.Data.Blobs.Abstractions.dll" />
+    <ExcludedAssemblies Include="Sitecore.Framework.Data.Blobs.dll" />
     <ExcludedAssemblies Include="Sitecore.Framework.Messaging.Abstractions.dll" />
     <ExcludedAssemblies Include="Sitecore.Framework.Messaging.Configuration.dll" />
     <ExcludedAssemblies Include="Sitecore.Framework.Messaging.Rebus.Azure.dll" />
@@ -598,12 +607,6 @@
     <ExcludedAssemblies Include="WebActivatorEx.dll" />
     <ExcludedAssemblies Include="WebGrease.dll" />
     <ExcludedAssemblies Include="Yahoo.Yui.Compressor.dll" />
-  </ItemGroup>
-  <ItemGroup Condition=" '$(Configuration)' == 'Debug' ">
-    <PostDeployAction Include="HedgehogDevelopment.SitecoreProject.PackageInstallPostProcessor.BuiltIn.PublishDeployedItems, HedgehogDevelopment.SitecoreProject.PackageInstallPostProcessor">
-      <Parameter>Internet</Parameter>
-      <Order>0</Order>
-    </PostDeployAction>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\HedgehogDevelopment\SitecoreProject\v9.0\HedgehogDevelopment.SitecoreProject.targets" Condition="Exists('$(MSBuildExtensionsPath)\HedgehogDevelopment\SitecoreProject\v9.0\HedgehogDevelopment.SitecoreProject.targets')" />
 </Project>

@@ -30,6 +30,10 @@ services:
       - .\data\cm:C:\inetpub\wwwroot\App_Data\logs
       - ${REMOTEDEBUGGER_PATH}:C:\remote_debugger:ro
     entrypoint: powershell.exe -NoLogo -NoProfile -File C:\\tools\\scripts\\Development.ps1
+    networks:
+      default:
+        aliases: 
+          - cm.helix.local
 
   cd:
     image: ${COMPOSE_PROJECT_NAME}-cd
@@ -45,6 +49,29 @@ services:
       - .\data\cd:C:\inetpub\wwwroot\App_Data\logs
       - ${REMOTEDEBUGGER_PATH}:C:\remote_debugger:ro
     entrypoint: powershell.exe -NoLogo -NoProfile -File C:\\tools\\scripts\\Development.ps1
+    networks:
+      default:
+        aliases: 
+          - cd.helix.local
+          - basic-company
+
+  hostswriter:
+    image: rahnemann/windows-hosts-writer:1.1-nanoserver-1809
+    volumes: 
+      - C:\windows\system32\drivers\etc:C:\driversetc
+      - type: npipe
+        source: '\\.\pipe\docker_engine'
+        target: '\\.\pipe\docker_engine'
+    networks:
+      - default
+    environment:
+      - network=${COMPOSE_PROJECT_NAME}_default
+
+  xdbcollection:
+    mem_limit: 500MB
+
+  xdbsearch:
+    mem_limit: 500MB
 
 # Tone down the restart on workers
   xdbsearchworker:

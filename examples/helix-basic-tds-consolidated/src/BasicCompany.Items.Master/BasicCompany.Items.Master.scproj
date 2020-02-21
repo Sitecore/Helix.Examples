@@ -16,6 +16,8 @@
     <SourceWebVirtualPath>/BasicCompany.Web.csproj</SourceWebVirtualPath>
     <SourceWebProject>{023339ce-eea7-4e9b-9a7f-960202ad3135}|src\BasicCompany.Web\BasicCompany.Web.csproj</SourceWebProject>
     <SourceWebPhysicalPath>..\BasicCompany.Web</SourceWebPhysicalPath>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -26,8 +28,17 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <DebugSymbols>false</DebugSymbols>
-    <OutputPath>.\bin\Release\</OutputPath>
+    <OutputPath>..\..\TdsGeneratedPackages\Release\</OutputPath>
     <RecursiveDeployAction>Ignore</RecursiveDeployAction>
+    <InstallSitecoreConnector>False</InstallSitecoreConnector>
+    <DisableFileDeployment>False</DisableFileDeployment>
+    <LightningDeployMode>False</LightningDeployMode>
+    <ConnectorTimeoutSeconds>120</ConnectorTimeoutSeconds>
+    <BuildWebDeploy>True</BuildWebDeploy>
+    <WebDeployPackageCodeAndItemOptions>ItemOnly</WebDeployPackageCodeAndItemOptions>
+    <WebDeployPackageName>BasicCompanyItemsMaster</WebDeployPackageName>
+    <WebDeployAppendDateAndTimeToPackageName>False</WebDeployAppendDateAndTimeToPackageName>
+    <ContinueOnItemDeployError>False</ContinueOnItemDeployError>
   </PropertyGroup>
   <ItemGroup>
     <AssemblyAttributes Include="AssemblyFileVersion">
@@ -608,5 +619,9 @@
     <ExcludedAssemblies Include="WebGrease.dll" />
     <ExcludedAssemblies Include="Yahoo.Yui.Compressor.dll" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <Import Project="..\..\packages\HedgehogDevelopment.TDS.6.0.0.13\build\HedgehogDevelopment.TDS.targets" Condition="Exists('..\..\packages\HedgehogDevelopment.TDS.6.0.0.13\build\HedgehogDevelopment.TDS.targets')" />
   <Import Project="$(MSBuildExtensionsPath)\HedgehogDevelopment\SitecoreProject\v9.0\HedgehogDevelopment.SitecoreProject.targets" Condition="Exists('$(MSBuildExtensionsPath)\HedgehogDevelopment\SitecoreProject\v9.0\HedgehogDevelopment.SitecoreProject.targets')" />
 </Project>

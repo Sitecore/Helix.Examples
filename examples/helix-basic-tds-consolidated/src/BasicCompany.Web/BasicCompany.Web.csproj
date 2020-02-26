@@ -100,7 +100,9 @@
     <Content Include="Views\BasicContent\SectionHeader.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Views\web.config" />
+    <Content Include="App_Config\Environment\EnableYaml.Dev.config" />
+    <None Include="Views\Web.config" />
+    <Content Include="Views\Web.config.xdt" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Config\Include\Feature\Feature.Navigation.config" />

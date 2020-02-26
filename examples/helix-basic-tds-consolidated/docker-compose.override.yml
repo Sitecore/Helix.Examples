@@ -1,0 +1,42 @@
+version: "2.4"
+
+services:
+
+  mssql:
+    mem_limit: 2GB
+  
+  solr:
+    mem_limit: 1GB
+
+  cm:
+    image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-cm:${VERSION:-latest}
+    volumes:
+      - ${LOCAL_DEPLOY_PATH}:C:\src
+      - ${LOCAL_DATA_PATH}\cm:C:\inetpub\wwwroot\App_Data\logs
+      - ${REMOTEDEBUGGER_PATH}:C:\remote_debugger:ro 
+    entrypoint: powershell.exe -Command "& C:\\tools\\entrypoints\\iis\\Development.ps1"
+
+  cd:
+    image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-cd:${VERSION:-latest}
+    volumes:
+      - ${LOCAL_DEPLOY_PATH}:C:\src
+      - ${LOCAL_DATA_PATH}\cd:C:\inetpub\wwwroot\App_Data\logs
+      - ${REMOTEDEBUGGER_PATH}:C:\remote_debugger:ro
+    entrypoint: powershell.exe -Command "& C:\\tools\\entrypoints\\iis\\Development.ps1"
+    networks:
+      default:
+        aliases: 
+          - basic-company
+
+  hostswriter:
+    image: rahnemann/windows-hosts-writer:1.1-nanoserver-1809
+    volumes: 
+      - C:\windows\system32\drivers\etc:C:\driversetc
+      - type: npipe
+        source: '\\.\pipe\docker_engine'
+        target: '\\.\pipe\docker_engine'
+
+networks:
+  default:
+    external:
+      name: nat

@@ -6,9 +6,6 @@ resources:
 variables:
   azureSubscriptionEndpoint: devexcontainers-rm
   azureContainerRegistry: devexcontainers.azurecr.io
-  projectName: 'helix'
-  tag: '$(Build.BuildId)'
-  vmImageName: 'windows-latest'
 
 stages:
 - stage: Build
@@ -16,41 +13,40 @@ stages:
   jobs:  
   - job: Build
     displayName: Build
-    pool:
-      vmImage: $(vmImageName)
+    pool: Default
     steps:
     
-    - task: Docker@1
+    - task: Docker@2
+      displayName: Login to DevExContainers registry
+      inputs:
+        containerRegistry: DevExContainers
+        command: login
+        
+    - task: Docker@2
       displayName: Login to Sitecore registry
       inputs:
-        containerregistrytype: 'Container Registry'
-        dockerRegistryEndpoint: sitecore-docker-registry
+        containerRegistry: sitecore-docker-registry
         command: login 
 
     - task: DockerCompose@0
       displayName: Build services
       inputs:
-        action: Build services
-        azureSubscriptionEndpoint: $(azureSubscriptionEndpoint)
-        azureContainerRegistry: $(azureContainerRegistry)
-        currentWorkingDirectory: '$(System.DefaultWorkingDirectory)/examples/helix-basic-tds-consolidated'
-        dockerComposeFile: 'docker-compose.build.yml'
+        containerregistrytype: 'Azure Container Registry'
+        azureSubscription: '$(azureSubscriptionEndpoint)'
+        azureContainerRegistry: '$(azureContainerRegistry)'
+        dockerComposeFile: 'examples/helix-basic-tds-consolidated/docker-compose.build.yml'
         dockerComposeFileArgs: |
-          REGISTRY=devexcontainers.azurecr.io/
-          BUILD_BUILD_IMAGE=mcr.microsoft.com/dotnet/framework/sdk:4.8
-          BUILD_BASE_IMAGE=mcr.microsoft.com/windows/nanoserver:1809
-          TOOLING_BUILD_IMAGE=mcr.microsoft.com/windows/servercore:ltsc2019
-          TOOLING_BASE_IMAGE=mcr.microsoft.com/windows/nanoserver:1809
-          SITECORE_DOCKER_REGISTRY=do-hrbr-01-dk1.dk.sitecore.net/platform/
-          SITECORE_VERSION=9.4.0.003727.51-10.0.17763.973-ltsc2019
+          REGISTRY=$(azureContainerRegistry)/
+          VERSION=$(VERSION)
+          BUILD_BUILD_IMAGE=mcr.microsoft.com/dotnet/framework/sdk:4.8-windowsservercore-ltsc2019
           Nuget_SitecorePreview_Username=$(Nuget_SitecorePreview_Username)
           Nuget_SitecorePreview_Password=$(Nuget_SitecorePreview_Password)
           TDS_Owner=$(TDS_Owner)
           TDS_Key=$(TDS_Key)
-        projectName: $(projectName)
-        qualifyImageNames: true
-        additionalImageTags: $(tag)
+        action: 'Build services'
         includeLatestTag: true
+        arguments: '--force-rm'
+        currentWorkingDirectory: 'examples/helix-basic-tds-consolidated'
 
     - task: DockerCompose@0
       displayName: Push services
@@ -58,10 +54,14 @@ stages:
         containerregistrytype: 'Azure Container Registry'
         azureSubscription: '$(azureSubscriptionEndpoint)'
         azureContainerRegistry: '$(azureContainerRegistry)'
-        currentWorkingDirectory: '$(System.DefaultWorkingDirectory)/examples/helix-basic-tds-consolidated'
         dockerComposeFile: 'examples/helix-basic-tds-consolidated/docker-compose.build.yml'
-        dockerComposeFileArgs: 'REGISTRY=devexcontainers.azurecr.io/'
-        projectName: '$(projectName)'
+        dockerComposeFileArgs: |
+          REGISTRY=$(azureContainerRegistry)/
+          VERSION=$(VERSION)
+          Nuget_SitecorePreview_Username=$(Nuget_SitecorePreview_Username)
+          Nuget_SitecorePreview_Password=$(Nuget_SitecorePreview_Password)
+          TDS_Owner=$(TDS_Owner)
+          TDS_Key=$(TDS_Key)
         action: 'Push services'
-        additionalImageTags: '$(tag)'
         includeLatestTag: true
+        currentWorkingDirectory: 'examples/helix-basic-tds-consolidated'

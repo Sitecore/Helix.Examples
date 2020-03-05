@@ -1,7 +1,7 @@
 [cmdletbinding()]
 param(
-    [Parameter(Mandatory = $true)]
-    [string]$PackagesPath,
+    [Parameter(Mandatory = $false)]
+    [string]$PackagesPath = ".\packages",
     [switch]$ViewLogs
 )
 

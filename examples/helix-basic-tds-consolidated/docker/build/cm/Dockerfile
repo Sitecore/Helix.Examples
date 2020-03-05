@@ -6,7 +6,7 @@ ARG TOOLING_IMAGE
 
 FROM ${BUILD_IMAGE} as build
 FROM ${TOOLING_IMAGE} as tooling
-FROM ${BASE_IMAGE} as release
+FROM ${BASE_IMAGE}
 
 SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
 
@@ -36,11 +36,3 @@ RUN Get-ChildItem -Path 'C:\\temp\\*.wdp.zip' | % { Expand-Archive -Path $_.Full
 #   docker exec <cm container> powershell -command "C:\install\Deploy-TdsWdpPackages.ps1"
 # COPY --from=tooling /tools/scripts/Deploy-TdsWdpPackages.ps1 /install/Deploy-TdsWdpPackages.ps1
 # COPY --from=build /artifacts/packages/ /install/packages/
-
-# Remove tools
-RUN Remove-Item -Path 'C:\\tools' -Recurse -Force;
-
-FROM release as debug
-
-# Copy tools
-COPY --from=tooling /tools/ /tools/

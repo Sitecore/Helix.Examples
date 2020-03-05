@@ -6,7 +6,7 @@ ARG TOOLING_IMAGE
 
 FROM ${BUILD_IMAGE} as build
 FROM ${TOOLING_IMAGE} as tooling
-FROM ${BASE_IMAGE} as release
+FROM ${BASE_IMAGE}
 
 SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
 
@@ -22,11 +22,3 @@ COPY --from=build /artifacts/files/ ./
 RUN $xdts = Get-ChildItem -Path '.\\*.xdt' -Recurse; `
     $xdts | ForEach-Object { & 'C:\\tools\\scripts\\Invoke-XdtTransform.ps1' -Path $_.FullName.Replace('.xdt', '') -XdtPath $_.FullName; }; `
     $xdts | ForEach-Object { Remove-Item -Path $_.FullName; };
-
-# Remove tools
-RUN Remove-Item -Path 'C:\\tools' -Recurse -Force;
-
-FROM release as debug
-
-# Copy tools
-COPY --from=tooling /tools/ /tools/

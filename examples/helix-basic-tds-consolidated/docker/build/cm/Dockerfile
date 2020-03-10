@@ -30,7 +30,9 @@ COPY --from=build /artifacts/packages/ /temp/
 RUN Get-ChildItem -Path 'C:\\temp\\*.wdp.zip' | % { Expand-Archive -Path $_.FullName -DestinationPath 'C:\\temp' -Force; }; `
     Move-Item -Path 'C:\\temp\\Content\\Website\\Bin\*' -Destination .\bin -Force; `
     Move-Item -Path 'C:\\temp\\Content\\Website\\temp\*' -Destination .\temp -Force; `
-    Remove-Item -Path 'C:\\temp' -Recurse -Force;
+    Remove-Item -Path 'C:\\temp' -Recurse -Force; `
+    # Ensure TDS has permissions to delete items after install
+    cmd /C icacls .\temp\WebDeployItems /grant 'IIS AppPool\DefaultAppPool:(OI)(CI)M';
 
 # OPTION 2: Invoke Deploy-TdsWdpPackages.ps1 on the container as-needed (similar to Unicorn sync) with the following script:
 #   docker exec <cm container> powershell -command "C:\install\Deploy-TdsWdpPackages.ps1"

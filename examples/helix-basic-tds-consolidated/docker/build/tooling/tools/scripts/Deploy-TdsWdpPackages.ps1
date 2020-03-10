@@ -13,6 +13,8 @@ function ExtractPackages($packagesPath) {
     Move-Item -Path C:\temp\TDS\Content\Website\Bin\*.WebDeployClient.dll -Destination C:\inetpub\wwwroot\bin -Force
     Move-Item -Path C:\temp\TDS\Content\Website\temp\* -Destination C:\inetpub\wwwroot\temp -Force
     Remove-Item -Path C:\temp\TDS -Recurse -Force
+    # Ensure TDS has permissions to delete items after install
+    cmd /C icacls C:\inetpub\wwwroot\temp\WebDeployItems /grant 'IIS AppPool\DefaultAppPool:(OI)(CI)M'
     
     Write-Output "Package extraction complete"
 }

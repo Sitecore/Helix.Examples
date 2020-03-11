@@ -1,0 +1,22 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+generatorOptions:
+  disableNameSuffixHash: true
+secretGenerator:
+- name: sitecore-admin
+  env: secrets/sitecore-admin.txt
+- name: sitecore-database
+  env: secrets/sitecore-database.txt
+- name: sitecore-identity
+  env: secrets/sitecore-identity.txt
+- name: sitecore-license
+  env: secrets/sitecore-license.txt
+- name: sitecore-telerik
+  env: secrets/sitecore-telerik.txt
+resources:
+- cd.yaml
+- cm.yaml
+- id.yaml
+- mssql.yaml
+- redis.yaml
+- solr.yaml

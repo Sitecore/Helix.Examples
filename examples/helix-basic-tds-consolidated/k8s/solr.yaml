@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: solr
+spec:
+  selector:
+    app: solr
+  ports:
+  - protocol: TCP
+    port: 8983
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: solr-deployment
+  labels:
+    app: solr
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: solr
+  template:
+    metadata:
+      labels:
+        app: solr
+    spec:
+      nodeSelector:
+        kubernetes.io/os: windows
+      containers:
+      - name: helix-solr
+        image: devexcontainers.azurecr.io/helix-solr
+        ports:
+        - containerPort: 8983
+      imagePullSecrets:
+      - name: devexregistry

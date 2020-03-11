@@ -17,6 +17,7 @@ resources:
 - cd.yaml
 - cm.yaml
 - id.yaml
+- ingress.yaml
 - mssql.yaml
 - redis.yaml
 - solr.yaml

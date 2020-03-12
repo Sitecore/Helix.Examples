@@ -39,7 +39,8 @@ stages:
         containerregistrytype: 'Azure Container Registry'
         azureSubscription: '$(azureSubscriptionEndpoint)'
         azureContainerRegistry: '$(registry)'
-        dockerComposeFile: 'examples/helix-basic-tds-consolidated/docker-compose.build.yml'
+        dockerComposeFile: 'examples/helix-basic-tds-consolidated/docker-compose.yml'
+        additionalDockerComposeFiles: ./docker-compose.override.yml
         dockerComposeFileArgs: |
           REGISTRY=$(registry)/
           VERSION=$(VERSION)
@@ -59,7 +60,8 @@ stages:
         containerregistrytype: 'Azure Container Registry'
         azureSubscription: '$(azureSubscriptionEndpoint)'
         azureContainerRegistry: '$(registry)'
-        dockerComposeFile: 'examples/helix-basic-tds-consolidated/docker-compose.build.yml'
+        dockerComposeFile: 'examples/helix-basic-tds-consolidated/docker-compose.yml'
+        additionalDockerComposeFiles: ./docker-compose.override.yml
         dockerComposeFileArgs: |
           REGISTRY=$(registry)/
           VERSION=$(VERSION)

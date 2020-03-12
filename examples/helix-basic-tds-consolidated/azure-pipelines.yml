@@ -117,6 +117,10 @@ stages:
               namespace: 'default'
               manifests: $(Pipeline.Workspace)/manifests/*
               containers: |
+                $(registry)/helix-redis:$(VERSION)
+                $(registry)/helix-mssql:$(VERSION)
+                $(registry)/helix-solr:$(VERSION)
+                $(registry)/helix-id:$(VERSION)
                 $(registry)/helix-cm:$(VERSION)
                 $(registry)/helix-cd:$(VERSION)
               imagePullSecrets: |

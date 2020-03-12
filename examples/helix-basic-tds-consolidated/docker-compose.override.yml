@@ -2,14 +2,63 @@ version: "2.4"
 
 services:
 
+  solution:
+    image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-solution:${VERSION:-latest}
+    build:
+      context: .
+      dockerfile: build.Dockerfile
+      args:
+        BASE_IMAGE: ${SOLUTION_BASE_IMAGE}
+        BUILD_IMAGE: ${SOLUTION_BUILD_IMAGE}
+        Nuget_SitecorePreview_Username: ${Nuget_SitecorePreview_Username}
+        Nuget_SitecorePreview_Password: ${Nuget_SitecorePreview_Password}
+        TDS_Owner: ${TDS_Owner}
+        TDS_Key: ${TDS_Key}
+    scale: 0
+
+  tooling:
+    image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-tooling:${VERSION:-latest}
+    build:
+      context: ./docker/build/tooling
+      args:
+        BASE_IMAGE: ${TOOLING_BASE_IMAGE}
+        BUILD_IMAGE: ${TOOLING_BUILD_IMAGE}
+    scale: 0
+
+  redis:
+    image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-redis:${VERSION:-latest}
+    build:
+      context: ./docker/build/redis
+      args:
+        BASE_IMAGE: ${SITECORE_DOCKER_REGISTRY}sitecore-redis:${SITECORE_VERSION}
+
   mssql:
+    image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-mssql:${VERSION:-latest}
+    build:
+      context: ./docker/build/mssql
+      args:
+        BASE_IMAGE: ${SITECORE_DOCKER_REGISTRY}sitecore-xm1-mssql:${SITECORE_VERSION}
     mem_limit: 2GB
   
   solr:
+    image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-solr:${VERSION:-latest}
+    build:
+      context: ./docker/build/solr
+      args:
+        BASE_IMAGE: ${SITECORE_DOCKER_REGISTRY}sitecore-xm1-solr:${SITECORE_VERSION}
     mem_limit: 1GB
 
   cm:
     image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-cm:${VERSION:-latest}
+    build:
+      context: ./docker/build/cm
+      args:
+        BASE_IMAGE: ${SITECORE_DOCKER_REGISTRY}sitecore-xm1-cm:${SITECORE_VERSION}
+        SOLUTION_IMAGE: ${REGISTRY}${COMPOSE_PROJECT_NAME}-solution:${VERSION:-latest}
+        TOOLING_IMAGE: ${REGISTRY}${COMPOSE_PROJECT_NAME}-tooling:${VERSION:-latest}
+    depends_on:
+      - solution
+      - tooling
     volumes:
       - ${LOCAL_DEPLOY_PATH}:C:\src
       - ${LOCAL_DATA_PATH}\cm:C:\inetpub\wwwroot\App_Data\logs
@@ -18,6 +67,15 @@ services:
 
   cd:
     image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-cd:${VERSION:-latest}
+    build:
+      context: ./docker/build/cd
+      args:
+        BASE_IMAGE: ${SITECORE_DOCKER_REGISTRY}sitecore-xm1-cd:${SITECORE_VERSION}
+        SOLUTION_IMAGE: ${REGISTRY}${COMPOSE_PROJECT_NAME}-solution:${VERSION:-latest}
+        TOOLING_IMAGE: ${REGISTRY}${COMPOSE_PROJECT_NAME}-tooling:${VERSION:-latest}
+    depends_on:
+      - solution
+      - tooling
     volumes:
       - ${LOCAL_DEPLOY_PATH}:C:\src
       - ${LOCAL_DATA_PATH}\cd:C:\inetpub\wwwroot\App_Data\logs

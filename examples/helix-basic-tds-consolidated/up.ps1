@@ -64,11 +64,5 @@ $envFile = (Join-Path $PSScriptRoot ".env")
        -replace "^SITECORE_LICENSE=.*", "SITECORE_LICENSE=$license" 
 } | Set-Content $envFile
 
-# Login to your registry
-#docker login $Registry
-
-# Perform initial build
-docker-compose -f docker-compose.build.yml build --force-rm
-
 # Start everything up!
-docker-compose up -d
+docker-compose up --build -d

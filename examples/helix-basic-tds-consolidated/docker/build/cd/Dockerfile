@@ -1,10 +1,10 @@
 # escape=`
 
 ARG BASE_IMAGE
-ARG BUILD_IMAGE
+ARG SOLUTION_IMAGE
 ARG TOOLING_IMAGE
 
-FROM ${BUILD_IMAGE} as build
+FROM ${SOLUTION_IMAGE} as solution
 FROM ${TOOLING_IMAGE} as tooling
 FROM ${BASE_IMAGE}
 
@@ -16,7 +16,7 @@ WORKDIR C:\inetpub\wwwroot
 COPY --from=tooling /tools/ /tools/
 
 # Copy built website files
-COPY --from=build /artifacts/files/ ./
+COPY --from=solution /artifacts/files/ ./
 
 # Find transform files and do transformation
 RUN $xdts = Get-ChildItem -Path '.\\*.xdt' -Recurse; `

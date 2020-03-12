@@ -43,7 +43,7 @@ stages:
         dockerComposeFileArgs: |
           REGISTRY=$(registry)/
           VERSION=$(VERSION)
-          BUILD_BUILD_IMAGE=mcr.microsoft.com/dotnet/framework/sdk:4.8-windowsservercore-ltsc2019
+          SOLUTION_BUILD_IMAGE=mcr.microsoft.com/dotnet/framework/sdk:4.8-windowsservercore-ltsc2019
           Nuget_SitecorePreview_Username=$(Nuget_SitecorePreview_Username)
           Nuget_SitecorePreview_Password=$(Nuget_SitecorePreview_Password)
           TDS_Owner=$(TDS_Owner)

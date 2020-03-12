@@ -1,9 +1,9 @@
 # escape=`
 
-ARG TOOLING_BASE_IMAGE
-ARG TOOLING_BUILD_IMAGE
+ARG BASE_IMAGE
+ARG BUILD_IMAGE
 
-FROM ${TOOLING_BUILD_IMAGE} as build
+FROM ${BUILD_IMAGE} as build
 
 SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
 
@@ -36,7 +36,7 @@ ADD https://raw.githubusercontent.com/Sitecore/docker-images/master/windows/9.3.
 ADD https://raw.githubusercontent.com/Sitecore/docker-images/master/windows/9.2.0/sitecore-assets/tools/scripts/Watch-Directory.ps1 /tools/scripts/
 ADD https://raw.githubusercontent.com/Sitecore/docker-images/master/windows/9.3.0/sitecore-assets/tools/scripts/Invoke-XdtTransform.ps1 /tools/scripts/
 
-FROM ${TOOLING_BASE_IMAGE}
+FROM ${BASE_IMAGE}
 
 # Copy resulting tools
 COPY --from=build /tools/ /tools/

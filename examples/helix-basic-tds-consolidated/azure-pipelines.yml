@@ -3,14 +3,6 @@ trigger: none
 resources:
 - repo: self
 
-variables:
-  subscriptionServiceConnection: $(SubscriptionServiceConnection)
-  kubernetesServiceConnection: $(KubernetesServiceConnection)
-  registryServiceConnection: $(RegistryServiceConnection)
-  sitecoreRegistryServiceConnection: $(SitecoreRegistryServiceConnection)
-  registry: $(Registry)
-  imagePullSecret: $(ImagePullSecret)
-
 stages:
 - stage: Build
   displayName: Build stage
@@ -24,21 +16,21 @@ stages:
     - task: Docker@2
       displayName: Login to DevExContainers registry
       inputs:
-        containerRegistry: '$(registryServiceConnection)'
+        containerRegistry: '$(RegistryServiceConnection)'
         command: login
         
     - task: Docker@2
       displayName: Login to Sitecore registry
       inputs:
-        containerRegistry: '$(sitecoreRegistryServiceConnection)'
+        containerRegistry: '$(SitecoreRegistryServiceConnection)'
         command: login 
 
     - task: DockerCompose@0
       displayName: Build images
       inputs:
         containerregistrytype: 'Azure Container Registry'
-        azureSubscription: '$(subscriptionServiceConnection)'
-        azureContainerRegistry: '$(registry)'
+        azureSubscription: '$(SubscriptionServiceConnection)'
+        azureContainerRegistry: '$(Registry)'
         dockerComposeFile: 'examples/helix-basic-tds-consolidated/docker-compose.yml'
         additionalDockerComposeFiles: ./docker-compose.override.yml
         dockerComposeFileArgs: |
@@ -58,12 +50,12 @@ stages:
       displayName: Push images
       inputs:
         containerregistrytype: 'Azure Container Registry'
-        azureSubscription: '$(subscriptionServiceConnection)'
-        azureContainerRegistry: '$(registry)'
+        azureSubscription: '$(SubscriptionServiceConnection)'
+        azureContainerRegistry: '$(Registry)'
         dockerComposeFile: 'examples/helix-basic-tds-consolidated/docker-compose.yml'
         additionalDockerComposeFiles: ./docker-compose.override.yml
         dockerComposeFileArgs: |
-          REGISTRY=$(registry)/
+          REGISTRY=$(Registry)/
           VERSION=$(VERSION)
           NUGET_SITECOREPREVIEW_USERNAME=$(NUGET_SITECOREPREVIEW_USERNAME)
           NUGET_SITECOREPREVIEW_PASSWORD=$(NUGET_SITECOREPREVIEW_PASSWORD)
@@ -103,25 +95,25 @@ stages:
             displayName: Create imagePullSecret
             inputs:
               action: createSecret
-              kubernetesServiceConnection: $(kubernetesServiceConnection)
+              kubernetesServiceConnection: $(KubernetesServiceConnection)
               namespace: 'default'
               secretType: 'dockerRegistry'
-              secretName: $(imagePullSecret)
-              dockerRegistryEndpoint: $(registryServiceConnection)
+              secretName: $(ImagePullSecret)
+              dockerRegistryEndpoint: $(RegistryServiceConnection)
               
           - task: KubernetesManifest@0
             displayName: Deploy to Kubernetes cluster
             inputs:
               action: deploy
-              kubernetesServiceConnection: $(kubernetesServiceConnection)
+              kubernetesServiceConnection: $(KubernetesServiceConnection)
               namespace: 'default'
               manifests: $(Pipeline.Workspace)/manifests/*
               containers: |
-                $(registry)/helix-redis:$(VERSION)
-                $(registry)/helix-mssql:$(VERSION)
-                $(registry)/helix-solr:$(VERSION)
-                $(registry)/helix-id:$(VERSION)
-                $(registry)/helix-cm:$(VERSION)
-                $(registry)/helix-cd:$(VERSION)
+                $(Registry)/helix-redis:$(VERSION)
+                $(Registry)/helix-mssql:$(VERSION)
+                $(Registry)/helix-solr:$(VERSION)
+                $(Registry)/helix-id:$(VERSION)
+                $(Registry)/helix-cm:$(VERSION)
+                $(Registry)/helix-cd:$(VERSION)
               imagePullSecrets: |
-                $(imagePullSecret)
+                $(ImagePullSecret)

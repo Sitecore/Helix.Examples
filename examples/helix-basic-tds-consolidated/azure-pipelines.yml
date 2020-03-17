@@ -4,12 +4,12 @@ resources:
 - repo: self
 
 variables:
-  azureSubscriptionEndpoint: 'devexcontainers-rm'
-  registry: 'devexcontainers.azurecr.io'
-  kubernetesServiceConnection: 'DevExCluster-default'
-  registryServiceConnection: 'DevExContainers'
-  sitecoreRegistryServiceConnection: 'sitecore-docker-registry'
-  imagePullSecret: 'devexregistry'
+  subscriptionServiceConnection: $(SubscriptionServiceConnection)
+  kubernetesServiceConnection: $(KubernetesServiceConnection)
+  registryServiceConnection: $(RegistryServiceConnection)
+  sitecoreRegistryServiceConnection: $(SitecoreRegistryServiceConnection)
+  registry: $(Registry)
+  imagePullSecret: $(ImagePullSecret)
 
 stages:
 - stage: Build
@@ -37,7 +37,7 @@ stages:
       displayName: Build images
       inputs:
         containerregistrytype: 'Azure Container Registry'
-        azureSubscription: '$(azureSubscriptionEndpoint)'
+        azureSubscription: '$(subscriptionServiceConnection)'
         azureContainerRegistry: '$(registry)'
         dockerComposeFile: 'examples/helix-basic-tds-consolidated/docker-compose.yml'
         additionalDockerComposeFiles: ./docker-compose.override.yml
@@ -45,10 +45,10 @@ stages:
           REGISTRY=$(registry)/
           VERSION=$(VERSION)
           SOLUTION_BUILD_IMAGE=mcr.microsoft.com/dotnet/framework/sdk:4.8-windowsservercore-ltsc2019
-          Nuget_SitecorePreview_Username=$(Nuget_SitecorePreview_Username)
-          Nuget_SitecorePreview_Password=$(Nuget_SitecorePreview_Password)
-          TDS_Owner=$(TDS_Owner)
-          TDS_Key=$(TDS_Key)
+          NUGET_SITECOREPREVIEW_USERNAME=$(NUGET_SITECOREPREVIEW_USERNAME)
+          NUGET_SITECOREPREVIEW_PASSWORD=$(NUGET_SITECOREPREVIEW_PASSWORD)
+          TDS_OWNER=$(TDS_OWNER)
+          TDS_KEY=$(TDS_KEY)
         action: 'Build services'
         includeLatestTag: true
         arguments: '--force-rm'
@@ -58,17 +58,17 @@ stages:
       displayName: Push images
       inputs:
         containerregistrytype: 'Azure Container Registry'
-        azureSubscription: '$(azureSubscriptionEndpoint)'
+        azureSubscription: '$(subscriptionServiceConnection)'
         azureContainerRegistry: '$(registry)'
         dockerComposeFile: 'examples/helix-basic-tds-consolidated/docker-compose.yml'
         additionalDockerComposeFiles: ./docker-compose.override.yml
         dockerComposeFileArgs: |
           REGISTRY=$(registry)/
           VERSION=$(VERSION)
-          Nuget_SitecorePreview_Username=$(Nuget_SitecorePreview_Username)
-          Nuget_SitecorePreview_Password=$(Nuget_SitecorePreview_Password)
-          TDS_Owner=$(TDS_Owner)
-          TDS_Key=$(TDS_Key)
+          NUGET_SITECOREPREVIEW_USERNAME=$(NUGET_SITECOREPREVIEW_USERNAME)
+          NUGET_SITECOREPREVIEW_PASSWORD=$(NUGET_SITECOREPREVIEW_PASSWORD)
+          TDS_OWNER=$(TDS_OWNER)
+          TDS_KEY=$(TDS_KEY)
         action: 'Push services'
         includeLatestTag: true
         currentWorkingDirectory: 'examples/helix-basic-tds-consolidated'

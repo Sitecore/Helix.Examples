@@ -12,7 +12,7 @@
     <token key="$moduleNamespace$" displayName="Module namespace" required="true" default="Feature.$moduleName$" input="Text"
            suggestType="LaubPlusCo.Foundation.HelixTemplating.Tokens.SuggestNamespaceToken, LaubPlusCo.Foundation.HelixTemplating"
            validationType="LaubPlusCo.Foundation.HelixTemplating.Tokens.ValidateNamespaceToken, LaubPlusCo.Foundation.HelixTemplating" />
-    <token key="$sitecoreVersion$" displayName="Sitecore version (for Sitecore nuget packages)" default="9.2.0" required="true" input="Text"
+    <token key="$sitecoreVersion$" displayName="Sitecore version (for Sitecore nuget packages)" default="9.3.0" required="true" input="Text"
            validationType="LaubPlusCo.Foundation.HelixTemplating.Tokens.ValidateVersionNumberToken, LaubPlusCo.Foundation.HelixTemplating" />
   </replacementTokens>
   <projectsToAttach>

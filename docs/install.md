@@ -20,3 +20,4 @@ instance.
     * `Sitecore 9.3.0 rev. 003498 (WDP XP0 packages).zip`
 1. Place your `license.xml` into the `install-assets` folder of the repository.
 1. Run `.\install.ps1` from an Administrator PowerShell prompt, and follow the instructions.
+    * **Note:** You must run this script within a standard interactive prompt, and not PowerShell ISE or VSCode.

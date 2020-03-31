@@ -1,22 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Linq;
+using BasicCompany.Feature.Navigation.Data;
 using Sitecore.Data.Items;
 
 namespace BasicCompany.Feature.Navigation.Services
 {
     public class NavigationRootResolver : INavigationRootResolver
     {
-        public Item GetNavigationRoot(Item contextItem)
+        public NavigationRoot GetNavigationRoot(Item contextItem)
         {
             if (contextItem == null)
             {
                 return null;
             }
-            return contextItem.DescendsFrom(Templates.NavigationRoot.Id)
+
+            var root = contextItem.DescendsFrom(Templates.NavigationRoot.Id)
                 ? contextItem
                 : contextItem.Axes.GetAncestors().LastOrDefault(x => x.DescendsFrom(Templates.NavigationRoot.Id));
+
+            return root != null ? new NavigationRoot(root) : null;
         }
     }
 }

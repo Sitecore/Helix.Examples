@@ -1,9 +1,10 @@
-﻿using Sitecore.Data.Items;
+﻿using BasicCompany.Feature.Navigation.Data;
+using Sitecore.Data.Items;
 
 namespace BasicCompany.Feature.Navigation.Services
 {
     public interface INavigationRootResolver
     {
-        Item GetNavigationRoot(Item contextItem);
+        NavigationRoot GetNavigationRoot(Item contextItem);
     }
 }

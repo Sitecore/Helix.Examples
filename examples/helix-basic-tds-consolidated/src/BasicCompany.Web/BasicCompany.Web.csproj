@@ -101,7 +101,7 @@
     <Content Include="Views\BasicContent\SectionHeader.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Views\web.config" />
+    <Content Include="Views\web.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Config\Include\Feature\Feature.Navigation.config" />

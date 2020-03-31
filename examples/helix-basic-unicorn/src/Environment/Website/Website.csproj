@@ -80,6 +80,9 @@
     <PackageReference Include="RichardSzalay.Helix.Publishing.WebRoot">
       <Version>1.5.6</Version>
     </PackageReference>
+    <PackageReference Include="Sitecore.Assemblies.Platform">
+      <Version>9.3.0</Version>
+    </PackageReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

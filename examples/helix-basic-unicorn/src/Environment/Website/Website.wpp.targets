@@ -1,26 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-    <!--
-        Only explicitly publish our assemblies. HPP can exclude from an assembly list, but nuget references
-        can result in publishing other undesired System assemblies.
-        Note: Changes to this file may require a Visual Studio restart and/or deletion of .vs directory.
-    
-    <PropertyGroup>
-        <SafelistAssemblies>
-            bin\BasicCompany*.dll;
-            bin\BasicCompany*.pdb;
-            bin\Unicorn*.dll;
-            bin\Rainbow*.dll;
-        </SafelistAssemblies>
-    </PropertyGroup>
-    <ItemGroup>
-        <ExcludeFromPackageFiles Include="bin\*.*" Exclude="$(SafelistAssemblies)" />
-    </ItemGroup>
-    -->
 
     <ItemGroup>
         <!-- Sitecore builtin assemblies -->
-        <SitecoreAssemblyListsToExclude Include="Sitecore.Platform.Assemblies 9.2.0 rev. 002893.csv" />
+        <SitecoreAssembliesToExclude Include="@(SitecoreAssemblies)" />
 
         <!-- Deployment project -->
         <SitecoreAssembliesToExclude Include="Website.dll" />

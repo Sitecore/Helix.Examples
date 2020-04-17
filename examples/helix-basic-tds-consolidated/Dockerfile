@@ -3,6 +3,13 @@
 ARG BASE_IMAGE
 ARG BUILD_IMAGE
 
+FROM ${BUILD_IMAGE} AS prep
+
+# Gather only artifacts necessary for NuGet restore
+COPY *.sln nuget.config /nuget/
+COPY src/ /temp/
+RUN Invoke-Expression 'robocopy C:/temp C:/nuget/src /s /ndl /njh /njs *.csproj *.scproj packages.config'
+
 FROM ${BUILD_IMAGE} AS builder
 
 # NuGet credentials (for SitecorePreview) via environment variables: https://github.com/dotnet/dotnet-docker/blob/master/samples/snippets/nuget-credentials.md
@@ -18,17 +25,8 @@ SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPref
 # Create an empty working directory
 WORKDIR /build
 
-# Copy only artifacts necessary for NuGet, and restore as distinct layer to take better advantage of caching
-COPY *.sln nuget.config ./
-COPY src/*/*.csproj ./
-RUN Get-ChildItem *.csproj | % { New-Item -ItemType Directory -Path "src/$($_.BaseName)"; Move-Item $_ -Destination "src/$($_.BaseName)"; } | Out-Null
-
-# Note TDS .scproj files don't support PackageReference syntax, so these are a bit different in order to pull in packages.config as well
-COPY src/BasicCompany.Items.Content/* ./src/BasicCompany.Items.Content/
-COPY src/BasicCompany.Items.Core/*  ./src/BasicCompany.Items.Core/
-COPY src/BasicCompany.Items.Master/* ./src/BasicCompany.Items.Master/
-
-# Restore NuGet packages
+# Copy prepped NuGet artifacts, and restore as distinct layer to take better advantage of caching
+COPY --from=prep ./nuget ./
 RUN nuget restore
 
 # Copy remaining source code

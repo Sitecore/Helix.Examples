@@ -18,6 +18,8 @@
     <SourceWebPhysicalPath>..\BasicCompany.Web</SourceWebPhysicalPath>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <EnableAssemblyValidation>True</EnableAssemblyValidation>
+    <EnablePackageValidation>False</EnablePackageValidation>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -231,6 +233,8 @@
     <ExcludedAssemblies Include="Microsoft.Azure.Amqp.dll" />
     <ExcludedAssemblies Include="Microsoft.Azure.ServiceBus.dll" />
     <ExcludedAssemblies Include="Microsoft.Azure.Services.AppAuthentication.dll" />
+    <ExcludedAssemblies Include="Microsoft.Configuration.ConfigurationBuilders.Base.dll" />
+    <ExcludedAssemblies Include="Microsoft.Configuration.ConfigurationBuilders.Environment.dll" />
     <ExcludedAssemblies Include="Microsoft.DotNet.PlatformAbstractions.dll" />
     <ExcludedAssemblies Include="Microsoft.Extensions.Caching.Abstractions.dll" />
     <ExcludedAssemblies Include="Microsoft.Extensions.Caching.Memory.dll" />
@@ -624,4 +628,11 @@
   </ItemGroup>
   <Import Project="..\..\packages\HedgehogDevelopment.TDS.6.0.0.14\build\HedgehogDevelopment.TDS.targets" Condition="Exists('..\..\packages\HedgehogDevelopment.TDS.6.0.0.14\build\HedgehogDevelopment.TDS.targets')" />
   <Import Project="$(MSBuildExtensionsPath)\HedgehogDevelopment\SitecoreProject\v9.0\HedgehogDevelopment.SitecoreProject.targets" Condition="Exists('$(MSBuildExtensionsPath)\HedgehogDevelopment\SitecoreProject\v9.0\HedgehogDevelopment.SitecoreProject.targets')" />
+  <Import Project="..\..\packages\Sitecore.Assemblies.Platform.10.0.0-r004237\build\Sitecore.Assemblies.Platform.targets" Condition="Exists('..\..\packages\Sitecore.Assemblies.Platform.10.0.0-r004237\build\Sitecore.Assemblies.Platform.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\packages\Sitecore.Assemblies.Platform.10.0.0-r004237\build\Sitecore.Assemblies.Platform.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Sitecore.Assemblies.Platform.10.0.0-r004237\build\Sitecore.Assemblies.Platform.targets'))" />
+  </Target>
 </Project>

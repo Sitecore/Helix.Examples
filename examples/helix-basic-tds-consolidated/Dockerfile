@@ -5,16 +5,16 @@ ARG BUILD_IMAGE
 
 FROM ${BUILD_IMAGE} AS prep
 
-# Gather only artifacts necessary for NuGet restore
-COPY *.sln nuget.config /nuget/
-COPY src/ /temp/
-RUN Invoke-Expression 'robocopy C:/temp C:/nuget/src /s /ndl /njh /njs *.csproj *.scproj packages.config'
+# Gather only artifacts necessary for NuGet restore, retaining directory structure
+COPY *.sln nuget.config Directory.Build.targets Packages.props \nuget\
+COPY src\ \temp\
+RUN Invoke-Expression 'robocopy C:\temp C:\nuget\src /s /ndl /njh /njs *.csproj *.scproj packages.config'
 
 FROM ${BUILD_IMAGE} AS builder
 
 # NuGet credentials (for SitecorePreview) via environment variables: https://github.com/dotnet/dotnet-docker/blob/master/samples/snippets/nuget-credentials.md
-ARG Nuget_SitecorePreview_Username
-ARG Nuget_SitecorePreview_Password
+ARG NUGET_USER
+ARG NUGET_PASSWORD
 
 # TDS licensing via environment variables: https://hedgehogdevelopment.github.io/tds/chapter5.html#sitecore-tds-builds-using-cloud-servers
 ARG TDS_Owner
@@ -23,27 +23,31 @@ ARG TDS_Key
 SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
 
 # Create an empty working directory
-WORKDIR /build
+WORKDIR C:\build
 
 # Copy prepped NuGet artifacts, and restore as distinct layer to take better advantage of caching
-COPY --from=prep ./nuget ./
+COPY --from=prep .\nuget .\
 RUN nuget restore
 
 # Copy remaining source code
-COPY src/ ./src/
+COPY src\ .\src\
 
-# Build using release configuration
+# Copy transforms, retaining directory structure
+RUN Invoke-Expression 'robocopy C:\build\src C:\out\transforms /s /ndl /njh /njs *.xdt'
+
+# Build using Release configuration
 RUN msbuild /p:Configuration=Release
 
 FROM ${BASE_IMAGE}
 
-WORKDIR /artifacts
+WORKDIR C:\artifacts
 
 # Build output will land at the location specified in TDS projects (the "Build Output Path"), relative to our builder's WORKDIR
 # As configured, this means our build output will be:
-#	/build/TdsGeneratedPackages/Release -> files
-#	/build/TdsGeneratedPackages/WebDeploy_Release -> WDP item packages
+#	C:\build\TdsGeneratedPackages\Release -> files
+#	C:\build\TdsGeneratedPackages\WebDeploy_Release -> WDP item packages
 
 # Copy build artifacts
-COPY --from=builder /build/TdsGeneratedPackages/Release ./files/
-COPY --from=builder /build/TdsGeneratedPackages/WebDeploy_Release ./packages/
+COPY --from=builder C:\build\TdsGeneratedPackages\Release .\website\
+COPY --from=builder C:\build\TdsGeneratedPackages\WebDeploy_Release .\packages\
+COPY --from=builder C:\out\transforms .\transforms\

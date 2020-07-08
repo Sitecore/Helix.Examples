@@ -45,11 +45,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="HedgehogDevelopment.FxCop.Helix" Version="1.0.0.7" />
-    <PackageReference Include="Sitecore.Kernel" Version="9.4.0-r003727" />
-    <PackageReference Include="Sitecore.Mvc" Version="9.4.0-r003727" />
-    <PackageReference Include="Sitecore.ContentSearch" Version="9.4.0-r003727" />
-    <PackageReference Include="Sitecore.ContentSearch.Linq" Version="9.4.0-r003727" />
+    <PackageReference Include="HedgehogDevelopment.FxCop.Helix" />
+    <PackageReference Include="Sitecore.Kernel" />
+    <PackageReference Include="Sitecore.Mvc" />
+    <PackageReference Include="Sitecore.ContentSearch" />
+    <PackageReference Include="Sitecore.ContentSearch.Linq" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />

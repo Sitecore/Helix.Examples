@@ -13,8 +13,8 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>BasicCompany.Foundation.Serialization</RootNamespace>
     <AssemblyName>BasicCompany.Foundation.Serialization</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -43,17 +43,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Sitecore.Kernel" Version="9.3.0" />
-    <PackageReference Include="Sitecore.Mvc" Version="9.3.0" />
-    <PackageReference Include="Unicorn">
-      <Version>4.1.1</Version>
-    </PackageReference>
-    <PackageReference Include="Unicorn.Roles">
-      <Version>4.1.1</Version>
-    </PackageReference>
-    <PackageReference Include="Unicorn.Users">
-      <Version>4.1.1</Version>
-    </PackageReference>
+    <PackageReference Include="Sitecore.Kernel" />
+    <PackageReference Include="Sitecore.Mvc" />
+    <PackageReference Include="Unicorn" />
+    <PackageReference Include="Unicorn.Roles" />
+    <PackageReference Include="Unicorn.Users" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
@@ -78,7 +72,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Config\Include\Rainbow.config" />
-    <Content Include="App_Config\Include\Unicorn.SharedSecret.config" />
     <Content Include="App_Config\Include\Unicorn\Unicorn.AutoPublish.config" />
     <Content Include="App_Config\Include\Unicorn\Unicorn.config" />
     <Content Include="App_Config\Include\Unicorn\Unicorn.Configs.Default.example" />

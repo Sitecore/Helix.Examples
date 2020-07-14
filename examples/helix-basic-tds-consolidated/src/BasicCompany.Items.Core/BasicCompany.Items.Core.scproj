@@ -25,17 +25,8 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <DebugSymbols>false</DebugSymbols>
-    <OutputPath>..\..\TdsGeneratedPackages\Release\</OutputPath>
+    <OutputPath>.\bin\Release\</OutputPath>
     <RecursiveDeployAction>Ignore</RecursiveDeployAction>
-    <InstallSitecoreConnector>False</InstallSitecoreConnector>
-    <DisableFileDeployment>False</DisableFileDeployment>
-    <LightningDeployMode>False</LightningDeployMode>
-    <ConnectorTimeoutSeconds>120</ConnectorTimeoutSeconds>
-    <BuildWebDeploy>True</BuildWebDeploy>
-    <WebDeployPackageCodeAndItemOptions>ItemOnly</WebDeployPackageCodeAndItemOptions>
-    <WebDeployPackageName>BasicCompanyItemsCore</WebDeployPackageName>
-    <WebDeployAppendDateAndTimeToPackageName>False</WebDeployAppendDateAndTimeToPackageName>
-    <ContinueOnItemDeployError>False</ContinueOnItemDeployError>
   </PropertyGroup>
   <ItemGroup>
     <AssemblyAttributes Include="AssemblyFileVersion">

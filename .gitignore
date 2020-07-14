@@ -30,6 +30,8 @@ _ReSharper*/
 .vscode/
 # Nuget packages folder
 packages/
+# TDS generated packages
+TdsGeneratedPackages/
 ## Install/build logs
 log.*.txt
 ## User config for build

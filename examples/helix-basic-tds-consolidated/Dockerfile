@@ -30,6 +30,7 @@ COPY --from=prep .\nuget .\
 RUN nuget restore
 
 # Copy remaining source code
+COPY TdsGlobal.config HelixRules.ruleset .\
 COPY src\ .\src\
 
 # Copy transforms, retaining directory structure

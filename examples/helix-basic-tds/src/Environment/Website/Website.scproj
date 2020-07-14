@@ -14,6 +14,10 @@
     <SitecoreDatabase>master</SitecoreDatabase>
     <AssemblyStatus>Exclude</AssemblyStatus>
     <InstallSitecoreConnector>False</InstallSitecoreConnector>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <EnableAssemblyValidation>True</EnableAssemblyValidation>
+    <EnablePackageValidation>False</EnablePackageValidation>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -23,6 +27,10 @@
     <DebugSymbols>false</DebugSymbols>
     <OutputPath>.\bin\Release\</OutputPath>
     <RecursiveDeployAction>Ignore</RecursiveDeployAction>
+    <DisableFileDeployment>False</DisableFileDeployment>
+    <LightningDeployMode>False</LightningDeployMode>
+    <EnableContainerDeployment>False</EnableContainerDeployment>
+    <ConnectorTimeoutSeconds>120</ConnectorTimeoutSeconds>
   </PropertyGroup>
   <ItemGroup>
     <AssemblyAttributes Include="AssemblyFileVersion">
@@ -135,6 +143,8 @@
     <ExcludedAssemblies Include="Microsoft.Azure.Amqp.dll" />
     <ExcludedAssemblies Include="Microsoft.Azure.ServiceBus.dll" />
     <ExcludedAssemblies Include="Microsoft.Azure.Services.AppAuthentication.dll" />
+    <ExcludedAssemblies Include="Microsoft.Configuration.ConfigurationBuilders.Base.dll" />
+    <ExcludedAssemblies Include="Microsoft.Configuration.ConfigurationBuilders.Environment.dll" />
     <ExcludedAssemblies Include="Microsoft.DotNet.PlatformAbstractions.dll" />
     <ExcludedAssemblies Include="Microsoft.Extensions.Caching.Abstractions.dll" />
     <ExcludedAssemblies Include="Microsoft.Extensions.Caching.Memory.dll" />
@@ -151,6 +161,7 @@
     <ExcludedAssemblies Include="Microsoft.Extensions.DependencyInjection.Abstractions.dll" />
     <ExcludedAssemblies Include="Microsoft.Extensions.DependencyInjection.dll" />
     <ExcludedAssemblies Include="Microsoft.Extensions.DependencyModel.dll" />
+    <ExcludedAssemblies Include="Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.dll" />
     <ExcludedAssemblies Include="Microsoft.Extensions.FileProviders.Abstractions.dll" />
     <ExcludedAssemblies Include="Microsoft.Extensions.FileProviders.Physical.dll" />
     <ExcludedAssemblies Include="Microsoft.Extensions.FileSystemGlobbing.dll" />
@@ -306,6 +317,8 @@
     <ExcludedAssemblies Include="Sitecore.Framework.Configuration.dll" />
     <ExcludedAssemblies Include="Sitecore.Framework.Configuration.Extensions.dll" />
     <ExcludedAssemblies Include="Sitecore.Framework.Configuration.Xml.dll" />
+    <ExcludedAssemblies Include="Sitecore.Framework.Data.Blobs.Abstractions.dll" />
+    <ExcludedAssemblies Include="Sitecore.Framework.Data.Blobs.dll" />
     <ExcludedAssemblies Include="Sitecore.Framework.Messaging.Abstractions.dll" />
     <ExcludedAssemblies Include="Sitecore.Framework.Messaging.Configuration.dll" />
     <ExcludedAssemblies Include="Sitecore.Framework.Messaging.Rebus.Azure.dll" />
@@ -520,5 +533,17 @@
     <ExcludedAssemblies Include="WebGrease.dll" />
     <ExcludedAssemblies Include="Yahoo.Yui.Compressor.dll" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\HedgehogDevelopment\SitecoreProject\v9.0\HedgehogDevelopment.SitecoreProject.targets" Condition="Exists('$(MSBuildExtensionsPath)\HedgehogDevelopment\SitecoreProject\v9.0\HedgehogDevelopment.SitecoreProject.targets')" />
+  <Import Project="..\..\..\packages\Sitecore.Assemblies.Platform.10.0.0-r004237\build\Sitecore.Assemblies.Platform.targets" Condition="Exists('..\..\..\packages\Sitecore.Assemblies.Platform.10.0.0-r004237\build\Sitecore.Assemblies.Platform.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\..\packages\Sitecore.Assemblies.Platform.10.0.0-r004237\build\Sitecore.Assemblies.Platform.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\packages\Sitecore.Assemblies.Platform.10.0.0-r004237\build\Sitecore.Assemblies.Platform.targets'))" />
+    <Error Condition="!Exists('..\..\..\packages\HedgehogDevelopment.TDS.6.0.0.16\build\HedgehogDevelopment.TDS.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\packages\HedgehogDevelopment.TDS.6.0.0.16\build\HedgehogDevelopment.TDS.targets'))" />
+  </Target>
+  <Import Project="..\..\..\packages\HedgehogDevelopment.TDS.6.0.0.16\build\HedgehogDevelopment.TDS.targets" Condition="Exists('..\..\..\packages\HedgehogDevelopment.TDS.6.0.0.16\build\HedgehogDevelopment.TDS.targets')" />
 </Project>

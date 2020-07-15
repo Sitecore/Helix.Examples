@@ -102,7 +102,7 @@
   <ItemGroup>
     <Content Include="App_Config\Environment\EnableYaml.Dev.config" />
     <None Include="Views\Web.config" />
-    <Content Include="Views\Web.config.xdt" />
+    <None Include="Views\Web.config.xdt" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Config\Include\Feature\Feature.Navigation.config" />

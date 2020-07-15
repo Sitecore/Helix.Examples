@@ -55,7 +55,10 @@
     <PackageReference Include="Sitecore.FakeDb" />
     <PackageReference Include="Sitecore.Nexus" />
     <PackageReference Include="xunit" />
-    <PackageReference Include="xunit.runner.visualstudio" />
+    <PackageReference Include="xunit.runner.visualstudio">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\website\BasicCompany.Feature.Navigation.csproj">

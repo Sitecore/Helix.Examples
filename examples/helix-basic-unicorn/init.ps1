@@ -24,8 +24,9 @@ $ErrorActionPreference = "Stop";
 if (-not (Test-Path $LicenseXmlPath)) {
     throw "Did not find $LicenseXmlPath"
 }
-if (-not (Test-Path $LicenseXmlPath -PathType Leaf)) {
-    throw "$LicenseXmlPath is not a file"
+if (Test-Path $LicenseXmlPath -PathType Leaf) {
+    # We want the folder that it's in for mounting
+    $LicenseXmlPath = (Get-Item $LicenseXmlPath).Directory.FullName
 }
 
 # Check for Sitecore Gallery
@@ -70,9 +71,6 @@ Set-DockerComposeEnvFileVariable "ID_HOST" -Value "id.$($HostName).localhost"
 # SITE_HOST
 Set-DockerComposeEnvFileVariable "SITE_HOST" -Value "www.$($HostName).localhost"
 
-# REPORTING_API_KEY = random 64-128 chars
-Set-DockerComposeEnvFileVariable "REPORTING_API_KEY" -Value (Get-SitecoreRandomString 64 -DisallowSpecial)
-
 # TELERIK_ENCRYPTION_KEY = random 64-128 chars
 Set-DockerComposeEnvFileVariable "TELERIK_ENCRYPTION_KEY" -Value (Get-SitecoreRandomString 128)
 
@@ -86,8 +84,8 @@ Set-DockerComposeEnvFileVariable "SITECORE_ID_CERTIFICATE" -Value (Get-SitecoreC
 # SITECORE_ID_CERTIFICATE_PASSWORD
 Set-DockerComposeEnvFileVariable "SITECORE_ID_CERTIFICATE_PASSWORD" -Value $idCertPassword
 
-# SITECORE_LICENSE
-Set-DockerComposeEnvFileVariable "SITECORE_LICENSE" -Value (ConvertTo-CompressedBase64String -Path $LicenseXmlPath)
+# HOST_LICENSE_FOLDER
+Set-DockerComposeEnvFileVariable "HOST_LICENSE_FOLDER" -Value $LicenseXmlPath
 
 ##################################
 # Configure TLS/HTTPS certificates

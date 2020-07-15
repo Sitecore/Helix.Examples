@@ -52,6 +52,10 @@ services:
       context: ./docker/build/id
       args:
         BASE_IMAGE: ${SITECORE_DOCKER_REGISTRY}sitecore-id:${SITECORE_VERSION}
+    volumes:
+      - ${HOST_LICENSE_FOLDER}:C:\license
+    environment:
+      SITECORE_LICENSE_LOCATION: C:\license\license.xml
 
   cd:
     image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-xm1-cd:${VERSION:-latest}
@@ -63,11 +67,13 @@ services:
         SOLUTION_IMAGE: ${REGISTRY}${COMPOSE_PROJECT_NAME}-solution:${VERSION:-latest}
     depends_on:
       - solution
-    environment:
-      BASIC_COMPANY_URL: ${SITE_HOST}
     volumes:
       - ${LOCAL_DEPLOY_PATH}\website:C:\deploy
       - ${LOCAL_DATA_PATH}\cd:C:\inetpub\wwwroot\App_Data\logs
+      - ${HOST_LICENSE_FOLDER}:C:\license
+    environment:
+      BASIC_COMPANY_URL: ${SITE_HOST}
+      SITECORE_LICENSE_LOCATION: C:\license\license.xml
     entrypoint: powershell -Command "& C:\tools\entrypoints\iis\Development.ps1"
     labels:
       - "traefik.http.routers.site-secure.entrypoints=websecure"
@@ -88,4 +94,7 @@ services:
     volumes:
       - ${LOCAL_DEPLOY_PATH}\website:C:\deploy
       - ${LOCAL_DATA_PATH}\cm:C:\inetpub\wwwroot\App_Data\logs
+      - ${HOST_LICENSE_FOLDER}:C:\license
+    environment:
+      SITECORE_LICENSE_LOCATION: C:\license\license.xml
     entrypoint: powershell -Command "& C:\tools\entrypoints\iis\Development.ps1"

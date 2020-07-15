@@ -96,6 +96,7 @@
     <Content Include="App_Config\Include\Foundation\Foundation.Serialization.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App_Config\Layers.config.xdt" />
     <None Include="web.config" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>

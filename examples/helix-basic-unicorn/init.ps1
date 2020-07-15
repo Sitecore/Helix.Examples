@@ -37,7 +37,7 @@ if (-not $SitecoreGallery) {
     $SitecoreGallery = Get-PSRepository -Name SitecoreGallery
 }
 # Install SitecoreDockerTools if necessary
-if (!(Get-Module SitecoreDockerTools -ErrorAction SilentlyContinue))
+if (-not (Get-Module SitecoreDockerTools -ListAvailable -ErrorAction SilentlyContinue))
 {
     Write-Host "Installing SitecoreDockerTools..." -ForegroundColor Green
     Install-Module SitecoreDockerTools -Repository $SitecoreGallery.Name
@@ -66,8 +66,8 @@ Set-DockerComposeEnvFileVariable "CM_HOST" -Value "cm.$($HostName).localhost"
 # ID_HOST
 Set-DockerComposeEnvFileVariable "ID_HOST" -Value "id.$($HostName).localhost"
 
-# BASIC_COMPANY_HOST
-Set-DockerComposeEnvFileVariable "BASIC_COMPANY_HOST" -Value "www.$($HostName).localhost"
+# SITE_HOST
+Set-DockerComposeEnvFileVariable "SITE_HOST" -Value "www.$($HostName).localhost"
 
 # REPORTING_API_KEY = random 64-128 chars
 Set-DockerComposeEnvFileVariable "REPORTING_API_KEY" -Value (Get-SitecoreRandomString 64 -AlphanumericOnly)

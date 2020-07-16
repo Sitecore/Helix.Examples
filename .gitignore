@@ -32,12 +32,6 @@ _ReSharper*/
 packages/
 # TDS generated packages
 TdsGeneratedPackages/
-## Install/build logs
-log.*.txt
-## User config for build
-settings.user.ps1
-## Install Temp
-.installtemp/
 ## Basic Company compiled assets
 /basic-company/client/_javascript/main.js
 /basic-company/client/css/main.css

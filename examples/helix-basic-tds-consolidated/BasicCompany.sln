@@ -6,7 +6,6 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".tds", ".tds", "{0F30B77C-3721-4CDF-8073-A46FAA354F26}"
 	ProjectSection(SolutionItems) = preProject
 		TdsGlobal.config = TdsGlobal.config
-		TdsGlobal.config.user = TdsGlobal.config.user
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicCompany.Web", "src\BasicCompany.Web\BasicCompany.Web.csproj", "{023339CE-EEA7-4E9B-9A7F-960202AD3135}"

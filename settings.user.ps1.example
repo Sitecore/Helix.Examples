@@ -1,9 +1,0 @@
-# SQL Parameters
-#$SqlServer = ""
-#$SqlAdminUser = ""
-#$SqlAdminPassword = ""
-
-# Solr Parameters
-#$SolrUrl = ""
-#$SolrRoot = ""
-#$SolrService = ""

@@ -12,10 +12,6 @@ RUN Invoke-Expression 'robocopy C:\temp C:\nuget\src /s /ndl /njh /njs *.csproj 
 
 FROM ${BUILD_IMAGE} AS builder
 
-# NuGet credentials (for SitecorePreview) via environment variables: https://github.com/dotnet/dotnet-docker/blob/master/samples/snippets/nuget-credentials.md
-ARG NUGET_USER
-ARG NUGET_PASSWORD
-
 # TDS licensing via environment variables: https://hedgehogdevelopment.github.io/tds/chapter5.html#sitecore-tds-builds-using-cloud-servers
 ARG TDS_Owner
 ARG TDS_Key

@@ -11,12 +11,7 @@ Param (
     # We do not need to use [SecureString] here since the value will be stored unencrypted in .env,
     # and used only for transient local example environment.
     [string]
-    $SitecoreAdminPassword = "Password12345",
-    
-    # We do not need to use [SecureString] here since the value will be stored unencrypted in .env,
-    # and used only for transient local example environment.
-    [string]
-    $SqlSaPassword = "Password12345"
+    $SitecoreAdminPassword = "b"
 )
 
 $ErrorActionPreference = "Stop";
@@ -53,11 +48,8 @@ Import-Module SitecoreDockerTools -RequiredVersion $dockerToolsVersion
 
 Write-Host "Populating required .env file variables..." -ForegroundColor Green
 
-# SITECORE_ADMIN_PASSWORD
-Set-DockerComposeEnvFileVariable "SITECORE_ADMIN_PASSWORD" -Value $SitecoreAdminPassword
-
-# SQL_SA_PASSWORD
-Set-DockerComposeEnvFileVariable "SQL_SA_PASSWORD" -Value $SqlSaPassword
+# HOST_LICENSE_FOLDER
+Set-DockerComposeEnvFileVariable "HOST_LICENSE_FOLDER" -Value $LicenseXmlPath
 
 # CD_HOST
 Set-DockerComposeEnvFileVariable "CD_HOST" -Value "cd.$($HostName).localhost"
@@ -71,6 +63,12 @@ Set-DockerComposeEnvFileVariable "ID_HOST" -Value "id.$($HostName).localhost"
 # SITE_HOST
 Set-DockerComposeEnvFileVariable "SITE_HOST" -Value "www.$($HostName).localhost"
 
+# SITECORE_ADMIN_PASSWORD
+Set-DockerComposeEnvFileVariable "SITECORE_ADMIN_PASSWORD" -Value $SitecoreAdminPassword
+
+# SQL_SA_PASSWORD
+Set-DockerComposeEnvFileVariable "SQL_SA_PASSWORD" -Value (Get-SitecoreRandomString 12 -DisallowSpecial -EnforceComplexity)
+
 # TELERIK_ENCRYPTION_KEY = random 64-128 chars
 Set-DockerComposeEnvFileVariable "TELERIK_ENCRYPTION_KEY" -Value (Get-SitecoreRandomString 128)
 
@@ -83,9 +81,6 @@ Set-DockerComposeEnvFileVariable "SITECORE_ID_CERTIFICATE" -Value (Get-SitecoreC
 
 # SITECORE_ID_CERTIFICATE_PASSWORD
 Set-DockerComposeEnvFileVariable "SITECORE_ID_CERTIFICATE_PASSWORD" -Value $idCertPassword
-
-# HOST_LICENSE_FOLDER
-Set-DockerComposeEnvFileVariable "HOST_LICENSE_FOLDER" -Value $LicenseXmlPath
 
 ##################################
 # Configure TLS/HTTPS certificates

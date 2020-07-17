@@ -29,7 +29,7 @@ Sitecore or Sitecore Helix practices.
 
 ## Implementations
 
-### Helix Basic Company - TDS
+### [Helix Basic Company - TDS](https://github.com/Sitecore/Helix.Examples/tree/master/examples/helix-basic-tds)
 
 This is a [Sitecore TDS](https://www.teamdevelopmentforsitecore.com/TDS-Classic)-based
 implementation of Helix Basic Company. It utilizes Sitecore TDS both for
@@ -38,7 +38,7 @@ serialization and builds.
 * To avoid the need for a deployment-only TDS project on modules which do not have items, a
 single deployment-only *Website* project handles all file deployment.
 
-### Helix Basic Company - TDS Consolidated
+### [Helix Basic Company - TDS Consolidated](https://github.com/Sitecore/Helix.Examples/tree/master/examples/helix-basic-tds-consolidated)
 
 This version of Helix Basic Company consolidates the entire solution into a single
 Visual Studio web project and uses Sitecore TDS validation and
@@ -53,7 +53,7 @@ the solution architect has chosen to start simply and potentially pay that techn
 Sitecore Helix modules in the content tree are of uncertain ownership
 (e.g. the *BasicCompany Site Root* insert rule).
 
-### Helix Basic Company - Unicorn
+### [Helix Basic Company - Unicorn](https://github.com/Sitecore/Helix.Examples/tree/master/examples/helix-basic-unicorn)
 
 The [Unicorn](https://github.com/SitecoreUnicorn/Unicorn)-based implementation of Helix
 Basic Company. It uses Unicorn for serialization, and

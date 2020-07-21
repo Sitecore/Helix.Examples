@@ -30,8 +30,3 @@ _ReSharper*/
 .vscode/
 # Nuget packages folder
 packages/
-# TDS generated packages
-TdsGeneratedPackages/
-## Basic Company compiled assets
-/basic-company/client/_javascript/main.js
-/basic-company/client/css/main.css

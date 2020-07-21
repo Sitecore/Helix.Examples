@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PlatformVersion>10.0.0-r004237</PlatformVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Update="Sitecore.Nexus" Version="$(PlatformVersion)" />
+    <PackageReference Update="Sitecore.Kernel" Version="$(PlatformVersion)" />
+    <PackageReference Update="Sitecore.Mvc" Version="$(PlatformVersion)" />
+    <PackageReference Update="Sitecore.ContentSearch" Version="$(PlatformVersion)" />
+    <PackageReference Update="Sitecore.ContentSearch.Linq" Version="$(PlatformVersion)" />
+    <PackageReference Update="Sitecore.ContentSearch.ContentExtraction" Version="$(PlatformVersion)" />
+    <PackageReference Update="Sitecore.Assemblies.Platform" Version="$(PlatformVersion)" />
+
+    <PackageReference Update="Sitecore.LayoutService" Version="6.0.0-r00143.533" />
+    <PackageReference Update="Sitecore.LayoutService.Client" Version="14.0.0-r00158" />
+    <PackageReference Update="Sitecore.AspNet.RenderingEngine" Version="14.0.0-r00158" />
+    <PackageReference Update="Sitecore.AspNet.ExperienceEditor" Version="14.0.0-r00158" />
+    <PackageReference Update="Sitecore.AspNet.Tracking" Version="14.0.0-r00158" />
+    <PackageReference Update="Sitecore.AspNet.Tracking.VisitorIdentification" Version="14.0.0-r00158" />
+    
+    <PackageReference Update="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.0" />
+    <PackageReference Update="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.1" />
+    <PackageReference Update="Microsoft.Extensions.Http" Version="3.1.1" />
+    <PackageReference Update="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.1" />
+    <PackageReference Update="RichardSzalay.Helix.Publishing.WebRoot" Version="1.5.6" />
+  </ItemGroup>
+</Project>

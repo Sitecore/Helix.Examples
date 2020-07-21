@@ -21,7 +21,7 @@ WORKDIR C:\build
 
 # Copy prepped NuGet artifacts, and restore as distinct layer to take better advantage of caching
 COPY --from=prep .\nuget .\
-RUN nuget restore
+RUN nuget restore -Verbosity quiet
 
 # Copy remaining source code
 COPY src\ .\src\
@@ -43,4 +43,4 @@ WORKDIR C:\artifacts
 # Copy final build artifacts
 COPY --from=builder C:\out\website .\website\
 COPY --from=builder C:\out\transforms .\transforms\
-COPY --from=builder c:\out\items .\items\
+COPY --from=builder C:\out\items .\items\

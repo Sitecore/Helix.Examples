@@ -1,0 +1,13 @@
+<Project>
+  <Sdk Name="Microsoft.Build.CentralPackageVersions" Version="2.0.46" />
+  <!--
+      Workaround for 'dotnet watch' issue with referenced MVC projects.
+      https://github.com/dotnet/aspnetcore/issues/22219
+  -->
+  <Target Name="RazorWatch" BeforeTargets="_CoreCollectWatchItems" Condition="'$(DotNetWatchBuild)' == 'true'">
+    <ItemGroup>
+      <RazorWatch Include="**\*.cshtml" />
+      <Watch Include="%(RazorWatch.FullPath)" />
+    </ItemGroup>
+  </Target>
+</Project>

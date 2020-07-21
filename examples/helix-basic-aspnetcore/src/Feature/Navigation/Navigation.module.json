@@ -1,0 +1,19 @@
+{
+    "namespace": "Feature.Navigation",
+    "items": {
+        "includes": [
+            {
+                "name": "templates",
+                "path": "/sitecore/templates/Feature/Navigation"
+            },
+            {
+                "name": "renderings",
+                "path": "/sitecore/layout/Renderings/Feature/Navigation"
+            },
+            {
+                "name": "contents-resolvers",
+                "path": "/sitecore/system/Modules/Layout Service/Rendering Contents Resolvers/Navigation"
+            }
+        ]
+    }
+}

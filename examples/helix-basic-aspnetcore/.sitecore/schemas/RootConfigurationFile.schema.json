@@ -19,19 +19,6 @@
         "type": "string"
       }
     },
-    "variables": {
-      "type": "object",
-      "description": "Defines variables that can be referred to in SIC resources for environment-specific transforms during package installation.\nValues set here are the defaults, which can be overridden using environment-specific variables in .sitecore/user.json (for developers),\nor by setting environment variables in the form SC_VAR_nameOfVariable (for CI/CD).\nVariables with the default value of null will be required to be set via an override or an error will be thrown (required variables).",
-      "additionalProperties": false,
-      "patternProperties": {
-        "^[a-zA-Z0-9]+$": {
-          "type": [
-            "null",
-            "string"
-          ]
-        }
-      }
-    },
     "serialization": {
       "description": "Global item serialization default settings",
       "oneOf": [

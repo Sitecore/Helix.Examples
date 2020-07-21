@@ -6,7 +6,7 @@
     {
       "title": "ModuleConfiguration",
       "type": "object",
-      "description": "Defines a \"DevEx Module\" that is a Helix-like module that can contain SIC resources, serialized item configurations, etc.\nThis class is overridden with SIC and Serialization-specific derived versions that provide access to their module-specific settings.",
+      "description": "Defines a \"DevEx Module\" that is a Helix-like module that can contain serialized item configurations, etc.\nThis class is overridden with Serialization-specific derived versions that provide access to their module-specific settings.",
       "additionalProperties": {},
       "required": [
         "namespace"
@@ -27,7 +27,7 @@
         },
         "references": {
           "type": "array",
-          "description": "Names of other modules that are referenced by resources in this module. Wildcards are allowed, i.e. Foundation.*.\nReferencing a module allows SIC resources to reference resources defined in that module, and causes serialized items\nin the referenced module(s) to be synced before this module.",
+          "description": "Names of other modules that are referenced by resources in this module. Wildcards are allowed, i.e. Foundation.*.",
           "items": {
             "type": "string"
           }
@@ -61,7 +61,7 @@
         },
         "references": {
           "type": "array",
-          "description": "Names of other modules that are referenced by resources in this module. Wildcards are allowed, i.e. Foundation.*.\nReferencing a module allows SIC resources to reference resources defined in that module, and causes serialized items\nin the referenced module(s) to be synced before this module.",
+          "description": "Names of other modules that are referenced by resources in this module. Wildcards are allowed, i.e. Foundation.*.",
           "items": {
             "type": "string"
           }

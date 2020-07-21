@@ -1,0 +1,20 @@
+{
+    "namespace": "Feature.BasicContent",
+    "items": {
+        "includes": [
+            {
+                "name": "templates",
+                "path": "/sitecore/templates/Feature/BasicContent"
+            },
+            {
+                "name": "renderings",
+                "path": "/sitecore/layout/Renderings/Feature/BasicContent"
+            },
+            {
+                "name": "buttons",
+                "database": "core",
+                "path": "/sitecore/content/Applications/WebEdit/Custom Experience Buttons/BasicContent"
+            }
+        ]
+    }
+}

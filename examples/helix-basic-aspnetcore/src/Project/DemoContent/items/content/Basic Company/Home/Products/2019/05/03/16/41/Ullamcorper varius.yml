@@ -1,0 +1,59 @@
+﻿---
+ID: "57eee913-0cc2-4015-8ccf-79e847aae53a"
+Parent: "a0d122c0-7353-45e8-89d5-9ef8de829f29"
+Template: "fa3971f5-5a1b-4477-b64e-ca99949e8894"
+Path: /sitecore/content/Basic Company/Home/Products/2019/05/03/16/41/Ullamcorper varius
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "23f42f5e-645c-4a72-9c61-79db1a331e64"
+      Hint: Image
+      Value: |
+          <image mediaid="{D8B7E336-3EF6-4938-9E1A-8FE8BFEDB0FB}" />
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20190503T164116Z
+    - ID: "2c2c386c-17c7-44c3-8796-3e720ba08079"
+      Hint: Features
+      Value: |
+          <ul>
+          <li>Per ultrices</li>
+          <li>Euismod odio tellus</li>
+          <li>Tristique accumsan</li>
+          </ul>
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\Admin
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "6fae772e-96ef-46c7-83db-e708b8933065"
+    - ID: "9977fbe7-a0ff-475c-9a7c-ecb81c7f51cf"
+      Hint: Price
+      Value: 19.99
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+          extranet\Anonymous
+    - ID: "be500a38-36a0-417b-86c5-e63ba71d0939"
+      Hint: Title
+      Value: Ullamcorper varius
+    - ID: "be7e2d00-e405-4498-85f9-4f89d8ea2cfc"
+      Hint: Short Description
+      Value: Magna nam ante eros praesent metus
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20190930T183117Z
+    - ID: "fc7c99d4-7301-44eb-908c-bf4ffca5a131"
+      Hint: Related Products
+      Value: |
+        {413D28C8-5E86-4041-94B7-C15F6F3323CB}
+        {404D27F4-8AB6-4B26-A027-FF1775DAF3AE}
+        {641E5449-B775-4549-8CF9-78D876476704}
+        {7868BB89-FEB1-4C08-AD4E-1C72FAC5E0B5}
+        {C053B40C-9690-4298-9877-412D25485C21}
+        {12B8D640-1372-4328-B395-21536E144F5A}
+        {46B11991-BBFC-4FEE-B6A0-BC210F96C167}
+        {D2FB7162-3A8C-4407-A481-736A7181608A}

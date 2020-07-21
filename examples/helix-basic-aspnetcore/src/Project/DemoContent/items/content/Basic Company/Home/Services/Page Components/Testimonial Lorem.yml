@@ -1,0 +1,37 @@
+﻿---
+ID: "5a6e3f19-50ba-445f-8a2b-9c659afe3a8a"
+Parent: "7972f31a-628d-40dd-bc51-1f1fbc93adfb"
+Template: "ec97b156-adfa-4e37-89d8-789637fb6f1b"
+Path: /sitecore/content/Basic Company/Home/Services/Page Components/Testimonial Lorem
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20190507T150104Z
+    - ID: "5ab05255-0825-4e6d-974b-623cd926e6fd"
+      Hint: Title
+      Value: Nulla Amet
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+          sitecore\admin
+    - ID: "861fe636-1545-4f59-aab8-b308293139a1"
+      Hint: Quote
+      Value: <p>Praesent metus tellus, elementum eu, semper a, adipiscing nec, purus. Morbi nec metus. Etiam sit amet orci eget eros faucibus tincidunt.</p>
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "39e21b6c-f7e5-4915-becb-69ee609f24b4"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+          sitecore\unicorn
+    - ID: "bf949588-0a7d-4452-9188-a298b40c0ed3"
+      Hint: Image
+      Value: |
+          <image mediaid="{7AC075BF-7FCE-43A0-9CAB-66746D18383D}" />
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20190930T183116Z

@@ -1,0 +1,41 @@
+﻿---
+ID: "9c581356-66d4-4993-bb25-757b710a06e8"
+Parent: "d4fbef5c-dda0-4d84-9f51-f1982bcce110"
+Template: "4a421518-7b4a-4d43-af9b-94e17e00ec9f"
+Path: /sitecore/content/Basic Company/Home/Page Components/Hero Banner
+SharedFields:
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 200
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20190311T193119Z
+    - ID: "5179186c-b95e-4e97-95ab-7958721a9aeb"
+      Hint: Title
+      Value: Basic Company
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\Admin
+    - ID: "89b0a8ed-0ee8-4512-b518-ab2c4c2a0b9e"
+      Hint: Subtitle
+      Value: Lorem Ipsum Dolor Sit Amet
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "d869214e-8b9b-4f3b-bd95-bdd3f644fd6b"
+    - ID: "b5f61442-ff0f-46a5-90a8-d6d387de24a0"
+      Hint: Image
+      Value: |
+          <image mediapath="" alt="Basic Company" width="" height="" hspace="" vspace="" showineditor="" usethumbnail="" src="" mediaid="{AB1185E2-AA43-4E7B-ADBE-146E89A828D5}" />
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+          extranet\Anonymous
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20190930T183116Z

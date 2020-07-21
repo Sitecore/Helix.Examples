@@ -23,7 +23,7 @@ WORKDIR C:\build
 
 # Copy prepped NuGet artifacts, and restore as distinct layer to take better advantage of caching
 COPY --from=prep .\nuget .\
-RUN nuget restore
+RUN nuget restore -Verbosity quiet
 
 # Copy remaining source code
 COPY TdsGlobal.config .\

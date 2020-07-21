@@ -3,6 +3,7 @@ using Sitecore.Data;
 using Sitecore.Data.Fields;
 using Sitecore.Data.Items;
 using Sitecore.Links;
+using Sitecore.Links.UrlBuilders;
 using Sitecore.Mvc.Helpers;
 using Sitecore.Resources.Media;
 
@@ -30,7 +31,7 @@ namespace BasicCompany.Foundation.FieldRendering
             return MediaUrl(sitecoreHelper, fieldId, sitecoreHelper.CurrentItem);
         }
 
-		public static string MediaUrl(this SitecoreHelper sitecoreHelper, ID fieldId, MediaUrlOptions options)
+		public static string MediaUrl(this SitecoreHelper sitecoreHelper, ID fieldId, MediaUrlBuilderOptions options)
 		{
 			return MediaUrl(sitecoreHelper, fieldId, sitecoreHelper.CurrentItem, options);
 		}
@@ -40,7 +41,7 @@ namespace BasicCompany.Foundation.FieldRendering
 			return MediaUrl(sitecoreHelper, fieldId, item, null);
 		}
 
-		public static string MediaUrl(this SitecoreHelper sitecoreHelper, ID fieldId, Item item, MediaUrlOptions options)
+		public static string MediaUrl(this SitecoreHelper sitecoreHelper, ID fieldId, Item item, MediaUrlBuilderOptions options)
 		{
 			ImageField imageField = item?.Fields[fieldId];
             if (imageField == null || imageField.MediaItem == null)

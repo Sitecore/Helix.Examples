@@ -1,0 +1,31 @@
+{
+    "namespace": "Project.BasicCompany",
+    "items": {
+        "includes": [
+            {
+                "name": "layouts",
+                "path": "/sitecore/layout/Layouts/Project/BasicCompany"
+            },
+            {
+                "name": "placeholders",
+                "path": "/sitecore/layout/Placeholder Settings/Project/BasicCompany"
+            },
+            {
+                "name": "templates",
+                "path": "/sitecore/templates/Project/BasicCompany"
+            },
+            {
+                "name": "branches",
+                "path": "/sitecore/templates/Branches/Project/BasicCompany"
+            },
+            {
+                "name": "site-root-rule",
+                "path": "/sitecore/system/Settings/Rules/Insert Options/Rules/BasicCompany Site Root"
+            },
+            {
+                "name": "api-key",
+                "path": "/sitecore/system/Settings/Services/API Keys/basic-company"
+            }
+        ]
+    }
+}

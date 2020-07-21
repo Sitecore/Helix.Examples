@@ -2,11 +2,11 @@
 @using BasicCompany.Feature.BasicContent
 @using BasicCompany.Foundation.FieldRendering
 @{ 
-	var promoImageOptions = new Sitecore.Resources.Media.MediaUrlOptions
-	{
-		MaxWidth = 960,
-		AllowStretch = false,
-	};
+    var promoImageOptions = new Sitecore.Links.UrlBuilders.MediaUrlBuilderOptions
+    {
+        MaxWidth = 960,
+        AllowStretch = false,
+    };
 }
 @* Disable editing to improve component selection in editor. Can be edited via field editor button. *@
 @Html.Sitecore().BeginField(Templates.PromoCard.Fields.Link.ToString(), new { @class = "column promo-column", DisableWebEdit = true })

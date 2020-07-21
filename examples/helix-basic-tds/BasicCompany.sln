@@ -46,7 +46,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".tds", ".tds", "{0F30B77C-3721-4CDF-8073-A46FAA354F26}"
 	ProjectSection(SolutionItems) = preProject
 		TdsGlobal.config = TdsGlobal.config
-		TdsGlobal.config.user = TdsGlobal.config.user
 	EndProjectSection
 EndProject
 Project("{CAA73BB0-EF22-4D79-A57E-DF67B3BA9C80}") = "BasicCompany.Feature.BasicContent.Master", "src\Feature\BasicContent\tds\master\BasicCompany.Feature.BasicContent.Master.scproj", "{4AF2DB8E-5925-4317-8691-68D0EBE4D45B}"

@@ -28,13 +28,9 @@ Interested in exploring these examples? You can...
 
 The Sitecore Helix Examples are not:
 * Sales/Marketing demo sites (see [Habitat Home](https://github.com/Sitecore/Sitecore.HabitatHome.Platform))
-* A 'getting started' guide for Sitecore (see [Sitecore Developer Documentation](https://doc.sitecore.com/developers))
+* A 'getting started' guide for Sitecore (see [Sitecore Developer Documentation](https://doc.sitecore.com/developers)) or Docker containers (see [Sitecore Containers Documentation](https://containers.doc.sitecore.com))
 * A 'starter kit' for Helix-based sites (there are several of these in the community)
 
 You can certainly reference and reuse code found here. However you should take care
 when doing so, like you could copying code from Stackexchange or other sources,
 and adjust to your needs. As much as possible, these examples strive to follow good Sitecore practices beyond Helix.
-
-The SIF-based install/menu/configuration system however is optimized to ease and bring joy to
-the installation of the multiple example instances, and likely is not a good fit for
-production projects. However we do hope you enjoy using it.

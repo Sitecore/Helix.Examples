@@ -1,0 +1,4 @@
+tls:
+  certificates:
+    - certFile: C:\etc\traefik\certs\_wildcard.basic-company-aspnetcore.localhost.pem
+      keyFile: C:\etc\traefik\certs\_wildcard.basic-company-aspnetcore.localhost-key.pem

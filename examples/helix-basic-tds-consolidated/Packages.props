@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PlatformVersion>10.0.0</PlatformVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Update="Sitecore.Nexus" Version="$(PlatformVersion)" />
+    <PackageReference Update="Sitecore.Kernel" Version="$(PlatformVersion)" />
+    <PackageReference Update="Sitecore.Mvc" Version="$(PlatformVersion)" />
+    <PackageReference Update="Sitecore.ContentSearch" Version="$(PlatformVersion)" />
+    <PackageReference Update="Sitecore.ContentSearch.Linq" Version="$(PlatformVersion)" />
+    <PackageReference Update="Sitecore.ContentSearch.ContentExtraction" Version="$(PlatformVersion)" />
+    
+    <PackageReference Update="HedgehogDevelopment.FxCop.Helix" Version="1.0.0.7" />
+    <PackageReference Update="Sitecore.FakeDb" Version="3.0.0-alpha1" />
+    <PackageReference Update="Microsoft.Extensions.DependencyInjection" Version="2.2.0" />
+    <PackageReference Update="Microsoft.Extensions.Logging" Version="2.2.0" />
+    <PackageReference Update="Moq" Version="4.10.1" />
+    <PackageReference Update="xunit" Version="2.4.1" />
+    <PackageReference Update="xunit.runner.visualstudio" Version="2.4.1" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,41 @@
+﻿---
+ID: "1014ceee-6871-425f-9ca7-c1b91fa1fe47"
+Parent: "7bc02aef-e662-41f3-b80d-4b1f52ed9d79"
+Template: "b0d7dedc-8908-4fd0-9b1a-a1501d03d485"
+Path: /sitecore/content/Basic Company/Shared Content/Promo Cards/Etiam ultricies
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "13eb8dca-281d-4e75-b6e1-701ca719bcd1"
+      Hint: Text
+      Value: Praesent congue erat at massa.
+    - ID: "21249f44-5f0f-4cfa-9474-8d72930d6575"
+      Hint: Image
+      Value: |
+          <image mediaid="{2B2499FA-31EE-4EF1-96E4-8A02A05FAFBB}" />
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20190501T180706Z
+    - ID: "4f73c02b-93cc-4c96-b9ff-9d0d8e853ed6"
+      Hint: Headline
+      Value: Etiam ultricies
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\Admin
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "888383de-afb5-440c-a0aa-668f8ac8aa0c"
+    - ID: "b788e8bc-e944-4a2b-a4be-3424643d322b"
+      Hint: Link
+      Value: |
+          <link text="" anchor="" linktype="internal" class="" title=""  querystring="" id="{97479C6B-BB30-4A15-AFD1-2C89F207E9D6}" />
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+          extranet\Anonymous
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20190930T183116Z

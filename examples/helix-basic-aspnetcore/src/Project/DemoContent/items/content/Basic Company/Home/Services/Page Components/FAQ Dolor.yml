@@ -1,0 +1,33 @@
+﻿---
+ID: "60346c12-ae98-49c9-bd9b-93834765d7bf"
+Parent: "7972f31a-628d-40dd-bc51-1f1fbc93adfb"
+Template: "fe549078-8c72-472a-8ea7-51053e0e1d73"
+Path: /sitecore/content/Basic Company/Home/Services/Page Components/FAQ Dolor
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20190507T170347Z
+    - ID: "45efe66e-5ad2-4f1d-bad5-fdf281688681"
+      Hint: Content
+      Value: <p>Praesent metus tellus, elementum eu, semper a, adipiscing nec, purus. Aliquam eu nunc. Proin pretium, leo ac pellentesque mollis, felis nunc ultrices eros, sed gravida augue augue mollis justo. Nunc interdum lacus sit amet orci. Phasellus viverra nulla ut metus varius laoreet.</p>
+    - ID: "5718e787-142b-41d9-b5a1-0b18f45b8236"
+      Hint: Title
+      Value: "Pellentesque auctor neque nec urna?"
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+          sitecore\admin
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "0011be6b-42a1-4740-bf61-8875ae878ef6"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+          sitecore\unicorn
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20190930T183117Z

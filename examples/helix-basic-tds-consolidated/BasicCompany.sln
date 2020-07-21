@@ -6,7 +6,6 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".tds", ".tds", "{0F30B77C-3721-4CDF-8073-A46FAA354F26}"
 	ProjectSection(SolutionItems) = preProject
 		TdsGlobal.config = TdsGlobal.config
-		TdsGlobal.config.user = TdsGlobal.config.user
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicCompany.Web", "src\BasicCompany.Web\BasicCompany.Web.csproj", "{023339CE-EEA7-4E9B-9A7F-960202AD3135}"
@@ -18,6 +17,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicCompany.Web.Tests", "src\BasicCompany.Web.Tests\BasicCompany.Web.Tests.csproj", "{F519C1AB-3EF2-4F56-8BAA-53BD1F1DDBB4}"
 EndProject
 Project("{CAA73BB0-EF22-4D79-A57E-DF67B3BA9C80}") = "BasicCompany.Items.Content", "src\BasicCompany.Items.Content\BasicCompany.Items.Content.scproj", "{A2590AB7-F0FA-4099-BA75-F79D60BBBAFD}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E05A9D06-5E80-4135-BAE2-DF19DA6B7E65} = {E05A9D06-5E80-4135-BAE2-DF19DA6B7E65}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

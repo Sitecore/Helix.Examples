@@ -1,0 +1,33 @@
+﻿---
+ID: "689a62a4-10c6-4ea9-b93a-27953f9fe397"
+Parent: "092a159d-93df-4c49-9226-9abe5bcbc7aa"
+Template: "092a159d-93df-4c49-9226-9abe5bcbc7aa"
+Path: /sitecore/templates/Feature/Services/Testimonial Folder/__Standard Values
+SharedFields:
+- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
+  Hint: __Masters
+  Value: |
+    {EC97B156-ADFA-4E37-89D8-789637FB6F1B}
+    {092A159D-93DF-4C49-9226-9ABE5BCBC7AA}
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20190507T141235Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+          sitecore\admin
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "3ac79faf-5bf2-4e5a-9ed4-aa846eadc70f"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+          sitecore\unicorn
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20190930T183108Z

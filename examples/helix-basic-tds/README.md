@@ -2,9 +2,13 @@
 
 ## Prerequisites
 
-Ensure you have followed the steps listed on the [installation documentation](https://sitecore.github.io/Helix.Examples/install.html). This example uses Sitecore TDS, so you'll need to [install Sitecore TDS v6.0.0.14](https://www.teamdevelopmentforsitecore.com/Download/TDS-Classic) or higher.
+Ensure you have followed the steps listed on the [installation documentation](https://sitecore.github.io/Helix.Examples/install.html).
 
 The Helix examples assume you have some experience with (or at least an understanding of) Docker container-based Sitecore development. For more information, see the [Sitecore Containers Documentation](https://containers.doc.sitecore.com).
+
+### Sitecore TDS
+
+This example requires you to [install Sitecore TDS v6.0.0.14](https://www.teamdevelopmentforsitecore.com/Download/TDS-Classic) or higher. If you do not have a license, you can [obtain a trial license](https://www.teamdevelopmentforsitecore.com/TDS-Classic/Free-Trial).
 
 ## Set TDS license environment variables
 

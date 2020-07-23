@@ -34,3 +34,13 @@ The Sitecore Helix Examples are not:
 You can certainly reference and reuse code found here. However you should take care
 when doing so, like you could copying code from Stackexchange or other sources,
 and adjust to your needs. As much as possible, these examples strive to follow good Sitecore practices beyond Helix.
+
+## Are Helix Examples supported by Sitecore?
+
+Sitecore maintains the Helix documentation and Helix Examples, but example code is not supported by Sitecore Product Support Services. Please do not submit support tickets regarding Helix Examples.
+
+## How can I get help with Helix Examples?
+
+For usage questions regarding Helix Examples installation or code, or questions about Helix, please utilize [Sitecore Stackexchange](https://sitecore.stackexchange.com/) or [#helix](https://sitecorechat.slack.com/messages/helix) on [Sitecore Community Slack](https://www.akshaysura.com/2015/10/27/how-to-join-sitecore-slack-community-chat/).
+
+You can use GitHub to submit [issues](https://github.com/Sitecore/Helix.Examples/issues/new) for Helix Examples, but please do not submit usage questions.

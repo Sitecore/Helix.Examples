@@ -69,7 +69,6 @@
   <ItemGroup>
     <Content Include="App_Config\Include\Sitecore.LoadBalancing.config" />
     <Content Include="App_Config\Include\Sitecore.MediaDefaults.config" />
-    <Content Include="App_Config\Include\Sitecore.LinkProvider.config" />
     <None Include="BasicCompany.Environment.Sitecore.wpp.targets" />
     <None Include="Directory.Build.props" />
     <None Include="Properties\PublishProfiles\Local.pubxml" />

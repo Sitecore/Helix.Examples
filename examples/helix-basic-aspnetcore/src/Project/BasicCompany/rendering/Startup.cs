@@ -17,7 +17,7 @@ using Sitecore.LayoutService.Client.Request;
 using BasicCompany.Feature.BasicContent.Extensions;
 using BasicCompany.Feature.Navigation.Extensions;
 using BasicCompany.Project.BasicCompany.Rendering.Configuration;
-
+using BasicCompany.Feature.Products.Extensions;
 
 namespace BasicCompany.Project.BasicCompany.Rendering
 {
@@ -66,6 +66,7 @@ namespace BasicCompany.Project.BasicCompany.Rendering
                 options
                     .AddFeatureBasicContent()
                     .AddFeatureNavigation()
+                    .AddFeatureProducts()
                     .AddDefaultPartialView("_ComponentNotFound");
             })
                 // Includes forwarding of Scheme as X-Forwarded-Proto to the Layout Service, so that

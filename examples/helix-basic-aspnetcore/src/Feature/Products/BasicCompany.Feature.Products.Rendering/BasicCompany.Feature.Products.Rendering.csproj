@@ -1,10 +1,10 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+<Project Sdk="Microsoft.NET.Sdk.Razor">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
-    <RootNamespace>BasicCompany.Feature.Navigation</RootNamespace>
-    <AssemblyName>BasicCompany.Feature.Navigation</AssemblyName>
+    <RootNamespace>BasicCompany.Feature.Products</RootNamespace>
+    <AssemblyName>BasicCompany.Feature.Products</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>

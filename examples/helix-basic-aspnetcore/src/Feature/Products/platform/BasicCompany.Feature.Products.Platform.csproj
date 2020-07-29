@@ -7,14 +7,15 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{816F099C-E14B-4468-9E34-87F993C6484D}</ProjectGuid>
+    <ProjectGuid>{3EA47E1D-C0A1-4B03-92C0-F90A1125BBDD}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BasicCompany.Project.BasicCompany</RootNamespace>
-    <AssemblyName>BasicCompany.Project.BasicCompany</AssemblyName>
+    <RootNamespace>BasicCompany.Feature.Products</RootNamespace>
+    <AssemblyName>BasicCompany.Feature.Products</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -22,8 +23,6 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <TargetFrameworkProfile />
-    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -35,6 +34,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\</OutputPath>
@@ -45,26 +45,33 @@
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Web.ApplicationServices" />
-    <Reference Include="System.Web.DynamicData" />
-    <Reference Include="System.Web.Entity" />
-    <Reference Include="System.Web.Extensions" />
-    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Config\Include\Project\Project.BasicCompany.config" />
+    <PackageReference Include="Sitecore.Kernel" />
+    <PackageReference Include="Sitecore.LayoutService" />
+    <PackageReference Include="Sitecore.Mvc" />
+    <PackageReference Include="Sitecore.ContentSearch" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Config\Include\Feature\Feature.Products.config" />
+    <Content Include="App_Config\Include\Feature\Feature.Products.ContentSearch.config" />
+    <None Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="LayoutService\ProductListContentsResolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServicesConfigurator.cs" />
+    <Compile Include="Services\IProductRepository.cs" />
+    <Compile Include="Services\ProductRepository.cs" />
+    <Compile Include="Services\ProductSearchQuery.cs" />
+    <Compile Include="Templates.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="web.config" />
-    <None Include="web.Debug.config">
-      <DependentUpon>web.config</DependentUpon>
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
     </None>
-    <None Include="web.Release.config">
-      <DependentUpon>web.config</DependentUpon>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
   <PropertyGroup>
@@ -80,9 +87,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>52287</DevelopmentServerPort>
+          <DevelopmentServerPort>63688</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:52230/</IISUrl>
+          <IISUrl>http://localhost:63688/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

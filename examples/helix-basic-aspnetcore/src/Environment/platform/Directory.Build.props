@@ -4,8 +4,8 @@
       Referencing in Directory.build.props will prevent Visual Studio from expanding the globs when you rename a project.
   -->
   <ItemGroup>
-    <ProjectReference Include="..\..\Foundation\*\sitecore\*.csproj" />
-    <ProjectReference Include="..\..\Feature\*\sitecore\*.csproj" />
-    <ProjectReference Include="..\..\Project\*\sitecore\*.csproj" />
+    <ProjectReference Include="..\..\Foundation\*\platform\*.csproj" />
+    <ProjectReference Include="..\..\Feature\*\platform\*.csproj" />
+    <ProjectReference Include="..\..\Project\*\platform\*.csproj" />
   </ItemGroup>
 </Project>

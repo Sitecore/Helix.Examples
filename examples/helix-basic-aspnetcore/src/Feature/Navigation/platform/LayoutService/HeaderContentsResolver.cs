@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Diagnostics;
+using System.Linq;
 using Sitecore.LayoutService.Configuration;
 using Sitecore.Mvc.Presentation;
 using BasicCompany.Feature.Navigation.Services;
@@ -11,6 +12,8 @@ namespace BasicCompany.Feature.Navigation.LayoutService
 
         public HeaderContentsResolver(INavigationRootResolver rootResolver, IHeaderBuilder headerBuilder)
         {
+            Debug.Assert(rootResolver != null);
+            Debug.Assert(headerBuilder != null);
             HeaderBuilder = headerBuilder;
         }
 

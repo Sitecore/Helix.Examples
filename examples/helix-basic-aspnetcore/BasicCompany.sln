@@ -41,15 +41,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{11
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Environment", "Environment", "{1EAAC5DE-019B-4D92-875D-6363F3BDEC88}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicCompany.Project.BasicCompany.Sitecore", "src\Project\BasicCompany\sitecore\BasicCompany.Project.BasicCompany.Sitecore.csproj", "{816F099C-E14B-4468-9E34-87F993C6484D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicCompany.Project.BasicCompany.Platform", "src\Project\BasicCompany\platform\BasicCompany.Project.BasicCompany.Platform.csproj", "{816F099C-E14B-4468-9E34-87F993C6484D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicCompany.Environment.Sitecore", "src\Environment\sitecore\BasicCompany.Environment.Sitecore.csproj", "{5C1CE88D-4FA1-44A1-A87E-E2B406B1AACD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicCompany.Environment.Platform", "src\Environment\platform\BasicCompany.Environment.Platform.csproj", "{5C1CE88D-4FA1-44A1-A87E-E2B406B1AACD}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BasicCompany.Project.BasicCompany.Rendering", "src\Project\BasicCompany\rendering\BasicCompany.Project.BasicCompany.Rendering.csproj", "{4E282AE3-4565-45ED-8E90-22F712B336A9}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BasicCompany.Feature.BasicContent.Rendering", "src\Feature\BasicContent\rendering\BasicCompany.Feature.BasicContent.Rendering.csproj", "{C3D52ED2-50A7-4FB8-BA19-911F3AF957DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicCompany.Feature.Navigation.Sitecore", "src\Feature\Navigation\sitecore\BasicCompany.Feature.Navigation.Sitecore.csproj", "{B5A908E2-E524-4E5D-BE20-63504DA11922}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicCompany.Feature.Navigation.Platform", "src\Feature\Navigation\platform\BasicCompany.Feature.Navigation.Platform.csproj", "{B5A908E2-E524-4E5D-BE20-63504DA11922}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BasicCompany.Feature.Navigation.Rendering", "src\Feature\Navigation\rendering\BasicCompany.Feature.Navigation.Rendering.csproj", "{979A5FAB-28B9-43ED-A4D0-E111F85EF191}"
 EndProject

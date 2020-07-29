@@ -8,7 +8,10 @@ namespace BasicCompany.Feature.Products.Extensions
     {
         public static RenderingEngineOptions AddFeatureProducts(this RenderingEngineOptions options)
         {
-            options.AddModelBoundView<ProductList>("ProductList");
+            options
+                .AddModelBoundView<ProductList>("ProductList")
+                .AddModelBoundView<ProductDetailHeader>("ProductDetailHeader")
+                .AddModelBoundView<ProductDetail>("ProductDetail");
             return options;
         }
     }

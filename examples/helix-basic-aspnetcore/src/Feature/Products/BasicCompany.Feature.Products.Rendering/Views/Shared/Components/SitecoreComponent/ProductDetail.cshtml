@@ -1,8 +1,9 @@
 ﻿@model ProductDetail
+@inject IStringLocalizer<ProductsResource> Localizer
 
     <section class="product-detail columns is-centered is-vcentered">
         <div class="product-details column is-narrow has-text-centered-mobile">
-            <h5>Price</h5>
+            <h5>@Localizer["Price"]</h5>
             <p class="price">$<sc-text asp-for="Price"></sc-text></p>
             <sc-text asp-for="Features"></sc-text>
         </div>

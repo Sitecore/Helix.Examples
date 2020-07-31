@@ -42,7 +42,7 @@ namespace BasicCompany.Project.BasicCompany.Rendering
             services
                 .AddRouting()
                 // You must enable ASP.NET Core localization to utilize localized Sitecore content.
-                .AddLocalization()
+                .AddLocalization(options => options.ResourcesPath = "Resources")
                 .AddMvc()
                 // At this time the Layout Service Client requires Json.NET due to limitations in System.Text.Json.
                 .AddNewtonsoftJson(o => o.SerializerSettings.SetDefaults());

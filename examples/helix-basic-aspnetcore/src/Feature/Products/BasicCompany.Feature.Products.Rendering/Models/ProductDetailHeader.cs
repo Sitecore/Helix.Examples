@@ -7,7 +7,6 @@ namespace BasicCompany.Feature.Products.Models
     {
         public TextField Title { get; set; }
 
-        [SitecoreComponentField(Name = "Short Description")]
         public TextField ShortDescription { get; set; }
     }
 }

@@ -4,8 +4,6 @@ namespace BasicCompany.Feature.Products.Models
 {
     public class ListProduct
     {
-        public string Url { get; set; }
-
         public TextField Title { get; set; }
 
         public TextField ShortDescription { get; set; }

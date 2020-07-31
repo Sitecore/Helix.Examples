@@ -36,10 +36,15 @@ namespace BasicCompany.Feature.Products.LayoutService
                     })
                     .Select(product => new
                     {
+                        // Create object shape expected by ItemLinkField
                         Url = LinkManager.GetItemUrl(product.Item),
-                        Title = product.Serialized[product.Item.Fields[Templates.Product.Fields.Title].Name],
-                        ShortDescription = product.Serialized[product.Item.Fields[Templates.Product.Fields.ShortDescription].Name],
-                        Image = product.Serialized[product.Item.Fields[Templates.Product.Fields.Image].Name]
+                        Id = product.Item.ID,
+                        Fields = new
+                        {
+                            Title = product.Serialized[product.Item.Fields[Templates.Product.Fields.Title].Name],
+                            ShortDescription = product.Serialized[product.Item.Fields[Templates.Product.Fields.ShortDescription].Name],
+                            Image = product.Serialized[product.Item.Fields[Templates.Product.Fields.Image].Name]
+                        }
                     })
             };
         }

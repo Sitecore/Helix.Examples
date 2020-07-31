@@ -11,7 +11,8 @@ namespace BasicCompany.Feature.Products.Extensions
             options
                 .AddModelBoundView<ProductList>("ProductList")
                 .AddModelBoundView<ProductDetailHeader>("ProductDetailHeader")
-                .AddModelBoundView<ProductDetail>("ProductDetail");
+                .AddModelBoundView<ProductDetail>("ProductDetail")
+                .AddModelBoundView<RelatedProductsList>("RelatedProducts");
             return options;
         }
     }

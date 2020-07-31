@@ -1,9 +1,10 @@
-﻿@model ProductList
-
+﻿@model RelatedProductsList
 
     <div class="container">
+        <h3 class="title">Related Products</h3>
+
         <div class="product-list-columns columns is-multiline">
-            @foreach (var product in Model.Products)
+            @foreach (var product in Model.RelatedProducts)
             {
                 <partial name="_ListProduct" model="product" />
             }

@@ -21,7 +21,7 @@ implementations.
 Interested in exploring these examples? You can...
 
 * Read more about the examples included in this repository by selecting from *About the Examples* above.
-* [Install one or more examples](install.md) locally to explore them.
+* [Run one or more examples with Docker](install.md) to explore them.
 * ... or just [explore the code](https://github.com/Sitecore/Helix.Examples/tree/master/examples)!
 
 ## Intended Usage

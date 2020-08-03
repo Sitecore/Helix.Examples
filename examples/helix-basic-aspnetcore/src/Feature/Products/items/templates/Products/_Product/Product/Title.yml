@@ -7,6 +7,9 @@ SharedFields:
 - ID: "ab162cc0-dc80-4abf-8871-998ee5d7ba32"
   Hint: Type
   Value: "Single-Line Text"
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 100
 Languages:
 - Language: en
   Versions:
@@ -17,11 +20,11 @@ Languages:
       Value: 20190312T190423Z
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "7add0a72-05f2-4109-8128-15e6bd9a681d"
+      Value: "eac14564-d4d4-4a24-bf82-288d3b1bd8c9"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-          sitecore\unicorn
+        sitecore\Admin
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20190930T183109Z
+      Value: 20200731T191545Z

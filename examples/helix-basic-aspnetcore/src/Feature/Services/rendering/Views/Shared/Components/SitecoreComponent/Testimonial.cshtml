@@ -1,0 +1,8 @@
+﻿@model Testimonial
+
+<div class="column testimonial is-6">
+    <div class="testimonial-inner" style="background-image: url(@Model.Image.GetMediaLink(new { mw = 960, @as = false })">
+        <h3 asp-for="Title"></h3>
+        <sc-text asp-for="Quote"></sc-text>
+    </div>
+</div>

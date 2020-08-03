@@ -1,0 +1,11 @@
+﻿@model ProductList
+
+
+    <div class="container">
+        <div class="product-list-columns columns is-multiline">
+            @foreach (var product in Model.Products)
+            {
+                <partial name="_ListProduct" model="product" />
+            }
+        </div>
+    </div>

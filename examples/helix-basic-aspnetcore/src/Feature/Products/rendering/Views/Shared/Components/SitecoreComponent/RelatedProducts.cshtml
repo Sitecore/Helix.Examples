@@ -1,0 +1,13 @@
+﻿@model RelatedProductsList
+@inject IStringLocalizer<ProductsResource> Localizer
+
+    <div class="container">
+        <h3 class="title">@Localizer["RelatedProducts"]</h3>
+
+        <div class="product-list-columns columns is-multiline">
+            @foreach (var product in Model.RelatedProducts)
+            {
+                <partial name="_ListProduct" model="product" />
+            }
+        </div>
+    </div>

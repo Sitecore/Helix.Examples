@@ -27,7 +27,7 @@ RUN nuget restore -Verbosity quiet
 COPY src\ .\src\
 
 # Build the Sitecore main platform artifacts
-RUN msbuild .\src\Environment\sitecore\BasicCompany.Environment.Sitecore.csproj /p:Configuration=$env:BUILD_CONFIGURATION /p:DeployOnBuild=True /p:DeployDefaultTarget=WebPublish /p:WebPublishMethod=FileSystem /p:PublishUrl=C:\out\sitecore
+RUN msbuild .\src\Environment\platform\BasicCompany.Environment.Platform.csproj /p:Configuration=$env:BUILD_CONFIGURATION /p:DeployOnBuild=True /p:DeployDefaultTarget=WebPublish /p:WebPublishMethod=FileSystem /p:PublishUrl=C:\out\sitecore
 
 # Build the rendering host
 WORKDIR C:\build\src\Project\BasicCompany\rendering\

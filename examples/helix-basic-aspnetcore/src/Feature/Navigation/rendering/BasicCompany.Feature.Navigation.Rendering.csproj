@@ -7,7 +7,6 @@
     <AssemblyName>BasicCompany.Feature.Navigation</AssemblyName>
   </PropertyGroup>
 
-
   <ItemGroup>
     <PackageReference Include="Sitecore.LayoutService.Client" />
     <PackageReference Include="Sitecore.AspNet.RenderingEngine" />

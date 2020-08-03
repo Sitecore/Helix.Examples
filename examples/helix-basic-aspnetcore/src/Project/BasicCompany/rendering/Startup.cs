@@ -17,7 +17,7 @@ using Sitecore.LayoutService.Client.Request;
 using BasicCompany.Feature.BasicContent.Extensions;
 using BasicCompany.Feature.Navigation.Extensions;
 using BasicCompany.Project.BasicCompany.Rendering.Configuration;
-
+using BasicCompany.Feature.Products.Extensions;
 
 namespace BasicCompany.Project.BasicCompany.Rendering
 {
@@ -42,7 +42,7 @@ namespace BasicCompany.Project.BasicCompany.Rendering
             services
                 .AddRouting()
                 // You must enable ASP.NET Core localization to utilize localized Sitecore content.
-                .AddLocalization()
+                .AddLocalization(options => options.ResourcesPath = "Resources")
                 .AddMvc()
                 // At this time the Layout Service Client requires Json.NET due to limitations in System.Text.Json.
                 .AddNewtonsoftJson(o => o.SerializerSettings.SetDefaults());
@@ -66,6 +66,8 @@ namespace BasicCompany.Project.BasicCompany.Rendering
                 options
                     .AddFeatureBasicContent()
                     .AddFeatureNavigation()
+                    .AddFeatureProducts()
+                    .AddFeatureServices()
                     .AddDefaultPartialView("_ComponentNotFound");
             })
                 // Includes forwarding of Scheme as X-Forwarded-Proto to the Layout Service, so that

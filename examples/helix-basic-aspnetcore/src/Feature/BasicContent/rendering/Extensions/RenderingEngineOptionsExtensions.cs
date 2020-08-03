@@ -12,7 +12,9 @@ namespace BasicCompany.Feature.BasicContent.Extensions
                 .AddModelBoundView<PromoCard>("PromoCard")
                 .AddPartialView("PromoContainer")
                 .AddModelBoundView<SectionHeader>("SectionHeader")
-                .AddModelBoundView<HeroBanner>("HeroBanner");
+                .AddModelBoundView<HeroBanner>("HeroBanner")
+                .AddPartialView("Accordion")
+                .AddModelBoundView<AccordionItem>("AccordionItem");
             return options;
         }
     }

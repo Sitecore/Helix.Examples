@@ -67,6 +67,7 @@ namespace BasicCompany.Project.BasicCompany.Rendering
                     .AddFeatureBasicContent()
                     .AddFeatureNavigation()
                     .AddFeatureProducts()
+                    .AddFeatureServices()
                     .AddDefaultPartialView("_ComponentNotFound");
             })
                 // Includes forwarding of Scheme as X-Forwarded-Proto to the Layout Service, so that

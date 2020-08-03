@@ -18,7 +18,6 @@ namespace BasicCompany.Feature.Navigation.LayoutService
             var root = RootResolver.GetNavigationRoot(this.GetContextItem(rendering, renderingConfig));
             return new
             {
-                //SITECORE TODO: Can we easily return this in a format that is EE-friendly?
                 FooterText = root[Templates.NavigationRoot.Fields.FooterCopyright]
             };
         }

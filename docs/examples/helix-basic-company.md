@@ -29,6 +29,15 @@ Sitecore or Sitecore Helix practices.
 
 ## Implementations
 
+### [Helix Basic Company - ASP.NET Core and Sitecore Content Serialization](https://github.com/Sitecore/Helix.Examples/tree/master/examples/helix-basic-aspnetcore/README.md)
+
+This is a [ASP.NET Core Rendering SDK](https://doc.sitecore.com/developers/100/developer-tools/en/sitecore-headless-development.html) and [Sitecore Content Serialization](https://doc.sitecore.com/developers/100/developer-tools/en/sitecore-content-serialization.html) based implementation of Helix Basic Company.
+* The site is rendered in an independently-running rendering host, built in ASP.NET Core. Some modules contain code for both the Rendering Host and the "Platform" CM/CD roles.
+  * Projects which deploy to CM/CD use "platform" in their naming instead of "website" due to the use of a headless architecture.
+* Items are serialized using the Sitecore CLI.
+* [Helix Publishing Pipeline](https://github.com/richardszalay/helix-publishing-pipeline) is used for building and deploying code for CM/CD, and is configured to auto-deploy on build.
+* The Rendering Host projects do not need Helix Publishing Pipeline, because ASP.NET Core / SDK-style projects support sharing content assets.
+
 ### [Helix Basic Company - TDS](https://github.com/Sitecore/Helix.Examples/tree/master/examples/helix-basic-tds)
 
 This is a [Sitecore TDS](https://www.teamdevelopmentforsitecore.com/TDS-Classic)-based
@@ -63,7 +72,3 @@ for builds.
 which takes advantage of Unicorn's `$(layer)` and `$(module)` variables, but is otherwise
 fairly simple and leaves each module to configure its own predicates and dependencies.
 * Helix Publishing Pipeline is configured to auto-deploy on build.
-
-### [Helix Basic Company - ASP.NET Core](https://github.com/Sitecore/Helix.Examples/tree/master/examples/helix-basic-aspnetcore/README.md)
-
-TODO

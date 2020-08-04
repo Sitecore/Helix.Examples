@@ -29,7 +29,7 @@ Sitecore or Sitecore Helix practices.
 
 ## Implementations
 
-### [Helix Basic Company - ASP.NET Core and Sitecore Content Serialization](https://github.com/Sitecore/Helix.Examples/tree/master/examples/helix-basic-aspnetcore/README.md)
+### [Helix Basic Company - ASP.NET Core and Sitecore Content Serialization](https://github.com/Sitecore/Helix.Examples/tree/master/examples/helix-basic-aspnetcore)
 
 This is a [ASP.NET Core Rendering SDK](https://doc.sitecore.com/developers/100/developer-tools/en/sitecore-headless-development.html) and [Sitecore Content Serialization](https://doc.sitecore.com/developers/100/developer-tools/en/sitecore-content-serialization.html) based implementation of Helix Basic Company.
 * The site is rendered in an independently-running rendering host, built in ASP.NET Core. Some modules contain code for both the Rendering Host and the "Platform" CM/CD roles.

@@ -4,10 +4,11 @@
       Workaround for 'dotnet watch' issue with referenced MVC projects.
       https://github.com/dotnet/aspnetcore/issues/22219
   -->
-  <Target Name="RazorWatch" BeforeTargets="_CoreCollectWatchItems" Condition="'$(DotNetWatchBuild)' == 'true'">
+  <Target Name="FixDotnetWatch" AfterTargets="_CoreCollectWatchItems">
     <ItemGroup>
-      <RazorWatch Include="**\*.cshtml" />
-      <Watch Include="%(RazorWatch.FullPath)" />
+      <_WatchRelativePath Include="@(Watch)" Condition="'%(Identity)' != '%(Watch.FullPath)'" />
+      <Watch Remove="@(_WatchRelativePath)" />
+      <Watch Include="%(_WatchRelativePath.FullPath)" />
     </ItemGroup>
   </Target>
 </Project>

@@ -1,0 +1,15 @@
+﻿@model AccordionItem
+
+@{
+    // always render accordions open in EE with button hidden
+    string bodyStyle = Model.IsEditing ? "max-height: 100rem" : null;
+}
+<div class="accordion-item">
+    <div class="accordion-header">
+        <h3 asp-for="Title"></h3>
+        <button></button>
+    </div>
+    <div class="accordion-body" style="@bodyStyle">
+        <sc-text asp-for="Content"></sc-text>
+    </div>
+</div>

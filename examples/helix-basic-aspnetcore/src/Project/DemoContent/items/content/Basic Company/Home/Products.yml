@@ -1,0 +1,56 @@
+﻿---
+ID: "af068b22-d7ae-4a91-839b-dd15a9e76554"
+Parent: "97479c6b-bb30-4a15-afd1-2c89f207e9d6"
+Template: "9f57204e-5ce2-4fe8-98f7-9823ec53e8cc"
+Path: /sitecore/content/Basic Company/Home/Products
+SharedFields:
+- ID: "a0cb3965-8884-4c7a-8815-b6b2e5ced162"
+  Hint: __Editors
+  Value: "{59F53BBB-D1F5-4E38-8EBA-0D73109BB59B}"
+- ID: "d312103c-b36c-4ca5-864a-c85f9abda503"
+  Hint: __Is Bucket
+  Value: 1
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "04bf00db-f5fb-41f7-8ab7-22408372a981"
+      Hint: __Final Renderings
+      Value: |
+        <r xmlns:p="p" xmlns:s="s"
+          p:p="1"
+          s:xsd="http://www.w3.org/2001/XMLSchema">
+          <d
+            id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
+            <p
+              uid="{1D94E0BD-77E0-4D63-85CE-CDD344624615}"
+              p:before="*" />
+            <r
+              uid="{37D2FD15-98B0-4B6E-89EC-2D52CEE1ACDD}"
+              p:after="p[@uid='{1D94E0BD-77E0-4D63-85CE-CDD344624615}']"
+              s:ds="{1FB6764A-97D1-41D7-A568-E2B62164DD02}"
+              s:id="{F8CAE35C-3DD6-42CD-A4DA-4223027A6A61}"
+              s:ph="main" />
+          </d>
+        </r>
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20190312T193530Z
+    - ID: "32cff90d-4fdf-4402-a364-21199e88753d"
+      Hint: Navigation Title
+      Value: Products
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\Admin
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "95903833-6202-4472-b97f-7324cc2c230e"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+          extranet\Anonymous
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20190930T183116Z

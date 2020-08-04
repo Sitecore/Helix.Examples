@@ -1,0 +1,30 @@
+﻿---
+ID: "01525385-9571-44c8-a7b5-2af160c2ec17"
+Parent: "7972f31a-628d-40dd-bc51-1f1fbc93adfb"
+Template: "fcb0ba21-9aaa-45f8-b86c-738fb269e06f"
+Path: /sitecore/content/Basic Company/Home/Services/Page Components/Frequently Asked Questions
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20190507T161902Z
+    - ID: "59d24d0a-f955-4988-b26f-92039b4df8bd"
+      Hint: Text
+      Value: Frequently Asked Questions
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\Admin
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "69506126-1f0b-4c32-aee9-a86d9ecacfae"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+          extranet\Anonymous
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20190930T183116Z

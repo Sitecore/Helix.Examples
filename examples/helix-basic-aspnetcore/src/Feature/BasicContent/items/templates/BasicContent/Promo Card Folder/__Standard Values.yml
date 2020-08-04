@@ -1,0 +1,33 @@
+﻿---
+ID: "e8877720-2084-43b0-ae5f-3f71eab93daa"
+Parent: "40a33364-f008-476a-95ad-22efc6e4d93e"
+Template: "40a33364-f008-476a-95ad-22efc6e4d93e"
+Path: /sitecore/templates/Feature/BasicContent/Promo Card Folder/__Standard Values
+SharedFields:
+- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
+  Hint: __Masters
+  Value: |
+    {B0D7DEDC-8908-4FD0-9B1A-A1501D03D485}
+    {40A33364-F008-476A-95AD-22EFC6E4D93E}
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20190222T184139Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+          sitecore\admin
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "43ba5065-341e-4d8b-9119-6f2e075642d9"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+          sitecore\unicorn
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20190930T183114Z

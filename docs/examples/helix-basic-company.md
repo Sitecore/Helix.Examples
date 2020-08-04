@@ -29,7 +29,16 @@ Sitecore or Sitecore Helix practices.
 
 ## Implementations
 
-### Helix Basic Company - TDS
+### [Helix Basic Company - ASP.NET Core and Sitecore Content Serialization](https://github.com/Sitecore/Helix.Examples/tree/master/examples/helix-basic-aspnetcore/README.md)
+
+This is a [ASP.NET Core Rendering SDK](https://doc.sitecore.com/developers/100/developer-tools/en/sitecore-headless-development.html) and [Sitecore Content Serialization](https://doc.sitecore.com/developers/100/developer-tools/en/sitecore-content-serialization.html) based implementation of Helix Basic Company.
+* The site is rendered in an independently-running rendering host, built in ASP.NET Core. Some modules contain code for both the Rendering Host and the "Platform" CM/CD roles.
+  * Projects which deploy to CM/CD use "platform" in their naming instead of "website" due to the use of a headless architecture.
+* Items are serialized using the Sitecore CLI.
+* [Helix Publishing Pipeline](https://github.com/richardszalay/helix-publishing-pipeline) is used for building and deploying code for CM/CD, and is configured to auto-deploy on build.
+* The Rendering Host projects do not need Helix Publishing Pipeline, because ASP.NET Core / SDK-style projects support sharing content assets.
+
+### [Helix Basic Company - TDS](https://github.com/Sitecore/Helix.Examples/tree/master/examples/helix-basic-tds)
 
 This is a [Sitecore TDS](https://www.teamdevelopmentforsitecore.com/TDS-Classic)-based
 implementation of Helix Basic Company. It utilizes Sitecore TDS both for
@@ -38,7 +47,7 @@ serialization and builds.
 * To avoid the need for a deployment-only TDS project on modules which do not have items, a
 single deployment-only *Website* project handles all file deployment.
 
-### Helix Basic Company - TDS Consolidated
+### [Helix Basic Company - TDS Consolidated](https://github.com/Sitecore/Helix.Examples/tree/master/examples/helix-basic-tds-consolidated)
 
 This version of Helix Basic Company consolidates the entire solution into a single
 Visual Studio web project and uses Sitecore TDS validation and
@@ -53,7 +62,7 @@ the solution architect has chosen to start simply and potentially pay that techn
 Sitecore Helix modules in the content tree are of uncertain ownership
 (e.g. the *BasicCompany Site Root* insert rule).
 
-### Helix Basic Company - Unicorn
+### [Helix Basic Company - Unicorn](https://github.com/Sitecore/Helix.Examples/tree/master/examples/helix-basic-unicorn)
 
 The [Unicorn](https://github.com/SitecoreUnicorn/Unicorn)-based implementation of Helix
 Basic Company. It uses Unicorn for serialization, and

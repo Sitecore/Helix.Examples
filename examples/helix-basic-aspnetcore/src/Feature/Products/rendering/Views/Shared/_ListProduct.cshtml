@@ -1,0 +1,15 @@
+﻿@model ItemLinkField<ListProduct>
+
+    <a href="@Model.Url" class="column product-list-column is-4-desktop is-6-tablet">
+        <div class="card">
+            <div class="card-image">
+                <figure style="background-image: url(@Model.Fields.Image.GetMediaLink(new { mw = 480, @as = false })"></figure>
+            </div>
+            <div class="card-content">
+                <div class="content">
+                    <h4 asp-for="@Model.Fields.Title"></h4>
+                    <p asp-for="@Model.Fields.ShortDescription"></p>
+                </div>
+            </div>
+        </div>
+    </a>

@@ -1,0 +1,15 @@
+﻿@model PromoCard
+
+<a asp-for="Link" editable="false" class="column promo-column">
+    <div class="card">
+        <div class="card-image">
+            <figure style="background-image: url(@Model.Image?.Value?.Src)"></figure>
+        </div>
+        <div class="card-content">
+            <div class="content">
+                <h4 asp-for="Headline"></h4>
+                <sc-text asp-for="Text"></sc-text>
+            </div>
+        </div>
+    </div>
+</a>

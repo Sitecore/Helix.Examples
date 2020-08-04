@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>0dd80cb0-354b-425e-aa55-eb26c6f571fc</UserSecretsId>
+    <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
+    <DockerfileContext>..\..\..\..\..</DockerfileContext>
+    <AssemblyName>BasicCompany.Project.BasicCompany</AssemblyName>
+    <RootNamespace>BasicCompany.Project.BasicCompany</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
+    <PackageReference Include="Microsoft.Extensions.Http" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" />
+    <PackageReference Include="Sitecore.LayoutService.Client" />
+    <PackageReference Include="Sitecore.AspNet.RenderingEngine" />
+    <PackageReference Include="Sitecore.AspNet.ExperienceEditor" />
+    <PackageReference Include="Sitecore.AspNet.Tracking" />
+    <PackageReference Include="Sitecore.AspNet.Tracking.VisitorIdentification" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Feature\BasicContent\rendering\BasicCompany.Feature.BasicContent.Rendering.csproj" />
+    <ProjectReference Include="..\..\..\Feature\Navigation\rendering\BasicCompany.Feature.Navigation.Rendering.csproj" />
+    <ProjectReference Include="..\..\..\Feature\Products\rendering\BasicCompany.Feature.Products.Rendering.csproj" />
+    <ProjectReference Include="..\..\..\Feature\Services\rendering\BasicCompany.Feature.Services.Rendering.csproj" />
+  </ItemGroup>
+
+</Project>

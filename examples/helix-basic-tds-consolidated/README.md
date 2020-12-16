@@ -53,7 +53,7 @@ Once complete, you can access the instance with the following.
 
 The serialized items will automatically sync when the instance is started, but you'll need to publish them.
 
-Login to Sitecore at https://cm.basic-company-tds-consolidated.localhost/sitecore and perform a site smart publish. Use "admin" and the password you specified on init ("b" by default).
+Login to Sitecore at https://cm.basic-company-tds-consolidated.localhost/sitecore. Ensure the items are done deploying (look for `/sitecore/content/Basic Company`), and perform a site smart publish. Use "admin" and the password you specified on init ("b" by default).
 
 You should now be able to view the Basic Company site at https://www.basic-company-tds-consolidated.localhost.
 

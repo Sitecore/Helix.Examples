@@ -74,10 +74,7 @@ services:
       SITECORE_LICENSE_LOCATION: C:\license\license.xml
     entrypoint: powershell -Command "& C:\tools\entrypoints\iis\Development.ps1"
     labels:
-      - "traefik.http.routers.site-secure.entrypoints=websecure"
-      - "traefik.http.routers.site-secure.rule=Host(`${SITE_HOST}`)"
-      - "traefik.http.routers.site-secure.tls=true"
-      - "traefik.http.routers.site-secure.middlewares=force-STS-Header"
+      - "traefik.http.routers.cd-secure.rule=Host(`${SITE_HOST}`) || Host(`${CD_HOST}`)"
 
   cm:
     image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-xm1-cm:${VERSION:-latest}

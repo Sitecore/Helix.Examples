@@ -2,6 +2,7 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <PlatformVersion>10.0.0</PlatformVersion>
+    <SitecoreAspNetVersion>15.0.1</SitecoreAspNetVersion>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Update="Sitecore.Nexus" Version="$(PlatformVersion)" />
@@ -11,13 +12,13 @@
     <PackageReference Update="Sitecore.ContentSearch.Linq" Version="$(PlatformVersion)" />
     <PackageReference Update="Sitecore.ContentSearch.ContentExtraction" Version="$(PlatformVersion)" />
     <PackageReference Update="Sitecore.Assemblies.Platform" Version="$(PlatformVersion)" />
-
     <PackageReference Update="Sitecore.LayoutService" Version="6.0.0" />
-    <PackageReference Update="Sitecore.LayoutService.Client" Version="14.0.0" />
-    <PackageReference Update="Sitecore.AspNet.RenderingEngine" Version="14.0.0" />
-    <PackageReference Update="Sitecore.AspNet.ExperienceEditor" Version="14.0.0" />
-    <PackageReference Update="Sitecore.AspNet.Tracking" Version="14.0.0" />
-    <PackageReference Update="Sitecore.AspNet.Tracking.VisitorIdentification" Version="14.0.0" />
+    
+    <PackageReference Update="Sitecore.LayoutService.Client" Version="$(SitecoreAspNetVersion)" />
+    <PackageReference Update="Sitecore.AspNet.RenderingEngine" Version="$(SitecoreAspNetVersion)" />
+    <PackageReference Update="Sitecore.AspNet.ExperienceEditor" Version="$(SitecoreAspNetVersion)" />
+    <PackageReference Update="Sitecore.AspNet.Tracking" Version="$(SitecoreAspNetVersion)" />
+    <PackageReference Update="Sitecore.AspNet.Tracking.VisitorIdentification" Version="$(SitecoreAspNetVersion)" />
     
     <PackageReference Update="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.0" />
     <PackageReference Update="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.1" />

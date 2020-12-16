@@ -114,11 +114,6 @@ services:
     environment:
       SITECORE_LICENSE_LOCATION: C:\license\license.xml
     entrypoint: powershell -Command "& C:\tools\entrypoints\iis\Development.ps1"
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.cd.entrypoints=websecure"
-      - "traefik.http.routers.cd.rule=Host(`${CD_HOST}`)"
-      - "traefik.http.routers.cd.tls=true"
 
   cm:
     image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-xm1-cm:${VERSION:-latest}

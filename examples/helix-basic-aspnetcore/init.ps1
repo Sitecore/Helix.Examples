@@ -15,6 +15,7 @@ Param (
 )
 
 $ErrorActionPreference = "Stop";
+$LicenseFile = $LicenseXmlPath
 
 if (-not (Test-Path $LicenseXmlPath)) {
     throw "Did not find $LicenseXmlPath"
@@ -81,6 +82,9 @@ Set-DockerComposeEnvFileVariable "SITECORE_ID_CERTIFICATE" -Value (Get-SitecoreC
 
 # SITECORE_ID_CERTIFICATE_PASSWORD
 Set-DockerComposeEnvFileVariable "SITECORE_ID_CERTIFICATE_PASSWORD" -Value $idCertPassword
+
+# SITECORE_LICENSE
+Set-DockerComposeEnvFileVariable "SITECORE_LICENSE" -Value (ConvertTo-CompressedBase64String -Path $LicenseFile)
 
 ##################################
 # Configure TLS/HTTPS certificates

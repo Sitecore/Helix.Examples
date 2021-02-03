@@ -1,0 +1,64 @@
+﻿---
+ID: "c937dd95-eb7e-4f00-ba48-7b5f1cd998c8"
+Parent: "fa3971f5-5a1b-4477-b64e-ca99949e8894"
+Template: "fa3971f5-5a1b-4477-b64e-ca99949e8894"
+Path: /sitecore/templates/Project/BasicCompany/Page Types/Product Detail Page/__Standard Values
+SharedFields:
+- ID: "c9283d9e-7c29-4419-9c28-5a5c8ff53e84"
+  Hint: __Bucketable
+  Value: 1
+- ID: "f1a1fe9e-a60c-4ddb-a3a0-bb5b29fe732e"
+  Hint: __Renderings
+  Value: |
+    <r>
+      <d
+        id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}"
+        l="{4ED48317-062F-4465-B9AF-1E636841525B}">
+        <r
+          id="{AF0D28F1-B659-4392-8FCF-E250DF527FA3}"
+          ph="header"
+          uid="{5B4893F1-86BA-4ABA-8CB3-1BD6B0D10CB0}" />
+        <r
+          id="{4F577938-E122-432E-B95A-8FDD1F0A3691}"
+          ph="main"
+          uid="{B3311C07-710E-40B0-82F5-A4E406A15FE8}" />
+        <r
+          id="{165B981E-0814-40DB-8394-85C3128D9595}"
+          ph="main"
+          uid="{9FAACE1B-A27D-4172-B6D5-46CC459D6495}" />
+        <r
+          id="{3D321DFB-ADF6-4E16-AEEE-20494ACBF1E5}"
+          ph="main"
+          uid="{ED0A835A-FE4C-4449-8D67-4BE00EA39CB6}" />
+        <r
+          id="{78BCD6B7-FB7B-4D9D-90D1-78A2C45FCF49}"
+          ph="footer"
+          uid="{D40CD9A3-CC19-4772-AA17-191F399340C9}" />
+        <p
+          key="main"
+          uid="{5DD59012-E304-46E3-AB4A-DB549AC77FA8}"
+          md="{D0873573-9E5F-43F6-A6EB-43B688C32421}" />
+      </d>
+    </r>
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20190312T193657Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+          sitecore\admin
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "8ceb7c0b-1775-49cc-83d3-608d3ba60533"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+          extranet\Anonymous
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20190930T183117Z

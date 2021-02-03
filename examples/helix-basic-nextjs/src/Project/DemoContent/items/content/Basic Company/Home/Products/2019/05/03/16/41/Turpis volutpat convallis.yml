@@ -1,0 +1,59 @@
+﻿---
+ID: "beed227f-e27f-4179-bad4-4fe04ca44a62"
+Parent: "a0d122c0-7353-45e8-89d5-9ef8de829f29"
+Template: "fa3971f5-5a1b-4477-b64e-ca99949e8894"
+Path: /sitecore/content/Basic Company/Home/Products/2019/05/03/16/41/Turpis volutpat convallis
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "23f42f5e-645c-4a72-9c61-79db1a331e64"
+      Hint: Image
+      Value: |
+          <image mediaid="{D8B7E336-3EF6-4938-9E1A-8FE8BFEDB0FB}" />
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20190503T164133Z
+    - ID: "2c2c386c-17c7-44c3-8796-3e720ba08079"
+      Hint: Features
+      Value: |
+          <ul>
+          <li>Purus malesuada</li>
+          <li>Vestibulum lobortis proin</li>
+          <li>Ac donec convallis</li>
+          </ul>
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\Admin
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "7b4c06e9-9ca0-444b-a616-cdbb7d1e723a"
+    - ID: "9977fbe7-a0ff-475c-9a7c-ecb81c7f51cf"
+      Hint: Price
+      Value: 19.99
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+          extranet\Anonymous
+    - ID: "be500a38-36a0-417b-86c5-e63ba71d0939"
+      Hint: Title
+      Value: Turpis volutpat convallis
+    - ID: "be7e2d00-e405-4498-85f9-4f89d8ea2cfc"
+      Hint: Short Description
+      Value: Vestibulum neque netus litora blandit
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20190930T183117Z
+    - ID: "fc7c99d4-7301-44eb-908c-bf4ffca5a131"
+      Hint: Related Products
+      Value: |
+        {D2FB7162-3A8C-4407-A481-736A7181608A}
+        {64C67D17-D9FA-4CC3-958E-CED6A9EF1312}
+        {641E5449-B775-4549-8CF9-78D876476704}
+        {2A4E0749-001A-4827-960B-197E43BBA414}
+        {404D27F4-8AB6-4B26-A027-FF1775DAF3AE}
+        {0943BC07-9828-45FA-8C4B-C2B49FDE019C}
+        {57EEE913-0CC2-4015-8CCF-79E847AAE53A}
+        {D238CB82-0EDE-4153-9367-D06C0AE405FF}

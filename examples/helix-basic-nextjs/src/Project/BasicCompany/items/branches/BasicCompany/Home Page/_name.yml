@@ -1,0 +1,27 @@
+﻿---
+ID: "4e2b74b6-f4ef-40ec-a79b-3d840a1e5ccb"
+Parent: "52e10c7a-0853-4999-820e-ce0ca9b78d41"
+Template: "63cd29ba-0e08-44d5-ab10-e05298a9818d"
+Path: /sitecore/templates/Branches/Project/BasicCompany/Home Page/$name
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20190312T172640Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\Admin
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "2c9d4fec-d580-467f-9730-f3f050b79060"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+          extranet\Anonymous
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20190930T183116Z

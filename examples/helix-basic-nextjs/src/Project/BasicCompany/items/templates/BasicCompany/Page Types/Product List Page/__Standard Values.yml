@@ -1,0 +1,56 @@
+﻿---
+ID: "7e915ddb-ceaa-498a-8cf1-9ff6585a982b"
+Parent: "9f57204e-5ce2-4fe8-98f7-9823ec53e8cc"
+Template: "9f57204e-5ce2-4fe8-98f7-9823ec53e8cc"
+Path: /sitecore/templates/Project/BasicCompany/Page Types/Product List Page/__Standard Values
+SharedFields:
+- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
+  Hint: __Masters
+  Value: "{FA3971F5-5A1B-4477-B64E-CA99949E8894}"
+- ID: "f1a1fe9e-a60c-4ddb-a3a0-bb5b29fe732e"
+  Hint: __Renderings
+  Value: |
+    <r>
+      <d
+        id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}"
+        l="{4ED48317-062F-4465-B9AF-1E636841525B}">
+        <r
+          id="{AF0D28F1-B659-4392-8FCF-E250DF527FA3}"
+          ph="header"
+          uid="{27C921B1-E330-4FE8-BA33-05E461812742}" />
+        <r
+          id="{78BCD6B7-FB7B-4D9D-90D1-78A2C45FCF49}"
+          ph="footer"
+          uid="{D7CF07DF-326A-4011-871D-FB0D85CD687A}" />
+        <r
+          id="{D91B7C6D-A10E-4B72-8327-5DF0A8D79093}"
+          ph="main"
+          uid="{326C4692-2468-4ACE-B21E-D1BEEE0E422A}" />
+        <p
+          key="main"
+          uid="{1D94E0BD-77E0-4D63-85CE-CDD344624615}"
+          md="{191CB3EE-083A-4B87-92F3-4453CADB64D3}" />
+      </d>
+    </r>
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20190312T193353Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+          sitecore\admin
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "d1b359f3-e018-451a-9bb5-1322923cfd05"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+          extranet\Anonymous
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20190930T183117Z

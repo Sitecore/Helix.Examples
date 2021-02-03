@@ -1,0 +1,45 @@
+﻿---
+ID: "e74405ca-a09b-468c-af74-5ffbd6cdbaed"
+Parent: "7bc02aef-e662-41f3-b80d-4b1f52ed9d79"
+Template: "b0d7dedc-8908-4fd0-9b1a-a1501d03d485"
+Path: /sitecore/content/Basic Company/Shared Content/Promo Cards/Lorem Ipsum
+SharedFields:
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 50
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "13eb8dca-281d-4e75-b6e1-701ca719bcd1"
+      Hint: Text
+      Value: <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris congue vulputate erat hendrerit tincidunt.</p>
+    - ID: "21249f44-5f0f-4cfa-9474-8d72930d6575"
+      Hint: Image
+      Value: |
+          <image mediapath="" alt="Paperclip" width="" height="" hspace="" vspace="" showineditor="" usethumbnail="" src="" mediaid="{9A3A5570-D8D4-455C-A146-22309193DBFE}" />
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: "20190501T175842:636923303229835278Z"
+    - ID: "4f73c02b-93cc-4c96-b9ff-9d0d8e853ed6"
+      Hint: Headline
+      Value: Lorem Ipsum
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+          sitecore\admin
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "512a1fa1-dc0c-4e94-978b-d385befeef4c"
+    - ID: "b788e8bc-e944-4a2b-a4be-3424643d322b"
+      Hint: Link
+      Value: |
+          <link text="" linktype="internal" url="" anchor="" title="" class="" querystring="" target="" id="{97479C6B-BB30-4A15-AFD1-2C89F207E9D6}" />
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+          extranet\Anonymous
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20190930T183116Z

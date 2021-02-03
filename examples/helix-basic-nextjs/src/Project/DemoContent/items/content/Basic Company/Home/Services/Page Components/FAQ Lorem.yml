@@ -1,0 +1,36 @@
+﻿---
+ID: "2b1b2a86-afaa-4222-b313-4af359e5af9e"
+Parent: "7972f31a-628d-40dd-bc51-1f1fbc93adfb"
+Template: "fe549078-8c72-472a-8ea7-51053e0e1d73"
+Path: /sitecore/content/Basic Company/Home/Services/Page Components/FAQ Lorem
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20190507T161928Z
+    - ID: "45efe66e-5ad2-4f1d-bad5-fdf281688681"
+      Hint: Content
+      Value: |
+          <p>Phasellus volutpat, metus eget egestas mollis, lacus lacus blandit dui, id egestas quam mauris ut lacus. Fusce neque. Suspendisse eu ligula. Proin pretium, leo ac pellentesque mollis, felis nunc ultrices eros, sed gravida augue augue mollis justo. Aenean posuere, tortor sed cursus feugiat, nunc augue blandit nunc, eu sollicitudin urna dolor sagittis lacus.</p>
+          <p>Curabitur ullamcorper ultricies nisi. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Curabitur a felis in nunc fringilla tristique. Fusce vel dui. Curabitur a felis in nunc fringilla tristique.</p>
+          <p><img alt="" height="267" width="500" src="-/media/2958CD123CF74E77BD9C1F32F54ED597.ashx" /></p>
+    - ID: "5718e787-142b-41d9-b5a1-0b18f45b8236"
+      Hint: Title
+      Value: "Aenean posuere tortor sed cursus?"
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+          sitecore\admin
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "cb3e66b2-2a2b-41c6-b973-c676342436af"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+          sitecore\unicorn
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20190930T183117Z

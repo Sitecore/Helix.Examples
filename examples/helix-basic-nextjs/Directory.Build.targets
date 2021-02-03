@@ -1,0 +1,8 @@
+<!--
+  This targets file will enable Central Package Versions for any Visual
+  Studio projects in the solution.
+  https://github.com/microsoft/MSBuildSdks/tree/master/src/CentralPackageVersions
+-->
+<Project>
+  <Sdk Name="Microsoft.Build.CentralPackageVersions" Version="2.0.79" />
+</Project>

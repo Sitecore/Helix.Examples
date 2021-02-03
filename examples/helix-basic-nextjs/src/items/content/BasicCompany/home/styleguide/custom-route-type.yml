@@ -1,0 +1,51 @@
+﻿---
+ID: "e9f932a2-6f4a-5968-a8e6-a6f550d8c596"
+Parent: "225f0506-f823-55a8-9b9b-050e90d381f3"
+Template: "df5966c2-c8f7-5c06-aedc-722ef292aeb1"
+Path: "/sitecore/content/BasicCompany/home/styleguide/custom-route-type"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "04bf00db-f5fb-41f7-8ab7-22408372a981"
+      Hint: __Final Renderings
+      Value: |
+        <r xmlns:p="p" xmlns:s="s"
+          p:p="1">
+          <d
+            id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}">
+            <r
+              uid="{621128A6-CC4D-5287-8ED6-E4A89A7DBBDB}"
+              p:after="*[1=2]"
+              s:rname="Styleguide-CustomRouteType"
+              s:id="{282A17EA-5E03-5B79-9EAF-09C34C949E83}"
+              s:par=""
+              s:ph="/jss-main" />
+          </d>
+        </r>
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20210203T190105Z
+    - ID: "6fc5d83c-62ec-5a32-b236-77351e17ce41"
+      Hint: content
+      Value: "<p>Custom route type fields are good for things like articles, where you may wish to have a filter UI on content fields, such as author or category. Route level fields are easy to query against, whereas component-level fields are not because it's possible to remove a component from a route. Note that route level fields <em>cannot be personalized</em> because you cannot conditionally swap out the route item for a different content item.</p>"
+    - ID: "7f56528b-ea07-5311-90a3-cbef545803c1"
+      Hint: headline
+      Value: "A Treatise on Route-Level Fields in JSS"
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "a57e2b49-fa40-43c3-97ba-d016c0d92254"
+    - ID: "90c068b0-847a-5b79-9751-abc7be62facd"
+      Hint: author
+      Value: Myrtle
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\JssImport
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20210203T190105Z
+    - ID: "db9ff1f3-b4b7-5ccf-b6f3-756c113a83f8"
+      Hint: pageTitle
+      Value: Custom Route Type | Sitecore JSS

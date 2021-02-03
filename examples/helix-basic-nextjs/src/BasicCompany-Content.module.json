@@ -1,0 +1,15 @@
+{
+    "namespace": "BasicCompany-Content",
+    "items": {
+        "includes": [
+            {
+                "name": "content",
+                "path": "/sitecore/content/BasicCompany"
+            },
+            {
+                "name": "media",
+                "path": "/sitecore/media library/basiccompany"
+            }
+        ]
+    }
+}

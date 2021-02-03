@@ -1,0 +1,72 @@
+﻿---
+ID: "d7a867de-e9bf-5b54-abe7-53cebf419cb3"
+Parent: "7071c0c6-13e2-56b1-a783-089c4ff020fd"
+Template: "7071c0c6-13e2-56b1-a783-089c4ff020fd"
+Path: /sitecore/templates/Project/basiccompany/App Route/__Standard Values
+SharedFields:
+- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
+  Hint: __Masters
+  Value: "{7071C0C6-13E2-56B1-A783-089C4FF020FD}"
+- ID: "f1a1fe9e-a60c-4ddb-a3a0-bb5b29fe732e"
+  Hint: __Renderings
+  Value: |
+    <r xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <d
+        id="{FE5D7FDF-89C0-4D99-9AA3-B5FBD009C9F3}"
+        l="{D954F5F7-6CDF-53A8-8311-A065F7748597}">
+        <p
+          uid="{821AC6F3-1229-52AA-8668-0B1B4C50A372}"
+          key="jss-main"
+          md="{121ABE70-BA36-5D15-9F76-FC552FD841B7}" />
+        <p
+          uid="{8ABE1B13-53AC-56DF-9A44-BEDFB0F1F478}"
+          key="jss-tabs"
+          md="{E3AB1558-1964-5310-BA31-FD532A5CDA6B}" />
+        <p
+          uid="{CFD38CBB-43B4-5377-952B-685E1ADD235C}"
+          key="jss-graphql-layout"
+          md="{17C89614-A6C0-5E8B-B763-30A28021DC33}" />
+        <p
+          uid="{DA7F473A-5DD1-5D9B-9729-1C8CF63ABC52}"
+          key="jss-styleguide-layout"
+          md="{3283270C-A254-55C6-BFF6-4369D7B2FACA}" />
+        <p
+          uid="{CF60A69F-9FA8-5990-A9FA-CB86AB149F1B}"
+          key="jss-styleguide-section"
+          md="{5F12AA89-5AF0-5C1C-A4E5-AE325E8DBE3E}" />
+        <p
+          uid="{5CB13CFB-22E0-5D24-B7E5-49E08B31E8D5}"
+          key="jss-header"
+          md="{2410EBB6-7E10-53AC-A0ED-7DDF91F0DF41}" />
+        <p
+          uid="{066C2BC7-96A8-530F-963D-B72C704BAD96}"
+          key="jss-reuse-example"
+          md="{D359D4D6-C144-5826-8FE5-323D6D951DCA}" />
+      </d>
+    </r>
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20210203T190049Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\JssImport
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\JssImport
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "29f7a20d-d702-4877-9c5f-9dee4fce1df9"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\JssImport
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20210203T190101Z

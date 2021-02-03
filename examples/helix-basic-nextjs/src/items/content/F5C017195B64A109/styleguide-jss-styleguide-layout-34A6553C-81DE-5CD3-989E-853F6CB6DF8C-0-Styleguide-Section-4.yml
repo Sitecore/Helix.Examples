@@ -1,0 +1,30 @@
+﻿---
+ID: "453c0c20-664e-5914-9e5e-2e157aa4f232"
+Parent: "fd7c5aab-8a0e-5fc4-adfa-ef51ed2af115"
+Template: "2ccf23a5-6e58-556e-8c28-ca536462604e"
+Path: "/sitecore/content/BasicCompany/home/styleguide/Page Components/styleguide-jss-styleguide-layout-34A6553C-81DE-5CD3-989E-853F6CB6DF8C-0-Styleguide-Section-4"
+Languages:
+- Language: en
+  Fields:
+  - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
+    Hint: __Display name
+    Value: "Styleguide-Section-4"
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20210203T190105Z
+    - ID: "41d04542-e7b2-589a-85a9-63b9d69c94e3"
+      Hint: heading
+      Value: Multilingual Patterns
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "ba98dee9-2728-47e3-a304-bc6e72d17663"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\JssImport
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20210203T190105Z

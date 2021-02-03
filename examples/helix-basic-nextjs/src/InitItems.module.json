@@ -1,0 +1,18 @@
+{
+    "namespace": "InitItems",
+    "items" : {
+        "includes": [
+            {
+                "name": "content-root",
+                "path": "/sitecore/content",
+                "scope": "singleItem",
+                "allowedPushOperations": "createAndUpdate"
+            },
+            {
+                "name": "api-key",
+                "path": "/sitecore/system/Settings/Services/API Keys/BasicCompany",
+                "scope": "singleItem"
+            }
+        ]
+    }
+}

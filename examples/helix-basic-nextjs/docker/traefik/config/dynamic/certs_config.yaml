@@ -1,0 +1,4 @@
+tls:
+  certificates:
+    - certFile: C:\etc\traefik\certs\_wildcard.basic-company-nextjs.localhost.pem
+      keyFile: C:\etc\traefik\certs\_wildcard.basic-company-nextjs.localhost-key.pem

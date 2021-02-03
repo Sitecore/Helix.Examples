@@ -1,0 +1,19 @@
+# folders
+.git
+.gitignore
+.vs
+.vscode
+build
+docker
+packages
+**/bin/
+**/obj/
+**/out/
+**/node_modules/
+
+# files
+*Dockerfile
+docker-compose*
+**/*.md
+*.ps1
+scjssconfig.json

@@ -1,0 +1,52 @@
+﻿---
+ID: "596cf44e-c1e7-5d83-aedc-188d9a180b2e"
+Parent: "fd7c5aab-8a0e-5fc4-adfa-ef51ed2af115"
+Template: "23482d94-c8f1-5bcb-bd10-68c3ec12b19b"
+Path: "/sitecore/content/BasicCompany/home/styleguide/Page Components/styleguide-jss-styleguide-section-B7985C8DEA10AB2C5CC77ABC90CF4126F21840592E09B2C6DB07D84D314CDCE0D4"
+Languages:
+- Language: en
+  Fields:
+  - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
+    Hint: __Display name
+    Value: "Styleguide-FieldUsage-ContentList-11"
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "074f45e6-c155-54fa-8ac7-12dbbbc78d68"
+      Hint: localContentList
+      Value: |
+        {31D6C2DA-2AB1-5D68-BD57-2125209E0716}
+        {37F1EC19-1DDA-5713-BB39-F5EB5B6909C2}
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20210203T190104Z
+    - ID: "289d7430-750e-5bdf-90b8-1ad89101fb97"
+      Hint: sharedContentList
+      Value: |
+        {AB868B55-89F8-540D-8848-EE6C892273BB}
+        {8F2C501E-9E63-5EE4-A990-0400E4BBACCA}
+    - ID: "5a8ce031-ac51-5196-8e70-90873af08cc9"
+      Hint: description
+      Value: |
+        <p>
+          <small>
+            Content Lists are a way to reference zero or more other content items.
+            Referenced items may be shared.
+            To reference a single content item, use an <em>Item Link</em> field.<br />
+            <strong>Note:</strong> Sitecore does not support inline editing of Content List fields. The value must be edited in Experience Editor by using the edit rendering fields button (looks like a pencil) with the whole component selected.
+          </small>
+        </p>
+        
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "9437132e-c2d1-402e-8376-e64cd78c7916"
+    - ID: "a6745ef0-98ce-54a5-832d-ac963f852378"
+      Hint: heading
+      Value: Content List
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\JssImport
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20210203T190104Z

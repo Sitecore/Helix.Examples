@@ -1,6 +1,4 @@
 import Head from 'next/head';
-import Link from 'next/link';
-import { useI18n } from 'next-localization';
 import { getPublicUrl } from 'lib/util';
 import { Placeholder, RouteData, VisitorIdentification } from '@sitecore-jss/sitecore-jss-nextjs';
 

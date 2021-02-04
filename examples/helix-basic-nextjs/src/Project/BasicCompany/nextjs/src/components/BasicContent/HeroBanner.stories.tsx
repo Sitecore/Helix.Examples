@@ -9,7 +9,11 @@ export default {
 
 const Template: Story<HeroBannerProps> = (args) => <HeroBanner {...args} />;
 
-const withFields = (fields: { title: string; subtitle: string; imageUrl: string | undefined }): HeroBannerProps => {
+const withFields = (fields: {
+  title: string;
+  subtitle: string;
+  imageUrl: string | undefined;
+}): HeroBannerProps => {
   return {
     fields: {
       Title: {

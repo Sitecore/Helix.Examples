@@ -29,8 +29,8 @@ import generateComponentFactory, { ComponentFile } from './templates/component-f
 const componentFactoryPath = path.resolve('src/temp/componentFactory.ts');
 const componentRootPath = 'src/components';
 
-// Matches TypeScript files that are not type definition files
-const fileFormat = new RegExp(/(.+)(?<!\.d)\.tsx?$/);
+// Matches TypeScript files that are not type definition files or stories
+const fileFormat = new RegExp(/(.+)(?<!\.d)(?<!\.stories)\.tsx?$/);
 
 const isWatch = process.argv.some((arg) => arg === '--watch');
 (isWatch ? watchComponentFactory : writeComponentFactory)();

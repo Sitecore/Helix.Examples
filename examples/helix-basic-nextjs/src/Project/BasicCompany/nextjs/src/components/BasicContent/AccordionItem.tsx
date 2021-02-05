@@ -16,9 +16,7 @@ export type AccordionItemProps = {
 
 const AccordionItem = ({ fields }: AccordionItemProps): JSX.Element => {
   // when editing, default to open, and keep open
-  const { sitecoreContext } = useSitecoreContext<LayoutServiceContext>();
-  const isEditing = sitecoreContext && sitecoreContext.pageEditing;
-
+  const isEditing = useSitecoreContext<LayoutServiceContext>()?.sitecoreContext?.pageEditing;
   const [isActive, setActiveState] = useState(isEditing);
 
   const toggleAccordion = () => {

@@ -5,11 +5,12 @@ import PromoCard, { PromoCardProps } from './PromoCard';
 export default {
   title: 'Basic Content/Promo Card',
   component: PromoCard,
+  excludeStories: ['withFields'],
 } as Meta;
 
 const Template: Story<PromoCardProps> = (args) => <PromoCard {...args} />;
 
-const withFields = (fields: {
+export const withFields = (fields: {
   linkUrl: string | undefined;
   imageUrl: string | undefined;
   headline: string;

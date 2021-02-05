@@ -6,6 +6,7 @@ import { SitecoreContext } from '@sitecore-jss/sitecore-jss-nextjs';
 export default {
   title: 'Basic Content/Accordion Item',
   component: AccordionItem,
+  excludeStories: ['withFields'],
 } as Meta;
 
 const Template: Story<AccordionItemProps> = (args) => <AccordionItem {...args} />;

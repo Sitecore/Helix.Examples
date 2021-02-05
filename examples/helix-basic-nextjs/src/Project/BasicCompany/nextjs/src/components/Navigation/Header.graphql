@@ -1,0 +1,27 @@
+query Navigation($siteRoot: String!, $templateId: String!) {
+  search(where: {
+  	AND: [
+      {
+        name: "_templates",
+        value: $templateId,
+        operator: CONTAINS
+      },
+      {
+        name: "_path",
+        value: $siteRoot,
+        operator: CONTAINS
+      }
+    ]
+  }) {
+    results {
+      ... on _NavigationItem {
+        navigationTitle {
+          value
+        }
+      }
+      url {
+        path
+      }
+    }
+  } 
+}

@@ -8,27 +8,20 @@ namespace BasicCompany.Feature.Navigation.LayoutService
 {
     public class HeaderContentsResolver : Sitecore.LayoutService.ItemRendering.ContentsResolvers.RenderingContentsResolver
     {
-        protected readonly IHeaderBuilder HeaderBuilder;
+        protected readonly INavigationRootResolver RootResolver;
 
-        public HeaderContentsResolver(INavigationRootResolver rootResolver, IHeaderBuilder headerBuilder)
+        public HeaderContentsResolver(INavigationRootResolver rootResolver)
         {
             Debug.Assert(rootResolver != null);
-            Debug.Assert(headerBuilder != null);
-            HeaderBuilder = headerBuilder;
+            RootResolver = rootResolver;
         }
 
         public override object ResolveContents(Rendering rendering, IRenderingConfiguration renderingConfig)
         {
-            var header = HeaderBuilder.GetHeader(this.GetContextItem(rendering, renderingConfig));
+            var root = RootResolver.GetNavigationRoot(this.GetContextItem(rendering, renderingConfig));
             var contents = new
             {
-                logoLink = this.ProcessItem(header.HomeItem, rendering, renderingConfig),
-                navItems = header.NavigationItems.Select(x => new
-                {
-                    url = x.Url,
-                    isActive = x.IsActive,
-                    title = x.Item[Templates.NavigationItem.Fields.NavigationTitle]
-                })
+                rootId = root.ID.Guid.ToString("N")
             };
             return contents;
         }

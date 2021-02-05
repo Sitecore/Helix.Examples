@@ -45,7 +45,22 @@
         "name": "Item",
         "possibleTypes": [
           {
-            "name": "UnknownTemplate"
+            "name": "UnknownItem"
+          },
+          {
+            "name": "C___Product"
+          },
+          {
+            "name": "C___NavigationRoot"
+          },
+          {
+            "name": "C___NavigationItem"
+          },
+          {
+            "name": "TestimonialFolder"
+          },
+          {
+            "name": "Testimonial"
           },
           {
             "name": "StyleguideTracking"
@@ -123,13 +138,40 @@
             "name": "C__StandardTemplate"
           },
           {
+            "name": "Site"
+          },
+          {
+            "name": "ServicesPage"
+          },
+          {
+            "name": "SectionHeaderFolder"
+          },
+          {
+            "name": "SectionHeader"
+          },
+          {
             "name": "C__Route"
           },
           {
             "name": "RenderEngineType"
           },
           {
-            "name": "JssNextRoute"
+            "name": "PromoCardFolder"
+          },
+          {
+            "name": "PromoCard"
+          },
+          {
+            "name": "ProductListPage"
+          },
+          {
+            "name": "ProductDetailPage"
+          },
+          {
+            "name": "PageComponentFolder"
+          },
+          {
+            "name": "C__Page"
           },
           {
             "name": "JsonRendering"
@@ -139,6 +181,15 @@
           },
           {
             "name": "JSSLayout"
+          },
+          {
+            "name": "HomePage"
+          },
+          {
+            "name": "HeroBannerFolder"
+          },
+          {
+            "name": "HeroBanner"
           },
           {
             "name": "GraphQLIntegratedDemo"
@@ -156,7 +207,55 @@
             "name": "C__AppRoute"
           },
           {
-            "name": "App"
+            "name": "C__App"
+          },
+          {
+            "name": "AccordionItemFolder"
+          },
+          {
+            "name": "AccordionItem"
+          }
+        ]
+      },
+      {
+        "kind": "INTERFACE",
+        "name": "_Product",
+        "possibleTypes": [
+          {
+            "name": "C___Product"
+          },
+          {
+            "name": "ProductDetailPage"
+          }
+        ]
+      },
+      {
+        "kind": "INTERFACE",
+        "name": "_NavigationRoot",
+        "possibleTypes": [
+          {
+            "name": "C___NavigationRoot"
+          },
+          {
+            "name": "HomePage"
+          }
+        ]
+      },
+      {
+        "kind": "INTERFACE",
+        "name": "_NavigationItem",
+        "possibleTypes": [
+          {
+            "name": "C___NavigationItem"
+          },
+          {
+            "name": "ServicesPage"
+          },
+          {
+            "name": "ProductListPage"
+          },
+          {
+            "name": "HomePage"
           }
         ]
       },

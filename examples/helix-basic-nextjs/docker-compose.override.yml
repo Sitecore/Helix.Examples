@@ -162,28 +162,10 @@ services:
     environment: 
       SITECORE_LICENSE_LOCATION: c:\license\
 
-  # Use our retagged Marketing Automation Engine image. 
-  # Configure for a mounted license folder instead of using SITECORE_LICENSE.
+  # Disabled as not used in this example
   xdbautomationworker:
-    image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-xp0-xdbautomationworker:${VERSION:-latest}
-    build:
-      context: ./docker/build/xdbautomationworker
-      args:
-        PARENT_IMAGE: ${SITECORE_DOCKER_REGISTRY}sitecore-xp0-xdbautomationworker:${SITECORE_VERSION}
-    volumes:
-      - ${HOST_LICENSE_FOLDER}:c:\license
-    environment: 
-      SITECORE_LICENSE_LOCATION: c:\license\
+    scale: 0
 
-  # Use our retagged Cortex Processing Engine image.
-  # Configure for a mounted license folder instead of using SITECORE_LICENSE.
+  # Disabled as not used in this example
   cortexprocessingworker:
-    image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-xp0-cortexprocessingworker:${VERSION:-latest}
-    build:
-      context: ./docker/build/cortexprocessingworker
-      args:
-        PARENT_IMAGE: ${SITECORE_DOCKER_REGISTRY}sitecore-xp0-cortexprocessingworker:${SITECORE_VERSION}
-    volumes:
-      - ${HOST_LICENSE_FOLDER}:c:\license
-    environment: 
-      SITECORE_LICENSE_LOCATION: c:\license\
+    scale: 0

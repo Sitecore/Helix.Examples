@@ -5,33 +5,30 @@ import { ComponentPropsCollection, ComponentPropsContext } from '@sitecore-jss/s
 import { NavigationQuery } from './Header.graphql';
 
 export default {
-  title: 'Navigation/ Header',
+  title: 'Navigation/Header',
   component: Header,
 } as Meta;
 
 const Template: Story<HeaderProps> = (args) => <Header {...args} />;
 
 const navigationData: NavigationQuery = {
-  search: {
-    results: [
-      {
-        url: {
-          path: '/',
-        },
-        navigationTitle: {
-          value: {
-            value: 'Home',
-          },
-        },
-      },
+  item: {
+    url: {
+      path: '/',
+    },
+    navigationTitle: {
+      value: 'Home',
+    },
+    headerLogo: {
+      src: 'https://placekitten.com/139/45',
+    },
+    children: [
       {
         url: {
           path: '/Products',
         },
         navigationTitle: {
-          value: {
-            value: 'Products',
-          },
+          value: 'Products',
         },
       },
       {
@@ -39,11 +36,9 @@ const navigationData: NavigationQuery = {
           path: '/Services',
         },
         navigationTitle: {
-          value: {
-            value: 'Services',
-          },
+          value: 'Services',
         },
-      }
+      },
     ],
   },
 };

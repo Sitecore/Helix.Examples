@@ -5,8 +5,15 @@ import {
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import GraphQLClientFactory from 'lib/GraphQLClientFactory';
 import React from 'react';
-import { NavigationDocument, NavigationQuery, _NavigationItem, Item } from './Header.graphql';
+import {
+  NavigationDocument,
+  NavigationQuery,
+  _NavigationItem,
+  Item,
+  HomePage,
+} from './Header.graphql';
 import NextLink from 'next/link';
+import config from 'temp/config';
 
 const navigationItemTemplateId = 'c231fbb4dcdb470899bc94760f222cc5';
 
@@ -18,14 +25,21 @@ type NavItem = _NavigationItem & Item;
 
 const Header = ({ rendering }: HeaderProps): JSX.Element => {
   const data = rendering.uid ? useComponentProps<NavigationQuery>(rendering.uid) : undefined;
+  const items = [data?.item, ...(data?.item?.children as NavItem[])];
+  const homeItem = data?.item as HomePage;
 
   return (
     <nav className="navbar is-black is-tab" role="navigation" aria-label="main navigation">
       <div className="container">
         <div className="navbar-brand">
-          <a className="navbar-item" href="/">
-            <img asp-for="LogoLink.HeaderLogo" />
-          </a>
+          {homeItem && (
+            <a className="navbar-item" href={homeItem.url.path}>
+              <img
+                src={homeItem.headerLogo?.src || ''}
+                alt={homeItem.navigationTitle?.value || 'Home'}
+              />
+            </a>
+          )}
 
           <a
             role="button"
@@ -42,12 +56,12 @@ const Header = ({ rendering }: HeaderProps): JSX.Element => {
 
         <div id="navbarBasicExample" className="navbar-menu">
           <div className="navbar-start">
-            {data &&
-              data.search?.results.map((item, index) => {
+            {items &&
+              items?.map((item, index) => {
                 const navItem = item as NavItem;
                 return (
                   <NextLink key={index} href={navItem?.url.path}>
-                    <a className="navbar-item is-tab">{navItem.navigationTitle?.value.value}</a>
+                    <a className="navbar-item is-tab">{navItem?.navigationTitle?.value}</a>
                   </NextLink>
                 );
               })}
@@ -69,7 +83,7 @@ export const getStaticProps: GetStaticComponentProps = async (rendering) => {
   const result = await graphQLClient.query<NavigationQuery>({
     query: NavigationDocument,
     variables: {
-      siteRoot: rootId,
+      rootPath: `/sitecore/content/${config.jssAppName}/home`,
       templateId: navigationItemTemplateId,
     },
   });

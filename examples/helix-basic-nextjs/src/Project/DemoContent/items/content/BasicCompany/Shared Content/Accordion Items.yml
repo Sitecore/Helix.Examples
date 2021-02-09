@@ -1,0 +1,27 @@
+﻿---
+ID: "a37d711c-a50f-4c25-8ba8-f0e0eb6f7900"
+Parent: "0667b089-4a7d-4d1e-9b06-27a1bf8b9e8f"
+Template: "8fb2c42c-b950-4be3-b1c6-8ba7f11b2ed8"
+Path: /sitecore/content/BasicCompany/Shared Content/Accordion Items
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20190507T160932Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\Admin
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "ae325bb2-f978-44fe-bddf-0b7dae855321"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+          extranet\Anonymous
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20190930T183116Z

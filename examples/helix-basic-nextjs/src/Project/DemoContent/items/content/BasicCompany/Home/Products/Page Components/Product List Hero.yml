@@ -1,0 +1,37 @@
+﻿---
+ID: "1fb6764a-97d1-41d7-a568-e2b62164dd02"
+Parent: "7d820475-9032-4132-9b48-d773652c9b5f"
+Template: "4a421518-7b4a-4d43-af9b-94e17e00ec9f"
+Path: /sitecore/content/BasicCompany/Home/Products/Page Components/Product List Hero
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20190430T173259Z
+    - ID: "5179186c-b95e-4e97-95ab-7958721a9aeb"
+      Hint: Title
+      Value: Product List
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\Admin
+    - ID: "89b0a8ed-0ee8-4512-b518-ab2c4c2a0b9e"
+      Hint: Subtitle
+      Value: lorem ipsum dolor sit
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "b292925f-2d03-4f9b-a6ac-dc4a1bf9b8d6"
+    - ID: "b5f61442-ff0f-46a5-90a8-d6d387de24a0"
+      Hint: Image
+      Value: |
+          <image mediaid="{5620882A-B7B5-43E6-ACA0-FDB0E18C6480}" />
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+          extranet\Anonymous
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20190930T183116Z

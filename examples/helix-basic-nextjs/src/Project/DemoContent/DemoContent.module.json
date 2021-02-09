@@ -5,7 +5,7 @@
         "includes": [
             {
                 "name": "content",
-                "path": "/sitecore/content/Basic Company"
+                "path": "/sitecore/content/BasicCompany"
             },
             {
                 "name": "media",

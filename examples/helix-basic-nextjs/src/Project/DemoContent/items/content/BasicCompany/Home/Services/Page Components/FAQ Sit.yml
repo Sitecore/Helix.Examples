@@ -1,0 +1,44 @@
+﻿---
+ID: "3cc674be-cfff-4ed6-bf74-162ce1b0c8a4"
+Parent: "7972f31a-628d-40dd-bc51-1f1fbc93adfb"
+Template: "fe549078-8c72-472a-8ea7-51053e0e1d73"
+Path: /sitecore/content/BasicCompany/Home/Services/Page Components/FAQ Sit
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "001dd393-96c5-490b-924a-b0f25cd9efd8"
+      Hint: __Lock
+      Value: <r />
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20190507T170440Z
+    - ID: "45efe66e-5ad2-4f1d-bad5-fdf281688681"
+      Hint: Content
+      Value: |
+          <p>Phasellus blandit leo ut odio. Pellentesque commodo eros a enim. Praesent blandit laoreet nibh. Donec sodales sagittis magna. Etiam sollicitudin, ipsum eu pulvinar rutrum, tellus ipsum laoreet sapien, quis venenatis ante odio sit amet eros.</p>
+          <p>Aliquam lobortis. Donec mollis hendrerit risus. Sed aliquam ultrices mauris. In hac habitasse platea dictumst. Mauris turpis nunc, blandit et, volutpat molestie, porta ut, ligula.</p>
+          <p>Aenean ut eros et nisl sagittis vestibulum. Etiam vitae tortor. Praesent nonummy mi in odio. In dui magna, posuere eget, vestibulum et, tempor auctor, justo. Suspendisse pulvinar, augue ac venenatis condimentum, sem libero volutpat nibh, nec pellentesque velit pede quis nunc.</p>
+          <p>&nbsp;</p>
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\Admin
+    - ID: "5718e787-142b-41d9-b5a1-0b18f45b8236"
+      Hint: Title
+      Value: "Donec elit libero sodales nec?"
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+          sitecore\admin
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "bbe65fa6-474f-4862-9bcb-1ced6a92cda4"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+        sitecore\Admin
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20210205T183404Z

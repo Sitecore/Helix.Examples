@@ -1,0 +1,39 @@
+﻿---
+ID: "0667b089-4a7d-4d1e-9b06-27a1bf8b9e8f"
+Parent: "38309a60-6ca4-4e2a-99e0-2b447d8b02fc"
+Template: "a87a00b1-e6db-45ab-8b54-636fec3b5523"
+Path: /sitecore/content/BasicCompany/Shared Content
+SharedFields:
+- ID: "06d5295c-ed2f-4a54-9bf2-26228d113318"
+  Hint: __Icon
+  Value: /~/icon/office/32x32/folder_shared.png
+- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
+  Hint: __Masters
+  Value: |
+    {40A33364-F008-476A-95AD-22EFC6E4D93E}
+    {1AE158E5-E120-4875-B560-B76E90C64065}
+    {456F5066-3169-4CDA-B827-ED0917A75776}
+    {092A159D-93DF-4C49-9226-9ABE5BCBC7AA}
+    {8FB2C42C-B950-4BE3-B1C6-8BA7F11B2ED8}
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20190222T183649Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+          sitecore\admin
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "5e33d756-d180-48a3-9a86-a7fe75857133"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+          sitecore\unicorn
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20190930T183116Z

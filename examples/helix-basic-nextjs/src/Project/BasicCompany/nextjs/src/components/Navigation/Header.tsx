@@ -4,13 +4,13 @@ import {
   ComponentRendering,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import GraphQLClientFactory from 'lib/GraphQLClientFactory';
-import React, { ComponentProps } from 'react';
+import React from 'react';
 import { NavigationDocument, NavigationQuery, _NavigationItem, Item } from './Header.graphql';
 import NextLink from 'next/link';
 
 const navigationItemTemplateId = 'c231fbb4dcdb470899bc94760f222cc5';
 
-type HeaderProps = {
+export type HeaderProps = {
   rendering: ComponentRendering;
 };
 

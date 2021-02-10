@@ -9,7 +9,7 @@ SharedFields:
   Value: Header
 - ID: "b0b15510-b138-470e-8f33-8da2e228aafe"
   Hint: Rendering Contents Resolver
-  Value: "{508D6F5B-ACC8-4E79-B0F6-C3BF75DF7CB8}"
+  Value: 
 Languages:
 - Language: en
   Versions:
@@ -20,11 +20,11 @@ Languages:
       Value: 20190306T194059Z
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "f3b5d9c6-02e0-41ff-a41b-cb34b326077a"
+      Value: "764c1c57-8a3e-4c25-9656-aa53c754ea2d"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
         sitecore\Admin
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20200420T183756Z
+      Value: 20210210T193817Z

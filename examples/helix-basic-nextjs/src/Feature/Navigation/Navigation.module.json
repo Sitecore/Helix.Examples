@@ -9,10 +9,6 @@
             {
                 "name": "renderings",
                 "path": "/sitecore/layout/Renderings/Feature/Navigation"
-            },
-            {
-                "name": "contents-resolvers",
-                "path": "/sitecore/system/Modules/Layout Service/Rendering Contents Resolvers/Navigation"
             }
         ]
     }

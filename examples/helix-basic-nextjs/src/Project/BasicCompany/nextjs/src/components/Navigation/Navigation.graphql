@@ -16,6 +16,9 @@ query Navigation($rootPath: String!, $templateId: String!) {
       headerLogo {
         src
       }
+      footerCopyright {
+        value
+      }
     }
     children(includeTemplateIDs: [$templateId]) {
       ...navigationFields

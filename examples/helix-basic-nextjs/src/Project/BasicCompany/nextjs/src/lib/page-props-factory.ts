@@ -9,6 +9,9 @@ import {
   LayoutServiceData,
   editingDataService,
 } from '@sitecore-jss/sitecore-jss-nextjs';
+import GraphQLClientFactory from 'lib/GraphQLClientFactory';
+import { NavigationDocument, NavigationQuery } from 'components/Navigation/Navigation.graphql';
+import { SitecoreTemplates } from 'lib/sitecoreTemplates';
 import { SitecorePageProps } from 'lib/page-props';
 import { componentModule } from 'temp/componentFactory';
 import { config as packageConfig } from '../../package.json';
@@ -153,11 +156,23 @@ export class SitecorePagePropsFactory {
         });
       }
     }
+
+    // Fetch shared navigation data
+    const graphQLClient = GraphQLClientFactory();
+    const navigation = await graphQLClient.query<NavigationQuery>({
+      query: NavigationDocument,
+      variables: {
+        rootPath: `/sitecore/content/${config.jssAppName}/home`,
+        templateId: SitecoreTemplates.NavigationItem.Id,
+      },
+    });
+
     return {
       locale,
       layoutData,
       dictionary,
       componentProps,
+      navigation: navigation.data,
       notFound,
     };
   }

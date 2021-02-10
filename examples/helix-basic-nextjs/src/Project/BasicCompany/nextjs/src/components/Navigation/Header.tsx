@@ -1,30 +1,12 @@
-import {
-  GetStaticComponentProps,
-  useComponentProps,
-  ComponentRendering,
-} from '@sitecore-jss/sitecore-jss-nextjs';
-import GraphQLClientFactory from 'lib/GraphQLClientFactory';
 import React from 'react';
-import {
-  NavigationDocument,
-  NavigationQuery,
-  _NavigationItem,
-  Item,
-  HomePage,
-} from './Header.graphql';
+import { _NavigationItem, Item, HomePage } from './Navigation.graphql';
+import { useNavigationData } from './NavigationDataContext';
 import NextLink from 'next/link';
-import config from 'temp/config';
-
-const navigationItemTemplateId = 'c231fbb4dcdb470899bc94760f222cc5';
-
-export type HeaderProps = {
-  rendering: ComponentRendering;
-};
 
 type NavItem = _NavigationItem & Item;
 
-const Header = ({ rendering }: HeaderProps): JSX.Element => {
-  const data = rendering.uid ? useComponentProps<NavigationQuery>(rendering.uid) : undefined;
+const Header = (): JSX.Element => {
+  const data = useNavigationData();
   const items = [data?.item, ...(data?.item?.children as NavItem[])];
   const homeItem = data?.item as HomePage;
 
@@ -70,25 +52,6 @@ const Header = ({ rendering }: HeaderProps): JSX.Element => {
       </div>
     </nav>
   );
-};
-
-export const getStaticProps: GetStaticComponentProps = async (rendering) => {
-  const rootId = rendering?.fields?.rootId;
-  if (!rootId) {
-    return null;
-  }
-
-  const graphQLClient = GraphQLClientFactory();
-
-  const result = await graphQLClient.query<NavigationQuery>({
-    query: NavigationDocument,
-    variables: {
-      rootPath: `/sitecore/content/${config.jssAppName}/home`,
-      templateId: navigationItemTemplateId,
-    },
-  });
-
-  return result.data;
 };
 
 export default Header;

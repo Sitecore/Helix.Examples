@@ -13,8 +13,9 @@ import { SitecorePageProps } from 'lib/page-props';
 import { sitecorePagePropsFactory } from 'lib/page-props-factory';
 import { componentFactory } from 'temp/componentFactory';
 import { graphQLSitemapService } from 'lib/graphql-sitemap-service';
+import { NavigationDataContext } from 'components/Navigation/NavigationDataContext';
 
-const SitecorePage = ({ notFound, layoutData, componentProps }: SitecorePageProps): JSX.Element => {
+const SitecorePage = ({ notFound, layoutData, componentProps, navigation }: SitecorePageProps): JSX.Element => {
   useEffect(() => {
     // Since Experience Editor does not support Fast Refresh need to refresh EE chromes after Fast Refresh finished
     handleExperienceEditorFastRefresh();
@@ -33,14 +34,16 @@ const SitecorePage = ({ notFound, layoutData, componentProps }: SitecorePageProp
   const routeData = layoutData.sitecore.route;
 
   const PageLayout = () => (
-    <ComponentPropsContext value={componentProps}>
-      <SitecoreContext<StyleguideSitecoreContextValue>
-        componentFactory={componentFactory}
-        context={context}
-      >
-        <Layout route={routeData} />
-      </SitecoreContext>
-    </ComponentPropsContext>
+    <NavigationDataContext value={navigation}>
+      <ComponentPropsContext value={componentProps}>
+        <SitecoreContext<StyleguideSitecoreContextValue>
+          componentFactory={componentFactory}
+          context={context}
+        >
+          <Layout route={routeData} />
+        </SitecoreContext>
+      </ComponentPropsContext>
+    </NavigationDataContext>
   );
 
   return <PageLayout />;

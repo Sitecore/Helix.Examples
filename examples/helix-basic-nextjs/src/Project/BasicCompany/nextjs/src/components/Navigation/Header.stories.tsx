@@ -1,15 +1,15 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react/types-6-0';
-import Header, { HeaderProps } from './Header';
-import { ComponentPropsCollection, ComponentPropsContext } from '@sitecore-jss/sitecore-jss-nextjs';
-import { NavigationQuery } from './Header.graphql';
+import Header from './Header';
+import { NavigationQuery } from './Navigation.graphql';
+import { NavigationDataContext } from './NavigationDataContext';
 
 export default {
   title: 'Navigation/Header',
   component: Header,
 } as Meta;
 
-const Template: Story<HeaderProps> = (args) => <Header {...args} />;
+const Template: Story = (args) => <Header {...args} />;
 
 const navigationData: NavigationQuery = {
   item: {
@@ -43,22 +43,11 @@ const navigationData: NavigationQuery = {
   },
 };
 
-const uid = 'mock-uid';
-const componentProps: ComponentPropsCollection = {
-  [uid]: navigationData,
-};
-
 export const WithNavigation = Template.bind({});
 WithNavigation.decorators = [
   (Story) => (
-    <ComponentPropsContext value={componentProps}>
+    <NavigationDataContext value={navigationData}>
       <Story />
-    </ComponentPropsContext>
+    </NavigationDataContext>
   ),
 ];
-WithNavigation.args = {
-  rendering: {
-    componentName: 'Mock',
-    uid,
-  },
-};

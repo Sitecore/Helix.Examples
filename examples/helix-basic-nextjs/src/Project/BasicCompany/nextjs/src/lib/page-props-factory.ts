@@ -9,8 +9,8 @@ import {
   LayoutServiceData,
   editingDataService,
 } from '@sitecore-jss/sitecore-jss-nextjs';
-import GraphQLClientFactory from 'lib/GraphQLClientFactory';
-import { NavigationDocument, NavigationQuery } from 'components/Navigation/Navigation.graphql';
+import { request } from 'graphql-request';
+import { NavigationDocument } from 'components/Navigation/Navigation.graphql';
 import { SitecoreTemplates } from 'lib/sitecoreTemplates';
 import { SitecorePageProps } from 'lib/page-props';
 import { componentModule } from 'temp/componentFactory';
@@ -122,7 +122,9 @@ export class SitecorePagePropsFactory {
           path,
           locale,
           // eslint-disable-next-line prettier/prettier
-          isServerSidePropsContext(context) ? (context as GetServerSidePropsContext).req : undefined,
+          isServerSidePropsContext(context)
+            ? (context as GetServerSidePropsContext).req
+            : undefined,
           isServerSidePropsContext(context) ? (context as GetServerSidePropsContext).res : undefined
         )
         .catch((error: AxiosError<LayoutServiceData>) => {
@@ -158,13 +160,9 @@ export class SitecorePagePropsFactory {
     }
 
     // Fetch shared navigation data
-    const graphQLClient = GraphQLClientFactory();
-    const navigation = await graphQLClient.query<NavigationQuery>({
-      query: NavigationDocument,
-      variables: {
-        rootPath: `/sitecore/content/${config.jssAppName}/home`,
-        templateId: SitecoreTemplates.NavigationItem.Id,
-      },
+    const navigation = await request(config.graphqlEndpoint, NavigationDocument, {
+      rootPath: `/sitecore/content/${config.jssAppName}/home`,
+      templateId: SitecoreTemplates.NavigationItem.Id,
     });
 
     return {
@@ -172,7 +170,7 @@ export class SitecorePagePropsFactory {
       layoutData,
       dictionary,
       componentProps,
-      navigation: navigation.data,
+      navigation,
       notFound,
     };
   }

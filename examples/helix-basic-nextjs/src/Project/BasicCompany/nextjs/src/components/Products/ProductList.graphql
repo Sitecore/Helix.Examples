@@ -1,0 +1,35 @@
+query ProductList($rootPath: String!, $templateId: String!, $after: String) {
+  search(
+    where: {
+      AND: [
+        { name: "_templates", value: $templateId, operator: CONTAINS }
+        { name: "_path", value: $rootPath, operator: CONTAINS }
+      ]
+    }
+    first: 4
+    after: $after
+    orderBy: { name: "Title", direction: ASC }
+  ) {
+    results {
+      url {
+        path
+      }
+      ... on _Product {
+        title {
+          value
+        }
+        shortDescription {
+          value
+        }
+        image {
+          src
+        }
+      }
+    }
+    pageInfo {
+      endCursor
+      hasNext
+    }
+    total
+  }
+}

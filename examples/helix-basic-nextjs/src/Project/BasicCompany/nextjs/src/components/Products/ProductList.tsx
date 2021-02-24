@@ -4,7 +4,6 @@ import {
   GetStaticComponentProps,
   useComponentProps,
   useSitecoreContext,
-  mediaApi,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import { request } from 'graphql-request';
 import { useSWRInfinite } from 'swr';
@@ -13,6 +12,7 @@ import { SitecoreContextValues } from 'lib/page-props';
 import { SitecoreTemplates } from 'lib/sitecoreTemplates';
 import config from 'temp/config';
 import { DocumentNode } from 'graphql';
+import ListProduct from 'src/Helpers/ListProduct';
 
 export type ProductListProps = {
   rendering: ComponentRendering;
@@ -75,31 +75,11 @@ const ProductList = ({ rendering }: ProductListProps): JSX.Element => {
             return page.search?.results?.map((productItem) => {
               const product = productItem as _Product;
               const item = productItem as Item;
-              const productImage = product.image?.src;
-              const figureStyle = productImage
-                ? {
-                    backgroundImage: `url(${mediaApi.updateImageUrl(productImage, { mw: 480 })})`,
-                  }
-                : {};
-
               return (
-                <a
-                  key={item.url.path}
-                  href={item.url.path}
-                  className="column product-list-column is-4-desktop is-6-tablet"
-                >
-                  <div className="card">
-                    <div className="card-image">
-                      <figure style={figureStyle}></figure>
-                    </div>
-                    <div className="card-content">
-                      <div className="content">
-                        <h4>{product.title?.value}</h4>
-                        <p>{product.shortDescription?.value}</p>
-                      </div>
-                    </div>
-                  </div>
-                </a>
+                <ListProduct key={item.url.path} url={item.url.path} imageSrc={product.image?.src}>
+                  <h4>{product.title?.value}</h4>
+                  <p>{product.shortDescription?.value}</p>
+                </ListProduct>
               );
             });
           })}

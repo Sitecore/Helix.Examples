@@ -9,6 +9,10 @@ SharedFields:
   Value: "Products-RelatedProducts-Title"
 Languages:
 - Language: en
+  Fields:
+  - ID: "2ba3454a-9a9c-4cdf-a9f8-107fd484eb6e"
+    Hint: Phrase
+    Value: Related Products
   Versions:
   - Version: 1
     Fields:
@@ -17,11 +21,11 @@ Languages:
       Value: 20190503T192107Z
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "b4a4706c-5892-4690-ae4d-23469aa18fa7"
+      Value: "68852ee9-9ddf-4825-9ec3-bb0968c96469"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-          sitecore\unicorn
+        sitecore\Admin
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20190930T183116Z
+      Value: 20210224T202550Z

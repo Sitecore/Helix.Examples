@@ -9,6 +9,10 @@ SharedFields:
   Value: "Products-Detail-Price"
 Languages:
 - Language: en
+  Fields:
+  - ID: "2ba3454a-9a9c-4cdf-a9f8-107fd484eb6e"
+    Hint: Phrase
+    Value: Price
   Versions:
   - Version: 1
     Fields:
@@ -17,11 +21,11 @@ Languages:
       Value: 20190503T183817Z
     - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
       Hint: __Revision
-      Value: "535c34c3-8b57-44c7-ae39-e59d018ea1c4"
+      Value: "11f69559-8532-435d-9a17-ae054f11936c"
     - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
       Hint: __Updated by
       Value: |
-          sitecore\unicorn
+        sitecore\Admin
     - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
       Hint: __Updated
-      Value: 20190930T183116Z
+      Value: 20210224T202545Z

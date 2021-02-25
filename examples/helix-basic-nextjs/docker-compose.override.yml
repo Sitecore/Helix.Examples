@@ -30,8 +30,6 @@ services:
       args:
         BUILD_CONFIGURATION: ${BUILD_CONFIGURATION}
         BUILD_IMAGE: mcr.microsoft.com/dotnet/framework/sdk:4.8
-        NUGET_USER: ${NUGET_USER}
-        NUGET_PASSWORD: ${NUGET_PASSWORD}
     scale: 0
 
   rendering:

@@ -54,17 +54,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Config\Include\Feature\Feature.Products.config" />
-    <Content Include="App_Config\Include\Feature\Feature.Products.ContentSearch.config" />
     <None Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="LayoutService\ProductListContentsResolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ServicesConfigurator.cs" />
-    <Compile Include="Services\IProductRepository.cs" />
-    <Compile Include="Services\ProductRepository.cs" />
-    <Compile Include="Services\ProductSearchQuery.cs" />
-    <Compile Include="Templates.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Web.Debug.config">

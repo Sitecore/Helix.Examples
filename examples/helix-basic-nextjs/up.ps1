@@ -41,6 +41,11 @@ if ($LASTEXITCODE -ne 0) {
     Write-Error "Unable to log into Sitecore, did the Sitecore environment start correctly? See logs above."
 }
 
+# Populate Solr managed schemas to avoid errors during item deploy
+Write-Host "Populating Solr managed schema..." -ForegroundColor Green
+$token = (Get-Content .\.sitecore\user.json | ConvertFrom-Json).endpoints.default.accessToken
+Invoke-RestMethod "https://cm.basic-company-nextjs.localhost/sitecore/admin/PopulateManagedSchema.aspx?indexes=all" -Headers @{Authorization = "Bearer $token"} -UseBasicParsing | Out-Null
+
 Write-Host "Pushing items to Sitecore..." -ForegroundColor Green
 dotnet sitecore ser push --publish
 if ($LASTEXITCODE -ne 0) {

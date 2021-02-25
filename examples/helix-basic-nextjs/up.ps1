@@ -36,6 +36,10 @@ if (-not $status.status -eq "enabled") {
     Write-Error "Timeout waiting for Sitecore CM to become available via Traefik proxy. Check CM container logs."
 }
 
+Write-Host "Restoring Sitecore CLI..." -ForegroundColor Green
+dotnet tool restore
+
+Write-Host "Logging into Sitecore..." -ForegroundColor Green
 dotnet sitecore login --cm https://cm.basic-company-nextjs.localhost/ --auth https://id.basic-company-nextjs.localhost/ --allow-write true
 if ($LASTEXITCODE -ne 0) {
     Write-Error "Unable to log into Sitecore, did the Sitecore environment start correctly? See logs above."

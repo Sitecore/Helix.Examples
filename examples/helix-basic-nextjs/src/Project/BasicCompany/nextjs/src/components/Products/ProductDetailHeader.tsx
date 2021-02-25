@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSitecoreContext, Text, Field } from '@sitecore-jss/sitecore-jss-nextjs';
+import Head from 'next/head';
 
 export type ProductDetailHeaderFields = {
   route: {
@@ -19,6 +20,9 @@ const ProductDetailHeader = (): JSX.Element => {
 
   return (
     <div className="container">
+      <Head>
+        <title>{fields?.Title?.value || 'Product'}</title>
+      </Head>
       <section className="hero is-small product-detail-hero">
         <div className="hero-body">
           <Text field={fields?.Title} tag="h1" className="title" />

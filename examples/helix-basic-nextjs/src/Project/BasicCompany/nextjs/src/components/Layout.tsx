@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { getPublicUrl } from 'lib/util';
 import { Placeholder, RouteData, VisitorIdentification } from '@sitecore-jss/sitecore-jss-nextjs';
 
-// Prefix public assets with a public URL to enable compaitibility with Sitecore Experience Editor.
+// Prefix public assets with a public URL to enable compatibility with Sitecore Experience Editor.
 // If you're not supporting the Experience Editor, you can remove this.
 const publicUrl = getPublicUrl();
 
@@ -14,9 +14,7 @@ const Layout = ({ route }: LayoutProps): JSX.Element => {
   return (
     <>
       <Head>
-        <title>
-          {(route.fields && route.fields.pageTitle && route.fields.pageTitle.value) || 'Page'}
-        </title>
+        <title>{route.fields?.NavigationTitle?.value || 'Page'}</title>
         <link rel="icon" href={`${publicUrl}/favicon.ico`} />
       </Head>
 

@@ -13,7 +13,7 @@ import { EditingDataMiddleware } from '@sitecore-jss/sitecore-jss-nextjs/middlew
 export const config = {
   api: {
     bodyParser: {
-      sizeLimit: '2mb',
+      sizeLimit: '5mb',
     },
   },
 };

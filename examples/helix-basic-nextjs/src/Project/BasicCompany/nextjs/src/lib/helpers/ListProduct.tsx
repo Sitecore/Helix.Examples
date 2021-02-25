@@ -1,7 +1,7 @@
 import { mediaApi } from '@sitecore-jss/sitecore-jss-nextjs';
 import React from 'react';
 
-type ListProductProps = {
+export type ListProductProps = {
   url: string;
   imageSrc: string | null | undefined;
   children: React.ReactNode;

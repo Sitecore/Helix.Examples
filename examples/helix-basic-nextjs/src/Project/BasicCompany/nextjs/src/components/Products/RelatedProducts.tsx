@@ -6,21 +6,21 @@ import {
   RichText,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import { useI18n } from 'next-localization';
-import ListProduct from 'src/Helpers/ListProduct';
+import ListProduct from 'lib/helpers/ListProduct';
 
-type RelatedProductsProps = {
+export type RelatedProductFields = {
+  url: string;
+  fields: {
+    Title: Field<string>;
+    ShortDescription: Field<string>;
+    Image: ImageField;
+  };
+};
+
+export type RelatedProductsFields = {
   route: {
     fields: {
-      RelatedProducts: [
-        {
-          url: string;
-          fields: {
-            Title: Field<string>;
-            ShortDescription: Field<string>;
-            Image: ImageField;
-          };
-        }
-      ];
+      RelatedProducts: RelatedProductFields[];
     };
   };
 };
@@ -31,7 +31,7 @@ const RelatedProducts = (): JSX.Element => {
     sitecoreContext: {
       route: { fields },
     },
-  } = useSitecoreContext<RelatedProductsProps>();
+  } = useSitecoreContext<RelatedProductsFields>();
   return (
     <div className="container">
       <h3 className="title">{t('Products-RelatedProducts-Title')}</h3>

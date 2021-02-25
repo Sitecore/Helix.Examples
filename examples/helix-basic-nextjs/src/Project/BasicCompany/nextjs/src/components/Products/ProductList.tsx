@@ -12,7 +12,7 @@ import { SitecoreContextValues } from 'lib/page-props';
 import { SitecoreTemplates } from 'lib/sitecoreTemplates';
 import config from 'temp/config';
 import { DocumentNode } from 'graphql';
-import ListProduct from 'src/Helpers/ListProduct';
+import ListProduct from 'lib/helpers/ListProduct';
 
 export type ProductListProps = {
   rendering: ComponentRendering;

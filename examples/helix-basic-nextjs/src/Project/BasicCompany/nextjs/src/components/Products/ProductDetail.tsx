@@ -9,7 +9,7 @@ import {
   ImageField,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 
-type ProductDetailProps = {
+export type ProductDetailFields = {
   route: {
     fields: {
       Features: Field<string>;
@@ -25,7 +25,7 @@ const ProductDetail = (): JSX.Element => {
     sitecoreContext: {
       route: { fields },
     },
-  } = useSitecoreContext<ProductDetailProps>();
+  } = useSitecoreContext<ProductDetailFields>();
   return (
     <section className="product-detail columns is-centered is-vcentered">
       <div className="product-details column is-narrow has-text-centered-mobile">

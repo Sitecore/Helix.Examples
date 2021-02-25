@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSitecoreContext, Text, Field } from '@sitecore-jss/sitecore-jss-nextjs';
 
-type HeaderFieldProps = {
+export type ProductDetailHeaderFields = {
   route: {
     fields: {
       Title: Field<string>;
@@ -15,7 +15,7 @@ const ProductDetailHeader = (): JSX.Element => {
     sitecoreContext: {
       route: { fields },
     },
-  } = useSitecoreContext<HeaderFieldProps>();
+  } = useSitecoreContext<ProductDetailHeaderFields>();
 
   return (
     <div className="container">

@@ -3,7 +3,7 @@ import { Meta, Story } from '@storybook/react/types-6-0';
 import ListProduct, { ListProductProps } from './ListProduct';
 
 export default {
-  title: 'Helpers/ListProduct',
+  title: 'Products/ListProduct',
   component: ListProduct,
 } as Meta;
 

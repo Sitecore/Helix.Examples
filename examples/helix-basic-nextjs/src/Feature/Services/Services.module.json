@@ -1,0 +1,20 @@
+{
+    "namespace": "Feature.Services",
+    "items": {
+        "includes": [
+            {
+                "name": "templates",
+                "path": "/sitecore/templates/Feature/Services"
+            },
+            {
+                "name": "renderings",
+                "path": "/sitecore/layout/Renderings/Feature/Services"
+            },
+            {
+                "name": "buttons",
+                "database": "core",
+                "path": "/sitecore/content/Applications/WebEdit/Custom Experience Buttons/Services"
+            }
+        ]
+    }
+}

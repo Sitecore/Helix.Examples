@@ -23,10 +23,6 @@ the site.
 it likely would not merit application of Sitecore Helix practices, or perhaps would be
 implemented as a single Project-layer module.*
 
-The customer is also utilizing a third-party agency for the website front-end implementation,
-and thus HTML, CSS, and JS are being provided by an external team with no knowledge of
-Sitecore or Sitecore Helix practices.
-
 ## Implementations
 
 ### [Helix Basic Company - ASP.NET Core and Sitecore Content Serialization](https://github.com/Sitecore/Helix.Examples/tree/master/examples/helix-basic-aspnetcore)
@@ -37,6 +33,17 @@ This is a [ASP.NET Core Rendering SDK](https://doc.sitecore.com/developers/100/d
 * Items are serialized using the Sitecore CLI.
 * [Helix Publishing Pipeline](https://github.com/richardszalay/helix-publishing-pipeline) is used for building and deploying code for CM/CD, and is configured to auto-deploy on build.
 * The Rendering Host projects do not need Helix Publishing Pipeline, because ASP.NET Core / SDK-style projects support sharing content assets.
+
+### [Helix Basic Company - Next.js and Sitecore Content Serialization](https://github.com/Sitecore/Helix.Examples/tree/master/examples/helix-basic-nextjs)
+
+This is a [Sitecore JSS / Next.js](https://jss.sitecore.com/docs/nextjs/introduction/why-nextjs) and [Sitecore Content Serialization](https://doc.sitecore.com/developers/100/developer-tools/en/sitecore-content-serialization.html) based implementation of Helix Basic Company.
+* The site is rendered in an independently-running rendering host, built with Next.js.
+* The JavaScript/Next.js solution is intentionally kept in the Project layer, in its entirety, without using Helix semantics, as to not require Sitecore solution architecture in front-end code.
+* The JSS project is configured for a _Sitecore-first_ workflow. It uses serialized items and not JSS _code-first_ deployment.
+  * For mocking of Sitecore data, it uses [Storybook](https://storybook.js.org/) instead.
+* This solution avoids the need for back-end Sitecore code through use of GraphQL to obtain additional data. Thus the Visual Studio solution is rather sparse. It could be argued that this could be further simplified in a real-world solution.
+* Items are serialized using the Sitecore CLI.
+* [Helix Publishing Pipeline](https://github.com/richardszalay/helix-publishing-pipeline) is used for building and deploying code for CM/CD, and is configured to auto-deploy on build.
 
 ### [Helix Basic Company - TDS](https://github.com/Sitecore/Helix.Examples/tree/master/examples/helix-basic-tds)
 

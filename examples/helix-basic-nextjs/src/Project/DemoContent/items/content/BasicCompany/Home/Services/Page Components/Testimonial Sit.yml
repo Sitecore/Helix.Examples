@@ -1,0 +1,41 @@
+﻿---
+ID: "056c3136-ed38-4111-a01a-27c128ef6d1e"
+Parent: "7972f31a-628d-40dd-bc51-1f1fbc93adfb"
+Template: "ec97b156-adfa-4e37-89d8-789637fb6f1b"
+Path: /sitecore/content/BasicCompany/Home/Services/Page Components/Testimonial Sit
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20190507T154442Z
+    - ID: "52807595-0f8f-4b20-8d2a-cb71d28c6103"
+      Hint: __Owner
+      Value: |
+        sitecore\Admin
+    - ID: "5ab05255-0825-4e6d-974b-623cd926e6fd"
+      Hint: Title
+      Value: Sed Lectus
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+          sitecore\admin
+    - ID: "861fe636-1545-4f59-aab8-b308293139a1"
+      Hint: Quote
+      Value: <p>Donec vitae orci sed dolor rutrum auctor. Etiam sollicitudin, ipsum eu pulvinar rutrum, tellus ipsum laoreet sapien, quis venenatis ante odio sit amet eros.</p>
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "b6f4a254-fba6-47db-b030-55f4dee14499"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+          sitecore\unicorn
+    - ID: "bf949588-0a7d-4452-9188-a298b40c0ed3"
+      Hint: Image
+      Value: |
+          <image mediaid="{2B2499FA-31EE-4EF1-96E4-8A02A05FAFBB}" />
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20190930T183116Z

@@ -1,0 +1,59 @@
+﻿---
+ID: "7868bb89-feb1-4c08-ad4e-1c72fac5e0b5"
+Parent: "44b6c92f-2160-416e-914c-bfc160624596"
+Template: "fa3971f5-5a1b-4477-b64e-ca99949e8894"
+Path: /sitecore/content/BasicCompany/Home/Products/2019/05/03/16/40/Ante condimentum tempor dictum
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "23f42f5e-645c-4a72-9c61-79db1a331e64"
+      Hint: Image
+      Value: |
+          <image mediaid="{D8B7E336-3EF6-4938-9E1A-8FE8BFEDB0FB}" />
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20190503T164056Z
+    - ID: "2c2c386c-17c7-44c3-8796-3e720ba08079"
+      Hint: Features
+      Value: |
+          <ul>
+          <li>Curabitur elit</li>
+          <li>Nisi ut</li>
+          <li>Et purus tellus sagittis</li>
+          </ul>
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\Admin
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "0f9d14e1-0269-46a0-9903-49c8b34d73ca"
+    - ID: "9977fbe7-a0ff-475c-9a7c-ecb81c7f51cf"
+      Hint: Price
+      Value: 14.99
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+          extranet\Anonymous
+    - ID: "be500a38-36a0-417b-86c5-e63ba71d0939"
+      Hint: Title
+      Value: Ante condimentum tempor dictum
+    - ID: "be7e2d00-e405-4498-85f9-4f89d8ea2cfc"
+      Hint: ShortDescription
+      Value: Ad tristique etiam curabitur congue in ornare litora
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20190930T183117Z
+    - ID: "fc7c99d4-7301-44eb-908c-bf4ffca5a131"
+      Hint: RelatedProducts
+      Value: |
+        {BEED227F-E27F-4179-BAD4-4FE04CA44A62}
+        {0943BC07-9828-45FA-8C4B-C2B49FDE019C}
+        {46B11991-BBFC-4FEE-B6A0-BC210F96C167}
+        {57EEE913-0CC2-4015-8CCF-79E847AAE53A}
+        {413D28C8-5E86-4041-94B7-C15F6F3323CB}
+        {C053B40C-9690-4298-9877-412D25485C21}
+        {63B9578F-0525-4470-BABE-9370D39BA904}
+        {2A4E0749-001A-4827-960B-197E43BBA414}

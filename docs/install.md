@@ -18,6 +18,7 @@ instance.
 1. [Clone the full repository](https://github.com/Sitecore/Helix.Examples) or [download it](https://github.com/Sitecore/Helix.Examples/archive/master.zip) and unzip into a local directory.
 1. Follow the `README.md` instructions for each example.
    1. [Helix Basic Company - ASP.NET Core](https://github.com/Sitecore/Helix.Examples/tree/master/examples/helix-basic-aspnetcore/README.md)
+   1. [Helix Basic Company - Next.js](https://github.com/Sitecore/Helix.Examples/tree/master/examples/helix-basic-nextjs/README.md)
    1. [Helix Basic Company - TDS](https://github.com/Sitecore/Helix.Examples/tree/master/examples/helix-basic-tds/README.md)
    1. [Helix Basic Company - TDS Consolidated](https://github.com/Sitecore/Helix.Examples/tree/master/examples/helix-basic-tds-consolidated/README.md)
    1. [Helix Basic Company - Unicorn](https://github.com/Sitecore/Helix.Examples/tree/master/examples/helix-basic-unicorn/README.md)

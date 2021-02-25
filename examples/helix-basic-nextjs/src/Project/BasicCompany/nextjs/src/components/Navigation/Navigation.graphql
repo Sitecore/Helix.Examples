@@ -1,0 +1,27 @@
+fragment navigationFields on Item {
+  ... on _NavigationItem {
+    navigationTitle {
+      value
+    }
+  }
+  url {
+    path
+  }
+}
+
+query Navigation($rootPath: String!, $templateId: String!) {
+  item(path: $rootPath) {
+    ...navigationFields
+    ... on HomePage {
+      headerLogo {
+        src
+      }
+      footerCopyright {
+        value
+      }
+    }
+    children(includeTemplateIDs: [$templateId]) {
+      ...navigationFields
+    }
+  }
+}

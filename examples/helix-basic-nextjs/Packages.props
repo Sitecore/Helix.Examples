@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PlatformVersion>10.1.0</PlatformVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Update="Sitecore.Nexus" Version="$(PlatformVersion)" />
+    <PackageReference Update="Sitecore.Kernel" Version="$(PlatformVersion)" />
+    <PackageReference Update="Sitecore.Mvc" Version="$(PlatformVersion)" />
+    <PackageReference Update="Sitecore.ContentSearch" Version="$(PlatformVersion)" />
+    <PackageReference Update="Sitecore.ContentSearch.Linq" Version="$(PlatformVersion)" />
+    <PackageReference Update="Sitecore.ContentSearch.ContentExtraction" Version="$(PlatformVersion)" />
+    <PackageReference Update="Sitecore.LayoutService" Version="7.0.0" />
+    <PackageReference Update="Sitecore.Assemblies.Platform" Version="$(PlatformVersion)" />
+    <PackageReference Update="Sitecore.Assemblies.SitecoreHeadlessServicesServer" Version="17.0.0" />
+    <PackageReference Update="RichardSzalay.Helix.Publishing.WebRoot" Version="1.5.6" />
+  </ItemGroup>
+</Project>

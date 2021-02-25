@@ -1,0 +1,34 @@
+﻿---
+ID: "7c0bd868-8863-4bc4-af40-6317ff6129b2"
+Parent: "7ba26fb3-7ab2-4e09-bb5a-e9d6cd048bba"
+Template: "7ba26fb3-7ab2-4e09-bb5a-e9d6cd048bba"
+Path: /sitecore/templates/Project/BasicCompany/Folder Types/Page Component Folder/__Standard Values
+SharedFields:
+- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
+  Hint: __Masters
+  Value: 
+- ID: "a791f095-2521-4b4d-bef9-21dda221f608"
+  Hint: __Style
+  Value: "font-size: 90%; font-style: italic;"
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20190312T172028Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+          sitecore\admin
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "2bab4f59-2a74-45bb-a84a-c8a7dae0206b"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+          sitecore\unicorn
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20190930T183117Z

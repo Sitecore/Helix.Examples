@@ -9,7 +9,7 @@ import { NavigationQuery } from 'components/Navigation/Navigation.graphql';
 
 export type SitecorePageProps = {
   locale: string;
-  layoutData: LayoutServiceData;
+  layoutData: LayoutServiceData | null;
   dictionary: DictionaryPhrases;
   componentProps: ComponentPropsCollection;
   navigation: NavigationQuery;
@@ -17,6 +17,6 @@ export type SitecorePageProps = {
 };
 
 export type SitecoreContextValues = LayoutServiceContext & {
-  route: RouteData;
+  route: RouteData | undefined;
   itemId: string | undefined;
 };

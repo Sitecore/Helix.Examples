@@ -25,8 +25,9 @@ const SitecorePage = ({
     handleExperienceEditorFastRefresh();
   }, []);
 
-  if (notFound) {
-    return <NotFound context={layoutData?.sitecore?.context} />;
+  if (notFound || !layoutData) {
+    // Shouldn't hit this (as long as 'notFound' is being returned below), but just to be safe
+    return <NotFound />;
   }
 
   const context: SitecoreContextValues = {
@@ -35,8 +36,6 @@ const SitecorePage = ({
     ...layoutData.sitecore.context,
   };
 
-  const routeData = layoutData.sitecore.route;
-
   const PageLayout = () => (
     <NavigationDataContext value={navigation}>
       <ComponentPropsContext value={componentProps}>
@@ -44,7 +43,7 @@ const SitecorePage = ({
           componentFactory={componentFactory}
           context={context}
         >
-          <Layout route={routeData} />
+          <Layout layoutData={layoutData} />
         </SitecoreContext>
       </ComponentPropsContext>
     </NavigationDataContext>

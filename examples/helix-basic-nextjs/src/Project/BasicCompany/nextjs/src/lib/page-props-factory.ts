@@ -1,10 +1,9 @@
-import { AxiosError } from 'axios';
 import { ParsedUrlQuery } from 'querystring';
 import { GetServerSidePropsContext, GetStaticPropsContext } from 'next';
 import {
   ComponentPropsService,
-  DictionaryService,
-  LayoutService,
+  RestDictionaryService,
+  RestLayoutService,
   DictionaryPhrases,
   LayoutServiceData,
   editingDataService,
@@ -47,35 +46,24 @@ const isServerSidePropsContext = function (
 
 export class SitecorePagePropsFactory {
   private componentPropsService: ComponentPropsService;
-  private _dictionaryService: DictionaryService;
-  private _layoutService: LayoutService;
+  private dictionaryService: RestDictionaryService;
+  private layoutService: RestLayoutService;
 
   constructor() {
     this.componentPropsService = new ComponentPropsService();
-    this._dictionaryService = new DictionaryService({
+
+    // Note we're using our standard REST-based dictionary and layout services here,
+    // but in the very near future we'll also have GraphQL-based counterparts available (for Sitecore Experience Edge).
+    this.dictionaryService = new RestDictionaryService({
       apiHost: config.sitecoreApiHost,
       apiKey: config.sitecoreApiKey,
       siteName: config.jssAppName,
     });
-    this._layoutService = new LayoutService({
+    this.layoutService = new RestLayoutService({
       apiHost: config.sitecoreApiHost,
       apiKey: config.sitecoreApiKey,
       siteName: config.jssAppName,
     });
-  }
-
-  private get layoutService(): LayoutService {
-    // Just returning our REST layout service atm, but in the very
-    // near future we'll also have a GraphQL-based layout service.
-    // Stubbed out as getter for potential logic here (e.g. based on constructor props)...
-    return this._layoutService;
-  }
-
-  private get dictionaryService(): DictionaryService {
-    // Just returning our REST dictionary service atm, but in the very
-    // near future we'll also have a GraphQL-based dictionary service.
-    // Stubbed out as getter for potential logic here (e.g. based on constructor props)...
-    return this._dictionaryService;
   }
 
   /**
@@ -87,7 +75,7 @@ export class SitecorePagePropsFactory {
     context: GetServerSidePropsContext | GetStaticPropsContext
   ): Promise<SitecorePageProps> {
     let locale: string,
-      layoutData: LayoutServiceData,
+      layoutData: LayoutServiceData | null,
       dictionary: DictionaryPhrases,
       componentProps = {},
       notFound = false;
@@ -116,34 +104,33 @@ export class SitecorePagePropsFactory {
       // Use context locale if Next.js i18n is configured, otherwise use language defined in package.json
       locale = context.locale ?? packageConfig.language;
 
-      // Fetch layoutData from Layout Service, passing on req/res for SSR
+      // Fetch layout data, passing on req/res for SSR
       layoutData = await this.layoutService
         .fetchLayoutData(
           path,
           locale,
           // eslint-disable-next-line prettier/prettier
-          isServerSidePropsContext(context)
-            ? (context as GetServerSidePropsContext).req
-            : undefined,
+          isServerSidePropsContext(context) ? (context as GetServerSidePropsContext).req : undefined,
           isServerSidePropsContext(context) ? (context as GetServerSidePropsContext).res : undefined
         )
-        .catch((error: AxiosError<LayoutServiceData>) => {
+        .catch((error) => {
           if (error.response?.status === 404) {
-            // Let 404s (invalid path) through.
-            // layoutData.sitecore.route will be missing, but
-            // layoutData.sitecore.context will provide valuable information
+            // Let 404s (invalid path) through, and set notFound.
+            // Our page routes will return this in getStatic/ServerSideProps,
+            // which will trigger our custom 404 page with proper 404 status code.
+            // You could perform additional logging here to track these if desired.
             notFound = true;
-            return error.response.data;
+            return null;
           }
           throw error;
         });
 
-      // Fetch dictionary data from Dictionary Service
+      // Fetch dictionary data
       dictionary = await this.dictionaryService.fetchDictionaryData(locale);
     }
 
     // Retrieve component props using side-effects defined on components level
-    if (layoutData.sitecore.route) {
+    if (layoutData?.sitecore?.route) {
       if (isServerSidePropsContext(context)) {
         componentProps = await this.componentPropsService.fetchServerSideComponentProps({
           layoutData: layoutData,

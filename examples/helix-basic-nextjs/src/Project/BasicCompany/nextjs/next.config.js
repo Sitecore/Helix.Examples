@@ -19,8 +19,7 @@ const nextConfig = {
 
   // Make the same PUBLIC_URL available as an environment variable on the client bundle
   env: {
-    PUBLIC_URL: publicUrl,
-    SITECORE_API_HOST: process.env.SITECORE_API_HOST
+    PUBLIC_URL: publicUrl
   },
 
   i18n: {

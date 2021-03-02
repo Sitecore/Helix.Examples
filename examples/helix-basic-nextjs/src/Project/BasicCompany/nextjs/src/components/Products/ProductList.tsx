@@ -40,9 +40,14 @@ const getKey = (
 
 // SWR will execute this using the arguments formed above
 const productListQuery = (query: DocumentNode, itemId: string, after?: string) => {
-  //normalize item id
+  // normalize item id
   itemId = itemId.split('-').join('').toLowerCase();
-  return request(config.graphqlEndpoint, query, {
+  // proxy the request through Next.js if running in browser
+  const endpoint =
+    typeof window === 'undefined'
+      ? config.graphqlEndpoint
+      : `${config.graphqlEndpointPath}?sc_apikey=${config.sitecoreApiKey}`;
+  return request(endpoint, query, {
     templateId: SitecoreTemplates._Product.Id,
     rootPath: itemId,
     after,

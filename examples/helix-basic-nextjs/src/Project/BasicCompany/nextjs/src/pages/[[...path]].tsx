@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import NotFound from 'components/NotFound';
 import Layout from 'components/Layout';
-import config from 'temp/config';
 import {
   SitecoreContext,
   ComponentPropsContext,
@@ -11,8 +10,8 @@ import {
 import { SitecorePageProps, SitecoreContextValues } from 'lib/page-props';
 import { sitecorePagePropsFactory } from 'lib/page-props-factory';
 import { componentFactory } from 'temp/componentFactory';
-import { graphQLSitemapService } from 'lib/graphql-sitemap-service';
 import { NavigationDataContext } from 'components/Navigation/NavigationDataContext';
+import { sitemapFetcher } from 'lib/sitemap-fetcher';
 
 const SitecorePage = ({
   notFound,
@@ -64,12 +63,12 @@ export const getStaticPaths: GetStaticPaths = async (context) => {
   // See https://nextjs.org/docs/basic-features/data-fetching#incremental-static-regeneration
 
   if (process.env.NODE_ENV !== 'development') {
-    const ROOT_ITEM = `/sitecore/content/${config.jssAppName}/home`;
-    const paths = await graphQLSitemapService.fetchSSGSitemap(context.locales || [], ROOT_ITEM);
+    // Note: Next.js runs export in production mode
+    const paths = await sitemapFetcher.fetch(context);
 
     return {
       paths,
-      fallback: false,
+      fallback: process.env.EXPORT_MODE ? false : 'blocking',
     };
   }
 
@@ -91,6 +90,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     // - When a request comes in
     // - At most once every 5 seconds
     revalidate: 5, // In seconds
+    notFound: props.notFound, // Returns custom 404 page with a status code of 404 when true
   };
 };
 

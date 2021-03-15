@@ -8,6 +8,8 @@ import {
   DictionaryPhrases,
   LayoutServiceData,
   editingDataService,
+  RestDictionaryService,
+  RestLayoutService,
 } from '@sitecore-jss/sitecore-jss-nextjs';
 import { request } from 'graphql-request';
 import { NavigationDocument } from 'components/Navigation/Navigation.graphql';
@@ -52,12 +54,12 @@ export class SitecorePagePropsFactory {
 
   constructor() {
     this.componentPropsService = new ComponentPropsService();
-    this._dictionaryService = new DictionaryService({
+    this._dictionaryService = new RestDictionaryService({
       apiHost: config.sitecoreApiHost,
       apiKey: config.sitecoreApiKey,
       siteName: config.jssAppName,
     });
-    this._layoutService = new LayoutService({
+    this._layoutService = new RestLayoutService({
       apiHost: config.sitecoreApiHost,
       apiKey: config.sitecoreApiKey,
       siteName: config.jssAppName,

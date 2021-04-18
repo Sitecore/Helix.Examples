@@ -35,14 +35,17 @@ services:
       - ${LOCAL_DATA_PATH}\mssql:c:\data
   
   solr:
-    image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-xm1-solr:${VERSION:-latest}
-    build:
-      context: ./docker/build/solr
-      args:
-        BASE_IMAGE: ${SITECORE_DOCKER_REGISTRY}sitecore-xm1-solr:${SITECORE_VERSION}
-    mem_limit: 1GB
     volumes:
       - ${LOCAL_DATA_PATH}\solr:c:\data
+  solr-init:
+    image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-xm1-solr-init:${VERSION:-latest}
+
+    build:
+      context: ./docker/build/solr-init
+      args:
+        BASE_IMAGE: ${SITECORE_DOCKER_REGISTRY}sitecore-xm1-solr-init:${SITECORE_VERSION}
+    mem_limit: 1GB
+
 
   id:
     image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-id:${VERSION:-latest}

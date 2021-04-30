@@ -49,38 +49,38 @@ Import-Module SitecoreDockerTools -RequiredVersion $dockerToolsVersion
 Write-Host "Populating required .env file variables..." -ForegroundColor Green
 
 # HOST_LICENSE_FOLDER
-Set-DockerComposeEnvFileVariable "HOST_LICENSE_FOLDER" -Value $LicenseXmlPath
+Set-EnvFileVariable "HOST_LICENSE_FOLDER" -Value $LicenseXmlPath
 
 # CD_HOST
-Set-DockerComposeEnvFileVariable "CD_HOST" -Value "cd.$($HostName).localhost"
+Set-EnvFileVariable "CD_HOST" -Value "cd.$($HostName).localhost"
 
 # CM_HOST
-Set-DockerComposeEnvFileVariable "CM_HOST" -Value "cm.$($HostName).localhost"
+Set-EnvFileVariable "CM_HOST" -Value "cm.$($HostName).localhost"
 
 # ID_HOST
-Set-DockerComposeEnvFileVariable "ID_HOST" -Value "id.$($HostName).localhost"
+Set-EnvFileVariable "ID_HOST" -Value "id.$($HostName).localhost"
 
 # SITE_HOST
-Set-DockerComposeEnvFileVariable "SITE_HOST" -Value "www.$($HostName).localhost"
+Set-EnvFileVariable "SITE_HOST" -Value "www.$($HostName).localhost"
 
 # SITECORE_ADMIN_PASSWORD
-Set-DockerComposeEnvFileVariable "SITECORE_ADMIN_PASSWORD" -Value $SitecoreAdminPassword
+Set-EnvFileVariable "SITECORE_ADMIN_PASSWORD" -Value $SitecoreAdminPassword
 
 # SQL_SA_PASSWORD
-Set-DockerComposeEnvFileVariable "SQL_SA_PASSWORD" -Value (Get-SitecoreRandomString 12 -DisallowSpecial -EnforceComplexity)
+Set-EnvFileVariable "SQL_SA_PASSWORD" -Value (Get-SitecoreRandomString 12 -DisallowSpecial -EnforceComplexity)
 
 # TELERIK_ENCRYPTION_KEY = random 64-128 chars
-Set-DockerComposeEnvFileVariable "TELERIK_ENCRYPTION_KEY" -Value (Get-SitecoreRandomString 128)
+Set-EnvFileVariable "TELERIK_ENCRYPTION_KEY" -Value (Get-SitecoreRandomString 128)
 
 # SITECORE_IDSECRET = random 64 chars
-Set-DockerComposeEnvFileVariable "SITECORE_IDSECRET" -Value (Get-SitecoreRandomString 64 -DisallowSpecial)
+Set-EnvFileVariable "SITECORE_IDSECRET" -Value (Get-SitecoreRandomString 64 -DisallowSpecial)
 
 # SITECORE_ID_CERTIFICATE
 $idCertPassword = Get-SitecoreRandomString 12 -DisallowSpecial
-Set-DockerComposeEnvFileVariable "SITECORE_ID_CERTIFICATE" -Value (Get-SitecoreCertificateAsBase64String -DnsName "localhost" -Password (ConvertTo-SecureString -String $idCertPassword -Force -AsPlainText))
+Set-EnvFileVariable "SITECORE_ID_CERTIFICATE" -Value (Get-SitecoreCertificateAsBase64String -DnsName "localhost" -Password (ConvertTo-SecureString -String $idCertPassword -Force -AsPlainText))
 
 # SITECORE_ID_CERTIFICATE_PASSWORD
-Set-DockerComposeEnvFileVariable "SITECORE_ID_CERTIFICATE_PASSWORD" -Value $idCertPassword
+Set-EnvFileVariable "SITECORE_ID_CERTIFICATE_PASSWORD" -Value $idCertPassword
 
 
 # MEDIA_REQUEST_PROTECTION_SHARED_SECRET

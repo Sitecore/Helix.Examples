@@ -34,14 +34,16 @@ services:
       - ${LOCAL_DATA_PATH}\mssql:c:\data
   
   solr:
-    image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-xm1-solr:${VERSION:-latest}
-    build:
-      context: ./docker/build/solr
-      args:
-        BASE_IMAGE: ${SITECORE_DOCKER_REGISTRY}sitecore-xm1-solr:${SITECORE_VERSION}
-    mem_limit: 1GB
     volumes:
       - ${LOCAL_DATA_PATH}\solr:c:\data
+      
+  solr-init:
+    image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-xm1-solr-init:${VERSION:-latest}
+    build:
+      context: ./docker/build/solr-init
+      args:
+        BASE_IMAGE: ${SITECORE_DOCKER_REGISTRY}sitecore-xm1-solr-init:${SITECORE_VERSION}
+    mem_limit: 1GB
 
   id:
     image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-id:${VERSION:-latest}
@@ -71,6 +73,7 @@ services:
     environment:
       BASIC_COMPANY_URL: ${SITE_HOST}
       SITECORE_LICENSE_LOCATION: C:\license\license.xml
+      SITECORE_DEVELOPMENT_PATCHES: CustomErrorsOff
     entrypoint: powershell -Command "& C:\tools\entrypoints\iis\Development.ps1"
     labels:
       - "traefik.http.routers.cd-secure.rule=Host(`${SITE_HOST}`) || Host(`${CD_HOST}`)"
@@ -95,4 +98,5 @@ services:
       SITECORE_LICENSE_LOCATION: C:\license\license.xml
       UNICORN_SHARED_SECRET: ${UNICORN_SHARED_SECRET}
       UNICORN_ENABLE_TRANSPARENT_SYNC: ${UNICORN_ENABLE_TRANSPARENT_SYNC}
+      SITECORE_DEVELOPMENT_PATCHES: CustomErrorsOff
     entrypoint: powershell -Command "& C:\tools\entrypoints\iis\Development.ps1"

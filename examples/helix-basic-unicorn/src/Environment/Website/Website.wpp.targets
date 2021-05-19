@@ -2,6 +2,14 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
     <ItemGroup>
+
+        <!-- Helix module pattern -->
+        <HelixModuleMetadataPatterns Include="Convention">
+            <!--  Use the following pattern if your projects do not have a e.g. Feature.Navigation instead of BasicCompany.Feature.Navigation -->
+            <!--<Pattern>^(?'Layer'.+?)\.(?'Module'.+)$</Pattern>-->
+            <Pattern>^(?'Namespace'.+)\.(?'Layer'.+?)\.(?'Module'.+)$</Pattern>
+        </HelixModuleMetadataPatterns>
+
         <!-- Sitecore builtin assemblies -->
         <SitecoreAssembliesToExclude Include="@(SitecoreAssemblies)" />
 
@@ -21,6 +29,31 @@
         <SitecoreAssembliesToExclude Include="System.Security.SecureString.dll" />
         <SitecoreAssembliesToExclude Include="System.Threading.Overlapped.dll" />
         <SitecoreAssembliesToExclude Include="System.Xml.XPath.XDocument.dll" />
+
+        <!-- Unicorn -->
+        <AdditionalFilesForPackagingFromHelixModules Include="Serialization">
+            <SourcePath>..\serialization\**\*.yml</SourcePath>
+            <TargetPath>App_Data\serialization\^(HelixModule.Layer)\^(HelixModule.Module)\^(RecursiveDir)^(Filename)^(Extension)</TargetPath>
+        </AdditionalFilesForPackagingFromHelixModules>
+
     </ItemGroup>
+
+    <!-- There is an issue with the HPP copying files from NuGet references to the project outlined in this PR https://github.com/richardszalay/helix-publishing-pipeline/pull/78 -->
+    <!-- The target below is of the same name so that it will override the default behaviour of HPP -->
+    <!-- Once this PR is merged and a new release is made available the following override can be removed -->
+    <Target Name="CollectReferencesFromHelixModules" DependsOnTargets="CollectHelixModules">
+        <MSBuild BuildInParallel="$(BuildInParallel)" Projects="@(HelixModulePaths)" RemoveProperties="DeployOnBuild;PublishProfile" Targets="ResolveAssemblyReferences">
+            <Output ItemName="_ReferencesForPackagingFromHelixProjects" TaskParameter="TargetOutputs"/>
+        </MSBuild>
+        <ItemGroup>
+            <ReferencesForPackagingFromHelixProjects Include="@(_ReferencesForPackagingFromHelixProjects)"/>
+            <Reference Include="%(ReferencesForPackagingFromHelixProjects.FusionName)">
+                <ResolvedFrom>%(ReferencesForPackagingFromHelixProjects.ResolvedFrom)</ResolvedFrom>
+                <HintPath>%(ReferencesForPackagingFromHelixProjects.FullPath)</HintPath>
+                <Redist>%(ReferencesForPackagingFromHelixProjects.Redist)</Redist>
+                <CopyLocal>true</CopyLocal>
+            </Reference>
+        </ItemGroup>
+    </Target>
 
 </Project>

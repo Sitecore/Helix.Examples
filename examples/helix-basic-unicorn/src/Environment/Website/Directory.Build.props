@@ -3,9 +3,15 @@
   <!--
       Referencing in Directory.build.props will prevent Visual Studio from expanding the globs when you rename a project.
   -->
-  <ItemGroup>
-    <ProjectReference Include="..\..\Foundation\*\website\*.csproj" />
-    <ProjectReference Include="..\..\Feature\*\website\*.csproj" />
-    <ProjectReference Include="..\..\Project\*\website\*.csproj" />
-  </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\..\Foundation\*\website\*.csproj" >
+            <Name>%(Filename)</Name>
+        </ProjectReference>
+        <ProjectReference Include="..\..\Feature\*\website\*.csproj">
+            <Name>%(Filename)</Name>
+        </ProjectReference>
+        <ProjectReference Include="..\..\Project\*\website\*.csproj" >
+            <Name>%(Filename)</Name>
+        </ProjectReference>
+    </ItemGroup>
 </Project>

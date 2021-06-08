@@ -80,7 +80,6 @@
     <Content Include="App_Config\Include\Unicorn\Unicorn.Configs.Dependency.config.example" />
     <Content Include="App_Config\Include\Unicorn\Unicorn.Configs.NewItemsOnly.example" />
     <Content Include="App_Config\Include\Unicorn\Unicorn.CustomSerializationFolder.config.example" />
-    <Content Include="App_Config\Include\Unicorn\Unicorn.DataProvider.config" />
     <Content Include="App_Config\Include\Unicorn\Unicorn.Dilithium.config.example" />
     <Content Include="App_Config\Include\Unicorn\Unicorn.PowerShell.config" />
     <Content Include="App_Config\Include\Unicorn\Unicorn.Remote.config.disabled" />
@@ -96,6 +95,8 @@
     <Content Include="App_Config\Include\Foundation\Foundation.Serialization.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Config\Include\Unicorn\Unicorn.DataProvider.10.1.config" />
+    <Content Include="App_Config\Include\Unicorn\Unicorn.DataProvider.config.disabled" />
     <None Include="App_Config\Layers.config.xdt" />
     <None Include="web.config" />
     <None Include="web.Debug.config">

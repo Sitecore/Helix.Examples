@@ -7,7 +7,7 @@ type NavItem = _NavigationItem & Item;
 
 const Header = (): JSX.Element => {
   const data = useNavigationData();
-  const items = [data?.item, ...(data?.item?.children as NavItem[])];
+  const items = [data?.item, ...(data?.item?.children.results as NavItem[])];
   const homeItem = data?.item as HomePage;
 
   return (

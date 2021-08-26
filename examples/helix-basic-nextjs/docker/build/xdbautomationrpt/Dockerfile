@@ -1,5 +1,0 @@
-# escape=`
-
-ARG PARENT_IMAGE
-
-FROM ${PARENT_IMAGE}

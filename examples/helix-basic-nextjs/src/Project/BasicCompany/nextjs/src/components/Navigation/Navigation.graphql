@@ -9,8 +9,8 @@ fragment navigationFields on Item {
   }
 }
 
-query Navigation($rootPath: String!, $templateId: String!) {
-  item(path: $rootPath) {
+query Navigation($rootPath: String!, $language: String!, $templateId: String!) {
+  item(path: $rootPath, language: $language) {
     ...navigationFields
     ... on HomePage {
       headerLogo {
@@ -21,7 +21,9 @@ query Navigation($rootPath: String!, $templateId: String!) {
       }
     }
     children(includeTemplateIDs: [$templateId]) {
-      ...navigationFields
+      results {
+        ...navigationFields
+      }
     }
   }
 }

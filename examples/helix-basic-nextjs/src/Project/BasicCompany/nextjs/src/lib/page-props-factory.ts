@@ -110,7 +110,9 @@ export class SitecorePagePropsFactory {
           path,
           locale,
           // eslint-disable-next-line prettier/prettier
-          isServerSidePropsContext(context) ? (context as GetServerSidePropsContext).req : undefined,
+          isServerSidePropsContext(context)
+            ? (context as GetServerSidePropsContext).req
+            : undefined,
           isServerSidePropsContext(context) ? (context as GetServerSidePropsContext).res : undefined
         )
         .catch((error) => {
@@ -150,6 +152,7 @@ export class SitecorePagePropsFactory {
     const navigation = await request(config.graphqlEndpoint, NavigationDocument, {
       rootPath: `/sitecore/content/${config.jssAppName}/home`,
       templateId: SitecoreTemplates.NavigationItem.Id,
+      language: locale,
     });
 
     return {

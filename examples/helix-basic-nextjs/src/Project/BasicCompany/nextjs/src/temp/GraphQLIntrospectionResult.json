@@ -1161,18 +1161,6 @@
               "deprecationReason": null
             },
             {
-              "name": "displayName",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
               "name": "id",
               "description": "The GUID of this field.",
               "args": [
@@ -1304,6 +1292,49 @@
               "ofType": null
             }
           ]
+        },
+        {
+          "kind": "OBJECT",
+          "name": "PageInfo",
+          "description": null,
+          "fields": [
+            {
+              "name": "endCursor",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "hasNext",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "Boolean",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
         },
         {
           "kind": "OBJECT",
@@ -1663,10 +1694,10 @@
                 },
                 {
                   "name": "after",
-                  "description": "Skips children until after the given child ID. Use with first for pagination.",
+                  "description": "Cursor value. Use with first for pagination.",
                   "type": {
                     "kind": "SCALAR",
-                    "name": "ID",
+                    "name": "String",
                     "ofType": null
                   },
                   "defaultValue": "null"
@@ -1676,14 +1707,22 @@
                 "kind": "NON_NULL",
                 "name": null,
                 "ofType": {
-                  "kind": "LIST",
-                  "name": null,
-                  "ofType": {
-                    "kind": "INTERFACE",
-                    "name": "Item",
-                    "ofType": null
-                  }
+                  "kind": "OBJECT",
+                  "name": "ItemSearchResults",
+                  "ofType": null
                 }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "displayName",
+              "description": "Display name of the item",
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
               },
               "isDeprecated": false,
               "deprecationReason": null
@@ -1911,6 +1950,22 @@
               "deprecationReason": null
             },
             {
+              "name": "rendered",
+              "description": "Presentation of the item",
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "JSON",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "template",
               "description": "Defines item fields",
               "args": [],
@@ -2020,6 +2075,16 @@
             },
             {
               "kind": "OBJECT",
+              "name": "Route",
+              "ofType": null
+            },
+            {
+              "kind": "OBJECT",
+              "name": "RenderEngineType",
+              "ofType": null
+            },
+            {
+              "kind": "OBJECT",
               "name": "PromoCardFolder",
               "ofType": null
             },
@@ -2051,6 +2116,11 @@
             {
               "kind": "OBJECT",
               "name": "JsonRendering",
+              "ofType": null
+            },
+            {
+              "kind": "OBJECT",
+              "name": "JavaScriptRendering",
               "ofType": null
             },
             {
@@ -2092,6 +2162,69 @@
         },
         {
           "kind": "OBJECT",
+          "name": "ItemSearchResults",
+          "description": null,
+          "fields": [
+            {
+              "name": "pageInfo",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "PageInfo",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "results",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "LIST",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INTERFACE",
+                    "name": "Item",
+                    "ofType": null
+                  }
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "total",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
           "name": "RichTextField",
           "description": null,
           "fields": [
@@ -2102,18 +2235,6 @@
               "type": {
                 "kind": "OBJECT",
                 "name": "ItemTemplateField",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "displayName",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -2214,18 +2335,6 @@
               "type": {
                 "kind": "OBJECT",
                 "name": "ItemTemplateField",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "displayName",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -2350,18 +2459,6 @@
               "type": {
                 "kind": "OBJECT",
                 "name": "ItemTemplateField",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "displayName",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -2494,18 +2591,6 @@
               "type": {
                 "kind": "OBJECT",
                 "name": "ItemTemplateField",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "displayName",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -2665,18 +2750,6 @@
               "type": {
                 "kind": "OBJECT",
                 "name": "ItemTemplateField",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "displayName",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -2855,18 +2928,6 @@
               "deprecationReason": null
             },
             {
-              "name": "displayName",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
               "name": "id",
               "description": "The GUID of this field.",
               "args": [
@@ -2981,18 +3042,6 @@
             {
               "name": "description",
               "description": "The description of the media item",
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "displayName",
-              "description": null,
               "args": [],
               "type": {
                 "kind": "SCALAR",
@@ -3232,18 +3281,6 @@
               "deprecationReason": null
             },
             {
-              "name": "displayName",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
               "name": "id",
               "description": "The GUID of this field.",
               "args": [
@@ -3328,100 +3365,17 @@
         },
         {
           "kind": "OBJECT",
-          "name": "PageInfo",
+          "name": "LayoutData",
           "description": null,
           "fields": [
             {
-              "name": "endCursor",
+              "name": "item",
               "description": null,
               "args": [],
               "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "String",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "hasNext",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "Boolean",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            }
-          ],
-          "inputFields": null,
-          "interfaces": [],
-          "enumValues": null,
-          "possibleTypes": null
-        },
-        {
-          "kind": "OBJECT",
-          "name": "ItemSearchResults",
-          "description": null,
-          "fields": [
-            {
-              "name": "pageInfo",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "OBJECT",
-                  "name": "PageInfo",
-                  "ofType": null
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "results",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "LIST",
-                  "name": null,
-                  "ofType": {
-                    "kind": "INTERFACE",
-                    "name": "Item",
-                    "ofType": null
-                  }
-                }
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "total",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "NON_NULL",
-                "name": null,
-                "ofType": {
-                  "kind": "SCALAR",
-                  "name": "Int",
-                  "ofType": null
-                }
+                "kind": "INTERFACE",
+                "name": "Item",
+                "ofType": null
               },
               "isDeprecated": false,
               "deprecationReason": null
@@ -3443,13 +3397,13 @@
               "args": [
                 {
                   "name": "hasLayout",
-                  "description": "If set only items with existing presentation are returned",
+                  "description": "If set to true only items with existing presentation are returned",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
                     "ofType": null
                   },
-                  "defaultValue": "false"
+                  "defaultValue": "null"
                 },
                 {
                   "name": "includeTemplateIDs",
@@ -3488,13 +3442,13 @@
               "args": [
                 {
                   "name": "hasLayout",
-                  "description": "If set only items with existing presentation are returned",
+                  "description": "If set to true only items with existing presentation are returned",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
                     "ofType": null
                   },
-                  "defaultValue": "false"
+                  "defaultValue": "null"
                 },
                 {
                   "name": "includeTemplateIDs",
@@ -3522,10 +3476,10 @@
                 },
                 {
                   "name": "after",
-                  "description": "Skips children until after the given child ID. Use with first for pagination.",
+                  "description": "Cursor value. Use with first for pagination.",
                   "type": {
                     "kind": "SCALAR",
-                    "name": "ID",
+                    "name": "String",
                     "ofType": null
                   },
                   "defaultValue": "null"
@@ -3535,14 +3489,22 @@
                 "kind": "NON_NULL",
                 "name": null,
                 "ofType": {
-                  "kind": "LIST",
-                  "name": null,
-                  "ofType": {
-                    "kind": "INTERFACE",
-                    "name": "Item",
-                    "ofType": null
-                  }
+                  "kind": "OBJECT",
+                  "name": "ItemSearchResults",
+                  "ofType": null
                 }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "displayName",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
               },
               "isDeprecated": false,
               "deprecationReason": null
@@ -3611,13 +3573,13 @@
               "args": [
                 {
                   "name": "hasLayout",
-                  "description": "If set only items with existing presentation are returned",
+                  "description": "If set to true only items with existing presentation are returned",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
                     "ofType": null
                   },
-                  "defaultValue": "false"
+                  "defaultValue": "null"
                 },
                 {
                   "name": "includeTemplateIDs",
@@ -3770,6 +3732,22 @@
               "deprecationReason": null
             },
             {
+              "name": "rendered",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "JSON",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "template",
               "description": null,
               "args": [],
@@ -3840,13 +3818,13 @@
               "args": [
                 {
                   "name": "hasLayout",
-                  "description": "If set only items with existing presentation are returned",
+                  "description": "If set to true only items with existing presentation are returned",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
                     "ofType": null
                   },
-                  "defaultValue": "false"
+                  "defaultValue": "null"
                 },
                 {
                   "name": "includeTemplateIDs",
@@ -3885,13 +3863,13 @@
               "args": [
                 {
                   "name": "hasLayout",
-                  "description": "If set only items with existing presentation are returned",
+                  "description": "If set to true only items with existing presentation are returned",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
                     "ofType": null
                   },
-                  "defaultValue": "false"
+                  "defaultValue": "null"
                 },
                 {
                   "name": "includeTemplateIDs",
@@ -3919,10 +3897,10 @@
                 },
                 {
                   "name": "after",
-                  "description": "Skips children until after the given child ID. Use with first for pagination.",
+                  "description": "Cursor value. Use with first for pagination.",
                   "type": {
                     "kind": "SCALAR",
-                    "name": "ID",
+                    "name": "String",
                     "ofType": null
                   },
                   "defaultValue": "null"
@@ -3932,14 +3910,22 @@
                 "kind": "NON_NULL",
                 "name": null,
                 "ofType": {
-                  "kind": "LIST",
-                  "name": null,
-                  "ofType": {
-                    "kind": "INTERFACE",
-                    "name": "Item",
-                    "ofType": null
-                  }
+                  "kind": "OBJECT",
+                  "name": "ItemSearchResults",
+                  "ofType": null
                 }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "displayName",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
               },
               "isDeprecated": false,
               "deprecationReason": null
@@ -4020,13 +4006,13 @@
               "args": [
                 {
                   "name": "hasLayout",
-                  "description": "If set only items with existing presentation are returned",
+                  "description": "If set to true only items with existing presentation are returned",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
                     "ofType": null
                   },
-                  "defaultValue": "false"
+                  "defaultValue": "null"
                 },
                 {
                   "name": "includeTemplateIDs",
@@ -4215,6 +4201,22 @@
               "deprecationReason": null
             },
             {
+              "name": "rendered",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "JSON",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "shortDescription",
               "description": "ShortDescription (ID: {BE7E2D00-E405-4498-85F9-4F89D8EA2CFC}).",
               "args": [],
@@ -4314,13 +4316,13 @@
               "args": [
                 {
                   "name": "hasLayout",
-                  "description": "If set only items with existing presentation are returned",
+                  "description": "If set to true only items with existing presentation are returned",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
                     "ofType": null
                   },
-                  "defaultValue": "false"
+                  "defaultValue": "null"
                 },
                 {
                   "name": "includeTemplateIDs",
@@ -4359,13 +4361,13 @@
               "args": [
                 {
                   "name": "hasLayout",
-                  "description": "If set only items with existing presentation are returned",
+                  "description": "If set to true only items with existing presentation are returned",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
                     "ofType": null
                   },
-                  "defaultValue": "false"
+                  "defaultValue": "null"
                 },
                 {
                   "name": "includeTemplateIDs",
@@ -4393,10 +4395,10 @@
                 },
                 {
                   "name": "after",
-                  "description": "Skips children until after the given child ID. Use with first for pagination.",
+                  "description": "Cursor value. Use with first for pagination.",
                   "type": {
                     "kind": "SCALAR",
-                    "name": "ID",
+                    "name": "String",
                     "ofType": null
                   },
                   "defaultValue": "null"
@@ -4406,14 +4408,22 @@
                 "kind": "NON_NULL",
                 "name": null,
                 "ofType": {
-                  "kind": "LIST",
-                  "name": null,
-                  "ofType": {
-                    "kind": "INTERFACE",
-                    "name": "Item",
-                    "ofType": null
-                  }
+                  "kind": "OBJECT",
+                  "name": "ItemSearchResults",
+                  "ofType": null
                 }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "displayName",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
               },
               "isDeprecated": false,
               "deprecationReason": null
@@ -4494,13 +4504,13 @@
               "args": [
                 {
                   "name": "hasLayout",
-                  "description": "If set only items with existing presentation are returned",
+                  "description": "If set to true only items with existing presentation are returned",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
                     "ofType": null
                   },
-                  "defaultValue": "false"
+                  "defaultValue": "null"
                 },
                 {
                   "name": "includeTemplateIDs",
@@ -4665,6 +4675,22 @@
               "deprecationReason": null
             },
             {
+              "name": "rendered",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "JSON",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "template",
               "description": null,
               "args": [],
@@ -4740,13 +4766,13 @@
               "args": [
                 {
                   "name": "hasLayout",
-                  "description": "If set only items with existing presentation are returned",
+                  "description": "If set to true only items with existing presentation are returned",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
                     "ofType": null
                   },
-                  "defaultValue": "false"
+                  "defaultValue": "null"
                 },
                 {
                   "name": "includeTemplateIDs",
@@ -4785,13 +4811,13 @@
               "args": [
                 {
                   "name": "hasLayout",
-                  "description": "If set only items with existing presentation are returned",
+                  "description": "If set to true only items with existing presentation are returned",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
                     "ofType": null
                   },
-                  "defaultValue": "false"
+                  "defaultValue": "null"
                 },
                 {
                   "name": "includeTemplateIDs",
@@ -4819,10 +4845,10 @@
                 },
                 {
                   "name": "after",
-                  "description": "Skips children until after the given child ID. Use with first for pagination.",
+                  "description": "Cursor value. Use with first for pagination.",
                   "type": {
                     "kind": "SCALAR",
-                    "name": "ID",
+                    "name": "String",
                     "ofType": null
                   },
                   "defaultValue": "null"
@@ -4832,14 +4858,22 @@
                 "kind": "NON_NULL",
                 "name": null,
                 "ofType": {
-                  "kind": "LIST",
-                  "name": null,
-                  "ofType": {
-                    "kind": "INTERFACE",
-                    "name": "Item",
-                    "ofType": null
-                  }
+                  "kind": "OBJECT",
+                  "name": "ItemSearchResults",
+                  "ofType": null
                 }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "displayName",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
               },
               "isDeprecated": false,
               "deprecationReason": null
@@ -4908,13 +4942,13 @@
               "args": [
                 {
                   "name": "hasLayout",
-                  "description": "If set only items with existing presentation are returned",
+                  "description": "If set to true only items with existing presentation are returned",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
                     "ofType": null
                   },
-                  "defaultValue": "false"
+                  "defaultValue": "null"
                 },
                 {
                   "name": "includeTemplateIDs",
@@ -5079,6 +5113,22 @@
               "deprecationReason": null
             },
             {
+              "name": "rendered",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "JSON",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "template",
               "description": null,
               "args": [],
@@ -5154,13 +5204,13 @@
               "args": [
                 {
                   "name": "hasLayout",
-                  "description": "If set only items with existing presentation are returned",
+                  "description": "If set to true only items with existing presentation are returned",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
                     "ofType": null
                   },
-                  "defaultValue": "false"
+                  "defaultValue": "null"
                 },
                 {
                   "name": "includeTemplateIDs",
@@ -5199,13 +5249,13 @@
               "args": [
                 {
                   "name": "hasLayout",
-                  "description": "If set only items with existing presentation are returned",
+                  "description": "If set to true only items with existing presentation are returned",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
                     "ofType": null
                   },
-                  "defaultValue": "false"
+                  "defaultValue": "null"
                 },
                 {
                   "name": "includeTemplateIDs",
@@ -5233,10 +5283,10 @@
                 },
                 {
                   "name": "after",
-                  "description": "Skips children until after the given child ID. Use with first for pagination.",
+                  "description": "Cursor value. Use with first for pagination.",
                   "type": {
                     "kind": "SCALAR",
-                    "name": "ID",
+                    "name": "String",
                     "ofType": null
                   },
                   "defaultValue": "null"
@@ -5246,14 +5296,22 @@
                 "kind": "NON_NULL",
                 "name": null,
                 "ofType": {
-                  "kind": "LIST",
-                  "name": null,
-                  "ofType": {
-                    "kind": "INTERFACE",
-                    "name": "Item",
-                    "ofType": null
-                  }
+                  "kind": "OBJECT",
+                  "name": "ItemSearchResults",
+                  "ofType": null
                 }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "displayName",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
               },
               "isDeprecated": false,
               "deprecationReason": null
@@ -5322,13 +5380,13 @@
               "args": [
                 {
                   "name": "hasLayout",
-                  "description": "If set only items with existing presentation are returned",
+                  "description": "If set to true only items with existing presentation are returned",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
                     "ofType": null
                   },
-                  "defaultValue": "false"
+                  "defaultValue": "null"
                 },
                 {
                   "name": "includeTemplateIDs",
@@ -5481,6 +5539,22 @@
               "deprecationReason": null
             },
             {
+              "name": "rendered",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "JSON",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "template",
               "description": null,
               "args": [],
@@ -5551,13 +5625,13 @@
               "args": [
                 {
                   "name": "hasLayout",
-                  "description": "If set only items with existing presentation are returned",
+                  "description": "If set to true only items with existing presentation are returned",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
                     "ofType": null
                   },
-                  "defaultValue": "false"
+                  "defaultValue": "null"
                 },
                 {
                   "name": "includeTemplateIDs",
@@ -5596,13 +5670,13 @@
               "args": [
                 {
                   "name": "hasLayout",
-                  "description": "If set only items with existing presentation are returned",
+                  "description": "If set to true only items with existing presentation are returned",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
                     "ofType": null
                   },
-                  "defaultValue": "false"
+                  "defaultValue": "null"
                 },
                 {
                   "name": "includeTemplateIDs",
@@ -5630,10 +5704,10 @@
                 },
                 {
                   "name": "after",
-                  "description": "Skips children until after the given child ID. Use with first for pagination.",
+                  "description": "Cursor value. Use with first for pagination.",
                   "type": {
                     "kind": "SCALAR",
-                    "name": "ID",
+                    "name": "String",
                     "ofType": null
                   },
                   "defaultValue": "null"
@@ -5643,14 +5717,22 @@
                 "kind": "NON_NULL",
                 "name": null,
                 "ofType": {
-                  "kind": "LIST",
-                  "name": null,
-                  "ofType": {
-                    "kind": "INTERFACE",
-                    "name": "Item",
-                    "ofType": null
-                  }
+                  "kind": "OBJECT",
+                  "name": "ItemSearchResults",
+                  "ofType": null
                 }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "displayName",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
               },
               "isDeprecated": false,
               "deprecationReason": null
@@ -5719,13 +5801,13 @@
               "args": [
                 {
                   "name": "hasLayout",
-                  "description": "If set only items with existing presentation are returned",
+                  "description": "If set to true only items with existing presentation are returned",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
                     "ofType": null
                   },
-                  "defaultValue": "false"
+                  "defaultValue": "null"
                 },
                 {
                   "name": "includeTemplateIDs",
@@ -5902,6 +5984,22 @@
               "deprecationReason": null
             },
             {
+              "name": "rendered",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "JSON",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "template",
               "description": null,
               "args": [],
@@ -5984,13 +6082,13 @@
               "args": [
                 {
                   "name": "hasLayout",
-                  "description": "If set only items with existing presentation are returned",
+                  "description": "If set to true only items with existing presentation are returned",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
                     "ofType": null
                   },
-                  "defaultValue": "false"
+                  "defaultValue": "null"
                 },
                 {
                   "name": "includeTemplateIDs",
@@ -6029,13 +6127,13 @@
               "args": [
                 {
                   "name": "hasLayout",
-                  "description": "If set only items with existing presentation are returned",
+                  "description": "If set to true only items with existing presentation are returned",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
                     "ofType": null
                   },
-                  "defaultValue": "false"
+                  "defaultValue": "null"
                 },
                 {
                   "name": "includeTemplateIDs",
@@ -6063,10 +6161,10 @@
                 },
                 {
                   "name": "after",
-                  "description": "Skips children until after the given child ID. Use with first for pagination.",
+                  "description": "Cursor value. Use with first for pagination.",
                   "type": {
                     "kind": "SCALAR",
-                    "name": "ID",
+                    "name": "String",
                     "ofType": null
                   },
                   "defaultValue": "null"
@@ -6076,14 +6174,22 @@
                 "kind": "NON_NULL",
                 "name": null,
                 "ofType": {
-                  "kind": "LIST",
-                  "name": null,
-                  "ofType": {
-                    "kind": "INTERFACE",
-                    "name": "Item",
-                    "ofType": null
-                  }
+                  "kind": "OBJECT",
+                  "name": "ItemSearchResults",
+                  "ofType": null
                 }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "displayName",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
               },
               "isDeprecated": false,
               "deprecationReason": null
@@ -6152,13 +6258,13 @@
               "args": [
                 {
                   "name": "hasLayout",
-                  "description": "If set only items with existing presentation are returned",
+                  "description": "If set to true only items with existing presentation are returned",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
                     "ofType": null
                   },
-                  "defaultValue": "false"
+                  "defaultValue": "null"
                 },
                 {
                   "name": "includeTemplateIDs",
@@ -6304,6 +6410,22 @@
                 "ofType": {
                   "kind": "SCALAR",
                   "name": "String",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "rendered",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "JSON",
                   "ofType": null
                 }
               },
@@ -6381,13 +6503,13 @@
               "args": [
                 {
                   "name": "hasLayout",
-                  "description": "If set only items with existing presentation are returned",
+                  "description": "If set to true only items with existing presentation are returned",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
                     "ofType": null
                   },
-                  "defaultValue": "false"
+                  "defaultValue": "null"
                 },
                 {
                   "name": "includeTemplateIDs",
@@ -6426,13 +6548,13 @@
               "args": [
                 {
                   "name": "hasLayout",
-                  "description": "If set only items with existing presentation are returned",
+                  "description": "If set to true only items with existing presentation are returned",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
                     "ofType": null
                   },
-                  "defaultValue": "false"
+                  "defaultValue": "null"
                 },
                 {
                   "name": "includeTemplateIDs",
@@ -6460,10 +6582,10 @@
                 },
                 {
                   "name": "after",
-                  "description": "Skips children until after the given child ID. Use with first for pagination.",
+                  "description": "Cursor value. Use with first for pagination.",
                   "type": {
                     "kind": "SCALAR",
-                    "name": "ID",
+                    "name": "String",
                     "ofType": null
                   },
                   "defaultValue": "null"
@@ -6473,14 +6595,22 @@
                 "kind": "NON_NULL",
                 "name": null,
                 "ofType": {
-                  "kind": "LIST",
-                  "name": null,
-                  "ofType": {
-                    "kind": "INTERFACE",
-                    "name": "Item",
-                    "ofType": null
-                  }
+                  "kind": "OBJECT",
+                  "name": "ItemSearchResults",
+                  "ofType": null
                 }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "displayName",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
               },
               "isDeprecated": false,
               "deprecationReason": null
@@ -6549,13 +6679,13 @@
               "args": [
                 {
                   "name": "hasLayout",
-                  "description": "If set only items with existing presentation are returned",
+                  "description": "If set to true only items with existing presentation are returned",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
                     "ofType": null
                   },
-                  "defaultValue": "false"
+                  "defaultValue": "null"
                 },
                 {
                   "name": "includeTemplateIDs",
@@ -6708,6 +6838,22 @@
               "deprecationReason": null
             },
             {
+              "name": "rendered",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "JSON",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "template",
               "description": null,
               "args": [],
@@ -6778,13 +6924,13 @@
               "args": [
                 {
                   "name": "hasLayout",
-                  "description": "If set only items with existing presentation are returned",
+                  "description": "If set to true only items with existing presentation are returned",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
                     "ofType": null
                   },
-                  "defaultValue": "false"
+                  "defaultValue": "null"
                 },
                 {
                   "name": "includeTemplateIDs",
@@ -6823,13 +6969,13 @@
               "args": [
                 {
                   "name": "hasLayout",
-                  "description": "If set only items with existing presentation are returned",
+                  "description": "If set to true only items with existing presentation are returned",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
                     "ofType": null
                   },
-                  "defaultValue": "false"
+                  "defaultValue": "null"
                 },
                 {
                   "name": "includeTemplateIDs",
@@ -6857,10 +7003,10 @@
                 },
                 {
                   "name": "after",
-                  "description": "Skips children until after the given child ID. Use with first for pagination.",
+                  "description": "Cursor value. Use with first for pagination.",
                   "type": {
                     "kind": "SCALAR",
-                    "name": "ID",
+                    "name": "String",
                     "ofType": null
                   },
                   "defaultValue": "null"
@@ -6870,14 +7016,22 @@
                 "kind": "NON_NULL",
                 "name": null,
                 "ofType": {
-                  "kind": "LIST",
-                  "name": null,
-                  "ofType": {
-                    "kind": "INTERFACE",
-                    "name": "Item",
-                    "ofType": null
-                  }
+                  "kind": "OBJECT",
+                  "name": "ItemSearchResults",
+                  "ofType": null
                 }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "displayName",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
               },
               "isDeprecated": false,
               "deprecationReason": null
@@ -6946,13 +7100,13 @@
               "args": [
                 {
                   "name": "hasLayout",
-                  "description": "If set only items with existing presentation are returned",
+                  "description": "If set to true only items with existing presentation are returned",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
                     "ofType": null
                   },
-                  "defaultValue": "false"
+                  "defaultValue": "null"
                 },
                 {
                   "name": "includeTemplateIDs",
@@ -7117,6 +7271,22 @@
               "deprecationReason": null
             },
             {
+              "name": "rendered",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "JSON",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "template",
               "description": null,
               "args": [],
@@ -7192,13 +7362,13 @@
               "args": [
                 {
                   "name": "hasLayout",
-                  "description": "If set only items with existing presentation are returned",
+                  "description": "If set to true only items with existing presentation are returned",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
                     "ofType": null
                   },
-                  "defaultValue": "false"
+                  "defaultValue": "null"
                 },
                 {
                   "name": "includeTemplateIDs",
@@ -7237,13 +7407,13 @@
               "args": [
                 {
                   "name": "hasLayout",
-                  "description": "If set only items with existing presentation are returned",
+                  "description": "If set to true only items with existing presentation are returned",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
                     "ofType": null
                   },
-                  "defaultValue": "false"
+                  "defaultValue": "null"
                 },
                 {
                   "name": "includeTemplateIDs",
@@ -7271,10 +7441,10 @@
                 },
                 {
                   "name": "after",
-                  "description": "Skips children until after the given child ID. Use with first for pagination.",
+                  "description": "Cursor value. Use with first for pagination.",
                   "type": {
                     "kind": "SCALAR",
-                    "name": "ID",
+                    "name": "String",
                     "ofType": null
                   },
                   "defaultValue": "null"
@@ -7284,14 +7454,22 @@
                 "kind": "NON_NULL",
                 "name": null,
                 "ofType": {
-                  "kind": "LIST",
-                  "name": null,
-                  "ofType": {
-                    "kind": "INTERFACE",
-                    "name": "Item",
-                    "ofType": null
-                  }
+                  "kind": "OBJECT",
+                  "name": "ItemSearchResults",
+                  "ofType": null
                 }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "displayName",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
               },
               "isDeprecated": false,
               "deprecationReason": null
@@ -7360,13 +7538,13 @@
               "args": [
                 {
                   "name": "hasLayout",
-                  "description": "If set only items with existing presentation are returned",
+                  "description": "If set to true only items with existing presentation are returned",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
                     "ofType": null
                   },
-                  "defaultValue": "false"
+                  "defaultValue": "null"
                 },
                 {
                   "name": "includeTemplateIDs",
@@ -7512,6 +7690,22 @@
                 "ofType": {
                   "kind": "SCALAR",
                   "name": "String",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "rendered",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "JSON",
                   "ofType": null
                 }
               },
@@ -7589,13 +7783,13 @@
               "args": [
                 {
                   "name": "hasLayout",
-                  "description": "If set only items with existing presentation are returned",
+                  "description": "If set to true only items with existing presentation are returned",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
                     "ofType": null
                   },
-                  "defaultValue": "false"
+                  "defaultValue": "null"
                 },
                 {
                   "name": "includeTemplateIDs",
@@ -7634,13 +7828,13 @@
               "args": [
                 {
                   "name": "hasLayout",
-                  "description": "If set only items with existing presentation are returned",
+                  "description": "If set to true only items with existing presentation are returned",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
                     "ofType": null
                   },
-                  "defaultValue": "false"
+                  "defaultValue": "null"
                 },
                 {
                   "name": "includeTemplateIDs",
@@ -7668,10 +7862,10 @@
                 },
                 {
                   "name": "after",
-                  "description": "Skips children until after the given child ID. Use with first for pagination.",
+                  "description": "Cursor value. Use with first for pagination.",
                   "type": {
                     "kind": "SCALAR",
-                    "name": "ID",
+                    "name": "String",
                     "ofType": null
                   },
                   "defaultValue": "null"
@@ -7681,14 +7875,22 @@
                 "kind": "NON_NULL",
                 "name": null,
                 "ofType": {
-                  "kind": "LIST",
-                  "name": null,
-                  "ofType": {
-                    "kind": "INTERFACE",
-                    "name": "Item",
-                    "ofType": null
-                  }
+                  "kind": "OBJECT",
+                  "name": "ItemSearchResults",
+                  "ofType": null
                 }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "displayName",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
               },
               "isDeprecated": false,
               "deprecationReason": null
@@ -7757,13 +7959,13 @@
               "args": [
                 {
                   "name": "hasLayout",
-                  "description": "If set only items with existing presentation are returned",
+                  "description": "If set to true only items with existing presentation are returned",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
                     "ofType": null
                   },
-                  "defaultValue": "false"
+                  "defaultValue": "null"
                 },
                 {
                   "name": "includeTemplateIDs",
@@ -7909,6 +8111,22 @@
                 "ofType": {
                   "kind": "SCALAR",
                   "name": "String",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "rendered",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "JSON",
                   "ofType": null
                 }
               },
@@ -7989,8 +8207,8 @@
         },
         {
           "kind": "OBJECT",
-          "name": "PromoCardFolder",
-          "description": "/sitecore/templates/Feature/BasicContent/Promo Card Folder template (ID: {40A33364-F008-476A-95AD-22EFC6E4D93E}).",
+          "name": "Route",
+          "description": "/sitecore/templates/Foundation/JavaScript Services/Route template (ID: {B36BA9FD-0DC0-49C8-BEA2-E55D70E6AF28}).",
           "fields": [
             {
               "name": "ancestors",
@@ -7998,13 +8216,13 @@
               "args": [
                 {
                   "name": "hasLayout",
-                  "description": "If set only items with existing presentation are returned",
+                  "description": "If set to true only items with existing presentation are returned",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
                     "ofType": null
                   },
-                  "defaultValue": "false"
+                  "defaultValue": "null"
                 },
                 {
                   "name": "includeTemplateIDs",
@@ -8043,13 +8261,13 @@
               "args": [
                 {
                   "name": "hasLayout",
-                  "description": "If set only items with existing presentation are returned",
+                  "description": "If set to true only items with existing presentation are returned",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
                     "ofType": null
                   },
-                  "defaultValue": "false"
+                  "defaultValue": "null"
                 },
                 {
                   "name": "includeTemplateIDs",
@@ -8077,10 +8295,10 @@
                 },
                 {
                   "name": "after",
-                  "description": "Skips children until after the given child ID. Use with first for pagination.",
+                  "description": "Cursor value. Use with first for pagination.",
                   "type": {
                     "kind": "SCALAR",
-                    "name": "ID",
+                    "name": "String",
                     "ofType": null
                   },
                   "defaultValue": "null"
@@ -8090,14 +8308,22 @@
                 "kind": "NON_NULL",
                 "name": null,
                 "ofType": {
-                  "kind": "LIST",
-                  "name": null,
-                  "ofType": {
-                    "kind": "INTERFACE",
-                    "name": "Item",
-                    "ofType": null
-                  }
+                  "kind": "OBJECT",
+                  "name": "ItemSearchResults",
+                  "ofType": null
                 }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "displayName",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
               },
               "isDeprecated": false,
               "deprecationReason": null
@@ -8166,13 +8392,13 @@
               "args": [
                 {
                   "name": "hasLayout",
-                  "description": "If set only items with existing presentation are returned",
+                  "description": "If set to true only items with existing presentation are returned",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
                     "ofType": null
                   },
-                  "defaultValue": "false"
+                  "defaultValue": "null"
                 },
                 {
                   "name": "includeTemplateIDs",
@@ -8325,6 +8551,876 @@
               "deprecationReason": null
             },
             {
+              "name": "rendered",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "JSON",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "template",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "ItemTemplate",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "url",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "ItemUrl",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "version",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [
+            {
+              "kind": "INTERFACE",
+              "name": "Item",
+              "ofType": null
+            }
+          ],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "RenderEngineType",
+          "description": "/sitecore/templates/Foundation/JavaScript Services/Render Engine Type template (ID: {7FEC3963-0AC6-4743-B02C-35E6971300ED}).",
+          "fields": [
+            {
+              "name": "ancestors",
+              "description": null,
+              "args": [
+                {
+                  "name": "hasLayout",
+                  "description": "If set to true only items with existing presentation are returned",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": "null"
+                },
+                {
+                  "name": "includeTemplateIDs",
+                  "description": "Only consider child items with these template IDs.",
+                  "type": {
+                    "kind": "LIST",
+                    "name": null,
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "String",
+                      "ofType": null
+                    }
+                  },
+                  "defaultValue": "[]"
+                }
+              ],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "LIST",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INTERFACE",
+                    "name": "Item",
+                    "ofType": null
+                  }
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "children",
+              "description": null,
+              "args": [
+                {
+                  "name": "hasLayout",
+                  "description": "If set to true only items with existing presentation are returned",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": "null"
+                },
+                {
+                  "name": "includeTemplateIDs",
+                  "description": "Only consider child items with these template IDs.",
+                  "type": {
+                    "kind": "LIST",
+                    "name": null,
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "String",
+                      "ofType": null
+                    }
+                  },
+                  "defaultValue": "[]"
+                },
+                {
+                  "name": "first",
+                  "description": "Limits the results to the first n children. Use with after for pagination.",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  },
+                  "defaultValue": "null"
+                },
+                {
+                  "name": "after",
+                  "description": "Cursor value. Use with first for pagination.",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": "null"
+                }
+              ],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "ItemSearchResults",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "displayName",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "engineTypeName",
+              "description": "Engine Type Name (ID: {90C6AAF1-9962-4DC9-A730-5E5952B3AE51}).",
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "TextField",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "field",
+              "description": null,
+              "args": [
+                {
+                  "name": "name",
+                  "description": null,
+                  "type": {
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "String",
+                      "ofType": null
+                    }
+                  },
+                  "defaultValue": "null"
+                }
+              ],
+              "type": {
+                "kind": "INTERFACE",
+                "name": "ItemField",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "fields",
+              "description": null,
+              "args": [
+                {
+                  "name": "ownFields",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": "false"
+                }
+              ],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "LIST",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INTERFACE",
+                    "name": "ItemField",
+                    "ofType": null
+                  }
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "hasChildren",
+              "description": null,
+              "args": [
+                {
+                  "name": "hasLayout",
+                  "description": "If set to true only items with existing presentation are returned",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": "null"
+                },
+                {
+                  "name": "includeTemplateIDs",
+                  "description": "Only consider child items with these template IDs.",
+                  "type": {
+                    "kind": "LIST",
+                    "name": null,
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "String",
+                      "ofType": null
+                    }
+                  },
+                  "defaultValue": "[]"
+                }
+              ],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "Boolean",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "id",
+              "description": null,
+              "args": [
+                {
+                  "name": "format",
+                  "description": ".NET GUID format to use. N = short id, B = long id, etc",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": "\"N\""
+                }
+              ],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "ID",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "itemUri",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "language",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "ItemLanguage",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "languages",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "LIST",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INTERFACE",
+                    "name": "Item",
+                    "ofType": null
+                  }
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "name",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "parent",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "INTERFACE",
+                "name": "Item",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "path",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "rendered",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "JSON",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "template",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "ItemTemplate",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "url",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "ItemUrl",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "version",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [
+            {
+              "kind": "INTERFACE",
+              "name": "Item",
+              "ofType": null
+            }
+          ],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "PromoCardFolder",
+          "description": "/sitecore/templates/Feature/BasicContent/Promo Card Folder template (ID: {40A33364-F008-476A-95AD-22EFC6E4D93E}).",
+          "fields": [
+            {
+              "name": "ancestors",
+              "description": null,
+              "args": [
+                {
+                  "name": "hasLayout",
+                  "description": "If set to true only items with existing presentation are returned",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": "null"
+                },
+                {
+                  "name": "includeTemplateIDs",
+                  "description": "Only consider child items with these template IDs.",
+                  "type": {
+                    "kind": "LIST",
+                    "name": null,
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "String",
+                      "ofType": null
+                    }
+                  },
+                  "defaultValue": "[]"
+                }
+              ],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "LIST",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INTERFACE",
+                    "name": "Item",
+                    "ofType": null
+                  }
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "children",
+              "description": null,
+              "args": [
+                {
+                  "name": "hasLayout",
+                  "description": "If set to true only items with existing presentation are returned",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": "null"
+                },
+                {
+                  "name": "includeTemplateIDs",
+                  "description": "Only consider child items with these template IDs.",
+                  "type": {
+                    "kind": "LIST",
+                    "name": null,
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "String",
+                      "ofType": null
+                    }
+                  },
+                  "defaultValue": "[]"
+                },
+                {
+                  "name": "first",
+                  "description": "Limits the results to the first n children. Use with after for pagination.",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  },
+                  "defaultValue": "null"
+                },
+                {
+                  "name": "after",
+                  "description": "Cursor value. Use with first for pagination.",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": "null"
+                }
+              ],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "ItemSearchResults",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "displayName",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "field",
+              "description": null,
+              "args": [
+                {
+                  "name": "name",
+                  "description": null,
+                  "type": {
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "String",
+                      "ofType": null
+                    }
+                  },
+                  "defaultValue": "null"
+                }
+              ],
+              "type": {
+                "kind": "INTERFACE",
+                "name": "ItemField",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "fields",
+              "description": null,
+              "args": [
+                {
+                  "name": "ownFields",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": "false"
+                }
+              ],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "LIST",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INTERFACE",
+                    "name": "ItemField",
+                    "ofType": null
+                  }
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "hasChildren",
+              "description": null,
+              "args": [
+                {
+                  "name": "hasLayout",
+                  "description": "If set to true only items with existing presentation are returned",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": "null"
+                },
+                {
+                  "name": "includeTemplateIDs",
+                  "description": "Only consider child items with these template IDs.",
+                  "type": {
+                    "kind": "LIST",
+                    "name": null,
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "String",
+                      "ofType": null
+                    }
+                  },
+                  "defaultValue": "[]"
+                }
+              ],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "Boolean",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "id",
+              "description": null,
+              "args": [
+                {
+                  "name": "format",
+                  "description": ".NET GUID format to use. N = short id, B = long id, etc",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": "\"N\""
+                }
+              ],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "ID",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "itemUri",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "language",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "ItemLanguage",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "languages",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "LIST",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INTERFACE",
+                    "name": "Item",
+                    "ofType": null
+                  }
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "name",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "parent",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "INTERFACE",
+                "name": "Item",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "path",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "rendered",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "JSON",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "template",
               "description": null,
               "args": [],
@@ -8395,13 +9491,13 @@
               "args": [
                 {
                   "name": "hasLayout",
-                  "description": "If set only items with existing presentation are returned",
+                  "description": "If set to true only items with existing presentation are returned",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
                     "ofType": null
                   },
-                  "defaultValue": "false"
+                  "defaultValue": "null"
                 },
                 {
                   "name": "includeTemplateIDs",
@@ -8440,13 +9536,13 @@
               "args": [
                 {
                   "name": "hasLayout",
-                  "description": "If set only items with existing presentation are returned",
+                  "description": "If set to true only items with existing presentation are returned",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
                     "ofType": null
                   },
-                  "defaultValue": "false"
+                  "defaultValue": "null"
                 },
                 {
                   "name": "includeTemplateIDs",
@@ -8474,10 +9570,10 @@
                 },
                 {
                   "name": "after",
-                  "description": "Skips children until after the given child ID. Use with first for pagination.",
+                  "description": "Cursor value. Use with first for pagination.",
                   "type": {
                     "kind": "SCALAR",
-                    "name": "ID",
+                    "name": "String",
                     "ofType": null
                   },
                   "defaultValue": "null"
@@ -8487,14 +9583,22 @@
                 "kind": "NON_NULL",
                 "name": null,
                 "ofType": {
-                  "kind": "LIST",
-                  "name": null,
-                  "ofType": {
-                    "kind": "INTERFACE",
-                    "name": "Item",
-                    "ofType": null
-                  }
+                  "kind": "OBJECT",
+                  "name": "ItemSearchResults",
+                  "ofType": null
                 }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "displayName",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
               },
               "isDeprecated": false,
               "deprecationReason": null
@@ -8563,13 +9667,13 @@
               "args": [
                 {
                   "name": "hasLayout",
-                  "description": "If set only items with existing presentation are returned",
+                  "description": "If set to true only items with existing presentation are returned",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
                     "ofType": null
                   },
-                  "defaultValue": "false"
+                  "defaultValue": "null"
                 },
                 {
                   "name": "includeTemplateIDs",
@@ -8758,6 +9862,22 @@
               "deprecationReason": null
             },
             {
+              "name": "rendered",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "JSON",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "template",
               "description": null,
               "args": [],
@@ -8840,13 +9960,13 @@
               "args": [
                 {
                   "name": "hasLayout",
-                  "description": "If set only items with existing presentation are returned",
+                  "description": "If set to true only items with existing presentation are returned",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
                     "ofType": null
                   },
-                  "defaultValue": "false"
+                  "defaultValue": "null"
                 },
                 {
                   "name": "includeTemplateIDs",
@@ -8885,13 +10005,13 @@
               "args": [
                 {
                   "name": "hasLayout",
-                  "description": "If set only items with existing presentation are returned",
+                  "description": "If set to true only items with existing presentation are returned",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
                     "ofType": null
                   },
-                  "defaultValue": "false"
+                  "defaultValue": "null"
                 },
                 {
                   "name": "includeTemplateIDs",
@@ -8919,10 +10039,10 @@
                 },
                 {
                   "name": "after",
-                  "description": "Skips children until after the given child ID. Use with first for pagination.",
+                  "description": "Cursor value. Use with first for pagination.",
                   "type": {
                     "kind": "SCALAR",
-                    "name": "ID",
+                    "name": "String",
                     "ofType": null
                   },
                   "defaultValue": "null"
@@ -8932,14 +10052,22 @@
                 "kind": "NON_NULL",
                 "name": null,
                 "ofType": {
-                  "kind": "LIST",
-                  "name": null,
-                  "ofType": {
-                    "kind": "INTERFACE",
-                    "name": "Item",
-                    "ofType": null
-                  }
+                  "kind": "OBJECT",
+                  "name": "ItemSearchResults",
+                  "ofType": null
                 }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "displayName",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
               },
               "isDeprecated": false,
               "deprecationReason": null
@@ -9008,13 +10136,13 @@
               "args": [
                 {
                   "name": "hasLayout",
-                  "description": "If set only items with existing presentation are returned",
+                  "description": "If set to true only items with existing presentation are returned",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
                     "ofType": null
                   },
-                  "defaultValue": "false"
+                  "defaultValue": "null"
                 },
                 {
                   "name": "includeTemplateIDs",
@@ -9179,6 +10307,22 @@
               "deprecationReason": null
             },
             {
+              "name": "rendered",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "JSON",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "template",
               "description": null,
               "args": [],
@@ -9254,13 +10398,13 @@
               "args": [
                 {
                   "name": "hasLayout",
-                  "description": "If set only items with existing presentation are returned",
+                  "description": "If set to true only items with existing presentation are returned",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
                     "ofType": null
                   },
-                  "defaultValue": "false"
+                  "defaultValue": "null"
                 },
                 {
                   "name": "includeTemplateIDs",
@@ -9299,13 +10443,13 @@
               "args": [
                 {
                   "name": "hasLayout",
-                  "description": "If set only items with existing presentation are returned",
+                  "description": "If set to true only items with existing presentation are returned",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
                     "ofType": null
                   },
-                  "defaultValue": "false"
+                  "defaultValue": "null"
                 },
                 {
                   "name": "includeTemplateIDs",
@@ -9333,10 +10477,10 @@
                 },
                 {
                   "name": "after",
-                  "description": "Skips children until after the given child ID. Use with first for pagination.",
+                  "description": "Cursor value. Use with first for pagination.",
                   "type": {
                     "kind": "SCALAR",
-                    "name": "ID",
+                    "name": "String",
                     "ofType": null
                   },
                   "defaultValue": "null"
@@ -9346,14 +10490,22 @@
                 "kind": "NON_NULL",
                 "name": null,
                 "ofType": {
-                  "kind": "LIST",
-                  "name": null,
-                  "ofType": {
-                    "kind": "INTERFACE",
-                    "name": "Item",
-                    "ofType": null
-                  }
+                  "kind": "OBJECT",
+                  "name": "ItemSearchResults",
+                  "ofType": null
                 }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "displayName",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
               },
               "isDeprecated": false,
               "deprecationReason": null
@@ -9434,13 +10586,13 @@
               "args": [
                 {
                   "name": "hasLayout",
-                  "description": "If set only items with existing presentation are returned",
+                  "description": "If set to true only items with existing presentation are returned",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
                     "ofType": null
                   },
-                  "defaultValue": "false"
+                  "defaultValue": "null"
                 },
                 {
                   "name": "includeTemplateIDs",
@@ -9629,6 +10781,22 @@
               "deprecationReason": null
             },
             {
+              "name": "rendered",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "JSON",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "shortDescription",
               "description": "ShortDescription (ID: {BE7E2D00-E405-4498-85F9-4F89D8EA2CFC}).",
               "args": [],
@@ -9728,13 +10896,13 @@
               "args": [
                 {
                   "name": "hasLayout",
-                  "description": "If set only items with existing presentation are returned",
+                  "description": "If set to true only items with existing presentation are returned",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
                     "ofType": null
                   },
-                  "defaultValue": "false"
+                  "defaultValue": "null"
                 },
                 {
                   "name": "includeTemplateIDs",
@@ -9773,13 +10941,13 @@
               "args": [
                 {
                   "name": "hasLayout",
-                  "description": "If set only items with existing presentation are returned",
+                  "description": "If set to true only items with existing presentation are returned",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
                     "ofType": null
                   },
-                  "defaultValue": "false"
+                  "defaultValue": "null"
                 },
                 {
                   "name": "includeTemplateIDs",
@@ -9807,10 +10975,10 @@
                 },
                 {
                   "name": "after",
-                  "description": "Skips children until after the given child ID. Use with first for pagination.",
+                  "description": "Cursor value. Use with first for pagination.",
                   "type": {
                     "kind": "SCALAR",
-                    "name": "ID",
+                    "name": "String",
                     "ofType": null
                   },
                   "defaultValue": "null"
@@ -9820,14 +10988,22 @@
                 "kind": "NON_NULL",
                 "name": null,
                 "ofType": {
-                  "kind": "LIST",
-                  "name": null,
-                  "ofType": {
-                    "kind": "INTERFACE",
-                    "name": "Item",
-                    "ofType": null
-                  }
+                  "kind": "OBJECT",
+                  "name": "ItemSearchResults",
+                  "ofType": null
                 }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "displayName",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
               },
               "isDeprecated": false,
               "deprecationReason": null
@@ -9896,13 +11072,13 @@
               "args": [
                 {
                   "name": "hasLayout",
-                  "description": "If set only items with existing presentation are returned",
+                  "description": "If set to true only items with existing presentation are returned",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
                     "ofType": null
                   },
-                  "defaultValue": "false"
+                  "defaultValue": "null"
                 },
                 {
                   "name": "includeTemplateIDs",
@@ -10048,6 +11224,22 @@
                 "ofType": {
                   "kind": "SCALAR",
                   "name": "String",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "rendered",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "JSON",
                   "ofType": null
                 }
               },
@@ -10125,13 +11317,13 @@
               "args": [
                 {
                   "name": "hasLayout",
-                  "description": "If set only items with existing presentation are returned",
+                  "description": "If set to true only items with existing presentation are returned",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
                     "ofType": null
                   },
-                  "defaultValue": "false"
+                  "defaultValue": "null"
                 },
                 {
                   "name": "includeTemplateIDs",
@@ -10170,13 +11362,13 @@
               "args": [
                 {
                   "name": "hasLayout",
-                  "description": "If set only items with existing presentation are returned",
+                  "description": "If set to true only items with existing presentation are returned",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
                     "ofType": null
                   },
-                  "defaultValue": "false"
+                  "defaultValue": "null"
                 },
                 {
                   "name": "includeTemplateIDs",
@@ -10204,10 +11396,10 @@
                 },
                 {
                   "name": "after",
-                  "description": "Skips children until after the given child ID. Use with first for pagination.",
+                  "description": "Cursor value. Use with first for pagination.",
                   "type": {
                     "kind": "SCALAR",
-                    "name": "ID",
+                    "name": "String",
                     "ofType": null
                   },
                   "defaultValue": "null"
@@ -10217,14 +11409,22 @@
                 "kind": "NON_NULL",
                 "name": null,
                 "ofType": {
-                  "kind": "LIST",
-                  "name": null,
-                  "ofType": {
-                    "kind": "INTERFACE",
-                    "name": "Item",
-                    "ofType": null
-                  }
+                  "kind": "OBJECT",
+                  "name": "ItemSearchResults",
+                  "ofType": null
                 }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "displayName",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
               },
               "isDeprecated": false,
               "deprecationReason": null
@@ -10293,13 +11493,13 @@
               "args": [
                 {
                   "name": "hasLayout",
-                  "description": "If set only items with existing presentation are returned",
+                  "description": "If set to true only items with existing presentation are returned",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
                     "ofType": null
                   },
-                  "defaultValue": "false"
+                  "defaultValue": "null"
                 },
                 {
                   "name": "includeTemplateIDs",
@@ -10445,6 +11645,22 @@
                 "ofType": {
                   "kind": "SCALAR",
                   "name": "String",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "rendered",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "JSON",
                   "ofType": null
                 }
               },
@@ -10534,13 +11750,13 @@
               "args": [
                 {
                   "name": "hasLayout",
-                  "description": "If set only items with existing presentation are returned",
+                  "description": "If set to true only items with existing presentation are returned",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
                     "ofType": null
                   },
-                  "defaultValue": "false"
+                  "defaultValue": "null"
                 },
                 {
                   "name": "includeTemplateIDs",
@@ -10603,13 +11819,13 @@
               "args": [
                 {
                   "name": "hasLayout",
-                  "description": "If set only items with existing presentation are returned",
+                  "description": "If set to true only items with existing presentation are returned",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
                     "ofType": null
                   },
-                  "defaultValue": "false"
+                  "defaultValue": "null"
                 },
                 {
                   "name": "includeTemplateIDs",
@@ -10637,10 +11853,10 @@
                 },
                 {
                   "name": "after",
-                  "description": "Skips children until after the given child ID. Use with first for pagination.",
+                  "description": "Cursor value. Use with first for pagination.",
                   "type": {
                     "kind": "SCALAR",
-                    "name": "ID",
+                    "name": "String",
                     "ofType": null
                   },
                   "defaultValue": "null"
@@ -10650,13 +11866,9 @@
                 "kind": "NON_NULL",
                 "name": null,
                 "ofType": {
-                  "kind": "LIST",
-                  "name": null,
-                  "ofType": {
-                    "kind": "INTERFACE",
-                    "name": "Item",
-                    "ofType": null
-                  }
+                  "kind": "OBJECT",
+                  "name": "ItemSearchResults",
+                  "ofType": null
                 }
               },
               "isDeprecated": false,
@@ -10771,6 +11983,18 @@
               "deprecationReason": null
             },
             {
+              "name": "displayName",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "editable",
               "description": "Editable (ID: {308E88F5-CD6E-4F8F-BAFE-95A47DEDEFDC}).",
               "args": [],
@@ -10870,13 +12094,13 @@
               "args": [
                 {
                   "name": "hasLayout",
-                  "description": "If set only items with existing presentation are returned",
+                  "description": "If set to true only items with existing presentation are returned",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
                     "ofType": null
                   },
-                  "defaultValue": "false"
+                  "defaultValue": "null"
                 },
                 {
                   "name": "includeTemplateIDs",
@@ -11101,12 +12325,855 @@
               "deprecationReason": null
             },
             {
+              "name": "rendered",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "JSON",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "renderingContentsResolver",
               "description": "Rendering Contents Resolver (ID: {B0B15510-B138-470E-8F33-8DA2E228AAFE}).",
               "args": [],
               "type": {
                 "kind": "OBJECT",
                 "name": "LookupField",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "template",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "ItemTemplate",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "url",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "ItemUrl",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "varyByData",
+              "description": "VaryByData (ID: {8B6D532B-6128-4486-A044-CA06D90948BA}).",
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "CheckboxField",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "varyByDevice",
+              "description": "VaryByDevice (ID: {C98CF969-BA71-42DA-833D-B3FC1368BA27}).",
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "CheckboxField",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "varyByLogin",
+              "description": "VaryByLogin (ID: {8D9232B0-613F-440B-A2FA-DCDD80FBD33E}).",
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "CheckboxField",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "varyByParm",
+              "description": "VaryByParm (ID: {3AD2506A-DC39-4B1E-959F-9D524ADDBF50}).",
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "CheckboxField",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "varyByQueryString",
+              "description": "VaryByQueryString (ID: {1084D3D2-0457-456A-ABBC-EB4CC0966072}).",
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "CheckboxField",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "varyByUser",
+              "description": "VaryByUser (ID: {0E54A8DC-72AD-4372-A7C7-BB4773FAD44D}).",
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "CheckboxField",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "version",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            }
+          ],
+          "inputFields": null,
+          "interfaces": [
+            {
+              "kind": "INTERFACE",
+              "name": "RenderingOptions",
+              "ofType": null
+            },
+            {
+              "kind": "INTERFACE",
+              "name": "Caching",
+              "ofType": null
+            },
+            {
+              "kind": "INTERFACE",
+              "name": "Item",
+              "ofType": null
+            }
+          ],
+          "enumValues": null,
+          "possibleTypes": null
+        },
+        {
+          "kind": "OBJECT",
+          "name": "JavaScriptRendering",
+          "description": "/sitecore/templates/Foundation/JavaScript Services/JavaScript Rendering template (ID: {B1C80C94-792D-44DA-861E-557C6E1915F2}).",
+          "fields": [
+            {
+              "name": "addFieldEditorButton",
+              "description": "AddFieldEditorButton (ID: {19D095B4-7621-4222-A89B-505289650792}).",
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "CheckboxField",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "ancestors",
+              "description": null,
+              "args": [
+                {
+                  "name": "hasLayout",
+                  "description": "If set to true only items with existing presentation are returned",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": "null"
+                },
+                {
+                  "name": "includeTemplateIDs",
+                  "description": "Only consider child items with these template IDs.",
+                  "type": {
+                    "kind": "LIST",
+                    "name": null,
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "String",
+                      "ofType": null
+                    }
+                  },
+                  "defaultValue": "[]"
+                }
+              ],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "LIST",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INTERFACE",
+                    "name": "Item",
+                    "ofType": null
+                  }
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "cacheable",
+              "description": "Cacheable (ID: {3D08DB46-2267-41B0-BC52-BE69FD618633}).",
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "CheckboxField",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "cacheClearingBehavior",
+              "description": "CacheClearingBehavior (ID: {A6D4FC1D-0803-4E0A-9145-B8C6121D6F26}).",
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "TextField",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "children",
+              "description": null,
+              "args": [
+                {
+                  "name": "hasLayout",
+                  "description": "If set to true only items with existing presentation are returned",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": "null"
+                },
+                {
+                  "name": "includeTemplateIDs",
+                  "description": "Only consider child items with these template IDs.",
+                  "type": {
+                    "kind": "LIST",
+                    "name": null,
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "String",
+                      "ofType": null
+                    }
+                  },
+                  "defaultValue": "[]"
+                },
+                {
+                  "name": "first",
+                  "description": "Limits the results to the first n children. Use with after for pagination.",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Int",
+                    "ofType": null
+                  },
+                  "defaultValue": "null"
+                },
+                {
+                  "name": "after",
+                  "description": "Cursor value. Use with first for pagination.",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": "null"
+                }
+              ],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "ItemSearchResults",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "clearOnIndexUpdate",
+              "description": "ClearOnIndexUpdate (ID: {F3E7E552-D7C8-469B-A150-69E4E14AB35C}).",
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "CheckboxField",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "clientScriptPath",
+              "description": "Client Script Path (ID: {125BB7B7-5D7D-42F3-A314-480799A9643E}).",
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "TextField",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "compatibleRenderings",
+              "description": "Compatible Renderings (ID: {E441ABE7-2CA3-4640-AE26-3789967925D7}).",
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "MultilistField",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "componentName",
+              "description": "Component Name (ID: {E6779F24-A474-4F29-A60F-83182CD1993A}).",
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "TextField",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "componentQuery",
+              "description": "ComponentQuery (ID: {4528B82B-E79E-4BD9-820D-1BAD26260342}).",
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "TextField",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "customizePage",
+              "description": "Customize Page (ID: {DAF096B4-BBE3-4FB1-9B2E-774A37FCCEC6}).",
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "TextField",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "dataSource",
+              "description": "Data source (ID: {35F7859C-1E7F-4E86-87BD-65BFCF8679D8}).",
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "TextField",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "datasourceLocation",
+              "description": "Datasource Location (ID: {B5B27AF1-25EF-405C-87CE-369B3A004016}).",
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "TextField",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "datasourceTemplate",
+              "description": "Datasource Template (ID: {1A7C85E5-DC0B-490D-9187-BB1DBCB4C72F}).",
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "TextField",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "description",
+              "description": "Description (ID: {1127DFEE-0183-4A10-964A-00CCEA2121AC}).",
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "RichTextField",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "displayName",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "editable",
+              "description": "Editable (ID: {308E88F5-CD6E-4F8F-BAFE-95A47DEDEFDC}).",
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "CheckboxField",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "enableDatasourceQuery",
+              "description": "Enable Datasource Query (ID: {F172B787-7B88-4BD5-AE4D-6308E102EF11}).",
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "CheckboxField",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "exportedFunctionName",
+              "description": "Exported Function Name (ID: {E61F6FEA-BA01-44CF-A50B-369D7B18ADDA}).",
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "TextField",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "field",
+              "description": null,
+              "args": [
+                {
+                  "name": "name",
+                  "description": null,
+                  "type": {
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "String",
+                      "ofType": null
+                    }
+                  },
+                  "defaultValue": "null"
+                }
+              ],
+              "type": {
+                "kind": "INTERFACE",
+                "name": "ItemField",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "fieldEditorFields",
+              "description": "FieldEditorFields (ID: {9F069AF7-A5A1-4143-A641-14735D50B1E8}).",
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "MultilistField",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "fields",
+              "description": null,
+              "args": [
+                {
+                  "name": "ownFields",
+                  "description": null,
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": "false"
+                }
+              ],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "LIST",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INTERFACE",
+                    "name": "ItemField",
+                    "ofType": null
+                  }
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "hasChildren",
+              "description": null,
+              "args": [
+                {
+                  "name": "hasLayout",
+                  "description": "If set to true only items with existing presentation are returned",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "Boolean",
+                    "ofType": null
+                  },
+                  "defaultValue": "null"
+                },
+                {
+                  "name": "includeTemplateIDs",
+                  "description": "Only consider child items with these template IDs.",
+                  "type": {
+                    "kind": "LIST",
+                    "name": null,
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "String",
+                      "ofType": null
+                    }
+                  },
+                  "defaultValue": "[]"
+                }
+              ],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "Boolean",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "id",
+              "description": null,
+              "args": [
+                {
+                  "name": "format",
+                  "description": ".NET GUID format to use. N = short id, B = long id, etc",
+                  "type": {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "ofType": null
+                  },
+                  "defaultValue": "\"N\""
+                }
+              ],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "ID",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "itemUri",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "language",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "ItemLanguage",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "languages",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "LIST",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INTERFACE",
+                    "name": "Item",
+                    "ofType": null
+                  }
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "name",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "openPropertiesAfterAdd",
+              "description": "Open Properties after Add (ID: {C60E2D02-5F62-4DCF-A281-29005272C101}).",
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "TextField",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "pageEditorButtons",
+              "description": "Page Editor Buttons (ID: {A2F5D9DF-8CBA-4A1D-99EB-51ACB94CB057}).",
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "MultilistField",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "parameters",
+              "description": "Parameters (ID: {BEE1D4B3-CDFC-4A2D-AA19-6775C59CAE7B}).",
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "TextField",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "parametersTemplate",
+              "description": "Parameters Template (ID: {5391FAAC-6C16-42B3-A411-49109A8502A3}).",
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "LookupField",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "parent",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "INTERFACE",
+                "name": "Item",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "path",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "placeholder",
+              "description": "Placeholder (ID: {DA298A61-8CEB-4FA5-9A56-90F531B1C105}).",
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "TextField",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "placeholders",
+              "description": "Placeholders (ID: {069A8361-B1CD-437C-8C32-A3BE78941446}).",
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "MultilistField",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "rendered",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "JSON",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "renderEngineInstanceConfigurationId",
+              "description": "Render Engine Instance Configuration Id (ID: {1E0EBAA2-DEC4-4756-A510-2A20A4951E2D}).",
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "TextField",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "renderEngineType",
+              "description": "Render Engine Type (ID: {135C8B8A-9F55-4B2D-9EA1-333320BADE0C}).",
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "LookupField",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "renderingContentsResolver",
+              "description": "Rendering Contents Resolver (ID: {B0B15510-B138-470E-8F33-8DA2E228AAFE}).",
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "LookupField",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "serverScriptPath",
+              "description": "Server Script Path (ID: {7EDACBF4-CD65-44D6-B524-3A5ED411AE05}).",
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "TextField",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -11265,13 +13332,13 @@
               "args": [
                 {
                   "name": "hasLayout",
-                  "description": "If set only items with existing presentation are returned",
+                  "description": "If set to true only items with existing presentation are returned",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
                     "ofType": null
                   },
-                  "defaultValue": "false"
+                  "defaultValue": "null"
                 },
                 {
                   "name": "includeTemplateIDs",
@@ -11322,13 +13389,13 @@
               "args": [
                 {
                   "name": "hasLayout",
-                  "description": "If set only items with existing presentation are returned",
+                  "description": "If set to true only items with existing presentation are returned",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
                     "ofType": null
                   },
-                  "defaultValue": "false"
+                  "defaultValue": "null"
                 },
                 {
                   "name": "includeTemplateIDs",
@@ -11356,10 +13423,10 @@
                 },
                 {
                   "name": "after",
-                  "description": "Skips children until after the given child ID. Use with first for pagination.",
+                  "description": "Cursor value. Use with first for pagination.",
                   "type": {
                     "kind": "SCALAR",
-                    "name": "ID",
+                    "name": "String",
                     "ofType": null
                   },
                   "defaultValue": "null"
@@ -11369,14 +13436,22 @@
                 "kind": "NON_NULL",
                 "name": null,
                 "ofType": {
-                  "kind": "LIST",
-                  "name": null,
-                  "ofType": {
-                    "kind": "INTERFACE",
-                    "name": "Item",
-                    "ofType": null
-                  }
+                  "kind": "OBJECT",
+                  "name": "ItemSearchResults",
+                  "ofType": null
                 }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "displayName",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
               },
               "isDeprecated": false,
               "deprecationReason": null
@@ -11445,13 +13520,13 @@
               "args": [
                 {
                   "name": "hasLayout",
-                  "description": "If set only items with existing presentation are returned",
+                  "description": "If set to true only items with existing presentation are returned",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
                     "ofType": null
                   },
-                  "defaultValue": "false"
+                  "defaultValue": "null"
                 },
                 {
                   "name": "includeTemplateIDs",
@@ -11640,6 +13715,22 @@
               "deprecationReason": null
             },
             {
+              "name": "rendered",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "JSON",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "template",
               "description": null,
               "args": [],
@@ -11692,7 +13783,7 @@
           "interfaces": [
             {
               "kind": "INTERFACE",
-              "name": "Layout",
+              "name": "Layout_3a45a72364ee49199d4102fd40fd1466",
               "ofType": null
             },
             {
@@ -11715,13 +13806,13 @@
               "args": [
                 {
                   "name": "hasLayout",
-                  "description": "If set only items with existing presentation are returned",
+                  "description": "If set to true only items with existing presentation are returned",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
                     "ofType": null
                   },
-                  "defaultValue": "false"
+                  "defaultValue": "null"
                 },
                 {
                   "name": "includeTemplateIDs",
@@ -11760,13 +13851,13 @@
               "args": [
                 {
                   "name": "hasLayout",
-                  "description": "If set only items with existing presentation are returned",
+                  "description": "If set to true only items with existing presentation are returned",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
                     "ofType": null
                   },
-                  "defaultValue": "false"
+                  "defaultValue": "null"
                 },
                 {
                   "name": "includeTemplateIDs",
@@ -11794,10 +13885,10 @@
                 },
                 {
                   "name": "after",
-                  "description": "Skips children until after the given child ID. Use with first for pagination.",
+                  "description": "Cursor value. Use with first for pagination.",
                   "type": {
                     "kind": "SCALAR",
-                    "name": "ID",
+                    "name": "String",
                     "ofType": null
                   },
                   "defaultValue": "null"
@@ -11807,14 +13898,22 @@
                 "kind": "NON_NULL",
                 "name": null,
                 "ofType": {
-                  "kind": "LIST",
-                  "name": null,
-                  "ofType": {
-                    "kind": "INTERFACE",
-                    "name": "Item",
-                    "ofType": null
-                  }
+                  "kind": "OBJECT",
+                  "name": "ItemSearchResults",
+                  "ofType": null
                 }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "displayName",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
               },
               "isDeprecated": false,
               "deprecationReason": null
@@ -11895,13 +13994,13 @@
               "args": [
                 {
                   "name": "hasLayout",
-                  "description": "If set only items with existing presentation are returned",
+                  "description": "If set to true only items with existing presentation are returned",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
                     "ofType": null
                   },
-                  "defaultValue": "false"
+                  "defaultValue": "null"
                 },
                 {
                   "name": "includeTemplateIDs",
@@ -12078,6 +14177,22 @@
               "deprecationReason": null
             },
             {
+              "name": "rendered",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "JSON",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "template",
               "description": null,
               "args": [],
@@ -12158,13 +14273,13 @@
               "args": [
                 {
                   "name": "hasLayout",
-                  "description": "If set only items with existing presentation are returned",
+                  "description": "If set to true only items with existing presentation are returned",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
                     "ofType": null
                   },
-                  "defaultValue": "false"
+                  "defaultValue": "null"
                 },
                 {
                   "name": "includeTemplateIDs",
@@ -12203,13 +14318,13 @@
               "args": [
                 {
                   "name": "hasLayout",
-                  "description": "If set only items with existing presentation are returned",
+                  "description": "If set to true only items with existing presentation are returned",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
                     "ofType": null
                   },
-                  "defaultValue": "false"
+                  "defaultValue": "null"
                 },
                 {
                   "name": "includeTemplateIDs",
@@ -12237,10 +14352,10 @@
                 },
                 {
                   "name": "after",
-                  "description": "Skips children until after the given child ID. Use with first for pagination.",
+                  "description": "Cursor value. Use with first for pagination.",
                   "type": {
                     "kind": "SCALAR",
-                    "name": "ID",
+                    "name": "String",
                     "ofType": null
                   },
                   "defaultValue": "null"
@@ -12250,14 +14365,22 @@
                 "kind": "NON_NULL",
                 "name": null,
                 "ofType": {
-                  "kind": "LIST",
-                  "name": null,
-                  "ofType": {
-                    "kind": "INTERFACE",
-                    "name": "Item",
-                    "ofType": null
-                  }
+                  "kind": "OBJECT",
+                  "name": "ItemSearchResults",
+                  "ofType": null
                 }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "displayName",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
               },
               "isDeprecated": false,
               "deprecationReason": null
@@ -12326,13 +14449,13 @@
               "args": [
                 {
                   "name": "hasLayout",
-                  "description": "If set only items with existing presentation are returned",
+                  "description": "If set to true only items with existing presentation are returned",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
                     "ofType": null
                   },
-                  "defaultValue": "false"
+                  "defaultValue": "null"
                 },
                 {
                   "name": "includeTemplateIDs",
@@ -12485,6 +14608,22 @@
               "deprecationReason": null
             },
             {
+              "name": "rendered",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "JSON",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "template",
               "description": null,
               "args": [],
@@ -12555,13 +14694,13 @@
               "args": [
                 {
                   "name": "hasLayout",
-                  "description": "If set only items with existing presentation are returned",
+                  "description": "If set to true only items with existing presentation are returned",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
                     "ofType": null
                   },
-                  "defaultValue": "false"
+                  "defaultValue": "null"
                 },
                 {
                   "name": "includeTemplateIDs",
@@ -12600,13 +14739,13 @@
               "args": [
                 {
                   "name": "hasLayout",
-                  "description": "If set only items with existing presentation are returned",
+                  "description": "If set to true only items with existing presentation are returned",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
                     "ofType": null
                   },
-                  "defaultValue": "false"
+                  "defaultValue": "null"
                 },
                 {
                   "name": "includeTemplateIDs",
@@ -12634,10 +14773,10 @@
                 },
                 {
                   "name": "after",
-                  "description": "Skips children until after the given child ID. Use with first for pagination.",
+                  "description": "Cursor value. Use with first for pagination.",
                   "type": {
                     "kind": "SCALAR",
-                    "name": "ID",
+                    "name": "String",
                     "ofType": null
                   },
                   "defaultValue": "null"
@@ -12647,14 +14786,22 @@
                 "kind": "NON_NULL",
                 "name": null,
                 "ofType": {
-                  "kind": "LIST",
-                  "name": null,
-                  "ofType": {
-                    "kind": "INTERFACE",
-                    "name": "Item",
-                    "ofType": null
-                  }
+                  "kind": "OBJECT",
+                  "name": "ItemSearchResults",
+                  "ofType": null
                 }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "displayName",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
               },
               "isDeprecated": false,
               "deprecationReason": null
@@ -12723,13 +14870,13 @@
               "args": [
                 {
                   "name": "hasLayout",
-                  "description": "If set only items with existing presentation are returned",
+                  "description": "If set to true only items with existing presentation are returned",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
                     "ofType": null
                   },
-                  "defaultValue": "false"
+                  "defaultValue": "null"
                 },
                 {
                   "name": "includeTemplateIDs",
@@ -12894,6 +15041,22 @@
               "deprecationReason": null
             },
             {
+              "name": "rendered",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "JSON",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "subtitle",
               "description": "Subtitle (ID: {89B0A8ED-0EE8-4512-B518-AB2C4C2A0B9E}).",
               "args": [],
@@ -12988,13 +15151,13 @@
               "args": [
                 {
                   "name": "hasLayout",
-                  "description": "If set only items with existing presentation are returned",
+                  "description": "If set to true only items with existing presentation are returned",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
                     "ofType": null
                   },
-                  "defaultValue": "false"
+                  "defaultValue": "null"
                 },
                 {
                   "name": "includeTemplateIDs",
@@ -13033,13 +15196,13 @@
               "args": [
                 {
                   "name": "hasLayout",
-                  "description": "If set only items with existing presentation are returned",
+                  "description": "If set to true only items with existing presentation are returned",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
                     "ofType": null
                   },
-                  "defaultValue": "false"
+                  "defaultValue": "null"
                 },
                 {
                   "name": "includeTemplateIDs",
@@ -13067,10 +15230,10 @@
                 },
                 {
                   "name": "after",
-                  "description": "Skips children until after the given child ID. Use with first for pagination.",
+                  "description": "Cursor value. Use with first for pagination.",
                   "type": {
                     "kind": "SCALAR",
-                    "name": "ID",
+                    "name": "String",
                     "ofType": null
                   },
                   "defaultValue": "null"
@@ -13080,14 +15243,22 @@
                 "kind": "NON_NULL",
                 "name": null,
                 "ofType": {
-                  "kind": "LIST",
-                  "name": null,
-                  "ofType": {
-                    "kind": "INTERFACE",
-                    "name": "Item",
-                    "ofType": null
-                  }
+                  "kind": "OBJECT",
+                  "name": "ItemSearchResults",
+                  "ofType": null
                 }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "displayName",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
               },
               "isDeprecated": false,
               "deprecationReason": null
@@ -13156,13 +15327,13 @@
               "args": [
                 {
                   "name": "hasLayout",
-                  "description": "If set only items with existing presentation are returned",
+                  "description": "If set to true only items with existing presentation are returned",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
                     "ofType": null
                   },
-                  "defaultValue": "false"
+                  "defaultValue": "null"
                 },
                 {
                   "name": "includeTemplateIDs",
@@ -13308,6 +15479,22 @@
                 "ofType": {
                   "kind": "SCALAR",
                   "name": "String",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "rendered",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "JSON",
                   "ofType": null
                 }
               },
@@ -13385,13 +15572,13 @@
               "args": [
                 {
                   "name": "hasLayout",
-                  "description": "If set only items with existing presentation are returned",
+                  "description": "If set to true only items with existing presentation are returned",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
                     "ofType": null
                   },
-                  "defaultValue": "false"
+                  "defaultValue": "null"
                 },
                 {
                   "name": "includeTemplateIDs",
@@ -13430,13 +15617,13 @@
               "args": [
                 {
                   "name": "hasLayout",
-                  "description": "If set only items with existing presentation are returned",
+                  "description": "If set to true only items with existing presentation are returned",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
                     "ofType": null
                   },
-                  "defaultValue": "false"
+                  "defaultValue": "null"
                 },
                 {
                   "name": "includeTemplateIDs",
@@ -13464,10 +15651,10 @@
                 },
                 {
                   "name": "after",
-                  "description": "Skips children until after the given child ID. Use with first for pagination.",
+                  "description": "Cursor value. Use with first for pagination.",
                   "type": {
                     "kind": "SCALAR",
-                    "name": "ID",
+                    "name": "String",
                     "ofType": null
                   },
                   "defaultValue": "null"
@@ -13477,14 +15664,22 @@
                 "kind": "NON_NULL",
                 "name": null,
                 "ofType": {
-                  "kind": "LIST",
-                  "name": null,
-                  "ofType": {
-                    "kind": "INTERFACE",
-                    "name": "Item",
-                    "ofType": null
-                  }
+                  "kind": "OBJECT",
+                  "name": "ItemSearchResults",
+                  "ofType": null
                 }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "displayName",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
               },
               "isDeprecated": false,
               "deprecationReason": null
@@ -13553,13 +15748,13 @@
               "args": [
                 {
                   "name": "hasLayout",
-                  "description": "If set only items with existing presentation are returned",
+                  "description": "If set to true only items with existing presentation are returned",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
                     "ofType": null
                   },
-                  "defaultValue": "false"
+                  "defaultValue": "null"
                 },
                 {
                   "name": "includeTemplateIDs",
@@ -13705,6 +15900,22 @@
                 "ofType": {
                   "kind": "SCALAR",
                   "name": "String",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "rendered",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "JSON",
                   "ofType": null
                 }
               },
@@ -13782,13 +15993,13 @@
               "args": [
                 {
                   "name": "hasLayout",
-                  "description": "If set only items with existing presentation are returned",
+                  "description": "If set to true only items with existing presentation are returned",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
                     "ofType": null
                   },
-                  "defaultValue": "false"
+                  "defaultValue": "null"
                 },
                 {
                   "name": "includeTemplateIDs",
@@ -13827,13 +16038,13 @@
               "args": [
                 {
                   "name": "hasLayout",
-                  "description": "If set only items with existing presentation are returned",
+                  "description": "If set to true only items with existing presentation are returned",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
                     "ofType": null
                   },
-                  "defaultValue": "false"
+                  "defaultValue": "null"
                 },
                 {
                   "name": "includeTemplateIDs",
@@ -13861,10 +16072,10 @@
                 },
                 {
                   "name": "after",
-                  "description": "Skips children until after the given child ID. Use with first for pagination.",
+                  "description": "Cursor value. Use with first for pagination.",
                   "type": {
                     "kind": "SCALAR",
-                    "name": "ID",
+                    "name": "String",
                     "ofType": null
                   },
                   "defaultValue": "null"
@@ -13874,13 +16085,9 @@
                 "kind": "NON_NULL",
                 "name": null,
                 "ofType": {
-                  "kind": "LIST",
-                  "name": null,
-                  "ofType": {
-                    "kind": "INTERFACE",
-                    "name": "Item",
-                    "ofType": null
-                  }
+                  "kind": "OBJECT",
+                  "name": "ItemSearchResults",
+                  "ofType": null
                 }
               },
               "isDeprecated": false,
@@ -13893,6 +16100,18 @@
               "type": {
                 "kind": "OBJECT",
                 "name": "RichTextField",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "displayName",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -13962,13 +16181,13 @@
               "args": [
                 {
                   "name": "hasLayout",
-                  "description": "If set only items with existing presentation are returned",
+                  "description": "If set to true only items with existing presentation are returned",
                   "type": {
                     "kind": "SCALAR",
                     "name": "Boolean",
                     "ofType": null
                   },
-                  "defaultValue": "false"
+                  "defaultValue": "null"
                 },
                 {
                   "name": "includeTemplateIDs",
@@ -14114,6 +16333,22 @@
                 "ofType": {
                   "kind": "SCALAR",
                   "name": "String",
+                  "ofType": null
+                }
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "rendered",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "JSON",
                   "ofType": null
                 }
               },
@@ -14486,12 +16721,17 @@
               "kind": "OBJECT",
               "name": "JsonRendering",
               "ofType": null
+            },
+            {
+              "kind": "OBJECT",
+              "name": "JavaScriptRendering",
+              "ofType": null
             }
           ]
         },
         {
           "kind": "INTERFACE",
-          "name": "Layout",
+          "name": "Layout_3a45a72364ee49199d4102fd40fd1466",
           "description": "/sitecore/templates/System/Layout/Layout template (ID: {3A45A723-64EE-4919-9D41-02FD40FD1466}).",
           "fields": [
             {
@@ -14676,6 +16916,11 @@
               "kind": "OBJECT",
               "name": "JsonRendering",
               "ofType": null
+            },
+            {
+              "kind": "OBJECT",
+              "name": "JavaScriptRendering",
+              "ofType": null
             }
           ]
         },
@@ -14734,18 +16979,6 @@
               "type": {
                 "kind": "OBJECT",
                 "name": "ItemTemplateField",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "displayName",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -14862,18 +17095,6 @@
               "type": {
                 "kind": "OBJECT",
                 "name": "ItemTemplateField",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "displayName",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -15008,18 +17229,6 @@
               "type": {
                 "kind": "OBJECT",
                 "name": "ItemTemplateField",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "displayName",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -15164,9 +17373,13 @@
                   "name": "language",
                   "description": "The item language to request (defaults to the default language)",
                   "type": {
-                    "kind": "SCALAR",
-                    "name": "String",
-                    "ofType": null
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "String",
+                      "ofType": null
+                    }
                   },
                   "defaultValue": "null"
                 }
@@ -15174,6 +17387,61 @@
               "type": {
                 "kind": "INTERFACE",
                 "name": "Item",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "layout",
+              "description": "Allows querying layout data for the item",
+              "args": [
+                {
+                  "name": "site",
+                  "description": "Site",
+                  "type": {
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "String",
+                      "ofType": null
+                    }
+                  },
+                  "defaultValue": "null"
+                },
+                {
+                  "name": "routePath",
+                  "description": "Route path",
+                  "type": {
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "String",
+                      "ofType": null
+                    }
+                  },
+                  "defaultValue": "null"
+                },
+                {
+                  "name": "language",
+                  "description": "Language",
+                  "type": {
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "String",
+                      "ofType": null
+                    }
+                  },
+                  "defaultValue": "null"
+                }
+              ],
+              "type": {
+                "kind": "OBJECT",
+                "name": "LayoutData",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -15327,6 +17595,18 @@
             },
             {
               "name": "CONTAINS",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "NEQ",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "NCONTAINS",
               "description": null,
               "isDeprecated": false,
               "deprecationReason": null

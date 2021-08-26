@@ -1,5 +1,5 @@
 #
-# The docker-compose.yml in this solution is a stock Sitecore XP0 environment, without
+# The docker-compose.yml in this solution is a stock Sitecore XM1 environment, without
 # any changes. This override represents all the additions/changes needed for this solution.
 # Note that some of the overrides point to 'empty' Dockerfiles. This is recommended, even if
 # you are not customizing an image, to enable retagging and later customization. See Sitecore
@@ -29,7 +29,7 @@ services:
       context: .
       args:
         BUILD_CONFIGURATION: ${BUILD_CONFIGURATION}
-        BUILD_IMAGE: mcr.microsoft.com/dotnet/framework/sdk:4.8
+        BUILD_IMAGE: mcr.microsoft.com/dotnet/framework/sdk:4.8-windowsservercore-ltsc2019
     scale: 0
 
   rendering:
@@ -42,7 +42,7 @@ services:
     volumes:
       - .\src\Project\BasicCompany\nextjs:C:\app
     environment:
-      SITECORE_API_HOST: "http://cm"
+      SITECORE_API_HOST: "http://cd"
       NEXTJS_DIST_DIR: ".next-container"
       PUBLIC_URL: "https://${RENDERING_HOST}"
       JSS_EDITING_SECRET: ${JSS_EDITING_SECRET}
@@ -59,15 +59,24 @@ services:
   traefik:
     volumes:
       - ./docker/traefik:C:/etc/traefik
+    depends_on:
+      - rendering
+  
+  redis:
+    image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-redis:${VERSION:-latest}
+    build:
+      context: ./docker/build/redis
+      args:
+        PARENT_IMAGE: ${SITECORE_DOCKER_REGISTRY}sitecore-redis:${SITECORE_VERSION}
 
   # Mount our SQL data folder and use our custom image with the Headless Services (JSS)
   # module data added. See Dockerfile for details.
   mssql:
-    image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-xp0-mssql:${VERSION:-latest}
+    image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-xm1-mssql:${VERSION:-latest}
     build:
       context: ./docker/build/mssql
       args:
-        PARENT_IMAGE: ${SITECORE_DOCKER_REGISTRY}sitecore-xp0-mssql:${SITECORE_VERSION}
+        PARENT_IMAGE: ${SITECORE_DOCKER_REGISTRY}sitecore-xm1-mssql:${SITECORE_VERSION}
         HEADLESS_SERVICES_IMAGE: ${HEADLESS_SERVICES_IMAGE}
     volumes:
       - type: bind
@@ -85,11 +94,11 @@ services:
   # Mount our Solr data folder and use our retagged Solr image.
   # Some modules (like SXA) also require additions to the Solr image.
   solr-init:
-    image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-xp0-solr-init:${VERSION:-latest}
+    image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-xm1-solr-init:${VERSION:-latest}
     build:
       context: ./docker/build/solr-init
       args:
-        PARENT_IMAGE: ${SITECORE_DOCKER_REGISTRY}sitecore-xp0-solr-init:${SITECORE_VERSION}
+        PARENT_IMAGE: ${SITECORE_DOCKER_REGISTRY}sitecore-xm1-solr-init:${SITECORE_VERSION}
 
   # Use our retagged Identity Server image.
   # Configure for a mounted license file instead of using SITECORE_LICENSE.
@@ -103,16 +112,37 @@ services:
       - ${HOST_LICENSE_FOLDER}:c:\license
     environment:
       SITECORE_LICENSE_LOCATION: c:\license\license.xml
+  
+  cd:
+    image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-xm1-cd:${VERSION:-latest}
+    build:
+      context: ./docker/build/cd
+      args:
+        PARENT_IMAGE: ${SITECORE_DOCKER_REGISTRY}sitecore-xm1-cd:${SITECORE_VERSION}
+        SOLUTION_IMAGE: ${REGISTRY}${COMPOSE_PROJECT_NAME}-solution:${VERSION:-latest}
+        TOOLS_IMAGE: ${TOOLS_IMAGE}
+        HEADLESS_SERVICES_IMAGE: ${HEADLESS_SERVICES_IMAGE}
+    depends_on:
+      - solution
+    volumes:
+      - ${LOCAL_DEPLOY_PATH}\platform:C:\deploy
+      - ${LOCAL_DATA_PATH}\cd:C:\inetpub\wwwroot\App_Data\logs
+      - ${HOST_LICENSE_FOLDER}:C:\license
+    environment:
+      SITECORE_LICENSE_LOCATION: C:\license\license.xml
+      ## Development Environment Optimizations
+      SITECORE_DEVELOPMENT_PATCHES: DevEnvOn,CustomErrorsOff,DebugOn,DiagnosticsOff,InitMessagesOff
+    entrypoint: powershell -Command "& C:\tools\entrypoints\iis\Development.ps1"
 
-  # Use our custom CM (XP0 Standalone) image with added modules and solution code.
+  # Use our custom CM image with added modules and solution code.
   # Folders are mounted below for code deployment and log output. See Dockerfile for details.
   # Configure for a mounted license file instead of using SITECORE_LICENSE.
   cm:
-    image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-xp0-cm:${VERSION:-latest}
+    image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-xm1-cm:${VERSION:-latest}
     build:
       context: ./docker/build/cm
       args:
-        PARENT_IMAGE: ${SITECORE_DOCKER_REGISTRY}sitecore-xp0-cm:${SITECORE_VERSION}
+        PARENT_IMAGE: ${SITECORE_DOCKER_REGISTRY}sitecore-xm1-cm:${SITECORE_VERSION}
         SOLUTION_IMAGE: ${REGISTRY}${COMPOSE_PROJECT_NAME}-solution:${VERSION:-latest}
         TOOLS_IMAGE: ${TOOLS_IMAGE}
         MANAGEMENT_SERVICES_IMAGE: ${MANAGEMENT_SERVICES_IMAGE}
@@ -129,41 +159,6 @@ services:
       SITECORE_JSS_EDITING_SECRET: ${JSS_EDITING_SECRET}
       RENDERING_HOST_PUBLIC_URI: "https://${RENDERING_HOST}"
       ## Development Environment Optimizations
-      SITECORE_DEVELOPMENT_PATCHES: DevEnvOn,CustomErrorsOff,DebugOn,DiagnosticsOff,InitMessagesOff,RobotDetectionOff
+      SITECORE_DEVELOPMENT_PATCHES: DevEnvOn,CustomErrorsOff,DebugOn,DiagnosticsOff,InitMessagesOff
       Sitecore_AppSettings_exmEnabled:define: "no" # remove to turn on EXM
-    entrypoint: powershell.exe -Command "& C:\tools\entrypoints\iis\Development.ps1"
-
-  # Use our retagged XConnect image.
-  # Configure for a mounted license folder instead of using SITECORE_LICENSE.
-  # Note: XConnect roles expect a folder with license.xml, not the file itself.
-  xconnect:
-    image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-xp0-xconnect:${VERSION:-latest}
-    build:
-      context: ./docker/build/xconnect
-      args:
-        PARENT_IMAGE: ${SITECORE_DOCKER_REGISTRY}sitecore-xp0-xconnect:${SITECORE_VERSION}
-    volumes:
-      - ${HOST_LICENSE_FOLDER}:c:\license
-    environment: 
-      SITECORE_LICENSE_LOCATION: c:\license\
-
-  # Use our retagged XConnect Search Indexer image.
-  # Configure for a mounted license folder instead of using SITECORE_LICENSE.
-  xdbsearchworker:
-    image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-xp0-xdbsearchworker:${VERSION:-latest}
-    build:
-      context: ./docker/build/xdbsearchworker
-      args:
-        PARENT_IMAGE: ${SITECORE_DOCKER_REGISTRY}sitecore-xp0-xdbsearchworker:${SITECORE_VERSION}
-    volumes:
-      - ${HOST_LICENSE_FOLDER}:c:\license
-    environment: 
-      SITECORE_LICENSE_LOCATION: c:\license\
-
-  # Disabled as not used in this example
-  xdbautomationworker:
-    scale: 0
-
-  # Disabled as not used in this example
-  cortexprocessingworker:
-    scale: 0
+    entrypoint: powershell -Command "& C:\tools\entrypoints\iis\Development.ps1"

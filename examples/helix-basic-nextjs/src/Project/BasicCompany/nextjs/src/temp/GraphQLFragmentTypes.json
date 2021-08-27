@@ -78,6 +78,12 @@
             "name": "SectionHeader"
           },
           {
+            "name": "Route"
+          },
+          {
+            "name": "RenderEngineType"
+          },
+          {
             "name": "PromoCardFolder"
           },
           {
@@ -97,6 +103,9 @@
           },
           {
             "name": "JsonRendering"
+          },
+          {
+            "name": "JavaScriptRendering"
           },
           {
             "name": "JSSLayout"
@@ -169,12 +178,15 @@
         "possibleTypes": [
           {
             "name": "JsonRendering"
+          },
+          {
+            "name": "JavaScriptRendering"
           }
         ]
       },
       {
         "kind": "INTERFACE",
-        "name": "Layout",
+        "name": "Layout_3a45a72364ee49199d4102fd40fd1466",
         "possibleTypes": [
           {
             "name": "JSSLayout"
@@ -187,6 +199,9 @@
         "possibleTypes": [
           {
             "name": "JsonRendering"
+          },
+          {
+            "name": "JavaScriptRendering"
           }
         ]
       }

@@ -22,7 +22,9 @@ const navigationData: NavigationQuery = {
     footerCopyright: {
       value: 'Copyright Lorem Ipsum',
     },
-    children: [],
+    children: {
+      results: [],
+    },
   },
 };
 

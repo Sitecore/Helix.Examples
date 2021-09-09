@@ -22,24 +22,26 @@ const navigationData: NavigationQuery = {
     headerLogo: {
       src: 'https://placekitten.com/139/45',
     },
-    children: [
-      {
-        url: {
-          path: '/Products',
+    children: {
+      results: [
+        {
+          url: {
+            path: '/Products',
+          },
+          navigationTitle: {
+            value: 'Products',
+          },
         },
-        navigationTitle: {
-          value: 'Products',
+        {
+          url: {
+            path: '/Services',
+          },
+          navigationTitle: {
+            value: 'Services',
+          },
         },
-      },
-      {
-        url: {
-          path: '/Services',
-        },
-        navigationTitle: {
-          value: 'Services',
-        },
-      },
-    ],
+      ],
+    },
   },
 };
 

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <PlatformVersion>10.0.0</PlatformVersion>
-    <SitecoreAspNetVersion>15.0.1</SitecoreAspNetVersion>
+    <PlatformVersion>10.1.0</PlatformVersion>
+    <SitecoreAspNetVersion>16.0.0</SitecoreAspNetVersion>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Update="Sitecore.Nexus" Version="$(PlatformVersion)" />

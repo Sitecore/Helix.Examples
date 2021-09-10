@@ -1,0 +1,164 @@
+#
+# The docker-compose.yml in this solution is a stock Sitecore XM1 environment, without
+# any changes. This override represents all the additions/changes needed for this solution.
+# Note that some of the overrides point to 'empty' Dockerfiles. This is recommended, even if
+# you are not customizing an image, to enable retagging and later customization. See Sitecore
+# Containers documentation for details.
+#
+
+version: "2.4"
+
+services:
+
+  # A Windows-based nodejs base image
+  nodejs:
+    image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-nodejs:${VERSION:-latest}
+    build:
+      context: ./docker/build/nodejs
+      args:
+        PARENT_IMAGE: ${NODEJS_PARENT_IMAGE}
+        NODEJS_VERSION: ${NODEJS_VERSION}
+    scale: 0
+
+  # The solution build image is added here so it can be referenced as a build dependency
+  # for the images which use its output. Setting "scale: 0" means docker-compose will not
+  # include it in the running environment. See Dockerfile for more details.
+  solution:
+    image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-solution:${VERSION:-latest}
+    build:
+      context: .
+      args:
+        BUILD_CONFIGURATION: ${BUILD_CONFIGURATION}
+        BUILD_IMAGE: mcr.microsoft.com/dotnet/framework/sdk:4.8-windowsservercore-ltsc2019
+    scale: 0
+
+  rendering:
+    image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-rendering:${VERSION:-latest}
+    build:
+      context: ./docker/build/rendering
+      target: ${BUILD_CONFIGURATION}
+      args:
+        PARENT_IMAGE: ${REGISTRY}${COMPOSE_PROJECT_NAME}-nodejs:${VERSION:-latest}
+    volumes:
+      - .\src\Project\BasicCompany\nextjs:C:\app
+    environment:
+      SITECORE_API_HOST: "http://cd"
+      NEXTJS_DIST_DIR: ".next-container"
+      PUBLIC_URL: "https://${RENDERING_HOST}"
+      JSS_EDITING_SECRET: ${JSS_EDITING_SECRET}
+    depends_on:
+      - cm
+      - nodejs
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.rendering-secure.entrypoints=websecure"
+      - "traefik.http.routers.rendering-secure.rule=Host(`${RENDERING_HOST}`)"
+      - "traefik.http.routers.rendering-secure.tls=true"
+
+  # Mount the Traefik configuration and certs.
+  traefik:
+    volumes:
+      - ./docker/traefik:C:/etc/traefik
+    depends_on:
+      - rendering
+  
+  redis:
+    image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-redis:${VERSION:-latest}
+    build:
+      context: ./docker/build/redis
+      args:
+        PARENT_IMAGE: ${SITECORE_DOCKER_REGISTRY}sitecore-redis:${SITECORE_VERSION}
+
+  # Mount our SQL data folder and use our custom image with the Headless Services (JSS)
+  # module data added. See Dockerfile for details.
+  mssql:
+    image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-xm1-mssql:${VERSION:-latest}
+    build:
+      context: ./docker/build/mssql
+      args:
+        PARENT_IMAGE: ${SITECORE_DOCKER_REGISTRY}sitecore-xm1-mssql:${SITECORE_VERSION}
+        HEADLESS_SERVICES_IMAGE: ${HEADLESS_SERVICES_IMAGE}
+    volumes:
+      - type: bind
+        source: .\docker\data\sql
+        target: c:\data
+
+  # Mount our Solr data folder and use our retagged Solr image.
+  # Some modules (like SXA) also require additions to the Solr image.
+  solr:
+    volumes:
+      - type: bind
+        source: .\docker\data\solr
+        target: c:\data
+
+  # Mount our Solr data folder and use our retagged Solr image.
+  # Some modules (like SXA) also require additions to the Solr image.
+  solr-init:
+    image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-xm1-solr-init:${VERSION:-latest}
+    build:
+      context: ./docker/build/solr-init
+      args:
+        PARENT_IMAGE: ${SITECORE_DOCKER_REGISTRY}sitecore-xm1-solr-init:${SITECORE_VERSION}
+
+  # Use our retagged Identity Server image.
+  # Configure for a mounted license file instead of using SITECORE_LICENSE.
+  id:
+    image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-id:${VERSION:-latest}
+    build:
+      context: ./docker/build/id
+      args:
+        PARENT_IMAGE: ${SITECORE_DOCKER_REGISTRY}sitecore-id:${SITECORE_VERSION}
+    volumes:
+      - ${HOST_LICENSE_FOLDER}:c:\license
+    environment:
+      SITECORE_LICENSE_LOCATION: c:\license\license.xml
+  
+  cd:
+    image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-xm1-cd:${VERSION:-latest}
+    build:
+      context: ./docker/build/cd
+      args:
+        PARENT_IMAGE: ${SITECORE_DOCKER_REGISTRY}sitecore-xm1-cd:${SITECORE_VERSION}
+        SOLUTION_IMAGE: ${REGISTRY}${COMPOSE_PROJECT_NAME}-solution:${VERSION:-latest}
+        TOOLS_IMAGE: ${TOOLS_IMAGE}
+        HEADLESS_SERVICES_IMAGE: ${HEADLESS_SERVICES_IMAGE}
+    depends_on:
+      - solution
+    volumes:
+      - ${LOCAL_DEPLOY_PATH}\platform:C:\deploy
+      - ${LOCAL_DATA_PATH}\cd:C:\inetpub\wwwroot\App_Data\logs
+      - ${HOST_LICENSE_FOLDER}:C:\license
+    environment:
+      SITECORE_LICENSE_LOCATION: C:\license\license.xml
+      ## Development Environment Optimizations
+      SITECORE_DEVELOPMENT_PATCHES: DevEnvOn,CustomErrorsOff,DebugOn,DiagnosticsOff,InitMessagesOff
+    entrypoint: powershell -Command "& C:\tools\entrypoints\iis\Development.ps1"
+
+  # Use our custom CM image with added modules and solution code.
+  # Folders are mounted below for code deployment and log output. See Dockerfile for details.
+  # Configure for a mounted license file instead of using SITECORE_LICENSE.
+  cm:
+    image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-xm1-cm:${VERSION:-latest}
+    build:
+      context: ./docker/build/cm
+      args:
+        PARENT_IMAGE: ${SITECORE_DOCKER_REGISTRY}sitecore-xm1-cm:${SITECORE_VERSION}
+        SOLUTION_IMAGE: ${REGISTRY}${COMPOSE_PROJECT_NAME}-solution:${VERSION:-latest}
+        TOOLS_IMAGE: ${TOOLS_IMAGE}
+        MANAGEMENT_SERVICES_IMAGE: ${MANAGEMENT_SERVICES_IMAGE}
+        HEADLESS_SERVICES_IMAGE: ${HEADLESS_SERVICES_IMAGE}
+    depends_on:
+      - solution
+    volumes:
+      - ${LOCAL_DEPLOY_PATH}\platform:C:\deploy
+      - ${LOCAL_DATA_PATH}\cm:C:\inetpub\wwwroot\App_Data\logs
+      - ${HOST_LICENSE_FOLDER}:c:\license
+    environment:
+      SITECORE_LICENSE_LOCATION: c:\license\license.xml
+      JSS_BasicCompany_DEPLOYMENT_SECRET: ${JSS_BasicCompany_DEPLOYMENT_SECRET}
+      SITECORE_JSS_EDITING_SECRET: ${JSS_EDITING_SECRET}
+      RENDERING_HOST_PUBLIC_URI: "https://${RENDERING_HOST}"
+      ## Development Environment Optimizations
+      SITECORE_DEVELOPMENT_PATCHES: DevEnvOn,CustomErrorsOff,DebugOn,DiagnosticsOff,InitMessagesOff
+      Sitecore_AppSettings_exmEnabled:define: "no" # remove to turn on EXM
+    entrypoint: powershell -Command "& C:\tools\entrypoints\iis\Development.ps1"

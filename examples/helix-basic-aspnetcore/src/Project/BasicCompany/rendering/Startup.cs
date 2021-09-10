@@ -76,15 +76,7 @@ namespace BasicCompany.Project.BasicCompany.Rendering
                 // Enable forwarding of relevant headers and client IP for Sitecore Tracking and Personalization.
                 .WithTracking()
                 // Enable support for the Experience Editor.
-                .WithExperienceEditor(options =>
-                {
-                    // Experience Editor integration needs to know the external URL of your rendering host,
-                    // if behind HTTPS termination or another proxy (like Traefik).
-                    if (Configuration.RenderingHostUri != null)
-                    {
-                        options.ApplicationUrl = Configuration.RenderingHostUri;
-                    }
-                });
+                .WithExperienceEditor();
 
             // Enable support for robot detection.
             services.AddSitecoreVisitorIdentification(options =>

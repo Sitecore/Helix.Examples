@@ -40,6 +40,8 @@ The serialized items will automatically sync when the instance is started, but y
 
 Login to Sitecore at https://cm.basic-company-unicorn.localhost/sitecore and perform a site smart publish. Use "admin" and the password you specified on init ("b" by default).
 
+> For the _Products_ page to work, you'll also need to _Populate Solr Managed Schema_ and rebuild indexes from the Control Panel. You may also need to `docker-compose restart cd` due to workaround an issue with the Solr schema cache on CD.ad
+
 You should now be able to view the Basic Company site at https://www.basic-company-unicorn.localhost.
 
 ## Stop Sitecore

@@ -1,0 +1,33 @@
+﻿---
+ID: "e4c81f19-7cac-4bd8-9f2f-1bdf32658c59"
+Parent: "456f5066-3169-4cda-b827-ed0917a75776"
+Template: "456f5066-3169-4cda-b827-ed0917a75776"
+Path: /sitecore/templates/Feature/BasicContent/Hero Banner Folder/__Standard Values
+SharedFields:
+- ID: "1172f251-dad4-4efb-a329-0c63500e4f1e"
+  Hint: __Masters
+  Value: |
+    {4A421518-7B4A-4D43-AF9B-94E17E00EC9F}
+    {456F5066-3169-4CDA-B827-ED0917A75776}
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20190311T191540Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+          sitecore\admin
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "a9e87dc2-7383-4e0a-93ad-0487874e97fc"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+          sitecore\unicorn
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20190930T183114Z

@@ -1,0 +1,33 @@
+﻿---
+ID: "342765b2-1783-479b-8cff-cebed5e6a5e4"
+Parent: "eddde41d-5bc6-494c-b3d6-71a728a51668"
+Template: "5c547d4e-7111-4995-95b0-6b561751bf2e"
+Path: /sitecore/layout/Placeholder Settings/Project/BasicCompany/Services Page
+SharedFields:
+- ID: "7256bdab-1fd2-49dd-b205-cb4873d2917c"
+  Hint: Placeholder Key
+  Value: 
+- ID: "e391b526-d0c5-439d-803e-17512eae6222"
+  Hint: Allowed Controls
+  Value: |
+    {9A917CC7-D85C-418B-B44C-38D70C1CB432}
+    {3317F548-A9E0-4BB5-8EC9-2B91D3BEA370}
+    {ABB770AC-0240-40E9-8F11-43A1A0D7596C}
+Languages:
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20190507T142602Z
+    - ID: "8cdc337e-a112-42fb-bbb4-4143751e123f"
+      Hint: __Revision
+      Value: "cdd7e8bf-cbbf-4d44-a858-f6e530437aa2"
+    - ID: "badd9cf9-53e0-4d0c-bcc0-2d784c282f6a"
+      Hint: __Updated by
+      Value: |
+          sitecore\unicorn
+    - ID: "d9cf14b1-fa16-4ba6-9288-e8a174d4d522"
+      Hint: __Updated
+      Value: 20190930T183116Z

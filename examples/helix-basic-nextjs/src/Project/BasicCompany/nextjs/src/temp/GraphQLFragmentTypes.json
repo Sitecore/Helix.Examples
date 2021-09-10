@@ -1,0 +1,210 @@
+{
+  "__schema": {
+    "types": [
+      {
+        "kind": "INTERFACE",
+        "name": "ItemField",
+        "possibleTypes": [
+          {
+            "name": "RichTextField"
+          },
+          {
+            "name": "NumberField"
+          },
+          {
+            "name": "MultilistField"
+          },
+          {
+            "name": "LookupField"
+          },
+          {
+            "name": "LinkField"
+          },
+          {
+            "name": "TextField"
+          },
+          {
+            "name": "ImageField"
+          },
+          {
+            "name": "CheckboxField"
+          },
+          {
+            "name": "NameValueListField"
+          },
+          {
+            "name": "IntegerField"
+          },
+          {
+            "name": "DateField"
+          }
+        ]
+      },
+      {
+        "kind": "INTERFACE",
+        "name": "Item",
+        "possibleTypes": [
+          {
+            "name": "UnknownItem"
+          },
+          {
+            "name": "C___Product"
+          },
+          {
+            "name": "C___NavigationRoot"
+          },
+          {
+            "name": "C___NavigationItem"
+          },
+          {
+            "name": "TestimonialFolder"
+          },
+          {
+            "name": "Testimonial"
+          },
+          {
+            "name": "C__StandardTemplate"
+          },
+          {
+            "name": "Site"
+          },
+          {
+            "name": "ServicesPage"
+          },
+          {
+            "name": "SectionHeaderFolder"
+          },
+          {
+            "name": "SectionHeader"
+          },
+          {
+            "name": "Route"
+          },
+          {
+            "name": "RenderEngineType"
+          },
+          {
+            "name": "PromoCardFolder"
+          },
+          {
+            "name": "PromoCard"
+          },
+          {
+            "name": "ProductListPage"
+          },
+          {
+            "name": "ProductDetailPage"
+          },
+          {
+            "name": "PageComponentFolder"
+          },
+          {
+            "name": "C__Page"
+          },
+          {
+            "name": "JsonRendering"
+          },
+          {
+            "name": "JavaScriptRendering"
+          },
+          {
+            "name": "JSSLayout"
+          },
+          {
+            "name": "HomePage"
+          },
+          {
+            "name": "HeroBannerFolder"
+          },
+          {
+            "name": "HeroBanner"
+          },
+          {
+            "name": "C__App"
+          },
+          {
+            "name": "AccordionItemFolder"
+          },
+          {
+            "name": "AccordionItem"
+          }
+        ]
+      },
+      {
+        "kind": "INTERFACE",
+        "name": "_Product",
+        "possibleTypes": [
+          {
+            "name": "C___Product"
+          },
+          {
+            "name": "ProductDetailPage"
+          }
+        ]
+      },
+      {
+        "kind": "INTERFACE",
+        "name": "_NavigationRoot",
+        "possibleTypes": [
+          {
+            "name": "C___NavigationRoot"
+          },
+          {
+            "name": "HomePage"
+          }
+        ]
+      },
+      {
+        "kind": "INTERFACE",
+        "name": "_NavigationItem",
+        "possibleTypes": [
+          {
+            "name": "C___NavigationItem"
+          },
+          {
+            "name": "ServicesPage"
+          },
+          {
+            "name": "ProductListPage"
+          },
+          {
+            "name": "HomePage"
+          }
+        ]
+      },
+      {
+        "kind": "INTERFACE",
+        "name": "RenderingOptions",
+        "possibleTypes": [
+          {
+            "name": "JsonRendering"
+          },
+          {
+            "name": "JavaScriptRendering"
+          }
+        ]
+      },
+      {
+        "kind": "INTERFACE",
+        "name": "Layout_3a45a72364ee49199d4102fd40fd1466",
+        "possibleTypes": [
+          {
+            "name": "JSSLayout"
+          }
+        ]
+      },
+      {
+        "kind": "INTERFACE",
+        "name": "Caching",
+        "possibleTypes": [
+          {
+            "name": "JsonRendering"
+          },
+          {
+            "name": "JavaScriptRendering"
+          }
+        ]
+      }
+    ]
+  }
+}

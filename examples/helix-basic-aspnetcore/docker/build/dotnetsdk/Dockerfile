@@ -10,6 +10,7 @@ ARG NETCORE_BUILD_IMAGE
 
 FROM ${NETCORE_BUILD_IMAGE} as netcore-sdk
 FROM ${BUILD_IMAGE}
+SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
 
 # Ensure updated nuget. Depending on your Windows version, dotnet/framework/sdk:4.8 tag may provide an outdated client.
 # See https://github.com/microsoft/dotnet-framework-docker/blob/1c3dd6638c6b827b81ffb13386b924f6dcdee533/4.8/sdk/windowsservercore-ltsc2019/Dockerfile#L7

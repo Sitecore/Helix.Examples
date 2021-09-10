@@ -1,0 +1,16 @@
+{
+    "namespace": "Project.DemoContent",
+    "description": "An example of separating content into a separate module, so it can be excluded from deploy.",
+    "items": {
+        "includes": [
+            {
+                "name": "content",
+                "path": "/sitecore/content/BasicCompany"
+            },
+            {
+                "name": "media",
+                "path": "/sitecore/media library/Basic Company"
+            }
+        ]
+    }
+}

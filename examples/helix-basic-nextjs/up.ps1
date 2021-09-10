@@ -50,6 +50,9 @@ Write-Host "Populating Solr managed schema..." -ForegroundColor Green
 $token = (Get-Content .\.sitecore\user.json | ConvertFrom-Json).endpoints.default.accessToken
 Invoke-RestMethod "https://cm.basic-company-nextjs.localhost/sitecore/admin/PopulateManagedSchema.aspx?indexes=all" -Headers @{Authorization = "Bearer $token"} -UseBasicParsing | Out-Null
 
+# Workaround for issue w/ schema caching on CD in distributed environments
+docker-compose restart cd
+
 Write-Host "Pushing items to Sitecore..." -ForegroundColor Green
 dotnet sitecore ser push --publish
 if ($LASTEXITCODE -ne 0) {

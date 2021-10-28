@@ -47,8 +47,17 @@ if ($LASTEXITCODE -ne 0) {
 
 # Populate Solr managed schemas to avoid errors during item deploy
 Write-Host "Populating Solr managed schema..." -ForegroundColor Green
-$token = (Get-Content .\.sitecore\user.json | ConvertFrom-Json).endpoints.default.accessToken
-Invoke-RestMethod "https://cm.basic-company-nextjs.localhost/sitecore/admin/PopulateManagedSchema.aspx?indexes=all" -Headers @{Authorization = "Bearer $token"} -UseBasicParsing | Out-Null
+dotnet sitecore index schema-populate
+if ($LASTEXITCODE -ne 0) {
+    Write-Error "Populating Solr managed schema failed, see errors above."
+}
+
+# Rebuild indexes
+Write-Host "Rebuilding indexes ..." -ForegroundColor Green
+dotnet sitecore index rebuild
+if ($LASTEXITCODE -ne 0) {
+    Write-Error "Rebuild indexes failed, see errors above."
+}
 
 # Workaround for issue w/ schema caching on CD in distributed environments
 docker-compose restart cd

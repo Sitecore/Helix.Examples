@@ -72,6 +72,10 @@
           "additionalProperties": {
             "type": "string"
           }
+        },
+        "insecure": {
+          "type": "boolean",
+          "description": "If true, allows cli to use http protocol to communicate with Identity Service Authority. "
         }
       }
     }

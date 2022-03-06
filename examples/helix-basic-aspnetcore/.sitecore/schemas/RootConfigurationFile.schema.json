@@ -56,6 +56,11 @@
           "description": "Specifies remove orphans functionality for roles serialization",
           "default": true
         },
+        "continueOnItemFailure": {
+          "type": "boolean",
+          "description": "Specifies behavior when item synchronization fails",
+          "default": false
+        },
         "excludedFields": {
           "type": "array",
           "description": "Configure base fields filter",

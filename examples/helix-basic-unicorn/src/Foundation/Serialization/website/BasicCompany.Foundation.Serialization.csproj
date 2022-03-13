@@ -95,8 +95,8 @@
     <Content Include="App_Config\Include\Foundation\Foundation.Serialization.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Config\Include\Unicorn\Unicorn.DataProvider.10.1.config" />
     <Content Include="App_Config\Include\Unicorn\Unicorn.DataProvider.config.disabled" />
+    <Content Include="App_Config\Include\Unicorn\Unicorn.DataProvider.10.2.config" />
     <None Include="App_Config\Layers.config.xdt" />
     <None Include="web.config" />
     <None Include="web.Debug.config">

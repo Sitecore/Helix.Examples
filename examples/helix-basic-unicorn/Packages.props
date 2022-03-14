@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <PlatformVersion>10.1.0</PlatformVersion>
+    <PlatformVersion>10.2.0</PlatformVersion>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Update="Sitecore.Nexus" Version="$(PlatformVersion)" />
     <PackageReference Update="Sitecore.Kernel" Version="$(PlatformVersion)" />
     <PackageReference Update="Sitecore.Mvc" Version="$(PlatformVersion)" />
     <PackageReference Update="Sitecore.ContentSearch" Version="$(PlatformVersion)" />
@@ -12,15 +11,15 @@
     <PackageReference Update="Sitecore.ContentSearch.ContentExtraction" Version="$(PlatformVersion)" />
     <PackageReference Update="Sitecore.Assemblies.Platform" Version="$(PlatformVersion)" />
     
-    <PackageReference Update="Unicorn" Version="4.1.4" />
-    <PackageReference Update="Unicorn.Roles" Version="4.1.4" />
-    <PackageReference Update="Unicorn.Users" Version="4.1.4" />
+    <PackageReference Update="Unicorn" Version="4.1.6" />
+    <PackageReference Update="Unicorn.Roles" Version="4.1.6" />
+    <PackageReference Update="Unicorn.Users" Version="4.1.6" />
     <PackageReference Update="Sitecore.FakeDb" Version="3.0.0-alpha1" />
     <PackageReference Update="Microsoft.Extensions.DependencyInjection" Version="2.2.0" />
     <PackageReference Update="Microsoft.Extensions.Logging" Version="2.2.0" />
-    <PackageReference Update="Moq" Version="4.10.1" />
+    <PackageReference Update="Moq" Version="4.17.2" />
     <PackageReference Update="xunit" Version="2.4.1" />
-    <PackageReference Update="xunit.runner.visualstudio" Version="2.4.1" />
+    <PackageReference Update="xunit.runner.visualstudio" Version="2.4.3" />
     <PackageReference Update="RichardSzalay.Helix.Publishing.WebRoot" Version="1.5.6" />
   </ItemGroup>
 </Project>

@@ -42,6 +42,24 @@ services:
       - type: bind
         source: .\mssql-data
         target: c:\data
+
+  mssql-init:
+    isolation: ${ISOLATION}
+    image: ${SITECORE_DOCKER_REGISTRY}sitecore-xm1-mssql-init:${SITECORE_VERSION}
+    environment:
+      SQL_SERVER: mssql
+      SQL_ADMIN_LOGIN: sa
+      SQL_ADMIN_PASSWORD: ${SQL_SA_PASSWORD}
+      SITECORE_ADMIN_PASSWORD: ${SITECORE_ADMIN_PASSWORD}
+      POST_DEPLOYMENT_WAIT_PERIOD: 300
+    healthcheck:
+      test: ["CMD", "powershell", "-command", "if ([System.Environment]::GetEnvironmentVariable('DatabasesDeploymentStatus', 'Machine') -eq 'Complete') { exit 0 } else { exit 1}"]
+      start_period: 300s
+      interval: 5s
+    depends_on:
+      mssql:
+        condition: service_healthy
+
   solr:
     isolation: ${ISOLATION}
     image: ${SITECORE_DOCKER_REGISTRY}nonproduction/solr:8.8.2-${SITECORE_VERSION}
@@ -80,7 +98,7 @@ services:
       test: ["CMD", "pwsh", "-command", "C:/Healthchecks/Healthcheck.ps1"]
       timeout: 300s
     depends_on:
-      mssql:
+      mssql-init:
         condition: service_healthy
     labels:
       - "traefik.enable=true"

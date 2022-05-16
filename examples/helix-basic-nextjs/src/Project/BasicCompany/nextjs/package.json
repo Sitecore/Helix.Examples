@@ -73,7 +73,7 @@
     "@types/react-dom": "^17.0.0",
     "@typescript-eslint/eslint-plugin": "^4.7.0",
     "@typescript-eslint/parser": "^4.7.0",
-    "axios": "^0.21.1",
+    "axios": "^0.21.2",
     "babel-loader": "^8.2.2",
     "babel-preset-react-app": "^10.0.0",
     "chalk": "~2.4.2",

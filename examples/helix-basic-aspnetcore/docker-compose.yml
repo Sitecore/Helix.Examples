@@ -37,8 +37,6 @@ services:
       SA_PASSWORD: ${SQL_SA_PASSWORD}
       SITECORE_ADMIN_PASSWORD: ${SITECORE_ADMIN_PASSWORD}
       ACCEPT_EULA: "Y"
-    ports:
-      - "14330:1433"
     volumes:
       - type: bind
         source: .\mssql-data
@@ -46,8 +44,6 @@ services:
   solr:
     isolation: ${ISOLATION}
     image: ${SITECORE_DOCKER_REGISTRY}nonproduction/solr:8.4.0-${SITECORE_VERSION}
-    ports:
-      - "8984:8983"
     volumes:
       - type: bind
         source: .\solr-data

@@ -97,6 +97,7 @@ try {
         $mkcert = "mkcert"
     } elseif (-not (Test-Path $mkcert)) {
         Write-Host "Downloading and installing mkcert certificate tool..." -ForegroundColor Green 
+        [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
         Invoke-WebRequest "https://github.com/FiloSottile/mkcert/releases/download/v1.4.1/mkcert-v1.4.1-windows-amd64.exe" -UseBasicParsing -OutFile mkcert.exe
         if ((Get-FileHash mkcert.exe).Hash -ne "1BE92F598145F61CA67DD9F5C687DFEC17953548D013715FF54067B34D7C3246") {
             Remove-Item mkcert.exe -Force

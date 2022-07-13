@@ -76,6 +76,9 @@ try {
     Write-Host "Generating Traefik TLS certificate..." -ForegroundColor Green
     & $mkcert -install
     & $mkcert "*.basic-company-nextjs.localhost"
+
+    # stash CAROOT path for messaging at the end of the script
+    $caRoot = "$(& $mkcert -CAROOT)\rootCA.pem"
 }
 catch {
     Write-Error "An error occurred while attempting to generate TLS certificate: $_"
@@ -155,7 +158,7 @@ Write-Host
 Write-Host ("#"*75) -ForegroundColor Cyan
 Write-Host "To avoid HTTPS errors, set the NODE_EXTRA_CA_CERTS environment variable" -ForegroundColor Cyan
 Write-Host "using the following commmand:" -ForegroundColor Cyan
-Write-Host "setx NODE_EXTRA_CA_CERTS $(& $mkcert -CAROOT)\rootCA.pem"
+Write-Host "setx NODE_EXTRA_CA_CERTS $caRoot"
 Write-Host
 Write-Host "You will need to restart your terminal or VS Code for it to take effect." -ForegroundColor Cyan
 Write-Host ("#"*75) -ForegroundColor Cyan

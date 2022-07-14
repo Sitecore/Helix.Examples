@@ -55,6 +55,7 @@ services:
       - ./docker/traefik:C:/etc/traefik
     depends_on:
       - rendering
+    # scale: 0
   
   redis:
     image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-redis:${VERSION:-latest}

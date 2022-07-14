@@ -16,6 +16,7 @@ services:
   traefik:
     volumes:
       - ./docker/traefik:C:/etc/traefik
+    # scale: 0
   
   redis:
     image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-redis:${VERSION:-latest}

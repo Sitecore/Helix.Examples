@@ -1,0 +1,24 @@
+version: "2.4"
+
+services:
+
+  traefik:
+    volumes:
+      - ../helix-basic-aspnetcore/docker/traefik/certs:C:/etc/traefik/certs/helix-basic-aspnetcore
+      - ../helix-basic-nextjs/docker/traefik/certs:C:/etc/traefik/certs/helix-basic-nextjs
+      - ../helix-basic-unicorn/docker/traefik/certs:C:/etc/traefik/certs/helix-basic-unicorn
+    networks:
+      - basic-company-aspnetcore_default
+      - basic-company-nextjs_default
+      - basic-company-unicorn_default
+
+networks:
+  basic-company-aspnetcore_default:
+    name: basic-company-aspnetcore_default
+    external: true
+  basic-company-nextjs_default:
+    name: basic-company-nextjs_default
+    external: true
+  basic-company-unicorn_default:
+    name: basic-company-unicorn_default
+    external: true

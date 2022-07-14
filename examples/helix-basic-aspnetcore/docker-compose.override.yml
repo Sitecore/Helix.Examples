@@ -46,9 +46,9 @@ services:
       - cd
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.rendering-secure.entrypoints=websecure"
-      - "traefik.http.routers.rendering-secure.rule=Host(`${RENDERING_HOST}`)"
-      - "traefik.http.routers.rendering-secure.tls=true"
+      - "traefik.http.routers.rendering-${COMPOSE_PROJECT_NAME}-secure.entrypoints=websecure"
+      - "traefik.http.routers.rendering-${COMPOSE_PROJECT_NAME}-secure.rule=Host(`${RENDERING_HOST}`)"
+      - "traefik.http.routers.rendering-${COMPOSE_PROJECT_NAME}-secure.tls=true"
 
   traefik:
     volumes:

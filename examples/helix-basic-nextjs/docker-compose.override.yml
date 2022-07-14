@@ -51,9 +51,9 @@ services:
       - nodejs
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.rendering-secure.entrypoints=websecure"
-      - "traefik.http.routers.rendering-secure.rule=Host(`${RENDERING_HOST}`)"
-      - "traefik.http.routers.rendering-secure.tls=true"
+      - "traefik.http.routers.rendering-${COMPOSE_PROJECT_NAME}-secure.entrypoints=websecure"
+      - "traefik.http.routers.rendering-${COMPOSE_PROJECT_NAME}-secure.rule=Host(`${RENDERING_HOST}`)"
+      - "traefik.http.routers.rendering-${COMPOSE_PROJECT_NAME}-secure.tls=true"
 
   # Mount the Traefik configuration and certs.
   traefik:
@@ -61,6 +61,7 @@ services:
       - ./docker/traefik:C:/etc/traefik
     depends_on:
       - rendering
+    # scale: 0
   
   redis:
     image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-redis:${VERSION:-latest}

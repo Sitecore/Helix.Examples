@@ -15,6 +15,7 @@ services:
   traefik:
     volumes:
       - ./docker/traefik:C:/etc/traefik
+    # scale: 0
   
   redis:
     image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-redis:${VERSION:-latest}
@@ -76,7 +77,7 @@ services:
       SITECORE_DEVELOPMENT_PATCHES: CustomErrorsOff
     entrypoint: powershell -Command "& C:\tools\entrypoints\iis\Development.ps1"
     labels:
-      - "traefik.http.routers.cd-secure.rule=Host(`${SITE_HOST}`) || Host(`${CD_HOST}`)"
+      - "traefik.http.routers.cd-${COMPOSE_PROJECT_NAME}-secure.rule=Host(`${SITE_HOST}`) || Host(`${CD_HOST}`)"
 
   cm:
     image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-xm1-cm:${VERSION:-latest}

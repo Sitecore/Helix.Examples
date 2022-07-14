@@ -24,7 +24,12 @@ $startTime = Get-Date
 do {
     Start-Sleep -Milliseconds 100
     try {
-        $status = Invoke-RestMethod "http://localhost:8079/api/http/routers/cm-secure@docker"
+
+        #WORKAROUND: https://github.com/Sitecore/docker-tools/issues/38
+        $envFileAbsolutePath = $(Get-Item -Path ".env").FullName
+
+        $compose_project_name = Get-EnvFileVariable -Variable "COMPOSE_PROJECT_NAME" -Path $envFileAbsolutePath        
+        $status = Invoke-RestMethod "http://localhost:8079/api/http/routers/cm-$compose_project_name-secure@docker"
     } catch {
         if ($_.Exception.Response.StatusCode.value__ -ne "404") {
             throw

@@ -1,0 +1,8 @@
+tls:
+  certificates:
+    - certFile: C:\etc\traefik\certs\helix-basic-aspnetcore\_wildcard.basic-company-aspnetcore.localhost.pem
+      keyFile: C:\etc\traefik\certs\helix-basic-aspnetcore\_wildcard.basic-company-aspnetcore.localhost-key.pem
+    - certFile: C:\etc\traefik\certs\helix-basic-nextjs\_wildcard.basic-company-nextjs.localhost.pem
+      keyFile: C:\etc\traefik\certs\helix-basic-nextjs\_wildcard.basic-company-nextjs.localhost-key.pem
+    - certFile: C:\etc\traefik\certs\helix-basic-unicorn\_wildcard.basic-company-unicorn.localhost.pem
+      keyFile: C:\etc\traefik\certs\helix-basic-unicorn\_wildcard.basic-company-unicorn.localhost-key.pem      

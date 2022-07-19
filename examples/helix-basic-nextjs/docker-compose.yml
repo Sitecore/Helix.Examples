@@ -45,7 +45,7 @@ services:
         target: c:\data
   solr:
     isolation: ${ISOLATION}
-    image: ${SITECORE_DOCKER_REGISTRY}nonproduction/solr:8.4.0-${SITECORE_VERSION}
+    image: ${SITECORE_DOCKER_REGISTRY}nonproduction/solr:8.8.2-${SITECORE_VERSION}
     ports:
       - "8984:8983"
     volumes:
@@ -54,6 +54,8 @@ services:
         target: c:\data
     environment:
       SOLR_MODE: solrcloud
+    healthcheck:
+      test: ["CMD", "powershell", "-command", "try { $$statusCode = (iwr http://solr:8983/solr/admin/cores?action=STATUS -UseBasicParsing).StatusCode; if ($$statusCode -eq 200) { exit 0 } else { exit 1} } catch { exit 1 }"]
   solr-init:
     isolation: ${ISOLATION}
     image: ${SITECORE_DOCKER_REGISTRY}sitecore-xm1-solr-init:${SITECORE_VERSION}
@@ -76,7 +78,7 @@ services:
       Sitecore_Sitecore__IdentityServer__CertificateRawDataPassword: ${SITECORE_ID_CERTIFICATE_PASSWORD}
       Sitecore_License: ${SITECORE_LICENSE}
     healthcheck:
-      test: ["CMD", "powershell", "-command", "C:/Healthchecks/Healthcheck.ps1"]
+      test: ["CMD", "pwsh", "-command", "C:/Healthchecks/Healthcheck.ps1"]
       timeout: 300s
     depends_on:
       mssql:

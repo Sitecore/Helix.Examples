@@ -76,12 +76,23 @@ services:
     build:
       context: ./docker/build/mssql
       args:
-        PARENT_IMAGE: ${SITECORE_DOCKER_REGISTRY}sitecore-xm1-mssql:${SITECORE_VERSION}
-        HEADLESS_SERVICES_IMAGE: ${HEADLESS_SERVICES_IMAGE}
+        PARENT_IMAGE: ${SITECORE_DOCKER_REGISTRY}nonproduction/mssql-developer:2017-${SITECORE_VERSION}
+    mem_limit: 2GB
     volumes:
       - type: bind
         source: .\docker\data\sql
         target: c:\data
+  
+  mssql-init:
+    image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-xm1-mssql-init:${SITECORE_VERSION}
+    build:
+      context: ./docker/build/mssql-init
+      args:
+        PARENT_IMAGE: ${SITECORE_DOCKER_REGISTRY}sitecore-xm1-mssql-init:${SITECORE_VERSION}
+        HEADLESS_SERVICES_IMAGE: ${HEADLESS_SERVICES_IMAGE}
+    depends_on:
+      mssql:
+        condition: service_healthy
 
   # Mount our Solr data folder and use our retagged Solr image.
   # Some modules (like SXA) also require additions to the Solr image.
@@ -103,11 +114,11 @@ services:
   # Use our retagged Identity Server image.
   # Configure for a mounted license file instead of using SITECORE_LICENSE.
   id:
-    image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-id:${VERSION:-latest}
+    image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-id6:${VERSION:-latest}
     build:
       context: ./docker/build/id
       args:
-        PARENT_IMAGE: ${SITECORE_DOCKER_REGISTRY}sitecore-id:${SITECORE_VERSION}
+        PARENT_IMAGE: ${SITECORE_DOCKER_REGISTRY}sitecore-id6:${SITECORE_VERSION}
     volumes:
       - ${HOST_LICENSE_FOLDER}:c:\license
     environment:

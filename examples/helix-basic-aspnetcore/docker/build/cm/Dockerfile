@@ -26,7 +26,7 @@ COPY --from=management_services C:\module\cm\content C:\inetpub\wwwroot
 COPY --from=headless_services C:\module\cm\content C:\inetpub\wwwroot
 COPY --from=headless_services C:\module\tools C:\module\tools
 RUN C:\module\tools\Initialize-Content.ps1 -TargetPath C:\inetpub\wwwroot; `
-    Remove-Item -Path C:\module -Recurse -Force;
+  Remove-Item -Path C:\module -Recurse -Force;
 
 # Copy solution website files
 COPY --from=solution \artifacts\sitecore\ .\

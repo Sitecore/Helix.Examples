@@ -10,5 +10,3 @@ SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPref
 
 # Copy and init the JSS / Headless Services Module
 COPY --from=headless_services C:\module\db C:\jss_data
-RUN C:\DeployDatabases.ps1 -ResourcesDirectory C:\jss_data; `
-    Remove-Item -Path C:\jss_data -Recurse -Force;

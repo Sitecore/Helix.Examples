@@ -1,11 +1,38 @@
-$ErrorActionPreference = "Stop";
+[CmdletBinding(DefaultParameterSetName = "no-arguments")]
+Param (
+    [Parameter(HelpMessage = "Alternative login using app client.",
+        ParameterSetName = "by-pass")]
+    [bool]$ByPass = $false,
 
+    # use to run proper sitecore deployment setup
+    [Parameter(Mandatory = $true,
+        HelpMessage = "Sets the instance topology",
+        ParameterSetName = "env-init")]
+    [ValidateSet("xp0","xp1","xm1")]
+    [string]$Topology
+)
+
+$topologyArray = "xp0", "xp1", "xm1";
+
+$ErrorActionPreference = "Stop";
+$startDirectory = ".\run\sitecore-";
+$workinDirectoryPath;
+$envCheck;
 # Double check whether init has been run
-$envCheckVariable = "HOST_LICENSE_FOLDER"
-$envCheck = Get-Content .env -Encoding UTF8 | Where-Object { $_ -imatch "^$envCheckVariable=.+" }
-if (-not $envCheck) {
-    throw "$envCheckVariable does not have a value. Did you run 'init.ps1'?"
+$envCheckVariable = "HOST_LICENSE_FOLDER";
+
+if ($topologyArray.Contains($Topology))
+{
+  $envCheck = Get-Content (Join-Path -Path ($startDirectory + $Topology) -ChildPath .env) -Encoding UTF8 | Where-Object { $_ -imatch "^$envCheckVariable=.+" }
+  if ($envCheck) {
+    $workinDirectoryPath = $startDirectory + $Topology;
+  }
 }
+
+if (-not $envCheck) {
+    throw "$envCheckVariable does not have a value. Did you run 'init.ps1 -InitEnv'?"
+}
+Push-Location $workinDirectoryPath
 
 # Build all containers in the Sitecore instance, forcing a pull of latest base containers
 Write-Host "Building containers..." -ForegroundColor Green
@@ -17,6 +44,8 @@ if ($LASTEXITCODE -ne 0) {
 # Start the Sitecore instance
 Write-Host "Starting Sitecore environment..." -ForegroundColor Green
 docker-compose up -d
+
+Pop-Location
 
 # Wait for Traefik to expose CM route
 Write-Host "Waiting for CM to become available..." -ForegroundColor Green
@@ -40,7 +69,12 @@ Write-Host "Restoring Sitecore CLI..." -ForegroundColor Green
 dotnet tool restore
 
 Write-Host "Logging into Sitecore..." -ForegroundColor Green
-dotnet sitecore login --cm https://cm.basic-company-aspnetcore.localhost/ --auth https://id.basic-company-aspnetcore.localhost/ --allow-write true
+if ($ByPass) {
+  dotnet sitecore login --cm https://cm.basic-company-aspnetcore.localhost/ --auth https://id.basic-company-aspnetcore.localhost/ --allow-write true --client-id "SitecoreCLIServer" --client-secret "testsecret" --client-credentials true
+}else {
+  dotnet sitecore login --cm https://cm.basic-company-aspnetcore.localhost/ --auth https://id.basic-company-aspnetcore.localhost/ --allow-write true
+}
+
 if ($LASTEXITCODE -ne 0) {
     Write-Error "Unable to log into Sitecore, did the Sitecore environment start correctly? See logs above."
 }
@@ -63,6 +97,13 @@ Write-Host "Pushing items to Sitecore..." -ForegroundColor Green
 dotnet sitecore ser push --publish
 if ($LASTEXITCODE -ne 0) {
     Write-Error "Serialization push failed, see errors above."
+}
+
+if (($Topology -eq "xm1") -or ($Topology -eq "xp1")){
+    Write-Host "Restart CD" -ForegroundColor Green
+    Push-Location $workinDirectoryPath
+    docker-compose restart cd
+    Pop-Location
 }
 
 Write-Host "Opening site..." -ForegroundColor Green

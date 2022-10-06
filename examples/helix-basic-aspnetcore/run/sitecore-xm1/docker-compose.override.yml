@@ -1,3 +1,11 @@
+#
+# The docker-compose.yml in this solution is a stock Sitecore xm1 environment, without
+# any changes. This override represents all the additions/changes needed for this solution.
+# Note that some of the overrides point to 'empty' Dockerfiles. This is recommended, even if
+# you are not customizing an image, to enable retagging and later customization. See Sitecore
+# Containers documentation for details.
+#
+
 version: "2.4"
 
 services:
@@ -5,7 +13,7 @@ services:
   dotnetsdk:
     image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-dotnetsdk:${VERSION:-latest}
     build:
-      context: ./docker/build/dotnetsdk
+      context: ../../docker/build/dotnetsdk
       args:
         BUILD_IMAGE: ${SOLUTION_BUILD_IMAGE}
         NETCORE_BUILD_IMAGE: ${NETCORE_BUILD_IMAGE}
@@ -14,7 +22,8 @@ services:
   solution:
     image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-solution:${VERSION:-latest}
     build:
-      context: .
+      context: ../../
+      dockerfile: docker/build/solution/Dockerfile
       args:
         BASE_IMAGE: ${SOLUTION_BASE_IMAGE}
         BUILD_IMAGE: ${REGISTRY}${COMPOSE_PROJECT_NAME}-dotnetsdk:${VERSION:-latest}
@@ -26,7 +35,7 @@ services:
   rendering:
     image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-rendering:${VERSION:-latest}
     build:
-      context: ./docker/build/rendering
+      context: ../../docker/build/rendering
       target: ${BUILD_CONFIGURATION}
       args:
         DEBUG_BASE_IMAGE: ${REGISTRY}${COMPOSE_PROJECT_NAME}-dotnetsdk:${VERSION:-latest}
@@ -35,7 +44,7 @@ services:
     ports:
       - "8090:80"
     volumes:
-      - .\:C:\solution
+      - ..\..\:C:\solution
     environment:
       ASPNETCORE_ENVIRONMENT: "Development"
       ASPNETCORE_URLS: "http://*:80"
@@ -52,27 +61,29 @@ services:
 
   traefik:
     volumes:
-      - ./docker/traefik:C:/etc/traefik
+      - ../../docker/traefik:C:/etc/traefik
     depends_on:
       - rendering
   
   redis:
     image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-redis:${VERSION:-latest}
     build:
-      context: ./docker/build/redis
+      context: ../../docker/build/redis
       args:
         BASE_IMAGE: ${SITECORE_DOCKER_REGISTRY}sitecore-redis:${SITECORE_VERSION}
 
   mssql:
-    image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-xm1-mssql:${VERSION:-latest}
-    build:
-      context: ./docker/build/mssql
-      args:
-        BASE_IMAGE: ${SITECORE_DOCKER_REGISTRY}sitecore-xm1-mssql:${SITECORE_VERSION}
-        HEADLESS_SERVICES_IMAGE: ${SITECORE_MODULE_REGISTRY}sitecore-headless-services-xm1-assets:${HEADLESS_SERVICES_VERSION}
     mem_limit: 2GB
     volumes:
       - ${LOCAL_DATA_PATH}\mssql:c:\data
+
+  mssql-init:
+    image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-${TOPOLOGY}-mssql-init:${VERSION:-latest}
+    build:
+      context: ../../docker/build/mssql-init
+      args:
+        BASE_IMAGE: ${SITECORE_DOCKER_REGISTRY}sitecore-${TOPOLOGY}-mssql-init:${SITECORE_VERSION}
+        HEADLESS_SERVICES_IMAGE: ${SITECORE_MODULE_REGISTRY}sitecore-headless-services-${TOPOLOGY}-assets:${HEADLESS_SERVICES_VERSION}
   
   # Mount our Solr data folder.
   solr:
@@ -82,30 +93,30 @@ services:
   # Mount our Solr data folder and use our retagged Solr image.
   # Some modules (like SXA) also require additions to the Solr image.
   solr-init:
-    image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-xm1-solr-init:${VERSION:-latest}
+    image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-${TOPOLOGY}-solr-init:${VERSION:-latest}
     build:
-      context: ./docker/build/solr-init
+      context: ../../docker/build/solr-init
       args:
-        BASE_IMAGE: ${SITECORE_DOCKER_REGISTRY}sitecore-xm1-solr-init:${SITECORE_VERSION}
+        BASE_IMAGE: ${SITECORE_DOCKER_REGISTRY}sitecore-${TOPOLOGY}-solr-init:${SITECORE_VERSION}
 
   id:
-    image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-id:${VERSION:-latest}
+    image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-id6:${VERSION:-latest}
     build:
-      context: ./docker/build/id
+      context: ../../docker/build/id
       args:
-        BASE_IMAGE: ${SITECORE_DOCKER_REGISTRY}sitecore-id:${SITECORE_VERSION}
+        BASE_IMAGE: ${SITECORE_DOCKER_REGISTRY}sitecore-id6:${SITECORE_VERSION}
     volumes:
       - ${HOST_LICENSE_FOLDER}:C:\license
     environment:
       SITECORE_LICENSE_LOCATION: C:\license\license.xml
 
   cd:
-    image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-xm1-cd:${VERSION:-latest}
+    image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-${TOPOLOGY}-cd:${VERSION:-latest}
     build:
-      context: ./docker/build/cd
+      context: ../../docker/build/cd
       args:
-        BASE_IMAGE: ${SITECORE_DOCKER_REGISTRY}sitecore-xm1-cd:${SITECORE_VERSION}
-        HEADLESS_SERVICES_IMAGE: ${SITECORE_MODULE_REGISTRY}sitecore-headless-services-xm1-assets:${HEADLESS_SERVICES_VERSION}
+        BASE_IMAGE: ${SITECORE_DOCKER_REGISTRY}sitecore-${TOPOLOGY}-cd:${SITECORE_VERSION}
+        HEADLESS_SERVICES_IMAGE: ${SITECORE_MODULE_REGISTRY}sitecore-headless-services-${TOPOLOGY}-assets:${HEADLESS_SERVICES_VERSION}
         TOOLING_IMAGE: ${SITECORE_TOOLS_REGISTRY}sitecore-docker-tools-assets:${TOOLS_VERSION}
         SOLUTION_IMAGE: ${REGISTRY}${COMPOSE_PROJECT_NAME}-solution:${VERSION:-latest}
     depends_on:
@@ -121,13 +132,13 @@ services:
     entrypoint: powershell -Command "& C:\tools\entrypoints\iis\Development.ps1"
 
   cm:
-    image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-xm1-cm:${VERSION:-latest}
+    image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-${TOPOLOGY}-cm:${VERSION:-latest}
     build:
-      context: ./docker/build/cm
+      context: ../../docker/build/cm
       args:
-        BASE_IMAGE: ${SITECORE_DOCKER_REGISTRY}sitecore-xm1-cm:${SITECORE_VERSION}
-        HEADLESS_SERVICES_IMAGE: ${SITECORE_MODULE_REGISTRY}sitecore-headless-services-xm1-assets:${HEADLESS_SERVICES_VERSION}
-        MANAGEMENT_SERVICES_IMAGE: ${SITECORE_MODULE_REGISTRY}sitecore-management-services-xm1-assets:${MANAGEMENT_SERVICES_VERSION}
+        BASE_IMAGE: ${SITECORE_DOCKER_REGISTRY}sitecore-${TOPOLOGY}-cm:${SITECORE_VERSION}
+        HEADLESS_SERVICES_IMAGE: ${SITECORE_MODULE_REGISTRY}sitecore-headless-services-${TOPOLOGY}-assets:${HEADLESS_SERVICES_VERSION}
+        MANAGEMENT_SERVICES_IMAGE: ${SITECORE_MODULE_REGISTRY}sitecore-management-services-${TOPOLOGY}-assets:${MANAGEMENT_SERVICES_VERSION}
         TOOLING_IMAGE: ${SITECORE_TOOLS_REGISTRY}sitecore-docker-tools-assets:${TOOLS_VERSION}
         SOLUTION_IMAGE: ${REGISTRY}${COMPOSE_PROJECT_NAME}-solution:${VERSION:-latest}
     depends_on:

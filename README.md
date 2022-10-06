@@ -1,4 +1,5 @@
 # Welcome to the Sitecore Helix Examples Repository
+The objective of this repository is to set up Sitecore helix project on any topology means xp0, xp1 and xm1 dynamically which will reduce your time to setup insatnce.
 
 The Sitecore Helix Examples are demonstrations of Sitecore Helix practices across various
 tooling and business scenarios. They are intended to demonstrate a wider variety

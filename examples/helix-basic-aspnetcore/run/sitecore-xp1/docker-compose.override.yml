@@ -1,0 +1,307 @@
+#
+# The docker-compose.yml in this solution is a stock Sitecore xp1 environment, without
+# any changes. This override represents all the additions/changes needed for this solution.
+# Note that some of the overrides point to 'empty' Dockerfiles. This is recommended, even if
+# you are not customizing an image, to enable retagging and later customization. See Sitecore
+# Containers documentation for details.
+#
+
+version: "2.4"
+
+services:
+
+  dotnetsdk:
+    image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-dotnetsdk:${VERSION:-latest}
+    build:
+      context: ../../docker/build/dotnetsdk
+      args:
+        BUILD_IMAGE: ${SOLUTION_BUILD_IMAGE}
+        NETCORE_BUILD_IMAGE: ${NETCORE_BUILD_IMAGE}
+    scale: 0
+
+  solution:
+    image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-solution:${VERSION:-latest}
+    build:
+      context: ../../
+      dockerfile: docker/build/solution/Dockerfile
+      args:
+        BASE_IMAGE: ${SOLUTION_BASE_IMAGE}
+        BUILD_IMAGE: ${REGISTRY}${COMPOSE_PROJECT_NAME}-dotnetsdk:${VERSION:-latest}
+        BUILD_CONFIGURATION: ${BUILD_CONFIGURATION}
+    depends_on:
+      - dotnetsdk
+    scale: 0
+  
+  rendering:
+    image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-rendering:${VERSION:-latest}
+    build:
+      context: ../../docker/build/rendering
+      target: ${BUILD_CONFIGURATION}
+      args:
+        DEBUG_BASE_IMAGE: ${REGISTRY}${COMPOSE_PROJECT_NAME}-dotnetsdk:${VERSION:-latest}
+        RELEASE_BASE_IMAGE: mcr.microsoft.com/dotnet/core/aspnet:3.1
+        SOLUTION_IMAGE: ${REGISTRY}${COMPOSE_PROJECT_NAME}-solution:${VERSION:-latest}
+    ports:
+      - "8090:80"
+    volumes:
+      - ..\..\:C:\solution
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+      ASPNETCORE_URLS: "http://*:80"
+      Sitecore__InstanceUri: "http://cd"
+      Sitecore__EnableExperienceEditor: "true"
+    depends_on:
+      - cd
+      - solution
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.rendering-secure.entrypoints=websecure"
+      - "traefik.http.routers.rendering-secure.rule=Host(`${RENDERING_HOST}`)"
+      - "traefik.http.routers.rendering-secure.tls=true"
+
+  traefik:
+    volumes:
+      - ../../docker/traefik:C:/etc/traefik
+    depends_on:
+      - rendering
+  
+  redis:
+    image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-redis:${VERSION:-latest}
+    build:
+      context: ../../docker/build/redis
+      args:
+        BASE_IMAGE: ${SITECORE_DOCKER_REGISTRY}sitecore-redis:${SITECORE_VERSION}
+
+  mssql:
+    mem_limit: 2GB
+    volumes:
+      - ${LOCAL_DATA_PATH}\mssql:c:\data
+
+  mssql-init:
+    image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-${TOPOLOGY}-mssql-init:${VERSION:-latest}
+    build:
+      context: ../../docker/build/mssql-init
+      args:
+        BASE_IMAGE: ${SITECORE_DOCKER_REGISTRY}sitecore-${TOPOLOGY}-mssql-init:${SITECORE_VERSION}
+        HEADLESS_SERVICES_IMAGE: ${SITECORE_MODULE_REGISTRY}sitecore-headless-services-${TOPOLOGY}-assets:${HEADLESS_SERVICES_VERSION}
+  
+  # Mount our Solr data folder.
+  solr:
+    volumes:
+      - ${LOCAL_DATA_PATH}\solr:c:\data
+
+  # Mount our Solr data folder and use our retagged Solr image.
+  # Some modules (like SXA) also require additions to the Solr image.
+  solr-init:
+    image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-${TOPOLOGY}-solr-init:${VERSION:-latest}
+    build:
+      context: ../../docker/build/solr-init
+      args:
+        BASE_IMAGE: ${SITECORE_DOCKER_REGISTRY}sitecore-${TOPOLOGY}-solr-init:${SITECORE_VERSION}
+
+  id:
+    image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-id6:${VERSION:-latest}
+    build:
+      context: ../../docker/build/id
+      args:
+        BASE_IMAGE: ${SITECORE_DOCKER_REGISTRY}sitecore-id6:${SITECORE_VERSION}
+    volumes:
+      - ${HOST_LICENSE_FOLDER}:C:\license
+    environment:
+      SITECORE_LICENSE_LOCATION: C:\license\license.xml
+
+  cd:
+    image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-${TOPOLOGY}-cd:${VERSION:-latest}
+    build:
+      context: ../../docker/build/cd
+      args:
+        BASE_IMAGE: ${SITECORE_DOCKER_REGISTRY}sitecore-${TOPOLOGY}-cd:${SITECORE_VERSION}
+        HEADLESS_SERVICES_IMAGE: ${SITECORE_MODULE_REGISTRY}sitecore-headless-services-${TOPOLOGY}-assets:${HEADLESS_SERVICES_VERSION}
+        TOOLING_IMAGE: ${SITECORE_TOOLS_REGISTRY}sitecore-docker-tools-assets:${TOOLS_VERSION}
+        SOLUTION_IMAGE: ${REGISTRY}${COMPOSE_PROJECT_NAME}-solution:${VERSION:-latest}
+    depends_on:
+      - solution
+    volumes:
+      - ${LOCAL_DEPLOY_PATH}\platform:C:\deploy
+      - ${LOCAL_DATA_PATH}\cd:C:\inetpub\wwwroot\App_Data\logs
+      - ${HOST_LICENSE_FOLDER}:C:\license
+    environment:
+      SITECORE_LICENSE_LOCATION: C:\license\license.xml
+      ## Development Environment Optimizations
+      SITECORE_DEVELOPMENT_PATCHES: DevEnvOn,CustomErrorsOff,DebugOn,DiagnosticsOff,InitMessagesOff
+    entrypoint: powershell -Command "& C:\tools\entrypoints\iis\Development.ps1"
+
+  cm:
+    image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-${TOPOLOGY}-cm:${VERSION:-latest}
+    build:
+      context: ../../docker/build/cm
+      args:
+        BASE_IMAGE: ${SITECORE_DOCKER_REGISTRY}sitecore-${TOPOLOGY}-cm:${SITECORE_VERSION}
+        HEADLESS_SERVICES_IMAGE: ${SITECORE_MODULE_REGISTRY}sitecore-headless-services-${TOPOLOGY}-assets:${HEADLESS_SERVICES_VERSION}
+        MANAGEMENT_SERVICES_IMAGE: ${SITECORE_MODULE_REGISTRY}sitecore-management-services-${TOPOLOGY}-assets:${MANAGEMENT_SERVICES_VERSION}
+        TOOLING_IMAGE: ${SITECORE_TOOLS_REGISTRY}sitecore-docker-tools-assets:${TOOLS_VERSION}
+        SOLUTION_IMAGE: ${REGISTRY}${COMPOSE_PROJECT_NAME}-solution:${VERSION:-latest}
+    depends_on:
+      - solution
+    volumes:
+      - ${LOCAL_DEPLOY_PATH}\platform:C:\deploy
+      - ${LOCAL_DATA_PATH}\cm:C:\inetpub\wwwroot\App_Data\logs
+      - ${HOST_LICENSE_FOLDER}:C:\license
+    environment:
+      SITECORE_LICENSE_LOCATION: C:\license\license.xml
+      RENDERING_HOST_PUBLIC_URI: "https://${RENDERING_HOST}"
+      ## Development Environment Optimizations
+      SITECORE_DEVELOPMENT_PATCHES: DevEnvOn,CustomErrorsOff,DebugOn,DiagnosticsOff,InitMessagesOff
+      Sitecore_AppSettings_exmEnabled:define: "no" # remove to turn on EXM
+    entrypoint: powershell -Command "& C:\tools\entrypoints\iis\Development.ps1"
+
+# Use our retagged Prc image.
+  # Configure for a mounted license folder instead of using SITECORE_LICENSE.
+  # Note: Prc roles expect a folder with license.xml, not the file itself.
+  prc:
+    image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-${TOPOLOGY}-prc:${VERSION:-latest}
+    build:
+      context: ../../docker/build/prc
+      args:
+        PARENT_IMAGE: ${SITECORE_DOCKER_REGISTRY}sitecore-${TOPOLOGY}-prc:${SITECORE_VERSION}
+    volumes:
+      - ${HOST_LICENSE_FOLDER}:c:\license
+    environment:
+      SITECORE_LICENSE_LOCATION: c:\license\license.xml
+
+  # Use our retagged xdbcollection image.
+  # Configure for a mounted license folder instead of using SITECORE_LICENSE.
+  # Note: xdbcollection roles expect a folder with license.xml, not the file itself.
+  xdbcollection:
+    image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-${TOPOLOGY}-xdbcollection:${VERSION:-latest}
+    build:
+      context: ../../docker/build/xdbcollection
+      args:
+        PARENT_IMAGE: ${SITECORE_DOCKER_REGISTRY}sitecore-${TOPOLOGY}-xdbcollection:${SITECORE_VERSION}
+    volumes:
+      - ${HOST_LICENSE_FOLDER}:c:\license
+    environment:
+      SITECORE_LICENSE_LOCATION: c:\license\
+
+  # Use our retagged xdbsearch image.
+  # Configure for a mounted license folder instead of using SITECORE_LICENSE.
+  # Note: xdbsearch roles expect a folder with license.xml, not the file itself.
+  xdbsearch:
+    image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-${TOPOLOGY}-xdbsearch:${VERSION:-latest}
+    build:
+      context: ../../docker/build/xdbsearch
+      args:
+        PARENT_IMAGE: ${SITECORE_DOCKER_REGISTRY}sitecore-${TOPOLOGY}-xdbsearch:${SITECORE_VERSION}
+    volumes:
+      - ${HOST_LICENSE_FOLDER}:c:\license
+    environment:
+      SITECORE_LICENSE_LOCATION: c:\license\
+
+  # Use our retagged xdbautomation image.
+  # Configure for a mounted license folder instead of using SITECORE_LICENSE.
+  # Note: xdbautomation roles expect a folder with license.xml, not the file itself.
+  xdbautomation:
+    image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-${TOPOLOGY}-xdbautomation:${VERSION:-latest}
+    build:
+      context: ../../docker/build/xdbautomation
+      args:
+        PARENT_IMAGE: ${SITECORE_DOCKER_REGISTRY}sitecore-${TOPOLOGY}-xdbautomation:${SITECORE_VERSION}
+    volumes:
+      - ${HOST_LICENSE_FOLDER}:c:\license
+    environment:
+      SITECORE_LICENSE_LOCATION: c:\license\
+
+  # Use our retagged xdbautomationrpt image.
+  # Configure for a mounted license folder instead of using SITECORE_LICENSE.
+  # Note: xdbautomationrpt roles expect a folder with license.xml, not the file itself.
+  xdbautomationrpt:
+    image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-${TOPOLOGY}-xdbautomationrpt:${VERSION:-latest}
+    build:
+      context: ../../docker/build/xdbautomationrpt
+      args:
+        PARENT_IMAGE: ${SITECORE_DOCKER_REGISTRY}sitecore-${TOPOLOGY}-xdbautomationrpt:${SITECORE_VERSION}
+    volumes:
+      - ${HOST_LICENSE_FOLDER}:c:\license
+    environment:
+      SITECORE_LICENSE_LOCATION: c:\license\
+
+  # Use our retagged cortexprocessing image.
+  # Configure for a mounted license folder instead of using SITECORE_LICENSE.
+  # Note: cortexprocessing roles expect a folder with license.xml, not the file itself.
+  cortexprocessing:
+    image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-${TOPOLOGY}-cortexprocessing:${VERSION:-latest}
+    build:
+      context: ../../docker/build/cortexprocessing
+      args:
+        PARENT_IMAGE: ${SITECORE_DOCKER_REGISTRY}sitecore-${TOPOLOGY}-cortexprocessing:${SITECORE_VERSION}
+    volumes:
+      - ${HOST_LICENSE_FOLDER}:c:\license
+    environment:
+      SITECORE_LICENSE_LOCATION: c:\license\
+
+  # Use our retagged cortexreporting image.
+  # Configure for a mounted license folder instead of using SITECORE_LICENSE.
+  # Note: cortexreporting roles expect a folder with license.xml, not the file itself.
+  cortexreporting:
+    image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-${TOPOLOGY}-cortexreporting:${VERSION:-latest}
+    build:
+      context: ../../docker/build/cortexreporting
+      args:
+        PARENT_IMAGE: ${SITECORE_DOCKER_REGISTRY}sitecore-${TOPOLOGY}-cortexreporting:${SITECORE_VERSION}
+    volumes:
+      - ${HOST_LICENSE_FOLDER}:c:\license
+    environment:
+      SITECORE_LICENSE_LOCATION: c:\license\
+
+  # Use our retagged xdbrefdata image.
+  # Configure for a mounted license folder instead of using SITECORE_LICENSE.
+  # Note: xdbrefdata roles expect a folder with license.xml, not the file itself.
+  xdbrefdata:
+    image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-${TOPOLOGY}-xdbrefdata:${VERSION:-latest}
+    build:
+      context: ../../docker/build/xdbrefdata
+      args:
+        PARENT_IMAGE: ${SITECORE_DOCKER_REGISTRY}sitecore-${TOPOLOGY}-xdbrefdata:${SITECORE_VERSION}
+    volumes:
+      - ${HOST_LICENSE_FOLDER}:c:\license
+    environment:
+      SITECORE_LICENSE_LOCATION: c:\license\
+
+  # Use our retagged XConnect Search Indexer image.
+  # Configure for a mounted license folder instead of using SITECORE_LICENSE.
+  xdbsearchworker:
+    image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-${TOPOLOGY}-xdbsearchworker:${VERSION:-latest}
+    build:
+      context: ../../docker/build/xdbsearchworker
+      args:
+        PARENT_IMAGE: ${SITECORE_DOCKER_REGISTRY}sitecore-${TOPOLOGY}-xdbsearchworker:${SITECORE_VERSION}
+    volumes:
+      - ${HOST_LICENSE_FOLDER}:c:\license
+    environment:
+      SITECORE_LICENSE_LOCATION: c:\license\
+
+  # Use our retagged Marketing Automation Engine image.
+  # Configure for a mounted license folder instead of using SITECORE_LICENSE.
+  xdbautomationworker:
+    image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-${TOPOLOGY}-xdbautomationworker:${VERSION:-latest}
+    build:
+      context: ../../docker/build/xdbautomationworker
+      args:
+        PARENT_IMAGE: ${SITECORE_DOCKER_REGISTRY}sitecore-${TOPOLOGY}-xdbautomationworker:${SITECORE_VERSION}
+    volumes:
+      - ${HOST_LICENSE_FOLDER}:c:\license
+    environment:
+      SITECORE_LICENSE_LOCATION: c:\license\
+
+  # Use our retagged Cortex Processing Engine image.
+  # Configure for a mounted license folder instead of using SITECORE_LICENSE.
+  cortexprocessingworker:
+    image: ${REGISTRY}${COMPOSE_PROJECT_NAME}-${TOPOLOGY}-cortexprocessingworker:${VERSION:-latest}
+    build:
+      context: ../../docker/build/cortexprocessingworker
+      args:
+        PARENT_IMAGE: ${SITECORE_DOCKER_REGISTRY}sitecore-${TOPOLOGY}-cortexprocessingworker:${SITECORE_VERSION}
+    volumes:
+      - ${HOST_LICENSE_FOLDER}:c:\license
+    environment:
+      SITECORE_LICENSE_LOCATION: c:\license\
